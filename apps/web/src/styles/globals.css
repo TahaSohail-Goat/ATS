@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ATS brand tokens are consumed via Tailwind (see tailwind.config.ts and
+   packages/ui/src/tokens/colors.ts) — avoid hardcoding hex values here. */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-ats-bg-light text-ats-text dark:bg-ats-bg-dark dark:text-ats-bg-light;
+}

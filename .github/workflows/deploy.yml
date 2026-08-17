@@ -1,0 +1,22 @@
+name: Deploy
+
+# Placeholder deploy workflow. Hosting provider is TBD — see
+# docs/architecture/deployment-architecture.md. This workflow documents
+# the intended stages; fill in the provider-specific steps once decided.
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run database migrations
+        run: echo "TODO: pnpm --filter @ats/api exec prisma migrate deploy against staging DB"
+      - name: Deploy apps/web
+        run: echo "TODO: deploy apps/web to chosen hosting provider"
+      - name: Deploy apps/api
+        run: echo "TODO: deploy apps/api to chosen hosting provider"

@@ -1,0 +1,2 @@
+Reserved for shared React hooks used across multiple features. Empty
+until a real shared-hook need emerges. See apps/web/AGENTS.md.

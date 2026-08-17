@@ -1,0 +1,26 @@
+// ATS API — Prisma schema
+// Business purpose for every model is documented in docs/database/schema.md.
+// Do not add models here without a corresponding docs update.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@map("contact_submissions")
+}
