@@ -3,9 +3,11 @@
 Extends the root `AGENTS.md`. Read that first.
 
 ## Scope
+
 Modular monolith REST API under `/api/v1`.
 
 ## Structure (per module)
+
 ```
 src/modules/<domain>/
   <domain>.routes.ts        Express router, wires HTTP -> controller
@@ -18,6 +20,7 @@ src/modules/<domain>/
 ```
 
 ## Rules
+
 - Controllers are thin. Business logic lives in services, not controllers or
   routes.
 - Repositories are the only layer that talks to Prisma directly.

@@ -3,10 +3,12 @@
 Extends the root `AGENTS.md`.
 
 ## Scope
+
 Brand-level, framework-agnostic-where-possible React primitives and design
 tokens shared by all apps.
 
 ## Rules
+
 - Colors, spacing, radii, shadows, and typography scale live in
   `src/tokens/` and are the single source of truth — see
   `docs/frontend/design-system.md`. Never hardcode ATS brand hex values

@@ -6,5 +6,5 @@
   change process
 
 Source of truth for the schema itself is
-`apps/api/prisma/schema.prisma` — these docs explain *why*, the Prisma
-schema defines *what*.
+`apps/api/prisma/schema.prisma` — these docs explain _why_, the Prisma
+schema defines _what_.

@@ -15,6 +15,7 @@ flowchart TD
 ```
 
 ## Request lifecycle
+
 ```
 Request
   -> security middleware (Helmet, CORS, rate limiter)
@@ -29,10 +30,12 @@ Request
 ```
 
 ## Module template
+
 See `apps/api/AGENTS.md` for the exact file layout every module follows
 (`routes/controller/service/repository/schema/types/tests`).
 
 ## Why modular monolith, not microservices
+
 A single deployable process is simpler to build, test, deploy, and reason
 about at this stage, while the domain-separated module structure preserves
 the option to extract a module into its own service later — with an ADR —

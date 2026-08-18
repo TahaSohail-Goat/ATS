@@ -31,16 +31,16 @@ Full context: `docs/product/vision.md`, `docs/architecture/system-architecture.m
 
 ## 2. Technology Stack (do not change without an ADR)
 
-| Layer | Choice |
-|---|---|
-| Frontend | Next.js (App Router), React, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion |
-| Forms/validation | React Hook Form + Zod |
-| Data fetching | TanStack Query |
-| Backend | Node.js, Express.js, TypeScript, Zod |
-| Database | PostgreSQL via Prisma |
-| Monorepo tooling | pnpm workspaces + Turborepo |
-| Testing | Vitest (unit/integration), Playwright (E2E) |
-| Infra (local) | Docker Compose (Postgres only, currently) |
+| Layer            | Choice                                                                          |
+| ---------------- | ------------------------------------------------------------------------------- |
+| Frontend         | Next.js (App Router), React, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion |
+| Forms/validation | React Hook Form + Zod                                                           |
+| Data fetching    | TanStack Query                                                                  |
+| Backend          | Node.js, Express.js, TypeScript, Zod                                            |
+| Database         | PostgreSQL via Prisma                                                           |
+| Monorepo tooling | pnpm workspaces + Turborepo                                                     |
+| Testing          | Vitest (unit/integration), Playwright (E2E)                                     |
+| Infra (local)    | Docker Compose (Postgres only, currently)                                       |
 
 ---
 
@@ -127,7 +127,7 @@ belongs in `packages/validation` or `packages/types`, not duplicated in both.
 4. **Never duplicate existing functionality.** Search the monorepo (including
    `packages/`) before writing something that may already exist.
 5. **Never modify environment secrets** (`.env`, secret store values). Only
-   edit `.env.example` to document new *variable names* with placeholder
+   edit `.env.example` to document new _variable names_ with placeholder
    values.
 6. **Never expose API keys or secrets** in code, logs, comments, or commit
    messages.

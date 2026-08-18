@@ -1,11 +1,13 @@
 # Local Development Setup
 
 ## Prerequisites
+
 - Node.js >= 20
 - pnpm >= 9 (`corepack enable` recommended)
 - Docker (for local Postgres)
 
 ## Steps
+
 ```bash
 git clone <repo-url>
 cd ats

@@ -6,13 +6,12 @@
 export default function HomePage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col items-start justify-center gap-4 px-6">
-      <h1 className="text-4xl font-bold text-ats-brand">
+      <h1 className="text-ats-brand text-4xl font-bold">
         ATS — AI Software and Technology Solutions
       </h1>
       <p className="text-ats-text-muted">
-        This is a placeholder homepage. Final content and design are tracked
-        in docs/product — see the repository README for the engineering
-        foundation this site is built on.
+        This is a placeholder homepage. Final content and design are tracked in docs/product — see
+        the repository README for the engineering foundation this site is built on.
       </p>
     </main>
   );

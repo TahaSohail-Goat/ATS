@@ -3,11 +3,13 @@
 Extends the root `AGENTS.md`.
 
 ## Scope
+
 The engineering and product source of truth. Code should follow docs, not
 the other way around — if you change architecture, update the doc in the
 same PR.
 
 ## Rules
+
 - Every new document needs a clear purpose; don't create a doc just to fill
   out a directory structure.
 - Use Mermaid for diagrams where practical (architecture, ERDs) so they

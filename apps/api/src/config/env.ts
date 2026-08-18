@@ -12,9 +12,7 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(1).optional(),
   SESSION_SECRET: z.string().min(1).optional(),
   CORS_ORIGIN: z.string().min(1).default('http://localhost:3000'),
-  LOG_LEVEL: z
-    .enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace'])
-    .default('info'),
+  LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']).default('info'),
 });
 
 export type Env = z.infer<typeof envSchema>;
@@ -22,7 +20,6 @@ export type Env = z.infer<typeof envSchema>;
 function loadEnv(): Env {
   const parsed = envSchema.safeParse(process.env);
   if (!parsed.success) {
-    // eslint-disable-next-line no-console
     console.error('Invalid environment configuration:', parsed.error.flatten().fieldErrors);
     process.exit(1);
   }

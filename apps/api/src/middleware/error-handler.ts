@@ -8,7 +8,6 @@ import { logger } from '../shared/logger/index.js';
  * formats an error response directly (see apps/api/AGENTS.md).
  * Must be registered LAST, after all routes.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function errorHandler(err: unknown, req: Request, res: Response, _next: NextFunction) {
   const requestId = req.headers['x-request-id'];
 

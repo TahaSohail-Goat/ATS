@@ -8,6 +8,7 @@ external consumers.
 ## [Unreleased]
 
 ### Added
+
 - Initial repository architecture: pnpm/Turborepo monorepo, `apps/web`
   (Next.js) and `apps/api` (Express modular monolith), shared `packages/`
   (ui, config, types, validation).

@@ -8,15 +8,15 @@ ATS products (SaaS, AI products, client work, internal tools).
 
 ## What's here
 
-| App/Package | Purpose |
-|---|---|
-| [`apps/web`](./apps/web) | Public ATS website — Next.js (App Router), TypeScript, Tailwind |
-| [`apps/api`](./apps/api) | REST API — Express modular monolith, TypeScript, Prisma/PostgreSQL |
-| [`packages/ui`](./packages/ui) | Shared ATS design system (tokens + components) |
-| [`packages/config`](./packages/config) | Shared ESLint/TypeScript/Tailwind config |
-| [`packages/types`](./packages/types) | Shared TypeScript types |
-| [`packages/validation`](./packages/validation) | Shared Zod schemas (web + api) |
-| [`docs`](./docs) | Product, architecture, and engineering documentation — the source of truth |
+| App/Package                                    | Purpose                                                                    |
+| ---------------------------------------------- | -------------------------------------------------------------------------- |
+| [`apps/web`](./apps/web)                       | Public ATS website — Next.js (App Router), TypeScript, Tailwind            |
+| [`apps/api`](./apps/api)                       | REST API — Express modular monolith, TypeScript, Prisma/PostgreSQL         |
+| [`packages/ui`](./packages/ui)                 | Shared ATS design system (tokens + components)                             |
+| [`packages/config`](./packages/config)         | Shared ESLint/TypeScript/Tailwind config                                   |
+| [`packages/types`](./packages/types)           | Shared TypeScript types                                                    |
+| [`packages/validation`](./packages/validation) | Shared Zod schemas (web + api)                                             |
+| [`docs`](./docs)                               | Product, architecture, and engineering documentation — the source of truth |
 
 ## Architecture at a glance
 

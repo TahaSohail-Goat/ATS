@@ -7,6 +7,7 @@ Understand → Inspect → Plan → Implement → Test → Review → Document
 ```
 
 Practical notes:
+
 - "Inspect" means actually reading the code and docs in scope, not
   pattern-matching from the file name. Read the module/feature you're
   touching plus its `AGENTS.md`.

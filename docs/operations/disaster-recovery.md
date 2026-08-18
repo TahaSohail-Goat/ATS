@@ -7,6 +7,7 @@ document before any phase-3+ feature (see `../product/roadmap.md`) that
 introduces customer accounts or billing.
 
 At minimum, once a hosting provider is chosen, document:
+
 - Backup restore procedure and tested RTO/RPO
 - Failover plan if the primary region/provider has an outage
 - Communication plan for an outage affecting the public site

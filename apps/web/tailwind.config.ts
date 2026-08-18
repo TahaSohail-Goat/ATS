@@ -5,10 +5,7 @@ import { colors } from '@ats/ui/tokens/colors';
 // docs/frontend/design-system.md and packages/ui/src/tokens.
 const config: Config = {
   darkMode: 'class',
-  content: [
-    './src/**/*.{ts,tsx}',
-    '../../packages/ui/src/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{ts,tsx}', '../../packages/ui/src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {

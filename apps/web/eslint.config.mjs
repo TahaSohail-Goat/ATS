@@ -5,6 +5,9 @@ import reactHooks from 'eslint-plugin-react-hooks';
 export default [
   ...base,
   {
+    ignores: ['next-env.d.ts', '.next/**'],
+  },
+  {
     plugins: { react, 'react-hooks': reactHooks },
     rules: {
       ...react.configs.recommended.rules,

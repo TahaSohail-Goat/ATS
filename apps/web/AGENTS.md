@@ -3,9 +3,11 @@
 Extends the root `AGENTS.md`. Read that first.
 
 ## Scope
+
 Public ATS website. App Router only (`src/app`). No `pages/` directory.
 
 ## Structure
+
 ```
 src/
   app/          Routes, layouts, metadata (thin — no business logic here)
@@ -15,11 +17,13 @@ src/
   hooks/        Shared React hooks
   styles/       Global CSS, Tailwind entry point
 ```
+
 Brand-level primitives (Button, Card, Input, design tokens) live in
 `packages/ui`, not here. If a component is generic enough to belong in the
 design system, propose moving it there rather than growing `components/`.
 
 ## Rules
+
 - Server Components by default; add `"use client"` only when the component
   needs interactivity, state, or browser APIs.
 - Data fetching from the API goes through `src/lib/api-client`, never raw

@@ -9,4 +9,4 @@ practical notes:
   or argue with the formatter.
 - Prefer composition over inheritance; prefer small, pure functions in
   services for testability.
-- Comment *why*, not *what* — the code should already say what it does.
+- Comment _why_, not _what_ — the code should already say what it does.

@@ -1,4 +1,4 @@
 {
-  "extends": "@ats/config/typescript/base.json",
+  "extends": "@ats/config/typescript/base",
   "include": ["src"]
 }

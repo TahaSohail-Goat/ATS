@@ -1,6 +1,7 @@
 # Scalability Notes
 
 Current architecture scales by:
+
 - Running multiple stateless `apps/api` instances behind a load balancer
   (no in-memory session/state that would break with more than one instance).
 - Next.js built-in optimizations (static generation where possible, server
