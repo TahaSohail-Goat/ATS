@@ -106,7 +106,7 @@ importers:
         version: link:../../packages/validation
       '@hookform/resolvers':
         specifier: ^5.9.0
-        version: 5.9.0(react-hook-form@7.85.0(react@19.2.8))(zod@3.25.76)
+        version: 5.9.0(react-hook-form@7.85.0(react@19.2.8))(zod@4.4.3)
       '@tanstack/react-query':
         specifier: ^5.59.0
         version: 5.101.4(react@19.2.8)
@@ -3804,12 +3804,12 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@hookform/resolvers@5.9.0(react-hook-form@7.85.0(react@19.2.8))(zod@3.25.76)':
+  '@hookform/resolvers@5.9.0(react-hook-form@7.85.0(react@19.2.8))(zod@4.4.3)':
     dependencies:
       '@standard-schema/utils': 0.3.0
       react-hook-form: 7.85.0(react@19.2.8)
     optionalDependencies:
-      zod: 3.25.76
+      zod: 4.4.3
 
   '@humanfs/core@0.19.2':
     dependencies:
