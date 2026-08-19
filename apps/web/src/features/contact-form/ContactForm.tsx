@@ -56,13 +56,13 @@ export function ContactForm() {
         <input
           id="name"
           type="text"
-          className="border-ats-text-muted/30 w-full rounded-md border px-3 py-2"
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
           {...register('name')}
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'name-error' : undefined}
         />
         {errors.name && (
-          <p id="name-error" className="text-ats-error mt-1 text-sm">
+          <p id="name-error" className="mt-1 text-sm text-ats-error">
             {errors.name.message}
           </p>
         )}
@@ -75,13 +75,13 @@ export function ContactForm() {
         <input
           id="email"
           type="email"
-          className="border-ats-text-muted/30 w-full rounded-md border px-3 py-2"
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
           {...register('email')}
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
         />
         {errors.email && (
-          <p id="email-error" className="text-ats-error mt-1 text-sm">
+          <p id="email-error" className="mt-1 text-sm text-ats-error">
             {errors.email.message}
           </p>
         )}
@@ -94,13 +94,13 @@ export function ContactForm() {
         <textarea
           id="message"
           rows={5}
-          className="border-ats-text-muted/30 w-full rounded-md border px-3 py-2"
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
           {...register('message')}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message && (
-          <p id="message-error" className="text-ats-error mt-1 text-sm">
+          <p id="message-error" className="mt-1 text-sm text-ats-error">
             {errors.message.message}
           </p>
         )}
@@ -115,7 +115,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="bg-ats-brand w-fit rounded-md px-4 py-2 font-medium text-white disabled:opacity-60"
+        className="w-fit rounded-md bg-ats-brand px-4 py-2 font-medium text-white disabled:opacity-60"
       >
         {status === 'submitting' ? 'Sending…' : 'Send message'}
       </button>
