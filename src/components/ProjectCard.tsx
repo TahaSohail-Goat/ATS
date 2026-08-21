@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '../data/projects';
 import { Parallax } from './motion/Parallax';
@@ -13,7 +13,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ats-line bg-ats-surface/70 transition-[transform,border-color,box-shadow] duration-500 ease-ats-out hover:border-ats-brand/30 hover:shadow-ats-lifted motion-safe:hover:-translate-y-1.5">
       {/* Whole card is one link: a single tab stop, one accessible name. */}
       <Link
-        href={`/projects/${project.slug}`}
+        to={`/projects/${project.slug}`}
         className="absolute inset-0 z-20 rounded-4xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand"
       >
         <span className="sr-only">{`View case study: ${project.title}`}</span>

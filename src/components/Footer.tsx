@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { Button } from '@ats/ui';
 import { Container } from './Container';
@@ -12,7 +12,7 @@ const CAPABILITIES = [
   { href: '/services', label: 'Technology consulting' },
 ];
 
-/** Site footer — server component, no interactivity. */
+/** Site footer */
 export function Footer() {
   return (
     <footer className="relative isolate overflow-hidden border-t border-ats-line bg-ats-surface/30">
@@ -28,7 +28,7 @@ export function Footer() {
               companies run on.
             </p>
             <Button asChild variant="outline" size="sm" className="mt-7">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Mail className="h-4 w-4" aria-hidden />
                 Start a conversation
               </Link>
@@ -41,7 +41,7 @@ export function Footer() {
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="group inline-flex items-center gap-1.5 text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
                   >
                     {link.label}
@@ -63,7 +63,7 @@ export function Footer() {
               {CAPABILITIES.map((item) => (
                 <li key={item.label}>
                   <Link
-                    href={item.href}
+                    to={item.href}
                     className="text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
                   >
                     {item.label}
@@ -98,7 +98,7 @@ export function Footer() {
             © {new Date().getFullYear()} ATS — AI Software &amp; Technology Solutions. All rights
             reserved.
           </p>
-          <p>Built with Next.js, TypeScript, and Tailwind CSS.</p>
+          <p>Built with React, TypeScript, and Tailwind CSS.</p>
         </div>
       </Container>
     </footer>

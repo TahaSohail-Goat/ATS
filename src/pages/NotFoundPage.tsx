@@ -1,5 +1,4 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { Button } from '@ats/ui';
 import { Container } from '../components/Container';
 import { Aurora } from '../components/Aurora';
@@ -8,13 +7,7 @@ import { Reveal } from '../components/motion/Reveal';
 import { RevealText } from '../components/motion/RevealText';
 import { NAV_LINKS } from '../data/navigation';
 
-export const metadata: Metadata = {
-  title: 'Page not found',
-  description: 'The page you are looking for does not exist.',
-  robots: { index: false, follow: true },
-};
-
-export default function NotFound() {
+export function NotFoundPage() {
   return (
     <section className="relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden">
       <Aurora variant="band" />
@@ -40,7 +33,7 @@ export default function NotFound() {
 
         <Reveal delay={0.35} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/">Back to home</Link>
+            <Link to="/">Back to home</Link>
           </Button>
           <ArrowLink href="/contact">Report a broken link</ArrowLink>
         </Reveal>
@@ -51,7 +44,7 @@ export default function NotFound() {
               {NAV_LINKS.filter((link) => link.href !== '/').map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
                   >
                     {link.label}

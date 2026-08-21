@@ -1,21 +1,13 @@
-import type { Metadata } from 'next';
 import { Compass, Eye, Handshake, Star, Target, TrendingUp, type LucideIcon } from 'lucide-react';
-import { PageHero } from '../../components/PageHero';
-import { Section } from '../../components/Section';
-import { CtaSection } from '../../components/CtaSection';
-import { Reveal } from '../../components/motion/Reveal';
-import { Stagger } from '../../components/motion/Stagger';
-import { SpotlightCard } from '../../components/motion/SpotlightCard';
-import { Counter } from '../../components/motion/Counter';
-import { values, processSteps, techStack } from '../../data/site';
-import { services } from '../../data/services';
-
-export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'ATS — AI Software & Technology Solutions. Who we are, our mission, and the principles behind our engineering.',
-  alternates: { canonical: '/about' },
-};
+import { PageHero } from '../components/PageHero';
+import { Section } from '../components/Section';
+import { CtaSection } from '../components/CtaSection';
+import { Reveal } from '../components/motion/Reveal';
+import { Stagger } from '../components/motion/Stagger';
+import { SpotlightCard } from '../components/motion/SpotlightCard';
+import { Counter } from '../components/motion/Counter';
+import { values, processSteps, techStack } from '../data/site';
+import { services } from '../data/services';
 
 const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
 
@@ -38,7 +30,7 @@ const FACTS = [
   { value: techStack.length, label: 'Core technologies', suffix: '+' },
 ];
 
-export default function AboutPage() {
+export function AboutPage() {
   return (
     <>
       <PageHero

@@ -1,22 +1,14 @@
-import type { Metadata } from 'next';
-import { PageHero } from '../../components/PageHero';
-import { Section } from '../../components/Section';
-import { ServiceCard } from '../../components/ServiceCard';
-import { CtaSection } from '../../components/CtaSection';
-import { Reveal } from '../../components/motion/Reveal';
-import { Stagger } from '../../components/motion/Stagger';
-import { ProcessTimeline } from '../../components/ProcessTimeline';
-import { services } from '../../data/services';
-import { processSteps } from '../../data/site';
+import { PageHero } from '../components/PageHero';
+import { Section } from '../components/Section';
+import { ServiceCard } from '../components/ServiceCard';
+import { CtaSection } from '../components/CtaSection';
+import { Reveal } from '../components/motion/Reveal';
+import { Stagger } from '../components/motion/Stagger';
+import { ProcessTimeline } from '../components/ProcessTimeline';
+import { services } from '../data/services';
+import { processSteps } from '../data/site';
 
-export const metadata: Metadata = {
-  title: 'Services',
-  description:
-    'Custom software development, AI & machine learning, cloud infrastructure, and technology consulting from ATS.',
-  alternates: { canonical: '/services' },
-};
-
-export default function ServicesPage() {
+export function ServicesPage() {
   return (
     <>
       <PageHero

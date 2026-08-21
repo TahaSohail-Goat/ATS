@@ -1,8 +1,5 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@ats/ui';
@@ -13,17 +10,14 @@ import { transitionUi } from '../lib/motion';
 
 /**
  * Site header: a sticky glass navigation bar with a full-screen mobile panel
- * and active-route highlighting. See apps/web/AGENTS.md.
- *
- * Client component — menu state and pathname are the only client concerns.
+ * and active-route highlighting.
  */
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const location = useLocation();
+  const pathname = location.pathname;
 
-  // Close the panel whenever the route changes — including browser back/
-  // forward. Adjusting state during render (rather than in an effect) avoids
-  // a frame where the panel is still open on the new page.
+  // Close the panel whenever the route changes
   const [lastPath, setLastPath] = useState(pathname);
   if (lastPath !== pathname) {
     setLastPath(pathname);
@@ -58,7 +52,7 @@ export function Header() {
         className={`mx-auto flex h-20 w-full max-w-shell items-center justify-between gap-4 px-5 sm:px-8 lg:px-12`}
       >
         <Link
-          href="/"
+          to="/"
           className="group flex items-center rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ats-brand"
           aria-label="ATS — home"
         >
@@ -72,7 +66,7 @@ export function Header() {
               return (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     aria-current={active ? 'page' : undefined}
                     className={`relative flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                       active ? 'text-ats-ink' : 'text-ats-ink-muted hover:text-ats-ink'
@@ -97,7 +91,7 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <Button asChild size="sm" className="hidden lg:inline-flex">
-            <Link href="/contact">
+            <Link to="/contact">
               Start a Project
               <ArrowUpRight
                 className="h-4 w-4 transition-transform duration-200 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
@@ -158,7 +152,7 @@ export function Header() {
                       className="border-b border-ats-line/70"
                     >
                       <Link
-                        href={link.href}
+                        to={link.href}
                         aria-current={active ? 'page' : undefined}
                         onClick={() => setMenuOpen(false)}
                         className={`flex items-center justify-between py-4 text-2xl font-semibold tracking-display transition-colors ${
@@ -174,7 +168,7 @@ export function Header() {
               </motion.ul>
 
               <Button asChild size="lg" fullWidth className="mt-8">
-                <Link href="/contact" onClick={() => setMenuOpen(false)}>
+                <Link to="/contact" onClick={() => setMenuOpen(false)}>
                   Start a Project
                 </Link>
               </Button>

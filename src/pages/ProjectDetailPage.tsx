@@ -1,46 +1,27 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Check, Sparkles } from 'lucide-react';
 import { Badge } from '@ats/ui';
-import { Container } from '../../../components/Container';
-import { Aurora } from '../../../components/Aurora';
-import { Section } from '../../../components/Section';
-import { CtaSection } from '../../../components/CtaSection';
-import { ArrowLink } from '../../../components/ArrowLink';
-import { Reveal } from '../../../components/motion/Reveal';
-import { Stagger } from '../../../components/motion/Stagger';
-import { RevealText } from '../../../components/motion/RevealText';
-import { SpotlightCard } from '../../../components/motion/SpotlightCard';
-import { projects } from '../../../data/projects';
+import { Container } from '../components/Container';
+import { Aurora } from '../components/Aurora';
+import { Section } from '../components/Section';
+import { CtaSection } from '../components/CtaSection';
+import { ArrowLink } from '../components/ArrowLink';
+import { Reveal } from '../components/motion/Reveal';
+import { Stagger } from '../components/motion/Stagger';
+import { RevealText } from '../components/motion/RevealText';
+import { SpotlightCard } from '../components/motion/SpotlightCard';
+import { projects } from '../data/projects';
 
-interface ProjectDetailPageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
-}
-
-export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
+export function ProjectDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
-  if (!project) return { title: 'Project not found' };
-  return {
-    title: project.title,
-    description: project.summary,
-    alternates: { canonical: `/projects/${project.slug}` },
-  };
-}
 
-export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) notFound();
+  if (!project) {
+    return <Navigate to="/projects" replace />;
+  }
 
   const index = projects.findIndex((p) => p.slug === slug);
   const next = projects[(index + 1) % projects.length];
-  if (!next) notFound();
 
   return (
     <>
@@ -48,7 +29,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <Aurora variant="quiet" />
         <Container className="relative">
           <Link
-            href="/projects"
+            to="/projects"
             className="group inline-flex items-center gap-2 text-sm font-medium text-ats-ink-muted transition-colors hover:text-ats-brand"
           >
             <ArrowLeft
@@ -158,15 +139,19 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </Section>
 
-      <Section space="tight">
-        <Reveal className="flex flex-col gap-4 border-t border-ats-line pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-eyebrow font-semibold uppercase text-ats-ink-muted">Next project</p>
-            <p className="mt-2 text-xl font-semibold tracking-tighter2">{next.title}</p>
-          </div>
-          <ArrowLink href={`/projects/${next.slug}`}>Read next case study</ArrowLink>
-        </Reveal>
-      </Section>
+      {next && (
+        <Section space="tight">
+          <Reveal className="flex flex-col gap-4 border-t border-ats-line pt-10 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-eyebrow font-semibold uppercase text-ats-ink-muted">
+                Next project
+              </p>
+              <p className="mt-2 text-xl font-semibold tracking-tighter2">{next.title}</p>
+            </div>
+            <ArrowLink href={`/projects/${next.slug}`}>Read next case study</ArrowLink>
+          </Reveal>
+        </Section>
+      )}
 
       <CtaSection
         title="Building something"

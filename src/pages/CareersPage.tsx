@@ -1,25 +1,17 @@
-import type { Metadata } from 'next';
 import { Eye, Handshake, Star, TrendingUp, type LucideIcon } from 'lucide-react';
 import { Badge } from '@ats/ui';
-import { PageHero } from '../../components/PageHero';
-import { Section } from '../../components/Section';
-import { CtaSection } from '../../components/CtaSection';
-import { ArrowLink } from '../../components/ArrowLink';
-import { Reveal } from '../../components/motion/Reveal';
-import { Stagger } from '../../components/motion/Stagger';
-import { SpotlightCard } from '../../components/motion/SpotlightCard';
-import { values } from '../../data/site';
-
-export const metadata: Metadata = {
-  title: 'Careers',
-  description:
-    'Join ATS — engineering culture, our values, and how to work with us. Open positions are listed here when available.',
-  alternates: { canonical: '/careers' },
-};
+import { PageHero } from '../components/PageHero';
+import { Section } from '../components/Section';
+import { CtaSection } from '../components/CtaSection';
+import { ArrowLink } from '../components/ArrowLink';
+import { Reveal } from '../components/motion/Reveal';
+import { Stagger } from '../components/motion/Stagger';
+import { SpotlightCard } from '../components/motion/SpotlightCard';
+import { values } from '../data/site';
 
 const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
 
-export default function CareersPage() {
+export function CareersPage() {
   return (
     <>
       <PageHero

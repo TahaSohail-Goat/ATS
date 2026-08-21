@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 interface ArrowLinkProps {
@@ -12,7 +12,7 @@ interface ArrowLinkProps {
 export function ArrowLink({ href, children, className = '' }: ArrowLinkProps) {
   return (
     <Link
-      href={href}
+      to={href}
       className={`group inline-flex items-center gap-2 text-sm font-semibold text-ats-brand transition-colors hover:text-ats-brand-strong ${className}`}
     >
       {children}

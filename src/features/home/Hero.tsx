@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, MoveDown } from 'lucide-react';
 import { Button } from '@ats/ui';
 import { Container } from '../../components/Container';
@@ -11,15 +11,6 @@ import { Counter } from '../../components/motion/Counter';
 import { capabilities, processSteps, techStack } from '../../data/site';
 import { services } from '../../data/services';
 
-/**
- * Home hero — brand promise, primary CTA (Start a Project), secondary CTA
- * (View Our Work).
- *
- * The figures in the strip are counted from site data rather than asserted:
- * practice areas, delivery stages, and stack breadth are all verifiable from
- * the content itself. No performance or client claims are made here — see
- * docs/product/vision.md.
- */
 const FACTS = [
   { value: services.length, label: 'Practice areas', suffix: '' },
   { value: processSteps.length, label: 'Stage delivery process', suffix: '' },
@@ -65,7 +56,7 @@ export function Hero() {
             <div className="mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Magnetic strength={12} className="w-full sm:w-auto">
                 <Button asChild size="xl" fullWidth className="sm:w-auto">
-                  <Link href="/contact">
+                  <Link to="/contact">
                     Start a Project
                     <ArrowUpRight
                       className="h-4 w-4 transition-transform duration-200 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
@@ -75,7 +66,7 @@ export function Hero() {
                 </Button>
               </Magnetic>
               <Button asChild size="xl" variant="outline" fullWidth className="sm:w-auto">
-                <Link href="/projects">View Our Work</Link>
+                <Link to="/projects">View Our Work</Link>
               </Button>
             </div>
           </Reveal>

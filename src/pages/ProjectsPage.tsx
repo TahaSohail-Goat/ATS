@@ -1,21 +1,13 @@
-import type { Metadata } from 'next';
 import { Badge } from '@ats/ui';
-import { PageHero } from '../../components/PageHero';
-import { Section } from '../../components/Section';
-import { ProjectCard } from '../../components/ProjectCard';
-import { CtaSection } from '../../components/CtaSection';
-import { Reveal } from '../../components/motion/Reveal';
-import { Stagger } from '../../components/motion/Stagger';
-import { projects } from '../../data/projects';
+import { PageHero } from '../components/PageHero';
+import { Section } from '../components/Section';
+import { ProjectCard } from '../components/ProjectCard';
+import { CtaSection } from '../components/CtaSection';
+import { Reveal } from '../components/motion/Reveal';
+import { Stagger } from '../components/motion/Stagger';
+import { projects } from '../data/projects';
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description:
-    'Illustrative software concepts and future ATS case studies, with the problems, solutions, and technology behind them.',
-  alternates: { canonical: '/projects' },
-};
-
-export default function ProjectsPage() {
+export function ProjectsPage() {
   return (
     <>
       <PageHero

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@ats/ui';
 import { Container } from './Container';
@@ -52,7 +52,7 @@ export function CtaSection({
         <Reveal delay={0.14} className="mt-10 flex justify-center">
           <Magnetic strength={12}>
             <Button asChild size="xl">
-              <Link href={ctaHref}>
+              <Link to={ctaHref}>
                 {ctaLabel}
                 <ArrowUpRight
                   className="h-4 w-4 transition-transform duration-200 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
