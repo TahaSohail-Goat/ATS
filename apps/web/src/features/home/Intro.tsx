@@ -1,40 +1,77 @@
-import { Reveal } from '../../components/Reveal';
+import { Boxes, Gauge, Sparkles, type LucideIcon } from 'lucide-react';
 import { Section } from '../../components/Section';
+import { Reveal } from '../../components/motion/Reveal';
+import { Stagger } from '../../components/motion/Stagger';
+import { SpotlightCard } from '../../components/motion/SpotlightCard';
+
+interface Pillar {
+  title: string;
+  text: string;
+  icon: LucideIcon;
+}
+
+const PILLARS: Pillar[] = [
+  {
+    title: 'Build',
+    text: 'Custom web and mobile products engineered end-to-end — modern architecture, automated tests, deployed via CI/CD.',
+    icon: Boxes,
+  },
+  {
+    title: 'Modernize',
+    text: 'Legacy systems rebuilt and performance bottlenecks removed — without rewriting what already works.',
+    icon: Gauge,
+  },
+  {
+    title: 'Accelerate with AI',
+    text: 'AI features built into real workflows — forecasting, extraction, classification, and automation, not demos.',
+    icon: Sparkles,
+  },
+];
 
 /** Home intro — what ATS does, in brief. */
 export function Intro() {
   return (
     <Section
       eyebrow="What we do"
-      title="A software studio for ambitious teams"
+      title="A software studio for"
+      titleAccent="ambitious teams"
       description="ATS designs, builds, and modernizes the systems companies run on — and applies AI where it measurably pays off."
     >
-      <Reveal>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              title: 'Build',
-              text: 'Custom web and mobile products engineered end-to-end — modern architecture, automated tests, deployed via CI/CD.',
-            },
-            {
-              title: 'Modernize',
-              text: 'Legacy systems rebuilt and performance bottlenecks removed — without rewriting what already works.',
-            },
-            {
-              title: 'Accelerate with AI',
-              text: 'AI features built into real workflows — forecasting, extraction, classification, and automation, not demos.',
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-lg border border-ats-text/10 bg-ats-bg-light p-6 dark:border-ats-bg-light/10 dark:bg-ats-bg-dark"
+      <Stagger className="grid gap-5 md:grid-cols-3">
+        {PILLARS.map((pillar, index) => (
+          <Reveal key={pillar.title} asChild as="div" className="h-full">
+            <SpotlightCard
+              as="article"
+              className="ats-ring-gradient group flex h-full flex-col rounded-4xl border border-ats-line bg-ats-surface/60 p-8 transition-[transform,border-color] duration-500 ease-ats-out hover:border-ats-brand/30 motion-safe:hover:-translate-y-1.5"
             >
-              <h3 className="font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm text-ats-text-muted">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
+              <div className="flex items-start justify-between">
+                <span
+                  aria-hidden
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-ats-line bg-ats-surface-raised text-ats-accent"
+                >
+                  <pillar.icon className="h-5 w-5" />
+                </span>
+                {/* Full-opacity colours only: a faded numeral would drop
+                    below the AA contrast floor for large text. */}
+                <span
+                  aria-hidden
+                  className="font-mono text-4xl font-semibold leading-none tracking-display text-ats-ink-muted transition-colors duration-500 group-hover:bg-ats-brand-gradient group-hover:bg-clip-text group-hover:text-transparent"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+
+              <h3 className="mt-8 text-2xl font-semibold tracking-tighter2">{pillar.title}</h3>
+              <p className="mt-3 leading-relaxed text-ats-ink-muted">{pillar.text}</p>
+
+              <span
+                aria-hidden
+                className="mt-8 h-px w-full origin-left bg-ats-brand-gradient transition-transform duration-500 ease-ats-out motion-safe:scale-x-0 motion-safe:group-hover:scale-x-100"
+              />
+            </SpotlightCard>
+          </Reveal>
+        ))}
+      </Stagger>
     </Section>
   );
 }

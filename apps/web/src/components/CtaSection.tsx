@@ -1,41 +1,68 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@ats/ui';
 import { Container } from './Container';
+import { Aurora } from './Aurora';
+import { Reveal } from './motion/Reveal';
+import { RevealText } from './motion/RevealText';
+import { Magnetic } from './motion/Magnetic';
 
 interface CtaSectionProps {
   title: string;
+  /** Trailing words of the title, rendered with the brand gradient. */
+  titleAccent?: string;
   description?: string;
   ctaLabel?: string;
   ctaHref?: string;
   children?: ReactNode;
 }
 
-/** Shared dark-band CTA closing a page — used on every content page. */
+/** Shared closing CTA band — used on every content page. */
 export function CtaSection({
   title,
+  titleAccent,
   description,
   ctaLabel = 'Start a Project',
   ctaHref = '/contact',
+  children,
 }: CtaSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-ats-primary py-20 text-center sm:py-28">
-      <div
-        aria-hidden
-        className="absolute -top-40 left-1/2 h-96 w-[36rem] -translate-x-1/2 rounded-full bg-ats-brand/15 blur-3xl"
-      />
-      <Container className="relative">
-        <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold tracking-tight text-ats-bg-light sm:text-4xl">
-          {title}
-        </h2>
+    <section className="relative isolate overflow-hidden border-t border-ats-line bg-ats-canvas py-24 sm:py-32">
+      <Aurora variant="band" />
+      <div aria-hidden className="ats-hairline absolute inset-x-0 top-0 h-px" />
+
+      <Container className="relative text-center">
+        <RevealText
+          as="h2"
+          className="mx-auto max-w-3xl text-display-md font-semibold"
+          parts={
+            titleAccent
+              ? [{ text: title }, { text: titleAccent, gradient: true }]
+              : [{ text: title }]
+          }
+        />
         {description && (
-          <p className="mx-auto mt-4 max-w-xl text-balance text-ats-bg-light/70">{description}</p>
+          <Reveal delay={0.08}>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ats-ink-muted">
+              {description}
+            </p>
+          </Reveal>
         )}
-        <div className="mt-10">
-          <Button asChild size="lg" className="shadow-lg shadow-ats-accent/10">
-            <Link href={ctaHref}>{ctaLabel}</Link>
-          </Button>
-        </div>
+        <Reveal delay={0.14} className="mt-10 flex justify-center">
+          <Magnetic strength={12}>
+            <Button asChild size="xl">
+              <Link href={ctaHref}>
+                {ctaLabel}
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform duration-200 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
+                  aria-hidden
+                />
+              </Link>
+            </Button>
+          </Magnetic>
+        </Reveal>
+        {children}
       </Container>
     </section>
   );

@@ -1,23 +1,45 @@
-import { Reveal } from '../../components/Reveal';
 import { Section } from '../../components/Section';
-import { techStack } from '../../data/site';
+import { Reveal } from '../../components/motion/Reveal';
+import { Stagger } from '../../components/motion/Stagger';
+import { techGroups } from '../../data/site';
 
 /** Home technology/expertise — the stack and skills behind the work. */
 export function TechStack() {
   return (
-    <Section eyebrow="Technology & Expertise" title="Tools we trust">
-      <Reveal>
-        <ul className="flex flex-wrap gap-3">
-          {techStack.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border border-ats-text/10 bg-ats-bg-light px-4 py-2 text-sm font-medium text-ats-text-muted transition-colors hover:border-ats-brand/40 hover:text-ats-brand dark:border-ats-bg-light/10 dark:bg-ats-bg-dark"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
-      </Reveal>
+    <Section
+      eyebrow="Technology & Expertise"
+      title="Tools we"
+      titleAccent="trust"
+      description="A deliberately small stack we know deeply — chosen for longevity and hiring pool, not novelty."
+    >
+      <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        {techGroups.map((group) => (
+          <Reveal key={group.label} asChild as="div">
+            <div>
+              <h3 className="flex items-center gap-3 text-eyebrow font-semibold uppercase text-ats-ink-muted">
+                <span aria-hidden className="h-px w-6 bg-ats-brand-gradient" />
+                {group.label}
+              </h3>
+              <ul className="mt-5 space-y-2.5">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="group flex items-center gap-3 text-[0.95rem] font-medium text-ats-ink transition-colors"
+                  >
+                    <span
+                      aria-hidden
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-ats-line transition-colors duration-300 group-hover:bg-ats-accent"
+                    />
+                    <span className="transition-colors duration-300 group-hover:text-ats-brand">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ))}
+      </Stagger>
     </Section>
   );
 }

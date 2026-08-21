@@ -1,30 +1,83 @@
 import { Quote } from 'lucide-react';
-import { Reveal } from '../../components/Reveal';
+import { Badge } from '@ats/ui';
 import { Section } from '../../components/Section';
+import { Reveal } from '../../components/motion/Reveal';
+import { Stagger } from '../../components/motion/Stagger';
+import { SpotlightCard } from '../../components/motion/SpotlightCard';
 import { testimonials } from '../../data/testimonials';
 
-/** Home testimonials — client quotes as social proof. */
+/**
+ * Home testimonials — client quotes as social proof.
+ *
+ * Placeholder quotes stay visibly labelled as demo content until ATS has
+ * written permission to publish a real one — see data/testimonials.ts.
+ */
 export function Testimonials() {
+  const [featured, ...rest] = testimonials;
+
   return (
-    <Section eyebrow="Testimonials" title="What our clients say">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {testimonials.map((testimonial, index) => (
-          <Reveal key={testimonial.name} delay={index * 0.05}>
-            <figure className="flex h-full flex-col rounded-lg border border-ats-text/10 bg-ats-bg-light p-6 transition-all duration-300 motion-safe:hover:shadow-lg dark:border-ats-bg-light/10 dark:bg-ats-bg-dark">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-ats-accent/10 text-ats-accent">
-                <Quote className="h-5 w-5" aria-hidden />
-              </div>
-              <blockquote className="flex-1 text-sm leading-relaxed">
-                “{testimonial.quote}”
+    <Section
+      eyebrow="Testimonials"
+      title="What our"
+      titleAccent="clients say"
+      tone="raised"
+      description="Quotes are published only once a client has approved them, so this space stays honest while our first case studies clear review."
+    >
+      <Stagger className="grid gap-5 lg:grid-cols-3">
+        {featured && (
+          <Reveal asChild as="div" className="h-full lg:col-span-2">
+            <SpotlightCard
+              as="figure"
+              className="ats-ring-gradient flex h-full flex-col justify-between rounded-4xl border border-ats-line bg-ats-surface/70 p-8 sm:p-11"
+            >
+              <Quote
+                className="h-9 w-9 shrink-0 text-ats-accent/50"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+              <blockquote className="mt-8 text-balance text-2xl font-medium leading-snug tracking-tighter2 sm:text-3xl">
+                {featured.quote}
               </blockquote>
-              <figcaption className="mt-4 text-sm">
-                <span className="font-semibold">{testimonial.name}</span>
-                <span className="block text-ats-text-muted">{testimonial.role}</span>
+              <figcaption className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-ats-line pt-6 text-sm">
+                <span className="font-semibold">{featured.name}</span>
+                <span className="text-ats-ink-muted">{featured.role}</span>
+                {featured.isPlaceholder && <Badge tone="brand">Demo content</Badge>}
               </figcaption>
-            </figure>
+            </SpotlightCard>
           </Reveal>
-        ))}
-      </div>
+        )}
+
+        <div className="grid gap-5 lg:col-span-1">
+          {rest.map((testimonial, index) => (
+            <Reveal key={`${testimonial.name}-${index}`} asChild as="div" className="h-full">
+              <SpotlightCard
+                as="figure"
+                className="flex h-full flex-col justify-between rounded-4xl border border-ats-line bg-ats-surface/50 p-7"
+              >
+                <Quote
+                  className="h-6 w-6 shrink-0 text-ats-accent/40"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <blockquote className="mt-5 text-sm leading-relaxed text-ats-ink">
+                  {testimonial.quote}
+                </blockquote>
+                <figcaption className="mt-6 text-sm">
+                  <span className="block font-semibold">{testimonial.name}</span>
+                  <span className="mt-0.5 block text-xs text-ats-ink-muted">
+                    {testimonial.role}
+                  </span>
+                  {testimonial.isPlaceholder && (
+                    <Badge tone="brand" className="mt-3">
+                      Demo content
+                    </Badge>
+                  )}
+                </figcaption>
+              </SpotlightCard>
+            </Reveal>
+          ))}
+        </div>
+      </Stagger>
     </Section>
   );
 }

@@ -1,58 +1,106 @@
 import Link from 'next/link';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import { Button } from '@ats/ui';
+import { Container } from './Container';
+import { Logo } from './Logo';
+import { NAV_LINKS } from '../data/navigation';
 
-const FOOTER_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/about', label: 'About' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/contact', label: 'Contact' },
+const CAPABILITIES = [
+  { href: '/services', label: 'Custom software' },
+  { href: '/services', label: 'AI & machine learning' },
+  { href: '/services', label: 'Cloud & infrastructure' },
+  { href: '/services', label: 'Technology consulting' },
 ];
 
 /** Site footer — server component, no interactivity. */
 export function Footer() {
   return (
-    <footer className="border-t border-ats-text/10 bg-ats-primary text-ats-bg-light dark:border-ats-bg-light/10">
-      <div className="mx-auto w-full max-w-6xl px-6 py-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+    <footer className="relative isolate overflow-hidden border-t border-ats-line bg-ats-surface/30">
+      <div aria-hidden className="ats-dots absolute inset-0 opacity-50" />
+      <div aria-hidden className="ats-hairline absolute inset-x-0 top-0 h-px" />
+
+      <Container className="relative py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="max-w-sm">
-            <div className="flex items-center gap-2.5">
-              <span
-                aria-hidden
-                className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-ats-brand to-ats-accent text-sm font-bold text-white"
-              >
-                A
-              </span>
-              <span className="text-lg font-bold tracking-tight text-ats-bg-light">ATS</span>
-            </div>
-            <p className="mt-3 text-sm text-ats-bg-light/70">
-              AI Software &amp; Technology Solutions. We build software that moves businesses
-              forward.
+            <Logo size={44} />
+            <p className="mt-5 text-sm leading-relaxed text-ats-ink-muted">
+              AI Software &amp; Technology Solutions. We design, build, and modernize the systems
+              companies run on.
             </p>
-          </div>
-          <nav className="grid grid-cols-2 gap-x-12 gap-y-2 sm:grid-cols-3" aria-label="Footer">
-            {FOOTER_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-ats-bg-light/70 transition-colors hover:text-ats-accent"
-              >
-                {link.label}
+            <Button asChild variant="outline" size="sm" className="mt-7">
+              <Link href="/contact">
+                <Mail className="h-4 w-4" aria-hidden />
+                Start a conversation
               </Link>
-            ))}
-          </nav>
-          <div>
-            <Button asChild variant="secondary">
-              <Link href="/contact">Start a Project</Link>
             </Button>
           </div>
+
+          <nav aria-label="Footer" className="lg:col-span-1">
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">Site</h2>
+            <ul className="mt-5 space-y-3">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-1.5 text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
+                  >
+                    {link.label}
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100"
+                      aria-hidden
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">
+              Capabilities
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {CAPABILITIES.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">Engagement</h2>
+            <p className="mt-5 text-sm leading-relaxed text-ats-ink-muted">
+              Tell us what you are building. We reply with honest technical feedback and a clear
+              first step.
+            </p>
+            <p className="mt-4 text-sm font-medium text-ats-ink">We reply to every message.</p>
+          </div>
         </div>
-        <p className="mt-10 border-t border-ats-bg-light/10 pt-6 text-xs text-ats-bg-light/50">
-          © {new Date().getFullYear()} ATS — AI Software &amp; Technology Solutions. All rights
-          reserved.
-        </p>
-      </div>
+
+        {/* Oversized wordmark — anchors the page without competing for attention. */}
+        <div
+          aria-hidden
+          className="pointer-events-none mt-16 select-none overflow-hidden border-t border-ats-line pt-8"
+        >
+          <span className="block bg-ats-ink-gradient bg-clip-text text-[18vw] font-bold leading-[0.8] tracking-display text-transparent opacity-[0.07] sm:text-[16vw]">
+            ATS
+          </span>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 text-xs text-ats-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} ATS — AI Software &amp; Technology Solutions. All rights
+            reserved.
+          </p>
+          <p>Built with Next.js, TypeScript, and Tailwind CSS.</p>
+        </div>
+      </Container>
     </footer>
   );
 }

@@ -1,6 +1,6 @@
 /**
  * Placeholder site content — values, process steps, and technology
- * stack used on the Home page (TBD, see docs/website-design-brief.md).
+ * stack used on the Home page (TBD, see docs/frontend/website-design-brief.md).
  */
 export interface Value {
   title: string;
@@ -72,4 +72,32 @@ export const techStack: string[] = [
   'CI/CD',
   'LLMs & AI',
   'Data Pipelines',
+];
+
+export interface TechGroup {
+  label: string;
+  items: string[];
+}
+
+/**
+ * The same stack as `techStack`, grouped by layer for display. Keep the two
+ * in sync — `techStack` remains the flat list for compact contexts.
+ */
+export const techGroups: TechGroup[] = [
+  { label: 'Product & Frontend', items: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS'] },
+  { label: 'Backend & Data', items: ['Node.js', 'Python', 'PostgreSQL', 'Data Pipelines'] },
+  { label: 'Cloud & Delivery', items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'] },
+  { label: 'AI & Machine Learning', items: ['LLMs & AI', 'Forecasting', 'Classification', 'RAG'] },
+];
+
+/** Short capability keywords for the hero marquee. */
+export const capabilities: string[] = [
+  'Product engineering',
+  'AI systems',
+  'Cloud platforms',
+  'Legacy modernization',
+  'Data pipelines',
+  'Architecture reviews',
+  'DevOps & CI/CD',
+  'Technical audits',
 ];

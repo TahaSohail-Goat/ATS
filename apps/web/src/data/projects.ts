@@ -1,20 +1,20 @@
 /**
- * Placeholder project data — replace with ATS's real work (TBD, see
- * docs/website-design-brief.md). Shape is the contract for the Home
- * selected-projects section, the /projects grid, and /projects/[slug].
+ * Illustrative project concepts. Replace these with approved ATS case studies
+ * before presenting them as client work. This shape powers the homepage,
+ * projects index, and dynamic project detail route.
  */
 export interface Project {
   slug: string;
   title: string;
   category: string;
-  client: string;
+  status: 'illustrative' | 'published';
   year: string;
   summary: string;
   problem: string;
   solution: string;
   features: string[];
   tech: string[];
-  results: string[];
+  highlights: string[];
 }
 
 export const projects: Project[] = [
@@ -22,64 +22,63 @@ export const projects: Project[] = [
     slug: 'logistics-ai-platform',
     title: 'Logistics Intelligence Platform',
     category: 'AI & Machine Learning',
-    client: 'Placeholder client — TBD',
+    status: 'illustrative',
     year: '2025',
     summary:
-      'AI demand forecasting for a logistics operator — planning time cut by 60%, forecast accuracy at 92%.',
+      'An illustrative concept for a planning workspace that brings demand signals and capacity decisions into one place.',
     problem:
-      'Route and capacity planning ran on spreadsheets and tribal knowledge — slow, error-prone, and impossible to scale across growing regional teams.',
+      'Growing operations can struggle when route and capacity planning lives across spreadsheets and disconnected tools.',
     solution:
-      'We shipped a forecasting platform pairing demand models with an interactive planning UI and live data pipelines — planners now work from one system.',
+      'The concept pairs forecasting models with an interactive planning interface and live operational data.',
     features: [
       'Demand forecasting models',
       'Interactive capacity planning',
       'Live integration with fleet data',
     ],
     tech: ['TypeScript', 'Next.js', 'Python', 'PostgreSQL', 'AWS'],
-    results: [
-      'Planning time reduced by roughly 60%',
-      'Forecast accuracy improved to 92%',
-      'Rolled out across 3 regional teams',
+    highlights: [
+      'A focused workflow for forecasting and capacity planning',
+      'Live operational data alongside planning decisions',
+      'A flexible foundation for teams operating across regions',
     ],
   },
   {
     slug: 'healthcare-patient-app',
     title: 'Patient Engagement Application',
     category: 'Web Application',
-    client: 'Placeholder client — TBD',
+    status: 'illustrative',
     year: '2024',
-    summary:
-      'Self-service booking portal for a clinic group — no-shows halved and booking workload down 40%.',
+    summary: 'An illustrative concept for a patient-facing booking and communications experience.',
     problem:
-      'Patients booked by phone; missed appointments and double bookings were common, and front-desk time was consumed by scheduling.',
+      'Care teams can lose valuable time when scheduling and patient communication rely on phone-based processes.',
     solution:
-      'We shipped a patient portal with self-service booking, automated reminders, and secure staff-patient messaging — integrated with the clinic’s existing schedule.',
+      'The concept brings self-service booking, appointment reminders, and secure messaging into a single patient experience.',
     features: ['Self-service booking', 'Automated reminders', 'Secure messaging'],
     tech: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Docker'],
-    results: [
-      'No-show rate cut in half',
-      'Booking workload reduced by 40%',
-      'Adopted by all 5 clinic locations',
+    highlights: [
+      'A clearer self-service journey for patients',
+      'Scheduling and reminders designed as one workflow',
+      'A modular base that can integrate with existing systems',
     ],
   },
   {
     slug: 'fintech-reporting-dashboard',
     title: 'Real-Time Reporting Dashboard',
     category: 'Data & Infrastructure',
-    client: 'Placeholder client — TBD',
+    status: 'illustrative',
     year: '2024',
     summary:
-      'Streaming analytics dashboard replacing overnight batch reports — decisions now run on data that is seconds old.',
+      'An illustrative concept for a reporting workspace built around timely, self-service data.',
     problem:
-      'Decision-makers only saw yesterday’s numbers, and building a new report meant engineering time every single time.',
+      'Teams can be slowed when reporting is delayed and every new question needs engineering support.',
     solution:
-      'We built a self-serve reporting dashboard over a streaming data pipeline, with reusable templates so teams create reports themselves.',
+      'The concept combines a streaming data pipeline with reusable reporting templates for self-service analysis.',
     features: ['Streaming data pipeline', 'Self-serve report builder', 'Role-based access'],
     tech: ['TypeScript', 'React', 'Node.js', 'ClickHouse', 'Kubernetes'],
-    results: [
-      'Reports delivered in seconds instead of overnight',
-      '60+ reports built without engineering help',
-      'Saved 2 engineering days per week',
+    highlights: [
+      'Timely information designed for operational decisions',
+      'Reusable templates for common reporting needs',
+      'An extensible architecture for future data sources',
     ],
   },
 ];
