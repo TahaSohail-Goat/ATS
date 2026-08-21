@@ -3,8 +3,8 @@
 ## In scope
 
 - ATS marketing website (home, about, services, contact, blog placeholder)
-- Contact/lead capture form with backend persistence and (later) email
-  notification
+- Contact form with optional native POST to a hosted form provider; no local
+  persistence or delivery service in this phase
 - Engineering foundation: monorepo, CI/CD, docs, design system
 
 ## Explicitly out of scope for this phase

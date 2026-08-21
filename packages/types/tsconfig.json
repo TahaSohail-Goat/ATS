@@ -1,9 +1,0 @@
-{
-  "extends": "@ats/config/typescript/base",
-  "compilerOptions": {
-    "declaration": true,
-    "outDir": "dist",
-    "rootDir": "src"
-  },
-  "include": ["src"]
-}

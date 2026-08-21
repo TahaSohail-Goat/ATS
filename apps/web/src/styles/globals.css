@@ -19,6 +19,9 @@
     @apply bg-ats-canvas text-ats-ink antialiased;
     font-feature-settings: 'ss01', 'ss02', 'cv02', 'cv03';
     text-rendering: optimizeLegibility;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Headings share the display tracking so type feels engineered, not default. */
@@ -90,22 +93,18 @@
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent 100%);
   }
 
-  /* Film grain — kills banding on the large gradient washes. */
+  /* A subtle, static grain was removed from live surfaces: SVG turbulence
+     repaints continuously over every aurora and made low-end scrolling feel
+     sticky. Gradients already provide enough depth without it. */
   .ats-grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.2;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    display: none;
   }
 
   /* Glass panel used by the header and floating chips. */
   .ats-glass {
-    background-color: rgb(var(--ats-canvas) / 0.62);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    background-color: rgb(var(--ats-canvas) / 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   /* One-pixel gradient hairline — section dividers and top-of-band accents. */
@@ -192,14 +191,12 @@
     );
   }
 
-  /* Pointer-tracked spotlight, driven by --ats-x/--ats-y from SpotlightCard. */
+  /* Static glow on hover; no pointer coordinates or per-card listeners. */
   .ats-spotlight::after {
     content: '';
     position: absolute;
     inset: 0;
-    /* Paints above the card background but below its content, so the
-       spotlight never washes out text contrast. Requires `isolate` on the
-       card, which SpotlightCard applies. */
+    /* Static glow on hover; no pointer coordinates or per-card listeners. */
     z-index: -1;
     border-radius: inherit;
     opacity: 0;

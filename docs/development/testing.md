@@ -1,35 +1,31 @@
 # Testing Strategy
 
-## Frontend (apps/web)
+## Unit tests
 
-- **Unit/component tests:** Vitest + React Testing Library, co-located as
-  `Component.test.tsx`.
-- **Integration tests:** Vitest for feature-level logic (e.g. form
-  validation + submission flow with a mocked API client).
-- **E2E tests:** Playwright, in `apps/web/e2e/`, covering critical user
-  journeys (e.g. "visitor submits contact form").
+Vitest covers deterministic utilities and UI behaviour that benefits from a
+DOM test. Keep tests next to the code they test.
 
-## Backend (apps/api)
+## Browser tests
 
-- **Unit tests:** Vitest, per module, testing services in isolation
-  (repository mocked).
-- **Integration tests:** Vitest against a real test database (see
-  `../database/README.md` — Test environment), testing the full
-  route -> controller -> service -> repository path.
-- **API tests:** supertest-style requests against the Express app for
-  contract-level verification (status codes, response envelope shape).
+Playwright covers:
 
-## Conventions
+- all public routes and metadata endpoints;
+- contact form visibility, labels, and keyboard usability;
+- mobile navigation and theme persistence;
+- no horizontal overflow at 375px, 768px, and 1440px;
+- logo, favicon, Apple touch icon, and Open Graph asset delivery;
+- absence of page errors and console errors during route traversal.
 
-- Test files: `*.test.ts` (unit/integration), `*.spec.ts` (Playwright E2E).
-- Mock at the boundary (network, database), not internal implementation
-  details — tests should survive refactors that preserve behavior.
-- No arbitrary coverage percentage is enforced as a vanity metric; instead,
-  every new FR/behavior change must ship with a corresponding test that
-  would fail without the change.
+The contact form uses a hosted endpoint only in deployment; browser tests do
+not submit real visitor data.
 
-## CI execution
+## Required checks
 
-`pnpm test` (unit/integration) runs on every PR. `pnpm test:e2e`
-(Playwright) runs against a built preview in CI — see
-`.github/workflows/ci.yml`.
+```bash
+pnpm lint
+pnpm format:check
+pnpm typecheck
+pnpm test
+pnpm test:e2e
+pnpm build
+```

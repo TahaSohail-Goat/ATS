@@ -1,27 +1,25 @@
-# Local Development Setup
+# Development Setup
 
 ## Prerequisites
 
 - Node.js >= 20
 - pnpm >= 9 (`corepack enable` recommended)
-- Docker (for local Postgres)
 
-## Steps
+## Install and run
 
 ```bash
-git clone <repo-url>
+git clone <repository-url>
 cd ats
-cp .env.example apps/web/.env
-cp .env.example apps/api/.env   # then fill in the real values you need
 pnpm install
-docker compose up -d            # starts Postgres
-pnpm db:migrate
-pnpm db:seed
-pnpm dev                        # runs web + api together via turbo
+pnpm dev
 ```
 
-- `apps/web` → http://localhost:3000
-- `apps/api` → http://localhost:4000
+The website runs at http://localhost:3000.
 
-See `.env.example` files (root, `apps/web`, `apps/api`) for the full
-variable list.
+## Optional contact submissions
+
+Copy `.env.example` to `apps/web/.env.local` and set
+`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` to the endpoint supplied by your hosted
+form provider. Leave it empty when working only on the visual portfolio.
+
+No Docker, PostgreSQL, Prisma, API process, or database migration is required.

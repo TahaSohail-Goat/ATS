@@ -1,24 +1,17 @@
-# Security Policy (Engineering)
+# Security Policy
 
-Baseline controls applied from day one, regardless of feature scope:
+## Website rules
 
-- **OWASP Top 10** mitigations are the minimum bar for every API endpoint.
-- **Input validation:** Zod on every external input; nothing reaches
-  business logic unvalidated.
-- **Output handling:** React escapes output by default; never use
-  `dangerouslySetInnerHTML` without sanitization and a documented reason.
-- **SQL injection:** prevented structurally by using Prisma's parameterized
-  queries exclusively — no raw string-concatenated SQL.
-- **Headers:** Helmet-configured security headers (CSP, HSTS in
-  staging/prod, X-Content-Type-Options, etc.).
-- **CORS:** explicit origin allow-list via `CORS_ORIGIN`, never `*` outside
-  local development.
-- **Rate limiting:** applied to public write endpoints to mitigate abuse
-  and basic DoS.
-- **Dependency scanning:** automated via Dependabot and the CI security
-  workflow (`.github/workflows/security.yml`).
-- **Secrets:** see `secrets-management.md`. Never committed, never logged.
-- **Audit logging:** structured logs capture who/what/when for state-
-  changing requests (see `../operations/logging.md`).
+- Never commit secrets, private tokens, or provider credentials.
+- Configure the public hosted-form endpoint in deployment environment values.
+- Keep visitor-provided values inside native form controls until the hosted
+  provider receives them; do not persist them locally.
+- Use semantic HTML and React's default escaping. Do not add unsafe HTML
+  injection.
+- Keep dependencies minimal and pinned according to the repository rules.
+- Report vulnerabilities privately using the process in `SECURITY.md`.
 
-Report a vulnerability: see root `SECURITY.md`.
+## Future services
+
+If ATS later introduces an API, database, authentication, or private admin
+surface, document the threat model and architecture in an ADR before coding.

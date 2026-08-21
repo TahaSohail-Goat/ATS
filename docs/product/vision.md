@@ -1,27 +1,25 @@
 # Product Vision
 
-**ATS — AI Software and Technology Solutions** builds software, AI products,
-and technology solutions for clients and, over time, its own SaaS/AI
-products.
+ATS — AI Software and Technology Solutions — builds software, AI products, and
+technology solutions for clients and, over time, its own SaaS/AI products.
 
-**TBD (business decision required):** the long-form vision statement,
-target market positioning, and elevator pitch. This document is a
-placeholder structure — fill in once the founding team has finalized
-messaging. Do not invent marketing claims on the company's behalf.
+The current deliverable is a polished public portfolio/company website that
+explains ATS's capabilities, shows illustrative work, and gives prospective
+clients a clear way to start a conversation.
 
-## What this repository currently supports
+## Current boundary
 
-The initial deliverable is the public ATS website: an informational site
-describing the company, its services, and a way for prospective clients to
-get in touch (contact/lead capture).
+The website is frontend-first and does not require an API server, database,
+Docker service, ORM, accounts, or authentication. Static project/service data
+lives in `apps/web/src/data` and shared visual primitives live in `packages/ui`.
 
-## Long-term direction
+The contact page can POST to an optional hosted form provider configured with
+`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`. Provider delivery/storage is deliberately
+outside this repository.
 
-The repository is architected so that, without restructuring:
+## Future direction
 
-- New applications (admin dashboard, customer portal, docs site) can be
-  added under `apps/`.
-- New backend domains (billing, projects, AI services) can be added as
-  modules under `apps/api/src/modules/` or, if requirements justify it,
-  new services — decided via ADR.
-- Shared UI, types, and validation logic scale via `packages/`.
+Persistent leads, admin tools, email automation, CRM integration, accounts, or
+product APIs may be added when a concrete product requirement exists. Each new
+runtime service or authentication approach requires an ADR before it is
+introduced.

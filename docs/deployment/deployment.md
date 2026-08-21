@@ -1,16 +1,12 @@
-# Deployment Process
+# Deployment
 
-1. PR merges to `main` after CI passes (lint, typecheck, unit/integration
-   tests, build — see `.github/workflows/ci.yml`).
-2. Staging deploy triggers automatically, running `prisma migrate deploy`
-   before the new API version serves traffic.
-3. Smoke test staging (manual or automated Playwright run against staging
-   URL).
-4. Production promotion is a manual, deliberate step (exact mechanism —
-   platform promote, tag-based deploy, etc. — depends on the hosting
-   provider decision, TBD).
+1. A pull request must pass install, typecheck, lint, format, tests, and build.
+2. Merge to `main` triggers the frontend deployment workflow.
+3. The selected hosting provider builds and deploys `apps/web`.
+4. Configure `NEXT_PUBLIC_APP_URL` and, when accepting enquiries,
+   `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` in the provider environment.
+5. Run the Playwright smoke suite against the deployed preview/staging URL
+   when the provider is selected.
 
-Zero-downtime is achieved by running the new version alongside the old
-during rollout (blue/green or rolling, depending on host) — database
-migrations must therefore be backward-compatible with the previous API
-version during the rollout window (see `../database/migrations.md`).
+There are no database migrations, API deployment steps, Docker services, or
+runtime database secrets in the current phase.

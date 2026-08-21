@@ -1,91 +1,70 @@
 # ATS — AI Software and Technology Solutions
 
-#Taha
-Monorepo for ATS's public website and the engineering foundation for future
-ATS products (SaaS, AI products, client work, internal tools).
+ATS is a modern Next.js portfolio and company website for a software studio.
+The current phase is intentionally frontend-first: static pages, project data,
+brand design, animations, and an optional hosted contact-form endpoint.
 
-> **AI coding agents:** read [`AGENTS.md`](./AGENTS.md) first — it is the
-> authoritative instruction set for working in this repository.
+> AI coding agents: read [`AGENTS.md`](./AGENTS.md) before changing the repo.
 
 ## What's here
 
-| App/Package                                    | Purpose                                                                    |
-| ---------------------------------------------- | -------------------------------------------------------------------------- |
-| [`apps/web`](./apps/web)                       | Public ATS website — Next.js (App Router), TypeScript, Tailwind            |
-| [`apps/api`](./apps/api)                       | REST API — Express modular monolith, TypeScript, Prisma/PostgreSQL         |
-| [`packages/ui`](./packages/ui)                 | Shared ATS design system (tokens + components)                             |
-| [`packages/config`](./packages/config)         | Shared ESLint/TypeScript/Tailwind config                                   |
-| [`packages/types`](./packages/types)           | Shared TypeScript types                                                    |
-| [`packages/validation`](./packages/validation) | Shared Zod schemas (web + api)                                             |
-| [`docs`](./docs)                               | Product, architecture, and engineering documentation — the source of truth |
+| Area                                   | Purpose                                                   |
+| -------------------------------------- | --------------------------------------------------------- |
+| [`apps/web`](./apps/web)               | Next.js App Router website                                |
+| [`packages/ui`](./packages/ui)         | Shared ATS design primitives and tokens                   |
+| [`packages/config`](./packages/config) | Shared TypeScript and ESLint config                       |
+| [`docs`](./docs)                       | Product, frontend, accessibility, and deployment guidance |
 
-## Architecture at a glance
-
-```
-Client → Next.js (apps/web) → REST /api/v1 → Express (apps/api)
-                                                  → Prisma → PostgreSQL
-```
-
-Modular monolith backend organized by business domain, not microservices.
-Full detail: [`docs/architecture/system-architecture.md`](./docs/architecture/system-architecture.md).
+There is deliberately no API server, database, Docker service, or ORM in this
+phase. The visual portfolio does not need them. The contact form can optionally
+POST to a hosted form provider configured with
+`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`.
 
 ## Local setup
 
 ```bash
 pnpm install
-cp apps/web/.env.example apps/web/.env
-cp apps/api/.env.example apps/api/.env
-docker compose up -d       # starts local PostgreSQL
-pnpm db:migrate
-pnpm db:seed
 pnpm dev
 ```
 
-`apps/web` → http://localhost:3000 · `apps/api` → http://localhost:4000
+Open http://localhost:3000.
 
-Full walkthrough: [`docs/development/setup.md`](./docs/development/setup.md).
+To enable contact submissions, copy the example environment file and set a
+hosted form endpoint from a provider such as Formspree, Basin, or FormSubmit:
+
+```bash
+cp .env.example apps/web/.env.local
+```
+
+Do not commit real endpoints or secrets. The endpoint is public by design and
+should be configured in the deployment platform.
 
 ## Common commands
 
 ```bash
-pnpm dev          # run all apps in dev mode
-pnpm build        # build all apps
-pnpm lint         # lint all apps/packages
-pnpm typecheck    # typecheck all apps/packages
-pnpm test         # unit/integration tests
-pnpm test:e2e     # Playwright end-to-end tests
-pnpm db:migrate   # run Prisma migrations
-pnpm db:seed      # seed local dev database
+pnpm dev          # run the website in development
+pnpm build        # build the website
+pnpm lint         # lint workspace packages
+pnpm typecheck    # typecheck workspace packages
+pnpm test         # unit tests
+pnpm test:e2e     # Playwright browser tests
+pnpm format       # format source and documentation
 ```
 
-## Testing
+## Frontend architecture
 
-Vitest for unit/integration tests, Playwright for E2E. Details:
-[`docs/development/testing.md`](./docs/development/testing.md).
+The site uses Next.js App Router, TypeScript, Tailwind CSS, Framer Motion,
+Lucide icons, and the shared `@ats/ui` package. Server Components are the
+default. Client boundaries are reserved for navigation, theme selection, and
+purposeful reveal choreography.
 
-## Deployment
+See [`docs/frontend/design-system.md`](./docs/frontend/design-system.md),
+[`docs/frontend/website-design-brief.md`](./docs/frontend/website-design-brief.md),
+and [`docs/frontend/animation-guidelines.md`](./docs/frontend/animation-guidelines.md).
 
-CI runs on every PR (install → typecheck → lint → test → build). Merges to
-`main` deploy to staging automatically; production promotion is manual.
-Details: [`docs/deployment/`](./docs/deployment).
+## Future products
 
-## Documentation
-
-Start at [`docs/README.md`](./docs/README.md) for the full map: product
-vision, requirements, architecture, API/database conventions, security
-policy, and ADRs.
-
-## Contributing
-
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for branch naming, commit
-conventions (Conventional Commits), and the PR process.
-
-## Security
-
-See [`SECURITY.md`](./SECURITY.md) to report a vulnerability, and
-[`docs/security/`](./docs/security) for the full security policy.
-
-## AI agent instructions
-
-See [`AGENTS.md`](./AGENTS.md) (root) and the scoped `AGENTS.md` files in
-`apps/web/`, `apps/api/`, `packages/ui/`, `packages/config/`, and `docs/`.
+If ATS later needs persistent leads, an admin dashboard, email automation, CRM
+integration, accounts, or authenticated products, add that capability as a
+separate architectural decision. Do not reintroduce an API/database merely to
+support the static portfolio.

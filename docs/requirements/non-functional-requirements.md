@@ -1,64 +1,35 @@
 # Non-Functional Requirements
 
-Measurable targets are included where the team can realistically commit to
-them for a v1 marketing site. Items marked TBD require business input.
-
 ## Performance
 
-- Core Web Vitals: LCP < 2.5s, CLS < 0.1, INP < 200ms on a throttled 4G
-  profile, for the public marketing pages.
-- API p95 response time < 300ms for the contact endpoint under normal load.
-
-## Scalability
-
-- Stateless API processes — horizontal scaling via additional instances
-  behind a load balancer, no code changes required.
-- Database connection pooling configured (Prisma) rather than one
-  connection per request.
-
-## Availability & Reliability
-
-- Target 99.5% uptime for v1 (marketing site + contact form). TBD: formal
-  SLA once there is a paying customer base.
-- Health/readiness endpoints exist for orchestration and uptime monitoring.
-
-## Security
-
-- See `../security/security-policy.md`. OWASP Top 10 mitigations are
-  baseline, not optional.
-
-## Maintainability
-
-- All shared logic lives in `packages/`; no copy-pasted business logic
-  across apps.
-- CI blocks merges that fail lint, typecheck, or tests.
+- Server Components by default; client JavaScript only where interactivity is
+  required.
+- Avoid global scroll listeners and per-card pointer/scroll observers.
+- Animate transform and opacity only; avoid continuous filter repaints.
+- Decorative gradient fields are limited and static outside the hero.
+- Fonts load through `next/font` with explicit weights, fallback metrics, and
+  `font-synthesis: none` to prevent synthetic-weight rendering and layout
+  shifts.
+- Test at 375px, 768px, and 1440px with no horizontal overflow.
 
 ## Accessibility
 
-- WCAG 2.1 AA for all public pages. See `../frontend/accessibility.md`.
-
-## Observability
-
-- Structured JSON logs with request IDs on every API request.
-- See `../operations/monitoring.md` and `../operations/logging.md`.
+- Target WCAG 2.1 AA.
+- Every form control has a label and visible focus state.
+- Every page has one `h1` and complete metadata.
+- Reduced motion renders the finished/static state.
+- Decorative effects are hidden from assistive technology.
 
 ## SEO
 
-- Every public route has title/description metadata, Open Graph tags, and
-  is included in `sitemap.xml`. See `../frontend/design-system.md` (SEO
-  section) and `functional-requirements.md`.
+- Every route defines title, description, and canonical metadata.
+- Favicon, Apple touch icon, Open Graph, and Twitter images come from the
+  supplied ATS logo and Next file conventions.
+- Sitemap and robots routes remain available.
 
-## Responsiveness / Browser Compatibility
+## Security
 
-- Supports latest two versions of Chrome, Firefox, Safari, Edge, and
-  current iOS/Android mobile browsers. Responsive from 320px width up.
-
-## Privacy & Data Protection
-
-- Contact form data is stored only for its business purpose (lead
-  follow-up). Formal retention policy and any regulatory compliance
-  (GDPR/CCPA applicability) is **TBD** — pending legal/business input on
-  which jurisdictions ATS operates in.
-
-Do not treat any of the above as guaranteeing a specific legal compliance
-status without a business/legal decision recorded in `../decisions/`.
+- No secrets are committed.
+- Hosted form endpoints are configured through deployment environment values.
+- Do not add an API, database, or new runtime service without an ADR and a
+  concrete product requirement.

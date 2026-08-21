@@ -1,41 +1,23 @@
 # Use Cases
 
-## UC-001 — Browse ATS Website
+## UC-001 — Explore the ATS website
 
-- **Primary Actor:** Website Visitor
-- **System Boundary:** apps/web (public pages)
-- **Preconditions:** None
-- **Trigger:** Visitor navigates to the ATS website
-- **Main Success Scenario:**
-  1. Visitor loads the homepage.
-  2. Visitor navigates to About / Services / Contact via the nav.
-  3. Pages render with correct content, metadata, and within performance
-     budgets (see `../requirements/non-functional-requirements.md`).
-- **Alternative Scenarios:** Visitor arrives via a deep link to a specific
-  service page — same rendering rules apply.
-- **Exception Scenarios:** Page fails to load → Next.js error boundary
-  shows a friendly error page, not a stack trace.
-- **Postconditions:** None (read-only).
+- **Primary actor:** Website visitor
+- **Trigger:** Visitor opens the site or follows a shared route.
+- **Flow:** Visitor reads the hero, services, selected work, principles,
+  process, technology, and company information; navigation links move between
+  public routes.
+- **Postconditions:** None. Content is static/read-only.
 
-## UC-002 — Submit Contact/Lead Inquiry
+## UC-002 — Send a project enquiry
 
-- **Primary Actor:** Website Visitor
-- **Secondary Actor:** None (v1 has no notification integration yet)
-- **System Boundary:** apps/web (contact form) + apps/api (contact module)
-- **Preconditions:** Visitor is on `/contact`.
+- **Primary actor:** Website visitor
+- **Precondition:** `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` is configured.
 - **Trigger:** Visitor submits the contact form.
-- **Main Success Scenario:** See FR-001 in
-  `../requirements/functional-requirements.md`.
-- **Postconditions:** A `ContactSubmission` record exists in the database.
+- **Flow:** Browser validates required fields and POSTs directly to the hosted
+  form provider.
+- **Postconditions:** The provider receives the submission according to its
+  own delivery and retention policy.
 
-## UC-003 — Automated Health Check
-
-- **Primary Actor:** External Services (uptime monitor / orchestrator)
-- **System Boundary:** apps/api
-- **Trigger:** Periodic HTTP request to `/api/v1/health`.
-- **Main Success Scenario:** See FR-003.
-- **Postconditions:** None.
-
-Additional use cases are added as features are scoped. Do not add use cases
-for unscoped personas (Customer, Administrator) until their features are
-approved.
+If no provider endpoint is configured, the page clearly explains that the
+contact integration is disabled; no local persistence is attempted.

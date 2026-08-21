@@ -1,8 +1,7 @@
 name: Deploy
 
-# Placeholder deploy workflow. Hosting provider is TBD — see
-# docs/architecture/deployment-architecture.md. This workflow documents
-# the intended stages; fill in the provider-specific steps once decided.
+# Static frontend deployment placeholder. Choose a provider and replace the
+# final step once hosting is decided; no API or database migration is needed.
 
 on:
   push:
@@ -14,9 +13,12 @@ jobs:
     environment: staging
     steps:
       - uses: actions/checkout@v4
-      - name: Run database migrations
-        run: echo "TODO: pnpm --filter @ats/api exec prisma migrate deploy against staging DB"
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
       - name: Deploy apps/web
-        run: echo "TODO: deploy apps/web to chosen hosting provider"
-      - name: Deploy apps/api
-        run: echo "TODO: deploy apps/api to chosen hosting provider"
+        run: echo "TODO: deploy the static Next.js frontend to the chosen hosting provider"

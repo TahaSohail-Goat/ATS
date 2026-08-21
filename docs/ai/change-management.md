@@ -1,34 +1,33 @@
 # Change Management
 
-## Adding a new API endpoint
-
-1. Identify or create the owning module under `apps/api/src/modules/`.
-2. Define/extend the Zod schema for request/response.
-3. Implement route -> controller -> service -> repository, following
-   `apps/api/AGENTS.md`.
-4. Add unit + integration tests.
-5. Update `docs/api/conventions.md` if a new pattern is introduced, and
-   `docs/database/schema.md` if models changed.
-
 ## Adding a new frontend feature
 
 1. Create `apps/web/src/features/<feature>/`.
-2. Server Component by default; add `"use client"` only where needed.
-3. Use shared brand components from `packages/ui`; only add new ones there
-   if genuinely reusable.
-4. Add component/integration tests; add a Playwright spec for critical
-   flows.
+2. Use a Server Component by default; add a client boundary only for real
+   interactivity or purposeful Framer Motion choreography.
+3. Use shared brand components from `packages/ui`; add a primitive there only
+   if it is genuinely reusable.
+4. Keep static content in `apps/web/src/data`.
+5. Add unit/browser coverage for critical behaviour and update the relevant
+   frontend documentation.
 
-## Modifying the database
+## Contact changes
 
-1. Edit `apps/api/prisma/schema.prisma`.
-2. `pnpm db:migrate` to generate the migration.
-3. Update `docs/database/schema.md` (and `relationships.md` if
-   relationships changed).
-4. If destructive: follow `docs/database/migrations.md`.
+1. Keep the form native and provider-agnostic.
+2. Use `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` for the public hosted endpoint.
+3. Never add local persistence or send data to a hardcoded unknown URL.
+4. Document provider setup and test only the local form/route behaviour; do not
+   submit real visitor data from CI.
+
+## Performance changes
+
+1. Check whether the change adds a client boundary, scroll listener, pointer
+   handler, layout read, filter, or continuously animated layer.
+2. Prefer transform/opacity and CSS-only effects.
+3. Test mobile widths, reduced motion, console errors, and route traversal.
 
 ## Creating an ADR
 
-1. Copy `docs/decisions/ADR-0001-template.md` to the next numbered file.
-2. Fill in Context / Decision / Alternatives / Consequences.
-3. Open a PR for discussion before implementing.
+Copy `docs/decisions/ADR-0001-template.md` to the next numbered file and fill
+in Context / Decision / Alternatives / Consequences before implementing any
+new runtime service, database, authentication approach, or hosting change.

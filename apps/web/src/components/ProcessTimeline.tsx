@@ -1,7 +1,3 @@
-'use client';
-
-import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import type { ProcessStep } from '../data/site';
 import { Reveal } from './motion/Reveal';
 
@@ -10,41 +6,17 @@ interface ProcessTimelineProps {
 }
 
 /**
- * Vertical timeline whose rail fills in step with scroll position, so the
- * process reads as progress rather than as a static list.
- *
- * Client component: needs scroll position. Under prefers-reduced-motion the
- * rail renders fully drawn and the steps appear immediately.
+ * Vertical process timeline. The rail is intentionally static: a
+ * scroll-linked spring here added a second page-level scroll observer without
+ * improving comprehension. Reveal still gives each step a light entrance.
  */
 export function ProcessTimeline({ steps }: ProcessTimelineProps) {
-  const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLOListElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 70%', 'end 65%'],
-  });
-  const scaleY = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
-
   return (
-    <ol ref={ref} className="relative pl-12 sm:pl-16">
-      {/* Rail track + scroll-driven fill. */}
+    <ol className="relative pl-12 sm:pl-16">
       <span
         aria-hidden
-        className="absolute bottom-2 left-[1.1875rem] top-2 w-px bg-ats-line sm:left-[1.6875rem]"
+        className="absolute bottom-2 left-[1.1875rem] top-2 w-px bg-ats-brand-gradient sm:left-[1.6875rem]"
       />
-      <span
-        aria-hidden
-        className="absolute bottom-2 left-[1.1875rem] top-2 w-px overflow-hidden sm:left-[1.6875rem]"
-      >
-        {reduceMotion ? (
-          <span className="block h-full w-px bg-ats-brand-gradient" />
-        ) : (
-          <motion.span
-            style={{ scaleY }}
-            className="block h-full w-px origin-top bg-ats-brand-gradient"
-          />
-        )}
-      </span>
 
       {steps.map((step, index) => (
         <Reveal key={step.title} as="li" delay={index * 0.04} className="relative pb-12 last:pb-0">

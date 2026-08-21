@@ -33,6 +33,8 @@ const ASSURANCES = [
 ];
 
 export default function ContactPage() {
+  const formEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT;
+
   return (
     <section className="relative isolate overflow-hidden">
       <Aurora variant="quiet" />
@@ -86,7 +88,7 @@ export default function ContactPage() {
           </div>
 
           <Reveal delay={0.08}>
-            <ContactForm />
+            <ContactForm endpoint={formEndpoint} />
           </Reveal>
         </div>
       </Container>
