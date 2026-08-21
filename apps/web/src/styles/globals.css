@@ -28,7 +28,7 @@
   h1,
   h2,
   h3 {
-    @apply tracking-display text-balance;
+    @apply text-balance tracking-display;
   }
 
   p {
@@ -154,6 +154,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
     /* Keeps descenders from clipping in WebKit. */
     padding-bottom: 0.06em;
   }
