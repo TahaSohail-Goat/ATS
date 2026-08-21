@@ -47,11 +47,7 @@ function offsetFor(direction: RevealDirection) {
 }
 
 /** Fade + slide entrance. `blur` adds a subtle focus-in for hero content. */
-export function revealVariants(
-  direction: RevealDirection = 'up',
-  blur = false,
-  delay = 0,
-): Variants {
+export function revealVariants(direction: RevealDirection = 'up', blur = false): Variants {
   return {
     hidden: { opacity: 0, ...offsetFor(direction), ...(blur ? { filter: 'blur(8px)' } : {}) },
     visible: {
@@ -59,7 +55,7 @@ export function revealVariants(
       x: 0,
       y: 0,
       ...(blur ? { filter: 'blur(0px)' } : {}),
-      transition: { ...transitionReveal, delay },
+      transition: transitionReveal,
     },
   };
 }

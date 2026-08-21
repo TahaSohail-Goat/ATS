@@ -2,7 +2,7 @@
 
 import type { ElementType } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { revealVariants, viewportOnce } from '../../lib/motion';
+import { staggerContainer, stagger, viewportOnce, wordVariants } from '../../lib/motion';
 
 export interface TextPart {
   text: string;
@@ -20,12 +20,11 @@ interface RevealTextProps {
 }
 
 /**
- * Lightweight heading reveal. The heading is animated as one layer instead of
- * animating every word independently; this keeps gradient text and fallback
- * font glyphs painted together while reducing client-side motion nodes.
+ * Word-by-word heading reveal. Each word sits in an overflow-clipped span so
+ * the type rises into place instead of fading in flat.
  *
- * Accessibility: each text run remains a normal text span, so the heading's
- * accessible name is identical to the plain sentence.
+ * Accessibility: words keep their trailing space inside the span, so the
+ * accessible name of the heading is identical to the plain sentence.
  */
 export function RevealText({
   parts,
@@ -59,14 +58,28 @@ export function RevealText({
   const trigger = immediate
     ? { animate: 'visible' as const }
     : { whileInView: 'visible' as const, viewport: viewportOnce };
-  const variants = revealVariants('up', false, delay);
 
   return (
-    <MotionComponent className={className} variants={variants} initial="hidden" {...trigger}>
+    <MotionComponent
+      className={className}
+      variants={staggerContainer(stagger.tight, delay)}
+      initial="hidden"
+      {...trigger}
+    >
       {runs.map((run, runIndex) => (
         <span key={runIndex} className={run.gradient ? 'ats-text-gradient' : undefined}>
-          {run.words.join(' ')}
-          {runIndex < runs.length - 1 ? ' ' : null}
+          {run.words.map((word, wordIndex) => (
+            // The separating space is a text node in the parent, not inside
+            // the clipped span, so the heading's accessible name stays a
+            // normal space-separated sentence.
+            <span key={`${runIndex}-${wordIndex}`}>
+              <span className="inline-block overflow-hidden pb-[0.16em]">
+                <motion.span variants={wordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+              </span>{' '}
+            </span>
+          ))}
         </span>
       ))}
     </MotionComponent>
