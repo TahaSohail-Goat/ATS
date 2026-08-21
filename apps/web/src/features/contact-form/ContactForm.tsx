@@ -1,141 +1,141 @@
-import type { ReactNode } from 'react';
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import { Button, Input, Textarea } from '@ats/ui';
+'use client';
 
-interface ContactFormProps {
-  /**
-   * Hosted form endpoint, e.g. a Formspree/Basin/FormSubmit endpoint.
-   * No ATS API or database is required; the provider owns delivery/storage.
-   */
-  endpoint?: string;
+import { useState } from 'react';
+
+type FormState = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+type FieldErrors = Partial<Record<keyof FormState, string>>;
+
+function validate(data: FormState): FieldErrors {
+  const errors: FieldErrors = {};
+  if (!data.name.trim()) errors.name = 'Name is required.';
+  if (!data.email.trim()) {
+    errors.email = 'Email is required.';
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    errors.email = 'Please enter a valid email address.';
+  }
+  if (!data.message.trim()) errors.message = 'Message is required.';
+  else if (data.message.trim().length < 10)
+    errors.message = 'Message must be at least 10 characters.';
+  return errors;
 }
 
-/**
- * Static-hosting-friendly contact form. It intentionally uses native HTML
- * submission instead of React Hook Form/API calls: browsers validate required
- * fields and the configured hosted provider handles delivery.
- *
- * The endpoint is optional during local development. When absent, the form
- * renders normally but explains the one deployment variable that must be set
- * before submissions are enabled — it never sends visitor data to an unknown
- * URL or pretends a message was delivered.
- */
-export function ContactForm({ endpoint }: ContactFormProps) {
-  const hasEndpoint = Boolean(endpoint);
+export function ContactForm() {
+  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (errors[name as keyof FormState]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fieldErrors = validate(form);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      return;
+    }
+    // Open mailto with pre-filled content
+    const subject = encodeURIComponent(`Contact from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`,
+    );
+    window.location.href = `mailto:contact@ats.ai?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+    setForm({ name: '', email: '', message: '' });
+    setErrors({});
+  }
+
+  if (submitted) {
+    return (
+      <p role="status" className="text-ats-success">
+        Thanks for reaching out — your email client should have opened. We will get back to you
+        shortly.
+      </p>
+    );
+  }
 
   return (
-    <form
-      action={endpoint}
-      method={hasEndpoint ? 'POST' : undefined}
-      noValidate={!hasEndpoint}
-      className="ats-ring-gradient relative rounded-4xl border border-ats-line bg-ats-surface/70 p-7 sm:p-9"
-    >
-      <input type="hidden" name="_subject" value="New ATS website enquiry" />
-      <input type="hidden" name="_gotcha" tabIndex={-1} autoComplete="off" />
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="name" label="Name" required>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            placeholder="Ada Lovelace"
-            required={hasEndpoint}
-          />
-        </Field>
-
-        <Field id="email" label="Email" required>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="you@company.com"
-            required={hasEndpoint}
-          />
-        </Field>
-
-        <Field id="company" label="Company" hint="Optional">
-          <Input
-            id="company"
-            name="company"
-            type="text"
-            autoComplete="organization"
-            placeholder="Acme Inc."
-          />
-        </Field>
-
-        <Field id="phone" label="Phone" hint="Optional">
-          <Input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+1 555 0100" />
-        </Field>
-
-        <Field id="message" label="Message" required className="sm:col-span-2">
-          <Textarea
-            id="message"
-            name="message"
-            rows={6}
-            placeholder="What are you building, and what stage is it at?"
-            required={hasEndpoint}
-          />
-        </Field>
-      </div>
-
-      {!hasEndpoint && (
-        <p
-          role="note"
-          className="mt-6 flex items-start gap-2 rounded-xl border border-ats-accent/25 bg-ats-accent/10 px-4 py-3 text-sm leading-relaxed text-ats-ink-muted"
-        >
-          <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-ats-accent" aria-hidden />
-          Set{' '}
-          <code className="font-mono text-xs text-ats-accent">
-            NEXT_PUBLIC_CONTACT_FORM_ENDPOINT
-          </code>{' '}
-          to enable submissions through your hosted form provider.
-        </p>
-      )}
-
-      <div className="mt-8 flex flex-col gap-4 border-t border-ats-line pt-7 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-relaxed text-ats-ink-muted">
-          We use your details only to reply to this enquiry.
-        </p>
-        <Button type="submit" size="lg" disabled={!hasEndpoint}>
-          Send message
-          <ArrowUpRight
-            className="h-4 w-4 transition-transform duration-200 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5"
-            aria-hidden
-          />
-        </Button>
-      </div>
-    </form>
-  );
-}
-
-interface FieldProps {
-  id: string;
-  label: string;
-  hint?: string;
-  required?: boolean;
-  className?: string;
-  children: ReactNode;
-}
-
-/** Label + control, kept server-renderable and paired by id. */
-function Field({ id, label, hint, required, className = '', children }: FieldProps) {
-  return (
-    <div className={className}>
-      <div className="mb-2 flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="text-sm font-medium">
-          {label}
-          {required && (
-            <span aria-hidden className="ml-1 text-ats-accent">
-              *
-            </span>
-          )}
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+      <div>
+        <label htmlFor="name" className="mb-1 block text-sm font-medium">
+          Name
         </label>
-        {hint && <span className="text-xs text-ats-ink-muted">{hint}</span>}
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={form.name}
+          onChange={handleChange}
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+        />
+        {errors.name && (
+          <p id="name-error" className="mt-1 text-sm text-ats-error">
+            {errors.name}
+          </p>
+        )}
       </div>
-      {children}
-    </div>
+
+      <div>
+        <label htmlFor="email" className="mb-1 block text-sm font-medium">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+        />
+        {errors.email && (
+          <p id="email-error" className="mt-1 text-sm text-ats-error">
+            {errors.email}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor="message" className="mb-1 block text-sm font-medium">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          value={form.message}
+          onChange={handleChange}
+          className="w-full rounded-md border border-ats-text-muted/30 px-3 py-2"
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+        />
+        {errors.message && (
+          <p id="message-error" className="mt-1 text-sm text-ats-error">
+            {errors.message}
+          </p>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        className="w-fit rounded-md bg-ats-brand px-4 py-2 font-medium text-white"
+      >
+        Send message
+      </button>
+    </form>
   );
 }

@@ -6,7 +6,6 @@ settings:
 
 overrides:
   postcss: ^8.5.18
-  sharp: ^0.35.0
   vite: ^6.4.3
 
 importers:
@@ -49,6 +48,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.2.8(react@19.2.8)
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@ats/config':
         specifier: workspace:*

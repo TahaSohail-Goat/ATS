@@ -19,7 +19,8 @@
     "lucide-react": "^1.31.0",
     "next": "^16.3.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@ats/config": "workspace:*",
