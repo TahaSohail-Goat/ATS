@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import logoMark from '../../public/brand/ats-logo.jpeg';
+
+const logoMark = '/brand/ats-logo.jpeg';
 
 interface LogoProps {
   className?: string;

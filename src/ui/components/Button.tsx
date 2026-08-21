@@ -5,7 +5,7 @@ import {
   type ButtonHTMLAttributes,
   type ReactElement,
 } from 'react';
-import { cn } from '../lib/cn.js';
+import { cn } from '../lib/cn';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'subtle';
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';

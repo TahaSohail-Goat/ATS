@@ -1,8 +1,0 @@
-{
-  "extends": "./base.json",
-  "compilerOptions": {
-    "lib": ["DOM", "ES2022"],
-    "jsx": "react-jsx",
-    "noEmit": true
-  }
-}

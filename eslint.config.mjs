@@ -1,10 +1,5 @@
-// Root ESLint flat config. Individual apps/packages extend
-// @ats/config/eslint and layer on framework-specific rules.
-import base from './packages/config/eslint/base.mjs';
-
 export default [
-  ...base,
   {
-    ignores: ['apps/web/next-env.d.ts'],
+    ignores: ['.next/**', 'node_modules/**', 'next-env.d.ts'],
   },
 ];

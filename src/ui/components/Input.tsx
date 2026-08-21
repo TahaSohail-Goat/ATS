@@ -1,5 +1,5 @@
 import { forwardRef, type InputHTMLAttributes, type TextareaHTMLAttributes } from 'react';
-import { cn } from '../lib/cn.js';
+import { cn } from '../lib/cn';
 
 const field = cn(
   'w-full rounded-xl border bg-ats-surface-raised/70 px-4 text-sm text-ats-ink',

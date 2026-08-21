@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
-import { theme, themeConstant } from '@ats/ui/tokens/colors';
+import { theme, themeConstant } from './src/ui/tokens/colors';
 
 // ATS design tokens are the single source of color truth — see
 // docs/frontend/design-system.md and packages/ui/src/tokens.
@@ -58,7 +58,7 @@ const constantVars: Record<string, string> = Object.fromEntries(
 
 const config: Config = {
   darkMode: ['class', '.dark'],
-  content: ['./src/**/*.{ts,tsx}', '../../packages/ui/src/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {

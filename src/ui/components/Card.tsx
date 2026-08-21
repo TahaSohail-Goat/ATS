@@ -1,5 +1,5 @@
 import { forwardRef, type ElementType, type HTMLAttributes } from 'react';
-import { cn } from '../lib/cn.js';
+import { cn } from '../lib/cn';
 
 export interface CardProps extends HTMLAttributes<HTMLElement> {
   /** Render as a different element (e.g. `article`, `li`, `figure`). */
