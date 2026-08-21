@@ -3,31 +3,23 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@ats/ui';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
-import { ScrollProgress } from './motion/ScrollProgress';
 import { NAV_LINKS } from '../data/navigation';
-import { easeOut, springSnappy, transitionUi } from '../lib/motion';
+import { transitionUi } from '../lib/motion';
 
 /**
- * Site header: glass bar that condenses on scroll, a nav with a shared
- * layout indicator, and a full-screen mobile panel.
+ * Site header: a sticky glass navigation bar with a full-screen mobile panel
+ * and active-route highlighting. See apps/web/AGENTS.md.
  *
- * Client component — needs scroll position, menu state, and active-route
- * highlighting. See apps/web/AGENTS.md.
+ * Client component — menu state and pathname are the only client concerns.
  */
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [condensed, setCondensed] = useState(false);
   const pathname = usePathname();
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setCondensed(latest > 12);
-  });
 
   // Close the panel whenever the route changes — including browser back/
   // forward. Adjusting state during render (rather than in an effect) avoids
@@ -61,17 +53,9 @@ export function Header() {
   }
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ease-ats-out ${
-        condensed || menuOpen
-          ? 'ats-glass border-b border-ats-line shadow-[0_12px_40px_-28px_rgb(var(--ats-primary)/0.9)]'
-          : 'border-b border-transparent'
-      }`}
-    >
+    <header className="ats-glass sticky top-0 z-50 border-b border-ats-line shadow-[0_12px_40px_-28px_rgb(var(--ats-primary)/0.9)]">
       <div
-        className={`mx-auto flex w-full max-w-shell items-center justify-between gap-4 px-5 transition-[height] duration-300 ease-ats-out sm:px-8 lg:px-12 ${
-          condensed || menuOpen ? 'h-16' : 'h-20'
-        }`}
+        className={`mx-auto flex h-20 w-full max-w-shell items-center justify-between gap-4 px-5 sm:px-8 lg:px-12`}
       >
         <Link
           href="/"
@@ -99,7 +83,7 @@ export function Header() {
                         layoutId="active-navigation"
                         aria-hidden
                         className="bg-ats-brand/12 absolute inset-0 rounded-full border border-ats-brand/25"
-                        transition={springSnappy}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
                     <span className="relative">{link.label}</span>
@@ -139,13 +123,11 @@ export function Header() {
         </div>
       </div>
 
-      <ScrollProgress />
-
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            className="ats-glass fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-ats-line lg:hidden"
+            className="ats-glass fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-ats-line lg:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -167,7 +149,11 @@ export function Header() {
                       key={link.href}
                       variants={{
                         hidden: { opacity: 0, x: -16 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: easeOut } },
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+                        },
                       }}
                       className="border-b border-ats-line/70"
                     >

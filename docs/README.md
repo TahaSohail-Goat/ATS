@@ -1,26 +1,22 @@
 # ATS Documentation
 
-This directory is the **source of truth** for product, architecture, and
-engineering decisions at ATS. Code should follow what's documented here; if
-they diverge, that's a bug in one or the other — fix it, don't ignore it.
+This directory is the source of truth for the current frontend-first ATS
+portfolio. The site intentionally has no API server or database in this phase.
 
 ## Map
 
-| Section                           | Purpose                                                        |
-| --------------------------------- | -------------------------------------------------------------- |
-| [`product/`](./product)           | What ATS is building and why                                   |
-| [`requirements/`](./requirements) | Functional and non-functional requirements                     |
-| [`architecture/`](./architecture) | System, frontend, backend, database, API, security, deployment |
-| [`use-cases/`](./use-cases)       | Actor-driven scenarios                                         |
-| [`api/`](./api)                   | REST conventions and auth                                      |
-| [`database/`](./database)         | Schema, relationships, migration policy                        |
-| [`frontend/`](./frontend)         | Design system, design brief, accessibility, responsive/motion  |
-| [`security/`](./security)         | Security policy, auth, secrets, threat model                   |
-| [`development/`](./development)   | Setup, standards, testing, troubleshooting                     |
-| [`deployment/`](./deployment)     | Environments, deploy process, rollback, monitoring             |
-| [`decisions/`](./decisions)       | Architecture Decision Records (ADRs)                           |
-| [`operations/`](./operations)     | Logging, monitoring, backups, disaster recovery                |
-| [`ai/`](./ai)                     | How AI coding agents should work in this repo                  |
+| Section                           | Purpose                                                      |
+| --------------------------------- | ------------------------------------------------------------ |
+| [`product/`](./product)           | What ATS is building and why                                 |
+| [`requirements/`](./requirements) | Current website requirements                                 |
+| [`architecture/`](./architecture) | System, frontend, security, and deployment                   |
+| [`use-cases/`](./use-cases)       | Visitor journeys                                             |
+| [`frontend/`](./frontend)         | Design system, brief, accessibility, responsive/motion rules |
+| [`security/`](./security)         | Website security and hosted-form guidance                    |
+| [`development/`](./development)   | Setup, standards, testing, troubleshooting                   |
+| [`deployment/`](./deployment)     | Frontend deployment and monitoring                           |
+| [`decisions/`](./decisions)       | Architecture Decision Records                                |
+| [`ai/`](./ai)                     | How AI coding agents should work in this repo                |
 
 Start with [`product/vision.md`](./product/vision.md) if you're new, or
 [`../AGENTS.md`](../AGENTS.md) if you're an AI agent.

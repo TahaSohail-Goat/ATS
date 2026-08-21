@@ -1,9 +1,0 @@
-import type { Request, Response } from 'express';
-
-export function notFoundHandler(req: Request, res: Response) {
-  res.status(404).json({
-    success: false,
-    error: { code: 'NOT_FOUND', message: `No route for ${req.method} ${req.originalUrl}` },
-    meta: { requestId: req.headers['x-request-id'] },
-  });
-}

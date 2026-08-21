@@ -6,4 +6,3 @@ export { Magnetic } from './Magnetic';
 export { SpotlightCard } from './SpotlightCard';
 export { Counter } from './Counter';
 export { Parallax } from './Parallax';
-export { ScrollProgress } from './ScrollProgress';

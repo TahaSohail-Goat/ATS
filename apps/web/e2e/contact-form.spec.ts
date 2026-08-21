@@ -8,7 +8,7 @@ test('visitor can see and fill the contact form', async ({ page }) => {
   await page.getByLabel(/email/i).fill('ada@example.com');
   await page.getByLabel(/message/i).fill('Interested in learning more about ATS.');
 
-  // Not asserting network success here (requires a running API) —
-  // this is a UI smoke test. See docs/development/testing.md.
-  await expect(page.getByRole('button', { name: /send message/i })).toBeEnabled();
+  // Hosted-provider submission is intentionally not performed in CI.
+  // This remains a UI smoke test. See docs/development/testing.md.
+  await expect(page.getByRole('button', { name: /send message/i })).toBeDisabled();
 });

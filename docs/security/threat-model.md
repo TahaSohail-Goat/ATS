@@ -1,20 +1,12 @@
-# Threat Model (v1 — Marketing Site + Contact Form)
+# Threat Model
 
-## Assets
+| Threat                        | Current mitigation                                                                   |
+| ----------------------------- | ------------------------------------------------------------------------------------ |
+| Contact-form spam             | Hosted provider controls; endpoint stays optional until configured                   |
+| Malicious form values         | Native browser constraints, provider validation, React does not render input as HTML |
+| Secret leakage                | No private runtime secrets in the frontend; deployment configuration is external     |
+| Supply-chain risk             | Minimal dependencies, lockfile, CI install/lint/typecheck/test/build                 |
+| Client-side performance abuse | No global scroll listeners, per-card pointer handlers, or continuous grain repaints  |
+| Broken accessibility          | Semantic labels, visible focus states, reduced-motion fallbacks, browser tests       |
 
-- Contact submission data (names, emails, messages) — low-moderate
-  sensitivity, but still PII.
-- Site availability/reputation.
-
-## Key threats
-
-| Threat                               | Mitigation                                                                         |
-| ------------------------------------ | ---------------------------------------------------------------------------------- |
-| Spam/abuse of contact form           | Rate limiting, server-side validation, (future: CAPTCHA if abuse observed)         |
-| Injection (SQLi/XSS)                 | Prisma parameterized queries, React output escaping, Zod input validation          |
-| Data exposure via misconfigured CORS | Explicit origin allow-list                                                         |
-| Secret leakage                       | `.env` gitignored, secrets store in deploy platform, Dependabot + CI security scan |
-| Dependency vulnerabilities           | Dependabot, `security.yml` CI workflow                                             |
-
-Threat model is revisited whenever authenticated features, payments, or
-new external integrations are introduced.
+Future API/database/authentication work requires a new threat-model review.

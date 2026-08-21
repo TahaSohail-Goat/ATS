@@ -6,11 +6,25 @@ import { Footer } from '../components/Footer';
 import { themeInitScript } from '../lib/theme';
 import '../styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  preload: true,
+  adjustFontFallback: true,
+});
 
-// Monospace is used for numerals, indices, and technical labels — it does the
-// "engineering" signalling so the sans face can stay neutral.
-const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono' });
+// Monospace is used for numerals, indices, and technical labels. It is not
+// preloaded because it is below the fold on the initial route.
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+  weight: ['400', '600'],
+  preload: false,
+  adjustFontFallback: true,
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
 

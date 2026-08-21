@@ -1,83 +1,32 @@
 # Functional Requirements
 
-Template for every FR:
+## FR-001 — View Company and Services Information
 
-```
-FR-ID:            FR-XXX
-Title:
-Description:
-Actor:
-Preconditions:
-Main Flow:
-Alternative Flow:
-Exception Flow:
-Postconditions:
-Acceptance Criteria:
-Priority:          Must | Should | Could
-Dependencies:
-```
-
----
-
-## FR-001 — Contact Form Submission
-
-- **Actor:** Website Visitor
-- **Preconditions:** Visitor is on the `/contact` page.
-- **Main Flow:**
-  1. Visitor fills name, email, message (and optional company/phone).
-  2. Client-side validation (Zod via React Hook Form) checks required
-     fields and email format.
-  3. Visitor submits; frontend calls `POST /api/v1/contact`.
-  4. Backend validates payload, persists a `Lead`/`ContactSubmission`
-     record, returns `201`.
-  5. Frontend shows a success confirmation.
-- **Alternative Flow:** Visitor leaves optional fields blank — submission
-  still succeeds.
-- **Exception Flow:**
-  - Invalid input → `400` with field-level errors, shown inline.
-  - Rate limit exceeded → `429`, frontend shows a "try again later" message.
-  - Server error → `500`, frontend shows a generic retry message; nothing
-    is silently swallowed.
-- **Postconditions:** A contact submission exists in the database.
-- **Acceptance Criteria:**
-  - Submitting valid data returns `201` and persists a record.
-  - Submitting invalid data returns `400` with per-field error messages.
-  - The endpoint is rate-limited per IP.
-  - No submission occurs without passing both client and server validation.
+- **Actor:** Website visitor
+- **Main flow:** Visitor navigates the public site and reads static company,
+  service, project, and career content.
+- **Acceptance criteria:** Pages render correct metadata, are responsive, use
+  semantic headings, and meet the accessibility bar.
 - **Priority:** Must
-- **Dependencies:** `contact` backend module, `packages/validation` schema.
 
----
+## FR-002 — Optional Contact Enquiry
 
-## FR-002 — View Company/Services Information
+- **Actor:** Website visitor
+- **Precondition:** A hosted form endpoint is configured through
+  `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` in the deployment environment.
+- **Main flow:**
+  1. Visitor fills name, email, message, and optional company/phone fields.
+  2. Native browser validation checks required fields and email format.
+  3. Browser submits a standard POST to the configured hosted form provider.
+  4. The provider handles delivery, spam protection, and any retention policy.
+- **Alternative flow:** If no endpoint is configured, the form explains how to
+  enable it and does not pretend that a message was delivered.
+- **Acceptance criteria:** No ATS API or local database is required; the form
+  never posts visitor data to an unknown URL; required fields are labelled and
+  keyboard operable.
+- **Priority:** Should
 
-- **Actor:** Website Visitor
-- **Preconditions:** None.
-- **Main Flow:** Visitor navigates the public site (home, about, services)
-  and reads static/CMS-sourced content.
-- **Postconditions:** None (read-only).
-- **Acceptance Criteria:** Pages render with correct metadata, are
-  responsive, and meet the accessibility bar in
-  `../frontend/accessibility.md`.
-- **Priority:** Must
-- **Dependencies:** None.
+## Future requirements
 
----
-
-## FR-003 — Health Check Endpoint
-
-- **Actor:** External Services (uptime monitors, orchestrators)
-- **Preconditions:** API process is running.
-- **Main Flow:** Caller sends `GET /api/v1/health`; API returns process
-  status, and `GET /api/v1/health/ready` returns DB connectivity status.
-- **Postconditions:** None.
-- **Acceptance Criteria:** `200` when healthy; `503` when a dependency
-  (e.g. database) is unreachable.
-- **Priority:** Must
-- **Dependencies:** Database connection.
-
----
-
-Additional FRs are added here as requirements are confirmed by the business.
-Do not add speculative FRs for unscoped features (auth, billing, etc.) —
-track those as roadmap items in `../product/roadmap.md` instead.
+Persistent lead management, email automation, CRM integrations, accounts, and
+admin tooling are intentionally out of scope until the business requires them.

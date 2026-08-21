@@ -1,38 +1,37 @@
 # System Architecture
 
-## High-level flow
+## Current phase
+
+ATS is a frontend-first portfolio website. The runtime is one Next.js App
+Router application with static site content and a small shared UI package.
 
 ```mermaid
-flowchart TD
-    Client[Client Browser] --> Web[Next.js App - apps/web]
-    Web -->|REST /api/v1| API[Express API - apps/api]
-    API --> Domain[Business Logic - modules/*]
-    Domain --> DAL[Data Access Layer - Prisma repositories]
-    DAL --> DB[(PostgreSQL)]
-    API -.future.-> Redis[(Redis - not yet introduced)]
-    API -.future.-> Email[Email Provider]
-    API -.future.-> AI[External AI Provider]
+flowchart LR
+    Visitor[Visitor Browser] --> Web[Next.js website — apps/web]
+    Web --> UI[Shared design system — packages/ui]
+    Web -. optional POST .-> Form[Hosted form provider]
 ```
 
-## Principles
+There is no Express API, PostgreSQL database, Prisma layer, Docker service, or
+message queue in the current phase. Keeping those out is intentional: static
+portfolio pages do not need persistence.
 
-- **Modular monolith, not microservices.** One deployable API process
-  today; internal modules are separated by business domain so they _could_
-  be extracted later if justified (see `../decisions/`).
-- **Frontend and backend are separately deployable** apps in the same
-  monorepo, communicating only over the versioned REST API — no direct
-  database access from the frontend.
-- **Shared code lives in `packages/`,** never duplicated between apps.
+## Rendering strategy
 
-## Current external dependencies
+- Server Components by default for pages, content, cards, the contact form,
+  and decorative CSS surfaces.
+- Client Components only for menu state, theme selection, and the small
+  Framer Motion reveal choreography that adds value to the reading flow.
+- Static project/service data lives in `apps/web/src/data`.
+- Brand primitives and semantic tokens live in `packages/ui`.
 
-None required for v1 beyond PostgreSQL. Email delivery (for contact form
-notifications) is a near-term addition — TBD provider, tracked as a future
-ADR-worthy decision if it introduces new infra.
+## Contact boundary
 
-## Not yet introduced (do not add without an ADR)
+The contact form is a native HTML POST form. The deployment can set
+`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` to a hosted form provider such as
+Formspree, Basin, or FormSubmit. The provider is responsible for delivery,
+spam handling, and any retention. ATS does not persist visitor data locally.
 
-- Redis / caching layer
-- Message queue / background job runner
-- Additional microservices
-- External AI/LLM provider integration
+If lead management becomes a real requirement, create an ADR before adding an
+API, database, authentication, or a new runtime service. See
+`README.md` for the future-product boundary.

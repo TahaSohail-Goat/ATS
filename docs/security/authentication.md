@@ -1,7 +1,8 @@
 # Authentication (Security Perspective)
 
-No authentication exists in v1 — see `../api/authentication.md` for the
-forward-looking plan. When implemented:
+No authentication exists in the current frontend-only phase. If an
+authenticated product is introduced later, define its threat model and
+architecture in a new ADR before implementation. When implemented:
 
 - Passwords hashed with argon2 or bcrypt (cost factor tuned per current
   best practice at implementation time), never stored reversibly.

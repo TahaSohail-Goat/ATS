@@ -1,8 +1,8 @@
 {
-  "name": "ats-platform",
+  "name": "ats-portfolio",
   "version": "0.1.0",
   "private": true,
-  "description": "ATS (AI Software and Technology Solutions) — monorepo root",
+  "description": "ATS — AI Software and Technology Solutions portfolio",
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=9.0.0"
@@ -24,10 +24,7 @@
     "test:e2e": "turbo run test:e2e",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "db:migrate": "pnpm --filter @ats/api db:migrate",
-    "db:seed": "pnpm --filter @ats/api db:seed",
-    "db:studio": "pnpm --filter @ats/api db:studio"
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
     "turbo": "^2.1.3",

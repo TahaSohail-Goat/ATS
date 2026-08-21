@@ -1,15 +1,17 @@
 # Scalability Notes
 
-Current architecture scales by:
+The current website scales through the selected Next.js hosting provider's CDN,
+edge caching, and static/server rendering. The application has no local
+mutable state, database connection pool, API process, or background worker.
 
-- Running multiple stateless `apps/api` instances behind a load balancer
-  (no in-memory session/state that would break with more than one instance).
-- Next.js built-in optimizations (static generation where possible, server
-  components, image/font optimization) for `apps/web`.
-- Prisma connection pooling, or a pooler such as PgBouncer, if connection
-  counts become a bottleneck — not needed at current scale.
+Performance priorities are:
 
-Explicitly deferred until justified by real load: Redis caching, a CDN
-strategy beyond the hosting platform's defaults, read replicas, and
-background job queues. Introduce any of these via an ADR, with the
-triggering metric documented.
+- keep public pages Server Components by default;
+- keep client boundaries small;
+- serve fonts and brand assets through Next's optimized build pipeline;
+- avoid continuous blur/grain repainting and scroll/pointer observers;
+- monitor Core Web Vitals, especially LCP, CLS, and INP.
+
+A persistent lead system, admin dashboard, email pipeline, CRM integration, or
+authenticated product would be a separate scale boundary. Add it only when a
+concrete requirement and an ADR justify the new service.
