@@ -20,6 +20,9 @@ const config: Config = {
         'ats-success': colors.success,
         'ats-error': colors.error,
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],

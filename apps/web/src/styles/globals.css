@@ -8,6 +8,47 @@
   color-scheme: light dark;
 }
 
-body {
-  @apply bg-ats-bg-light text-ats-text dark:bg-ats-bg-dark dark:text-ats-bg-light;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ats-bg-light text-ats-text antialiased dark:bg-ats-bg-dark dark:text-ats-bg-light;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ats-brand;
+  }
+
+  ::selection {
+    @apply bg-ats-brand/20;
+  }
+}
+
+@layer components {
+  /* Subtle engineering-grid texture for hero surfaces — token colors only,
+     faded out via a radial mask so it reads as depth, not pattern. */
+  .ats-hero-grid {
+    background-image:
+      linear-gradient(theme(colors.ats-brand / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, theme(colors.ats-brand / 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, black 30%, transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
