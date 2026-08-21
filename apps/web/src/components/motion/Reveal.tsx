@@ -40,7 +40,7 @@ export function Reveal({
     return <Static className={className}>{children}</Static>;
   }
 
-  const variants = revealVariants(direction, blur);
+  const variants = revealVariants(direction, blur, delay);
 
   if (asChild) {
     return (
@@ -57,7 +57,6 @@ export function Reveal({
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
-      transition={{ delay }}
     >
       {children}
     </Component>
