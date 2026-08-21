@@ -1,8 +1,6 @@
-'use client';
-
 import type { ElementType } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { staggerContainer, stagger, viewportOnce, wordVariants } from '../../lib/motion';
+import { staggerContainer, viewportOnce, easeOut, duration } from '../../lib/motion';
 
 export interface TextPart {
   text: string;
@@ -19,12 +17,21 @@ interface RevealTextProps {
   immediate?: boolean;
 }
 
+const phraseVariants = {
+  hidden: { opacity: 0, y: '0.35em' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: duration.slow,
+      ease: easeOut,
+    },
+  },
+};
+
 /**
- * Word-by-word heading reveal. Each word sits in an overflow-clipped span so
- * the type rises into place instead of fading in flat.
- *
- * Accessibility: words keep their trailing space inside the span, so the
- * accessible name of the heading is identical to the plain sentence.
+ * Clean, synchronous heading reveal without laggy per-word delays.
+ * Gradient accents render smoothly in sync with the primary text.
  */
 export function RevealText({
   parts,
@@ -36,18 +43,13 @@ export function RevealText({
   const reduceMotion = useReducedMotion();
   const Component = as as ElementType;
 
-  const runs = parts.map((part) => ({
-    gradient: part.gradient ?? false,
-    words: part.text.split(' ').filter(Boolean),
-  }));
-
   if (reduceMotion) {
     return (
       <Component className={className}>
-        {runs.map((run, runIndex) => (
-          <span key={runIndex} className={run.gradient ? 'ats-text-gradient' : undefined}>
-            {run.words.join(' ')}
-            {runIndex < runs.length - 1 ? ' ' : null}
+        {parts.map((part, index) => (
+          <span key={index} className={part.gradient ? 'ats-text-gradient' : undefined}>
+            {part.text}
+            {index < parts.length - 1 ? ' ' : null}
           </span>
         ))}
       </Component>
@@ -62,24 +64,21 @@ export function RevealText({
   return (
     <MotionComponent
       className={className}
-      variants={staggerContainer(stagger.tight, delay)}
+      variants={staggerContainer(0.08, delay)}
       initial="hidden"
       {...trigger}
     >
-      {runs.map((run, runIndex) => (
-        <span key={runIndex} className={run.gradient ? 'ats-text-gradient' : undefined}>
-          {run.words.map((word, wordIndex) => (
-            // The separating space is a text node in the parent, not inside
-            // the clipped span, so the heading's accessible name stays a
-            // normal space-separated sentence.
-            <span key={`${runIndex}-${wordIndex}`}>
-              <span className="inline-block overflow-hidden pb-[0.16em]">
-                <motion.span variants={wordVariants} className="inline-block">
-                  {word}
-                </motion.span>
-              </span>{' '}
-            </span>
-          ))}
+      {parts.map((part, index) => (
+        <span key={index} className="inline-block">
+          <span className="inline-block overflow-hidden pb-[0.14em]">
+            <motion.span
+              variants={phraseVariants}
+              className={`inline-block ${part.gradient ? 'ats-text-gradient' : ''}`}
+            >
+              {part.text}
+            </motion.span>
+          </span>
+          {index < parts.length - 1 ? ' ' : null}
         </span>
       ))}
     </MotionComponent>

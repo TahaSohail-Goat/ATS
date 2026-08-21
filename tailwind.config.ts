@@ -79,8 +79,8 @@ const config: Config = {
         'ats-error': tokenColor('--ats-error'),
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        sans: ['Inter', 'var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         // Fluid display scale — headline sizes track the viewport so the

@@ -74,7 +74,7 @@ export const wordVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: duration.slower, ease: easeOut } },
 };
 
-/** Default in-view trigger: fire once, slightly before the block is centred. */
-export const viewportOnce = { once: true, margin: '-12% 0px -8% 0px' } as const;
+/** Default in-view trigger: fires smoothly when element reaches bottom of viewport */
+export const viewportOnce = { once: true, margin: '0px 0px -40px 0px', amount: 0.15 } as const;
 
 export { duration, stagger };

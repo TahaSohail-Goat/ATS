@@ -7,6 +7,11 @@
    semantic `--ats-*` custom properties below are emitted by the Tailwind
    plugin in tailwind.config.ts and hold "R G B" channel triplets. */
 
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -17,7 +22,8 @@
 
   body {
     @apply bg-ats-canvas text-ats-ink antialiased;
-    font-feature-settings: 'ss01', 'ss02', 'cv02', 'cv03';
+    font-family: var(--font-inter);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     text-rendering: optimizeLegibility;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
