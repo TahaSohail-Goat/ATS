@@ -8,6 +8,14 @@ export default [
     ignores: ['next-env.d.ts', '.next/**'],
   },
   {
+    // Build-time asset scripts run in Node but evaluate snippets inside a
+    // headless browser, so they legitimately reference browser globals.
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: { document: 'readonly' },
+    },
+  },
+  {
     plugins: { react, 'react-hooks': reactHooks },
     rules: {
       ...react.configs.recommended.rules,

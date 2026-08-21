@@ -1,9 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '@ats/ui';
+import { ArrowLeft, Check, Sparkles } from 'lucide-react';
+import { Badge } from '@ats/ui';
 import { Container } from '../../../components/Container';
+import { Aurora } from '../../../components/Aurora';
+import { Section } from '../../../components/Section';
+import { CtaSection } from '../../../components/CtaSection';
+import { ArrowLink } from '../../../components/ArrowLink';
+import { Reveal } from '../../../components/motion/Reveal';
+import { Stagger } from '../../../components/motion/Stagger';
+import { RevealText } from '../../../components/motion/RevealText';
+import { SpotlightCard } from '../../../components/motion/SpotlightCard';
 import { projects } from '../../../data/projects';
 
 interface ProjectDetailPageProps {
@@ -21,6 +29,7 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
   return {
     title: project.title,
     description: project.summary,
+    alternates: { canonical: `/projects/${project.slug}` },
   };
 }
 
@@ -35,96 +44,135 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   return (
     <>
-      <Container className="py-12 sm:py-16">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-ats-text-muted transition-colors hover:text-ats-brand"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden /> All projects
-        </Link>
+      <section className="relative isolate overflow-hidden border-b border-ats-line pb-16 pt-10 sm:pb-24 sm:pt-14">
+        <Aurora variant="quiet" />
+        <Container className="relative">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-ats-ink-muted transition-colors hover:text-ats-brand"
+          >
+            <ArrowLeft
+              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+              aria-hidden
+            />
+            All projects
+          </Link>
 
-        <header className="mt-8 max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-ats-brand">
-            {project.category} · {project.year}
-          </p>
-          <h1 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {project.title}
-          </h1>
-          <p className="mt-4 text-lg text-ats-text-muted">{project.summary}</p>
-        </header>
-      </Container>
+          <header className="mt-10 max-w-4xl">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <Badge tone="accent" dot>
+                {project.status === 'illustrative' ? 'Illustrative concept' : 'Case study'}
+              </Badge>
+              <Badge>{project.category}</Badge>
+              <span className="font-mono text-xs text-ats-ink-muted">{project.year}</span>
+            </div>
 
-      <Container className="pb-20 sm:pb-24">
-        <section className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg border border-ats-text/10 bg-ats-bg-light p-8 dark:border-ats-bg-light/10 dark:bg-ats-bg-dark">
-            <h2 className="text-lg font-semibold">The problem</h2>
-            <p className="mt-3 text-ats-text-muted">{project.problem}</p>
-          </div>
-          <div className="rounded-lg border border-ats-text/10 bg-ats-bg-light p-8 dark:border-ats-bg-light/10 dark:bg-ats-bg-dark">
-            <h2 className="text-lg font-semibold">The solution</h2>
-            <p className="mt-3 text-ats-text-muted">{project.solution}</p>
-          </div>
-        </section>
+            <RevealText
+              as="h1"
+              immediate
+              className="text-display-lg font-semibold"
+              parts={[{ text: project.title }]}
+            />
 
-        <section className="mt-12 grid gap-8 lg:grid-cols-3">
-          <div>
-            <h2 className="text-lg font-semibold">Key features</h2>
-            <ul className="mt-4 space-y-2">
+            <Reveal delay={0.2}>
+              <p className="mt-6 max-w-prose text-lg leading-relaxed text-ats-ink-muted">
+                {project.summary}
+              </p>
+            </Reveal>
+          </header>
+        </Container>
+      </section>
+
+      <Section space="base">
+        <Stagger className="grid gap-5 lg:grid-cols-2">
+          {[
+            { title: 'The problem', text: project.problem },
+            { title: 'The solution', text: project.solution },
+          ].map((block) => (
+            <Reveal key={block.title} asChild as="div" className="h-full">
+              <SpotlightCard
+                as="article"
+                className="ats-ring-gradient flex h-full flex-col rounded-4xl border border-ats-line bg-ats-surface/60 p-8 sm:p-11"
+              >
+                <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
+                <p className="mt-4 leading-relaxed text-ats-ink-muted">{block.text}</p>
+              </SpotlightCard>
+            </Reveal>
+          ))}
+        </Stagger>
+      </Section>
+
+      <Section space="base" tone="raised">
+        <div className="grid gap-12 lg:grid-cols-3">
+          <Reveal>
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">
+              Key features
+            </h2>
+            <ul className="mt-6 space-y-4">
               {project.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-2 text-sm text-ats-text-muted">
+                <li key={feature} className="flex items-start gap-3">
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ats-brand"
                     aria-hidden
-                  />
-                  {feature}
+                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ats-brand/30 bg-ats-brand/10 text-ats-brand"
+                  >
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className="text-sm leading-relaxed text-ats-ink">{feature}</span>
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold">Technology</h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
+          </Reveal>
+
+          <Reveal delay={0.06}>
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">Technology</h2>
+            <ul className="mt-6 flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-full border border-ats-text/10 px-3 py-1 text-sm text-ats-text-muted dark:border-ats-bg-light/10"
+                  className="rounded-full border border-ats-line bg-ats-surface/60 px-3 py-1.5 text-xs font-medium text-ats-ink-muted"
                 >
                   {tech}
                 </li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold">Results</h2>
-            <ul className="mt-4 space-y-2">
-              {project.results.map((result) => (
-                <li key={result} className="flex items-start gap-2 text-sm text-ats-text-muted">
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <h2 className="text-eyebrow font-semibold uppercase text-ats-ink-muted">
+              {project.status === 'illustrative' ? 'Concept highlights' : 'Results'}
+            </h2>
+            <ul className="mt-6 space-y-4">
+              {project.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-3">
                   <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ats-accent"
                     aria-hidden
-                  />
-                  {result}
+                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ats-accent/30 bg-ats-accent/10 text-ats-accent"
+                  >
+                    <Sparkles className="h-3 w-3" />
+                  </span>
+                  <span className="text-sm leading-relaxed text-ats-ink">{highlight}</span>
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-ats-text/10 pt-8 dark:border-ats-bg-light/10 sm:flex-row sm:items-center">
-          <p className="text-sm text-ats-text-muted">
-            Next case study:{' '}
-            <Link
-              href={`/projects/${next.slug}`}
-              className="inline-flex items-center gap-1.5 font-semibold text-ats-brand hover:underline"
-            >
-              {next.title} <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </p>
-          <Button asChild>
-            <Link href="/contact">Start a Project</Link>
-          </Button>
+          </Reveal>
         </div>
-      </Container>
+      </Section>
+
+      <Section space="tight">
+        <Reveal className="flex flex-col gap-4 border-t border-ats-line pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-eyebrow font-semibold uppercase text-ats-ink-muted">Next project</p>
+            <p className="mt-2 text-xl font-semibold tracking-tighter2">{next.title}</p>
+          </div>
+          <ArrowLink href={`/projects/${next.slug}`}>Read next case study</ArrowLink>
+        </Reveal>
+      </Section>
+
+      <CtaSection
+        title="Building something"
+        titleAccent="like this?"
+        description="Tell us where you are and we will tell you honestly what it takes to get there."
+      />
     </>
   );
 }

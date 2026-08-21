@@ -32,7 +32,9 @@ test('unknown project slug returns 404', async ({ page }) => {
 test('sitemap and robots are served', async ({ request }) => {
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
-  expect(await sitemap.text()).toContain('/services');
+  const sitemapText = await sitemap.text();
+  expect(sitemapText).toContain('/services');
+  expect(sitemapText).toContain('/projects/logistics-ai-platform');
 
   const robots = await request.get('/robots.txt');
   expect(robots.status()).toBe(200);

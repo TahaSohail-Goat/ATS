@@ -14,7 +14,7 @@ they diverge, that's a bug in one or the other — fix it, don't ignore it.
 | [`use-cases/`](./use-cases)       | Actor-driven scenarios                                         |
 | [`api/`](./api)                   | REST conventions and auth                                      |
 | [`database/`](./database)         | Schema, relationships, migration policy                        |
-| [`frontend/`](./frontend)         | Design system, accessibility, responsive/animation guidelines  |
+| [`frontend/`](./frontend)         | Design system, design brief, accessibility, responsive/motion  |
 | [`security/`](./security)         | Security policy, auth, secrets, threat model                   |
 | [`development/`](./development)   | Setup, standards, testing, troubleshooting                     |
 | [`deployment/`](./deployment)     | Environments, deploy process, rollback, monitoring             |

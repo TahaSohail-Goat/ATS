@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 /**
  * Homepage — server component. Sections follow the story arc in
- * docs/website-design-brief.md: who → what → built → trust → how → CTA.
+ * docs/frontend/website-design-brief.md: who → what → built → trust → how → CTA.
  */
 export default function HomePage() {
   return (

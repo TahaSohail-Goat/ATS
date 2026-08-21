@@ -6,6 +6,11 @@ build/
 out/
 coverage/
 .turbo/
+# Playwright artifacts
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
 *.log
 .env
 .env.local

@@ -1,6 +1,6 @@
 /**
  * Placeholder service data — replace with ATS's real offerings (TBD,
- * see docs/website-design-brief.md). Shape is the contract for both the
+ * see docs/frontend/website-design-brief.md). Shape is the contract for both the
  * Home services overview and the /services page.
  */
 export interface Service {
