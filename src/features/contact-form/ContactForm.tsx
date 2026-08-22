@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
+import {
+  getCountries,
+  getCountryCallingCode,
+  isValidPhoneNumber,
+  type CountryCode as PhoneCountryCode,
+} from 'libphonenumber-js';
 
-// ── Services ──────────────────────────────────────────────────────────────────
+// ── Services ───────────────────────────────────────────────────────────────────
 const SERVICES = [
   { id: 's01', label: 'AI Solutions & Integration' },
   { id: 's02', label: 'Custom Software Development' },
@@ -13,42 +19,55 @@ const SERVICES = [
   { id: 's08', label: 'Quality Engineering & Support' },
 ] as const;
 
-// ── Country Codes ─────────────────────────────────────────────────────────────
-const COUNTRY_CODES = [
-  { code: '+1', flag: '🇺🇸', name: 'US/CA', digits: [10, 10] },
-  { code: '+44', flag: '🇬🇧', name: 'UK', digits: [10, 10] },
-  { code: '+92', flag: '🇵🇰', name: 'Pakistan', digits: [10, 10] },
-  { code: '+91', flag: '🇮🇳', name: 'India', digits: [10, 10] },
-  { code: '+971', flag: '🇦🇪', name: 'UAE', digits: [9, 9] },
-  { code: '+966', flag: '🇸🇦', name: 'Saudi', digits: [9, 9] },
-  { code: '+974', flag: '🇶🇦', name: 'Qatar', digits: [8, 8] },
-  { code: '+965', flag: '🇰🇼', name: 'Kuwait', digits: [8, 8] },
-  { code: '+973', flag: '🇧🇭', name: 'Bahrain', digits: [8, 8] },
-  { code: '+968', flag: '🇴🇲', name: 'Oman', digits: [8, 8] },
-  { code: '+49', flag: '🇩🇪', name: 'Germany', digits: [7, 11] },
-  { code: '+33', flag: '🇫🇷', name: 'France', digits: [9, 9] },
-  { code: '+39', flag: '🇮🇹', name: 'Italy', digits: [9, 11] },
-  { code: '+34', flag: '🇪🇸', name: 'Spain', digits: [9, 9] },
-  { code: '+31', flag: '🇳🇱', name: 'Netherlands', digits: [9, 9] },
-  { code: '+61', flag: '🇦🇺', name: 'Australia', digits: [9, 9] },
-  { code: '+81', flag: '🇯🇵', name: 'Japan', digits: [10, 11] },
-  { code: '+86', flag: '🇨🇳', name: 'China', digits: [11, 11] },
-  { code: '+82', flag: '🇰🇷', name: 'South Korea', digits: [9, 10] },
-  { code: '+55', flag: '🇧🇷', name: 'Brazil', digits: [10, 11] },
-  { code: '+27', flag: '🇿🇦', name: 'South Africa', digits: [9, 9] },
-  { code: '+20', flag: '🇪🇬', name: 'Egypt', digits: [10, 10] },
-  { code: '+234', flag: '🇳🇬', name: 'Nigeria', digits: [10, 10] },
-  { code: '+880', flag: '🇧🇩', name: 'Bangladesh', digits: [10, 10] },
-  { code: '+94', flag: '🇱🇰', name: 'Sri Lanka', digits: [9, 9] },
-] as const;
+// ── Dynamic Country Helpers ────────────────────────────────────────────────────
 
-type CountryCode = typeof COUNTRY_CODES[number];
+/** ISO alpha-2 → flag emoji (uses Unicode Regional Indicator Symbols) */
+function isoToFlag(iso: string): string {
+  return iso
+    .toUpperCase()
+    .replace(/./g, (ch) => String.fromCodePoint(0x1f1e0 - 65 + ch.charCodeAt(0)));
+}
+
+// Countries to pin at the top of the list for convenience
+const PINNED: PhoneCountryCode[] = ['PK', 'US', 'GB', 'AE', 'SA', 'IN'];
+
+interface CountryEntry {
+  iso: PhoneCountryCode;
+  dialCode: string;
+  name: string;
+  flag: string;
+}
+
+/** Build the full sorted country list once at module load time */
+function buildCountryList(): CountryEntry[] {
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+
+  const all = getCountries()
+    .map((iso) => ({
+      iso,
+      dialCode: '+' + getCountryCallingCode(iso),
+      name: regionNames.of(iso) ?? iso,
+      flag: isoToFlag(iso),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  // Split pinned (preserve order) and the rest
+  const pinned = PINNED.map((iso) => all.find((c) => c.iso === iso)).filter(
+    Boolean,
+  ) as CountryEntry[];
+  const rest = all.filter((c) => !PINNED.includes(c.iso));
+
+  return [...pinned, ...rest];
+}
+
+const COUNTRY_LIST = buildCountryList();
+const DEFAULT_ISO: PhoneCountryCode = 'PK';
 
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
   name: string;
   email: string;
-  dialCode: string;
+  iso: PhoneCountryCode;
   phone: string;
   services: string[];
   message: string;
@@ -56,16 +75,18 @@ type FormState = {
 
 type FieldErrors = Partial<Record<'name' | 'email' | 'phone' | 'services' | 'message', string>>;
 
-function getCountry(code: string): CountryCode {
-  return COUNTRY_CODES.find((c) => c.code === code) ?? COUNTRY_CODES[0];
-}
-
-function validatePhone(dialCode: string, phone: string): string | undefined {
-  if (!phone.trim()) return undefined; // phone is optional
-  const digits = phone.replace(/\D/g, '');
-  const [min, max] = getCountry(dialCode).digits;
-  if (digits.length < min || digits.length > max) {
-    return `Phone for this country should be ${min === max ? min : `${min}–${max}`} digits.`;
+function validatePhone(iso: PhoneCountryCode, phone: string): string | undefined {
+  if (!phone.trim()) return undefined; // optional field
+  const raw = phone.replace(/\D/g, '');
+  if (!raw) return undefined;
+  try {
+    const valid = isValidPhoneNumber(raw, iso);
+    if (!valid) {
+      const callingCode = getCountryCallingCode(iso);
+      return `Invalid number for +${callingCode}. Check the digit count and format.`;
+    }
+  } catch {
+    return 'Could not validate this number. Please double-check it.';
   }
   return undefined;
 }
@@ -81,7 +102,7 @@ function validate(data: FormState): FieldErrors {
     errors.email = 'Please enter a valid email address.';
   }
 
-  const phoneErr = validatePhone(data.dialCode, data.phone);
+  const phoneErr = validatePhone(data.iso, data.phone);
   if (phoneErr) errors.phone = phoneErr;
 
   if (data.services.length === 0) {
@@ -97,16 +118,16 @@ function validate(data: FormState): FieldErrors {
   return errors;
 }
 
-// ── Shared input styles ───────────────────────────────────────────────────────
+// ── Shared input styles ────────────────────────────────────────────────────────
 const inputBase =
   'w-full rounded-xl border border-ats-line bg-ats-surface/60 px-4 py-3 text-sm text-ats-ink placeholder-ats-ink-muted/60 outline-none transition-all duration-200 focus:border-ats-brand/60 focus:ring-2 focus:ring-ats-brand/20';
 
-// ── Component ─────────────────────────────────────────────────────────────────
+// ── Component ──────────────────────────────────────────────────────────────────
 export function ContactForm() {
   const [form, setForm] = useState<FormState>({
     name: '',
     email: '',
-    dialCode: '+92',
+    iso: DEFAULT_ISO,
     phone: '',
     services: [],
     message: '',
@@ -114,8 +135,22 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [dialOpen, setDialOpen] = useState(false);
+  const [search, setSearch] = useState('');
 
-  // ── Field handlers ──────────────────────────────────────────────────────────
+  const selectedCountry = useMemo(
+    () => COUNTRY_LIST.find((c) => c.iso === form.iso) ?? COUNTRY_LIST[0],
+    [form.iso],
+  );
+
+  const filteredCountries = useMemo(() => {
+    if (!search.trim()) return COUNTRY_LIST;
+    const q = search.toLowerCase();
+    return COUNTRY_LIST.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.dialCode.includes(q) || c.iso.toLowerCase().includes(q),
+    );
+  }, [search]);
+
+  // ── Field handlers ───────────────────────────────────────────────────────────
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -125,16 +160,16 @@ export function ContactForm() {
   }
 
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
-    // Allow only digits, spaces, dashes, parentheses
-    const value = e.target.value.replace(/[^\d\s\-().+]/g, '');
+    const value = e.target.value.replace(/[^\d\s\-().]/g, '');
     setForm((prev) => ({ ...prev, phone: value }));
     if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
   }
 
-  function handleDialCode(code: string) {
-    setForm((prev) => ({ ...prev, dialCode: code, phone: '' }));
+  function handleSelectCountry(iso: PhoneCountryCode) {
+    setForm((prev) => ({ ...prev, iso, phone: '' }));
     setErrors((prev) => ({ ...prev, phone: undefined }));
     setDialOpen(false);
+    setSearch('');
   }
 
   function handleServiceToggle(label: string) {
@@ -147,7 +182,7 @@ export function ContactForm() {
     if (errors.services) setErrors((prev) => ({ ...prev, services: undefined }));
   }
 
-  // ── Submit ──────────────────────────────────────────────────────────────────
+  // ── Submit ───────────────────────────────────────────────────────────────────
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fieldErrors = validate(form);
@@ -157,7 +192,7 @@ export function ContactForm() {
     }
 
     const phoneStr = form.phone.trim()
-      ? `Phone: ${form.dialCode} ${form.phone}\n`
+      ? `Phone: ${selectedCountry.dialCode} ${form.phone}\n`
       : '';
     const servicesStr = `Services of Interest:\n${form.services.map((s) => `  • ${s}`).join('\n')}`;
 
@@ -165,13 +200,13 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n${phoneStr}\n${servicesStr}\n\nMessage:\n${form.message}`,
     );
-    window.location.href = `mailto:contact@ats.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:tsasolutions1@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
-    setForm({ name: '', email: '', dialCode: '+92', phone: '', services: [], message: '' });
+    setForm({ name: '', email: '', iso: DEFAULT_ISO, phone: '', services: [], message: '' });
     setErrors({});
   }
 
-  // ── Success state ───────────────────────────────────────────────────────────
+  // ── Success state ────────────────────────────────────────────────────────────
   if (submitted) {
     return (
       <div
@@ -190,14 +225,11 @@ export function ContactForm() {
     );
   }
 
-  const selectedCountry = getCountry(form.dialCode);
-
-  // ── Form ────────────────────────────────────────────────────────────────────
+  // ── Form ─────────────────────────────────────────────────────────────────────
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
-      {/* Name + Email row */}
+      {/* Name + Email */}
       <div className="grid gap-4 sm:grid-cols-2">
-        {/* Name */}
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ats-ink">
             Full Name <span className="text-ats-error" aria-hidden>*</span>
@@ -221,7 +253,6 @@ export function ContactForm() {
           )}
         </div>
 
-        {/* Email */}
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ats-ink">
             Email Address <span className="text-ats-error" aria-hidden>*</span>
@@ -246,30 +277,26 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Phone Number with dial code */}
+      {/* Phone with dynamic dial code */}
       <div>
         <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ats-ink">
-          Phone Number <span className="text-xs font-normal text-ats-ink-muted">(optional)</span>
+          Phone Number{' '}
+          <span className="text-xs font-normal text-ats-ink-muted">(optional)</span>
         </label>
         <div className="flex gap-2">
           {/* Dial Code Selector */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               type="button"
               id="dial-code-btn"
               aria-haspopup="listbox"
               aria-expanded={dialOpen}
-              aria-label={`Country code: ${selectedCountry.name} ${selectedCountry.code}`}
+              aria-label={`Country code: ${selectedCountry.name} ${selectedCountry.dialCode}`}
               onClick={() => setDialOpen((o) => !o)}
-              onBlur={(e) => {
-                if (!e.currentTarget.parentElement?.contains(e.relatedTarget as Node)) {
-                  setDialOpen(false);
-                }
-              }}
-              className="flex h-full min-w-[6.5rem] items-center gap-1.5 rounded-xl border border-ats-line bg-ats-surface/60 px-3 py-3 text-sm text-ats-ink transition-all duration-200 hover:border-ats-brand/60 focus:outline-none focus:ring-2 focus:ring-ats-brand/20"
+              className="flex h-full min-w-[7rem] items-center gap-1.5 rounded-xl border border-ats-line bg-ats-surface/60 px-3 py-3 text-sm text-ats-ink transition-all duration-200 hover:border-ats-brand/60 focus:outline-none focus:ring-2 focus:ring-ats-brand/20"
             >
-              <span aria-hidden>{selectedCountry.flag}</span>
-              <span className="font-mono font-medium">{selectedCountry.code}</span>
+              <span aria-hidden className="text-base leading-none">{selectedCountry.flag}</span>
+              <span className="font-mono font-medium">{selectedCountry.dialCode}</span>
               <ChevronDown
                 className={`ml-auto h-3.5 w-3.5 shrink-0 text-ats-ink-muted transition-transform duration-200 ${dialOpen ? 'rotate-180' : ''}`}
                 aria-hidden
@@ -278,47 +305,65 @@ export function ContactForm() {
 
             {/* Dropdown */}
             {dialOpen && (
-              <ul
-                role="listbox"
-                aria-label="Country dial codes"
-                className="absolute left-0 top-full z-50 mt-1.5 max-h-64 w-56 overflow-y-auto rounded-xl border border-ats-line bg-ats-surface shadow-ats-lifted"
-              >
-                {COUNTRY_CODES.map((c) => (
-                  <li key={c.code + c.name} role="option" aria-selected={c.code === form.dialCode}>
-                    <button
-                      type="button"
-                      onClick={() => handleDialCode(c.code)}
-                      className={`flex w-full items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-ats-brand/10 ${c.code === form.dialCode
-                          ? 'bg-ats-brand/10 font-medium text-ats-brand'
-                          : 'text-ats-ink'
-                        }`}
-                    >
-                      <span aria-hidden>{c.flag}</span>
-                      <span>{c.name}</span>
-                      <span className="ml-auto font-mono text-xs text-ats-ink-muted">{c.code}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              <div className="absolute left-0 top-full z-50 mt-1.5 w-64 rounded-xl border border-ats-line bg-ats-surface shadow-ats-lifted">
+                {/* Search */}
+                <div className="border-b border-ats-line p-2">
+                  <input
+                    type="text"
+                    placeholder="Search country or code..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full rounded-lg border border-ats-line bg-ats-surface/60 px-3 py-2 text-xs text-ats-ink placeholder-ats-ink-muted/60 outline-none focus:border-ats-brand/50 focus:ring-1 focus:ring-ats-brand/20"
+                    autoFocus
+                  />
+                </div>
+                <ul
+                  role="listbox"
+                  aria-label="Country dial codes"
+                  className="max-h-56 overflow-y-auto py-1"
+                >
+                  {filteredCountries.length === 0 ? (
+                    <li className="px-4 py-3 text-xs text-ats-ink-muted">No countries found.</li>
+                  ) : (
+                    filteredCountries.map((c) => (
+                      <li
+                        key={c.iso}
+                        role="option"
+                        aria-selected={c.iso === form.iso}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => handleSelectCountry(c.iso)}
+                          className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition-colors hover:bg-ats-brand/10 ${c.iso === form.iso ? 'bg-ats-brand/10 font-medium text-ats-brand' : 'text-ats-ink'}`}
+                        >
+                          <span aria-hidden className="text-base leading-none">{c.flag}</span>
+                          <span className="min-w-0 flex-1 truncate">{c.name}</span>
+                          <span className="ml-auto shrink-0 font-mono text-xs text-ats-ink-muted">
+                            {c.dialCode}
+                          </span>
+                        </button>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
             )}
           </div>
 
           {/* Phone input */}
-          <div className="flex-1">
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              autoComplete="tel-national"
-              placeholder={`${selectedCountry.digits[0]} digits`}
-              value={form.phone}
-              onChange={handlePhoneChange}
-              maxLength={15}
-              className={inputBase}
-              aria-invalid={!!errors.phone}
-              aria-describedby={errors.phone ? 'phone-error' : 'phone-hint'}
-            />
-          </div>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel-national"
+            placeholder="Enter phone number"
+            value={form.phone}
+            onChange={handlePhoneChange}
+            maxLength={15}
+            className={inputBase}
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? 'phone-error' : 'phone-hint'}
+          />
         </div>
         {errors.phone ? (
           <p id="phone-error" role="alert" className="mt-1.5 text-xs text-ats-error">
@@ -336,11 +381,7 @@ export function ContactForm() {
         <p className="mb-3 text-sm font-medium text-ats-ink">
           Services of Interest <span className="text-ats-error" aria-hidden>*</span>
         </p>
-        <div
-          role="group"
-          aria-label="Services of interest"
-          className="grid gap-2.5 sm:grid-cols-2"
-        >
+        <div role="group" aria-label="Services of interest" className="grid gap-2.5 sm:grid-cols-2">
           {SERVICES.map((service) => {
             const checked = form.services.includes(service.label);
             return (
@@ -348,16 +389,15 @@ export function ContactForm() {
                 key={service.id}
                 htmlFor={service.id}
                 className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 text-sm transition-all duration-200 ${checked
-                    ? 'border-ats-brand/50 bg-ats-brand/8 text-ats-ink'
-                    : 'border-ats-line bg-ats-surface/40 text-ats-ink-muted hover:border-ats-brand/30 hover:bg-ats-surface/60 hover:text-ats-ink'
+                  ? 'border-ats-brand/50 bg-ats-brand/8 text-ats-ink'
+                  : 'border-ats-line bg-ats-surface/40 text-ats-ink-muted hover:border-ats-brand/30 hover:bg-ats-surface/60 hover:text-ats-ink'
                   }`}
               >
-                {/* Custom checkbox */}
                 <span
                   aria-hidden
-                  className={`mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-all duration-200 ${checked
-                      ? 'border-ats-brand bg-ats-brand'
-                      : 'border-ats-line bg-ats-surface'
+                  className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all duration-200 ${checked
+                    ? 'border-ats-brand bg-ats-brand'
+                    : 'border-ats-line bg-ats-surface'
                     }`}
                 >
                   {checked && <Check className="h-2.5 w-2.5 text-white" aria-hidden />}
@@ -419,12 +459,13 @@ export function ContactForm() {
         Send Message
         <span
           aria-hidden
-          className="absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500 ease-out group-hover:translate-x-full skew-x-12"
+          className="absolute inset-0 -translate-x-full skew-x-12 bg-white/10 transition-transform duration-500 ease-out group-hover:translate-x-full"
         />
       </button>
 
       <p className="text-center text-xs text-ats-ink-muted">
-        <span className="text-ats-error">*</span> Required fields. We reply to every message within one business day.
+        <span className="text-ats-error">*</span> Required fields. We reply to every message
+        within one business day.
       </p>
     </form>
   );

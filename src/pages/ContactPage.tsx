@@ -20,7 +20,7 @@ export function ContactPage() {
         </Reveal>
         <Reveal delay={0.15}>
           <p className="mt-4 text-lg leading-relaxed text-ats-ink-muted">
-            Have a project in mind, need technical advisory, or want to explore working together? Send us a message — we reply to every conversation.
+            Have a project in mind, need technical advisory, or want to explore working together? Send us a message; we reply to every conversation.
           </p>
         </Reveal>
         <Reveal delay={0.2} className="mt-10 rounded-3xl border border-ats-line bg-ats-surface/70 p-8 sm:p-10 shadow-ats-lifted">

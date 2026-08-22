@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "country-flag-emoji-polyfill": "^0.1.10",
     "framer-motion": "^12.4.7",
+    "libphonenumber-js": "^1.13.11",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
