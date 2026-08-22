@@ -1,43 +1,41 @@
 # AGENTS.md — ATS Portfolio Instructions
 
-This repository currently contains the ATS public portfolio/company website.
-The frontend is the product in this phase. Do not add backend, database,
-authentication, queues, or other runtime services unless the user requests a
-concrete product requirement and an ADR is written first.
+This repository contains the ATS public portfolio/company website.
+The frontend is a visual, client-side SPA built with Vite and React. Do not add backend, database, authentication, queues, or other runtime services unless the user requests a concrete product requirement and an ADR is written first.
 
 ## Technology stack
 
-- Frontend: Next.js App Router, React, TypeScript, Tailwind CSS, Framer Motion
-- Forms: native HTML POST to an optional hosted form provider
-- Shared UI: `packages/ui`
-- Monorepo tooling: pnpm workspaces + Turborepo
-- Testing: Vitest and Playwright
+- **Core:** Vite 6, React 19, TypeScript
+- **Routing:** React Router 7 (`react-router-dom`)
+- **Styling:** Tailwind CSS, PostCSS
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Design Tokens:** `src/ui/tokens/`
+- **Package Manager:** standard `npm`
 
 ## Repository map
 
 ```
-apps/
-  web/        Next.js portfolio/company website
-packages/
-  ui/         Shared design primitives and ATS tokens
-  config/     Shared ESLint/TypeScript configuration
-docs/         Product, frontend, security, testing, and deployment guidance
+src/
+  pages/        Page views (Home, About, Services, Projects, Careers, Contact, NotFound)
+  components/   Shared layout and motion components (Header, Footer, Aurora, ProjectCard, etc.)
+  features/     Domain-specific feature blocks (Home sections, ContactForm)
+  ui/           Design tokens, primitives (Button, Card, Badge, Input), and utilities (cn)
+  data/         Static portfolio content (projects, services, navigation, site info)
+  styles/       Global CSS, Tailwind layers, and design token CSS variables
+  lib/          Motion utilities and theme store
+public/         Static brand assets, logos, and icons
+docs/           Design system, architecture, product, and development guides
 ```
 
 ## Architecture rules
 
-- App Router only. Server Components by default.
-- Static project/service content belongs in `apps/web/src/data`.
-- Reusable brand primitives belong in `packages/ui`; page compositions belong
-  in `apps/web`.
-- Use semantic design tokens, not hardcoded brand hex values.
-- Keep client boundaries small. Avoid global scroll listeners, per-card pointer
-  handlers, scroll-linked parallax, continuous SVG grain, and stacked large
-  blur layers. See `docs/frontend/animation-guidelines.md`.
-- The contact form may use `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` to POST to a
-  hosted provider. It must not persist visitor data locally.
-- Every route needs metadata, accessible labels/focus states, responsive
-  layouts, and reduced-motion fallbacks.
+- React SPA with React Router.
+- Static project/service content belongs in `src/data/`.
+- Reusable brand primitives belong in `src/ui/`.
+- Use semantic design tokens (`--ats-*`), not hardcoded brand hex values.
+- Keep animation boundaries purposeful. Avoid heavy continuous SVG grain or excessive blur layers.
+- Every route needs accessible labels, focus states, responsive layouts, and reduced-motion fallbacks.
 
 ## Change protocol
 
@@ -46,14 +44,6 @@ Understand → Inspect → Plan → Implement → Test → Review → Document.
 Run the relevant checks after changes:
 
 ```bash
-pnpm lint
-pnpm format:check
-pnpm typecheck
-pnpm test
-pnpm test:e2e
-pnpm build
+npm run typecheck
+npm run build
 ```
-
-If persistent leads, admin tools, email automation, CRM integration, accounts,
-or authenticated products become requirements, stop and document the new
-architecture before implementing it.

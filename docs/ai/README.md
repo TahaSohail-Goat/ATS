@@ -1,7 +1,6 @@
 # AI Agent Documentation
 
-This section expands the authoritative root `AGENTS.md` for the current
-frontend-first portfolio.
+This section expands the authoritative root `AGENTS.md` for the ATS portfolio.
 
 - [`agent-workflow.md`](./agent-workflow.md)
 - [`coding-rules.md`](./coding-rules.md)
@@ -13,22 +12,10 @@ frontend-first portfolio.
 
 ## Quick answers
 
-> **What is this project?** ATS's Next.js portfolio/company website in
-> `apps/web`, with shared brand primitives in `packages/ui`.
+> **What is this project?** ATS's React portfolio/company website built with Vite in `src/`, with shared brand primitives in `src/ui/`.
 
-> **Where should a feature be implemented?** Page-specific UI belongs under
-> `apps/web/src/features`; reusable brand primitives belong in `packages/ui`.
-> Static project/service copy belongs in `apps/web/src/data`.
+> **Where should a feature be implemented?** Page-specific views belong under `src/pages/` and `src/features/`; reusable brand primitives belong in `src/ui/`. Static project/service copy belongs in `src/data/`.
 
-> **What is the contact boundary?** The native contact form optionally POSTs to
-> `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`. There is no local API or database.
+> **Which checks should I run?** `npm run typecheck && npm run build`.
 
-> **Which tests should I run?** `pnpm lint && pnpm typecheck && pnpm test`
-> minimum; add `pnpm test:e2e` for user-facing flows.
-
-> **How should motion be added?** Prefer the existing reveal primitives and
-> CSS-only effects. Avoid global scroll listeners, per-card pointer handlers,
-> continuous filter repaints, and scroll-linked parallax.
-
-> **When is an ADR required?** Before adding an API, database, authentication,
-> queue, external runtime service, or changing deployment architecture.
+> **How should motion be added?** Prefer the existing reveal primitives (`Reveal`, `Stagger`, `RevealText`) and CSS-only effects.

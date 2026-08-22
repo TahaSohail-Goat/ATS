@@ -6,15 +6,10 @@ All notable changes to this project are documented here.
 
 ### Changed
 
-- Simplified the repository to the frontend-first ATS portfolio: `apps/web`,
-  `packages/ui`, and shared config remain; the unused Express API, Prisma,
-  PostgreSQL, Docker, and backend-only packages were removed.
-- Replaced the local contact API/database flow with an optional native POST to a
-  hosted form provider configured by `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`.
-- Reduced client/scroll work by removing global scroll progress, per-card
-  pointer listeners, scroll-linked parallax, count-up loops, continuous grain,
-  and animated interior-page auroras.
-- Made font loading explicit with declared weights, fallback metrics, no
-  synthetic font weights, and a non-preloaded below-the-fold mono face.
-- Updated CI, deployment, setup, architecture, security, and agent guidance
-  for the frontend-only phase.
+- Migrated from Next.js monorepo to a clean, fast standalone **Vite + React 19 + React Router** SPA architecture.
+- Removed unused backend API, Prisma, PostgreSQL, Docker, and monorepo tooling (`pnpm`, `turbo`).
+- Merged UI components and design tokens directly into `src/ui/`.
+- Replaced on-demand SSR route compilation with instant 0ms client-side transitions via React Router.
+- Restored and standardized Google Fonts typography (`Inter` & `JetBrains Mono`).
+- Synchronized headline gradient reveals to eliminate delayed text appearance.
+- Upgraded package manager workflow to standard `npm`.

@@ -3,23 +3,26 @@
 ## Prerequisites
 
 - Node.js >= 20
-- pnpm >= 9 (`corepack enable` recommended)
+- npm >= 9
 
 ## Install and run
 
 ```bash
 git clone <repository-url>
 cd ats
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
-The website runs at http://localhost:3000.
+The website runs at http://localhost:3000 with instant Hot Module Replacement (HMR).
 
-## Optional contact submissions
+## Commands
 
-Copy `.env.example` to `apps/web/.env.local` and set
-`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` to the endpoint supplied by your hosted
-form provider. Leave it empty when working only on the visual portfolio.
+```bash
+npm run dev        # start local development server (Vite)
+npm run build      # compile production bundle to dist/
+npm run preview    # preview production build locally
+npm run typecheck  # verify TypeScript types
+```
 
-No Docker, PostgreSQL, Prisma, API process, or database migration is required.
+No Docker, PostgreSQL, Prisma, backend processes, or database migrations are required.

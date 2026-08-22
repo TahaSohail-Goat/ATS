@@ -13,17 +13,10 @@ or assets. Do not include real visitor data or secrets in a report.
 
 ## Scope
 
-This policy covers the public Next.js website, shared UI package, build
-configuration, CI workflows, and deployment configuration. Third-party hosted
-form providers are outside this repository's control; report provider-specific
-issues to the respective vendor.
+This policy covers the public React website, build configuration, CI workflows,
+and static hosting configuration.
 
 ## Supported Versions
 
 Only the `main` branch and latest deployed production version are actively
 supported with security fixes.
-
-## Engineering Baseline
-
-See [`docs/security/security-policy.md`](./docs/security/security-policy.md)
-for the internal website security policy.

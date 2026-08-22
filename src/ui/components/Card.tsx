@@ -11,8 +11,7 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
 }
 
 /**
- * Neutral surface container. Visual treatment (hover glow, gradients) that
- * is specific to the marketing site belongs in apps/web, not here.
+ * Neutral surface container.
  */
 export const Card = forwardRef<HTMLElement, CardProps>(function Card(
   { as, interactive = false, flush = false, className = '', children, ...props },

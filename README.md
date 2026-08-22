@@ -1,70 +1,52 @@
 # ATS — AI Software and Technology Solutions
 
-ATS is a modern Next.js portfolio and company website for a software studio.
-The current phase is intentionally frontend-first: static pages, project data,
-brand design, animations, and an optional hosted contact-form endpoint.
+ATS is a modern React portfolio and company website for a software studio, built with **Vite**, **React 19**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **React Router**.
+
+The architecture is lightweight and frontend-first: instant client-side page transitions, brand design, smooth animations, and zero server or database complexity.
 
 > AI coding agents: read [`AGENTS.md`](./AGENTS.md) before changing the repo.
 
 ## What's here
 
-| Area                                   | Purpose                                                   |
-| -------------------------------------- | --------------------------------------------------------- |
-| [`apps/web`](./apps/web)               | Next.js App Router website                                |
-| [`packages/ui`](./packages/ui)         | Shared ATS design primitives and tokens                   |
-| [`packages/config`](./packages/config) | Shared TypeScript and ESLint config                       |
-| [`docs`](./docs)                       | Product, frontend, accessibility, and deployment guidance |
+| Area                    | Purpose                                                   |
+| ----------------------- | --------------------------------------------------------- |
+| [`src/`](./src)         | Application source code (pages, components, UI primitives) |
+| [`src/pages`](./src/pages)| Route pages (Home, About, Services, Projects, Careers, Contact, 404) |
+| [`src/ui`](./src/ui)    | Reusable design primitives, tokens, and components         |
+| [`src/data`](./src/data)| Static portfolio data (projects, services, testimonials)   |
+| [`public`](./public)    | Static assets (brand logo, icons)                         |
+| [`docs`](./docs)        | Product, architecture, design system, and development docs|
 
-There is deliberately no API server, database, Docker service, or ORM in this
-phase. The visual portfolio does not need them. The contact form can optionally
-POST to a hosted form provider configured with
-`NEXT_PUBLIC_CONTACT_FORM_ENDPOINT`.
-
-## Local setup
+## Local Setup
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
-Open http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000).
 
-To enable contact submissions, copy the example environment file and set a
-hosted form endpoint from a provider such as Formspree, Basin, or FormSubmit:
+## Common Commands
 
 ```bash
-cp .env.example apps/web/.env.local
+npm run dev        # Run the development server with instant HMR (Vite)
+npm run build      # Build optimized production bundle in dist/
+npm run preview    # Locally preview the production build
+npm run typecheck  # Typecheck TypeScript code
 ```
 
-Do not commit real endpoints or secrets. The endpoint is public by design and
-should be configured in the deployment platform.
+## Technology Stack
 
-## Common commands
+- **Framework & Bundler:** Vite 6
+- **UI & Runtime:** React 19, TypeScript
+- **Routing:** React Router 7 (SPA client-side navigation)
+- **Styling:** Tailwind CSS, PostCSS, Autoprefixer
+- **Motion & Icons:** Framer Motion, Lucide React
+- **Typography:** Inter & JetBrains Mono
 
-```bash
-pnpm dev          # run the website in development
-pnpm build        # build the website
-pnpm lint         # lint workspace packages
-pnpm typecheck    # typecheck workspace packages
-pnpm test         # unit tests
-pnpm test:e2e     # Playwright browser tests
-pnpm format       # format source and documentation
-```
+## Architecture Guidelines
 
-## Frontend architecture
-
-The site uses Next.js App Router, TypeScript, Tailwind CSS, Framer Motion,
-Lucide icons, and the shared `@ats/ui` package. Server Components are the
-default. Client boundaries are reserved for navigation, theme selection, and
-purposeful reveal choreography.
-
-See [`docs/frontend/design-system.md`](./docs/frontend/design-system.md),
-[`docs/frontend/website-design-brief.md`](./docs/frontend/website-design-brief.md),
-and [`docs/frontend/animation-guidelines.md`](./docs/frontend/animation-guidelines.md).
-
-## Future products
-
-If ATS later needs persistent leads, an admin dashboard, email automation, CRM
-integration, accounts, or authenticated products, add that capability as a
-separate architectural decision. Do not reintroduce an API/database merely to
-support the static portfolio.
+- Keep client components focused and lightweight.
+- Use semantic design tokens (`--ats-*`) rather than hardcoded hex values.
+- Respect reduced motion and accessibility standards (`aria-*`, keyboard navigation).
+- All static content lives in `src/data/`.

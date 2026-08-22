@@ -1,11 +1,6 @@
 # Debugging
 
-- Run `pnpm dev` from the repository root and inspect the Next.js terminal for
-  Server Component/build errors.
-- Use browser DevTools Performance and Rendering panels to investigate scroll
-  jank; first check for new global scroll listeners, layout reads, filters, or
-  large fixed layers.
-- Use `pnpm typecheck` for TypeScript issues, `pnpm lint` for code rules, and
-  `pnpm test:e2e` for route/responsive/browser behaviour.
-- Contact delivery belongs to the configured hosted form provider. Debug its
-  endpoint and dashboard rather than looking for a local API/database.
+- Run `npm run dev` from the repository root to start Vite with instant HMR and terminal diagnostics.
+- Use browser DevTools Performance and Rendering panels to investigate animations and layout shifts.
+- Use `npm run typecheck` to verify TypeScript types across all components and pages.
+- The contact form opens the client's email program directly via `mailto:` with pre-filled content.
