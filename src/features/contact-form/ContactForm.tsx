@@ -21,13 +21,6 @@ const SERVICES = [
 
 // ── Dynamic Country Helpers ────────────────────────────────────────────────────
 
-/** ISO alpha-2 → flag emoji (uses Unicode Regional Indicator Symbols) */
-function isoToFlag(iso: string): string {
-  return iso
-    .toUpperCase()
-    .replace(/./g, (ch) => String.fromCodePoint(0x1f1e0 - 65 + ch.charCodeAt(0)));
-}
-
 // Countries to pin at the top of the list for convenience
 const PINNED: PhoneCountryCode[] = ['PK', 'US', 'GB', 'AE', 'SA', 'IN'];
 
@@ -35,7 +28,6 @@ interface CountryEntry {
   iso: PhoneCountryCode;
   dialCode: string;
   name: string;
-  flag: string;
 }
 
 /** Build the full sorted country list once at module load time */
@@ -47,7 +39,6 @@ function buildCountryList(): CountryEntry[] {
       iso,
       dialCode: '+' + getCountryCallingCode(iso),
       name: regionNames.of(iso) ?? iso,
-      flag: isoToFlag(iso),
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -339,7 +330,10 @@ export function ContactForm() {
               onClick={() => setDialOpen((o) => !o)}
               className="flex h-full min-w-[7rem] items-center gap-1.5 rounded-xl border border-ats-line bg-ats-surface/60 px-3 py-3 text-sm text-ats-ink transition-all duration-200 hover:border-ats-brand/60 focus:outline-none focus:ring-2 focus:ring-ats-brand/20"
             >
-              <span aria-hidden className="country-flag text-base leading-none">{selectedCountry.flag}</span>
+              <span
+                aria-hidden
+                className={`fi fi-${selectedCountry.iso.toLowerCase()} shrink-0 rounded-[2px]`}
+              />
               <span className="font-mono font-medium">{selectedCountry.dialCode}</span>
               <ChevronDown
                 className={`ml-auto h-3.5 w-3.5 shrink-0 text-ats-ink-muted transition-transform duration-200 ${dialOpen ? 'rotate-180' : ''}`}
@@ -380,7 +374,10 @@ export function ContactForm() {
                           onClick={() => handleSelectCountry(c.iso)}
                           className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition-colors hover:bg-ats-brand/10 ${c.iso === form.iso ? 'bg-ats-brand/10 font-medium text-ats-brand' : 'text-ats-ink'}`}
                         >
-                          <span aria-hidden className="country-flag text-base leading-none">{c.flag}</span>
+                          <span
+                            aria-hidden
+                            className={`fi fi-${c.iso.toLowerCase()} shrink-0 rounded-[2px]`}
+                          />
                           <span className="min-w-0 flex-1 truncate">{c.name}</span>
                           <span className="ml-auto shrink-0 font-mono text-xs text-ats-ink-muted">
                             {c.dialCode}

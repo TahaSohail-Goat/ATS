@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
-import flagsFontUrl from 'country-flag-emoji-polyfill/dist/TwemojiCountryFlags.woff2?url';
 import { App } from './App';
 import './styles/globals.css';
-
-// Render country flag emojis on platforms without native support (e.g. Windows).
-polyfillCountryFlagEmojis('Twemoji Country Flags', flagsFontUrl);
+import 'flag-icons/css/flag-icons.min.css';
 
 // Initialize theme from localStorage or system preference
 const stored = localStorage.getItem('ats-theme');
