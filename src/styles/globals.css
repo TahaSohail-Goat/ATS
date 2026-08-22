@@ -12,15 +12,20 @@
   --font-mono: 'JetBrains Mono', 'Twemoji Country Flags', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+@layer components {
+  /* Country flags render through the Twemoji webfont on Windows (see main.tsx). */
+  .country-flag {
+    font-family: 'Twemoji Country Flags', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     /* Sticky header height — anchored sections stop below it. */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  body {
+  }  body {
     @apply bg-ats-canvas text-ats-ink antialiased;
     font-family: var(--font-inter);
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
