@@ -15,31 +15,31 @@ const SERVICES = [
 
 // ── Country Codes ─────────────────────────────────────────────────────────────
 const COUNTRY_CODES = [
-  { code: '+1',   flag: '🇺🇸', name: 'US/CA',    digits: [10, 10] },
-  { code: '+44',  flag: '🇬🇧', name: 'UK',        digits: [10, 10] },
-  { code: '+92',  flag: '🇵🇰', name: 'Pakistan',  digits: [10, 10] },
-  { code: '+91',  flag: '🇮🇳', name: 'India',     digits: [10, 10] },
-  { code: '+971', flag: '🇦🇪', name: 'UAE',       digits: [9,  9]  },
-  { code: '+966', flag: '🇸🇦', name: 'Saudi',     digits: [9,  9]  },
-  { code: '+974', flag: '🇶🇦', name: 'Qatar',     digits: [8,  8]  },
-  { code: '+965', flag: '🇰🇼', name: 'Kuwait',    digits: [8,  8]  },
-  { code: '+973', flag: '🇧🇭', name: 'Bahrain',   digits: [8,  8]  },
-  { code: '+968', flag: '🇴🇲', name: 'Oman',      digits: [8,  8]  },
-  { code: '+49',  flag: '🇩🇪', name: 'Germany',   digits: [7,  11] },
-  { code: '+33',  flag: '🇫🇷', name: 'France',    digits: [9,  9]  },
-  { code: '+39',  flag: '🇮🇹', name: 'Italy',     digits: [9,  11] },
-  { code: '+34',  flag: '🇪🇸', name: 'Spain',     digits: [9,  9]  },
-  { code: '+31',  flag: '🇳🇱', name: 'Netherlands', digits: [9, 9] },
-  { code: '+61',  flag: '🇦🇺', name: 'Australia', digits: [9,  9]  },
-  { code: '+81',  flag: '🇯🇵', name: 'Japan',     digits: [10, 11] },
-  { code: '+86',  flag: '🇨🇳', name: 'China',     digits: [11, 11] },
-  { code: '+82',  flag: '🇰🇷', name: 'South Korea', digits: [9, 10] },
-  { code: '+55',  flag: '🇧🇷', name: 'Brazil',    digits: [10, 11] },
-  { code: '+27',  flag: '🇿🇦', name: 'South Africa', digits: [9, 9] },
-  { code: '+20',  flag: '🇪🇬', name: 'Egypt',     digits: [10, 10] },
-  { code: '+234', flag: '🇳🇬', name: 'Nigeria',   digits: [10, 10] },
+  { code: '+1', flag: '🇺🇸', name: 'US/CA', digits: [10, 10] },
+  { code: '+44', flag: '🇬🇧', name: 'UK', digits: [10, 10] },
+  { code: '+92', flag: '🇵🇰', name: 'Pakistan', digits: [10, 10] },
+  { code: '+91', flag: '🇮🇳', name: 'India', digits: [10, 10] },
+  { code: '+971', flag: '🇦🇪', name: 'UAE', digits: [9, 9] },
+  { code: '+966', flag: '🇸🇦', name: 'Saudi', digits: [9, 9] },
+  { code: '+974', flag: '🇶🇦', name: 'Qatar', digits: [8, 8] },
+  { code: '+965', flag: '🇰🇼', name: 'Kuwait', digits: [8, 8] },
+  { code: '+973', flag: '🇧🇭', name: 'Bahrain', digits: [8, 8] },
+  { code: '+968', flag: '🇴🇲', name: 'Oman', digits: [8, 8] },
+  { code: '+49', flag: '🇩🇪', name: 'Germany', digits: [7, 11] },
+  { code: '+33', flag: '🇫🇷', name: 'France', digits: [9, 9] },
+  { code: '+39', flag: '🇮🇹', name: 'Italy', digits: [9, 11] },
+  { code: '+34', flag: '🇪🇸', name: 'Spain', digits: [9, 9] },
+  { code: '+31', flag: '🇳🇱', name: 'Netherlands', digits: [9, 9] },
+  { code: '+61', flag: '🇦🇺', name: 'Australia', digits: [9, 9] },
+  { code: '+81', flag: '🇯🇵', name: 'Japan', digits: [10, 11] },
+  { code: '+86', flag: '🇨🇳', name: 'China', digits: [11, 11] },
+  { code: '+82', flag: '🇰🇷', name: 'South Korea', digits: [9, 10] },
+  { code: '+55', flag: '🇧🇷', name: 'Brazil', digits: [10, 11] },
+  { code: '+27', flag: '🇿🇦', name: 'South Africa', digits: [9, 9] },
+  { code: '+20', flag: '🇪🇬', name: 'Egypt', digits: [10, 10] },
+  { code: '+234', flag: '🇳🇬', name: 'Nigeria', digits: [10, 10] },
   { code: '+880', flag: '🇧🇩', name: 'Bangladesh', digits: [10, 10] },
-  { code: '+94',  flag: '🇱🇰', name: 'Sri Lanka', digits: [9,  9]  },
+  { code: '+94', flag: '🇱🇰', name: 'Sri Lanka', digits: [9, 9] },
 ] as const;
 
 type CountryCode = typeof COUNTRY_CODES[number];
@@ -184,7 +184,7 @@ export function ContactForm() {
         <p className="font-semibold text-ats-ink">Message queued!</p>
         <p className="text-sm leading-relaxed text-ats-ink-muted">
           Your email client should have opened with your message pre-filled. We reply to every
-          message — usually within one business day.
+          message usually within one business day.
         </p>
       </div>
     );
@@ -288,11 +288,10 @@ export function ContactForm() {
                     <button
                       type="button"
                       onClick={() => handleDialCode(c.code)}
-                      className={`flex w-full items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-ats-brand/10 ${
-                        c.code === form.dialCode
+                      className={`flex w-full items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-ats-brand/10 ${c.code === form.dialCode
                           ? 'bg-ats-brand/10 font-medium text-ats-brand'
                           : 'text-ats-ink'
-                      }`}
+                        }`}
                     >
                       <span aria-hidden>{c.flag}</span>
                       <span>{c.name}</span>
@@ -327,7 +326,7 @@ export function ContactForm() {
           </p>
         ) : (
           <p id="phone-hint" className="mt-1.5 text-xs text-ats-ink-muted">
-            Enter digits only — no spaces or dashes required.
+            Enter digits only no spaces or dashes required.
           </p>
         )}
       </div>
@@ -348,20 +347,18 @@ export function ContactForm() {
               <label
                 key={service.id}
                 htmlFor={service.id}
-                className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 text-sm transition-all duration-200 ${
-                  checked
+                className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 text-sm transition-all duration-200 ${checked
                     ? 'border-ats-brand/50 bg-ats-brand/8 text-ats-ink'
                     : 'border-ats-line bg-ats-surface/40 text-ats-ink-muted hover:border-ats-brand/30 hover:bg-ats-surface/60 hover:text-ats-ink'
-                }`}
+                  }`}
               >
                 {/* Custom checkbox */}
                 <span
                   aria-hidden
-                  className={`mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-all duration-200 ${
-                    checked
+                  className={`mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded border transition-all duration-200 ${checked
                       ? 'border-ats-brand bg-ats-brand'
                       : 'border-ats-line bg-ats-surface'
-                  }`}
+                    }`}
                 >
                   {checked && <Check className="h-2.5 w-2.5 text-white" aria-hidden />}
                 </span>
