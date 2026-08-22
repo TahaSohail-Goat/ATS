@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
+import { Check, ChevronDown, LoaderCircle } from 'lucide-react';
 import {
   getCountries,
   getCountryCallingCode,
@@ -63,6 +63,8 @@ function buildCountryList(): CountryEntry[] {
 const COUNTRY_LIST = buildCountryList();
 const DEFAULT_ISO: PhoneCountryCode = 'PK';
 
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/tsasolutions1@gmail.com';
+
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
   name: string;
@@ -118,6 +120,16 @@ function validate(data: FormState): FieldErrors {
   return errors;
 }
 
+function buildMailtoHref(data: FormState, dialCode: string): string {
+  const phoneStr = data.phone.trim() ? `Phone: ${dialCode} ${data.phone}\n` : '';
+  const servicesStr = `Services of Interest:\n${data.services.map((s) => `  • ${s}`).join('\n')}`;
+  const subject = encodeURIComponent(`Contact from ${data.name}`);
+  const body = encodeURIComponent(
+    `Name: ${data.name}\nEmail: ${data.email}\n${phoneStr}\n${servicesStr}\n\nMessage:\n${data.message}`,
+  );
+  return `mailto:tsasolutions1@gmail.com?subject=${subject}&body=${body}`;
+}
+
 // ── Shared input styles ────────────────────────────────────────────────────────
 const inputBase =
   'w-full rounded-xl border border-ats-line bg-ats-surface/60 px-4 py-3 text-sm text-ats-ink placeholder-ats-ink-muted/60 outline-none transition-all duration-200 focus:border-ats-brand/60 focus:ring-2 focus:ring-ats-brand/20';
@@ -133,7 +145,7 @@ export function ContactForm() {
     message: '',
   });
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [dialOpen, setDialOpen] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -183,31 +195,47 @@ export function ContactForm() {
   }
 
   // ── Submit ───────────────────────────────────────────────────────────────────
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === 'sending') return;
+
     const fieldErrors = validate(form);
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       return;
     }
 
-    const phoneStr = form.phone.trim()
-      ? `Phone: ${selectedCountry.dialCode} ${form.phone}\n`
-      : '';
-    const servicesStr = `Services of Interest:\n${form.services.map((s) => `  • ${s}`).join('\n')}`;
-
-    const subject = encodeURIComponent(`Contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n${phoneStr}\n${servicesStr}\n\nMessage:\n${form.message}`,
-    );
-    window.location.href = `mailto:tsasolutions1@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setForm({ name: '', email: '', iso: DEFAULT_ISO, phone: '', services: [], message: '' });
-    setErrors({});
+    setStatus('sending');
+    try {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New project inquiry from ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: form.email,
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : 'Not provided',
+          Services: form.services.join(', '),
+          Message: form.message,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || data.success !== 'true') {
+        throw new Error(data.message || 'Send failed');
+      }
+      setStatus('sent');
+      setForm({ name: '', email: '', iso: DEFAULT_ISO, phone: '', services: [], message: '' });
+      setErrors({});
+    } catch {
+      setStatus('error');
+    }
   }
 
   // ── Success state ────────────────────────────────────────────────────────────
-  if (submitted) {
+  if (status === 'sent') {
     return (
       <div
         role="status"
@@ -216,10 +244,9 @@ export function ContactForm() {
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ats-success/20 text-ats-success">
           <Check className="h-5 w-5" />
         </span>
-        <p className="font-semibold text-ats-ink">Message queued!</p>
+        <p className="font-semibold text-ats-ink">Message sent!</p>
         <p className="text-sm leading-relaxed text-ats-ink-muted">
-          Your email client should have opened with your message pre-filled. We reply to every
-          message usually within one business day.
+          Thank you for reaching out. We reply to every message usually within one business day.
         </p>
       </div>
     );
@@ -228,6 +255,23 @@ export function ContactForm() {
   // ── Form ─────────────────────────────────────────────────────────────────────
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+      {status === 'error' && (
+        <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ats-error/30 bg-ats-error/10 p-5">
+          <p className="text-sm font-semibold text-ats-error">
+            Your message could not be sent. Please try again.
+          </p>
+          <p className="text-sm leading-relaxed text-ats-ink-muted">
+            If the problem persists,{' '}
+            <a
+              href={buildMailtoHref(form, selectedCountry.dialCode)}
+              className="font-medium text-ats-brand underline underline-offset-2 hover:text-ats-brand-strong"
+            >
+              send it through your email app
+            </a>{' '}
+            instead.
+          </p>
+        </div>
+      )}
       {/* Name + Email */}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
@@ -454,9 +498,17 @@ export function ContactForm() {
       {/* Submit */}
       <button
         type="submit"
-        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ats-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ats-brand-strong hover:shadow-ats-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand"
+        disabled={status === 'sending'}
+        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ats-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ats-brand-strong hover:shadow-ats-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Send Message
+        {status === 'sending' ? (
+          <>
+            Sending...
+            <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden />
+          </>
+        ) : (
+          'Send Message'
+        )}
         <span
           aria-hidden
           className="absolute inset-0 -translate-x-full skew-x-12 bg-white/10 transition-transform duration-500 ease-out group-hover:translate-x-full"
