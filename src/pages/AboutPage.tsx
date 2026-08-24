@@ -1,4 +1,4 @@
-import { Compass, Eye, Handshake, Star, Target, TrendingUp, type LucideIcon } from 'lucide-react';
+import { Compass, Target } from 'lucide-react';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
@@ -6,21 +6,21 @@ import { Reveal } from '../components/motion/Reveal';
 import { Stagger } from '../components/motion/Stagger';
 import { SpotlightCard } from '../components/motion/SpotlightCard';
 import { Counter } from '../components/motion/Counter';
-import { values, processSteps, techStack } from '../data/site';
+import { TeamCard } from '../components/TeamCard';
+import { processSteps, techStack } from '../data/site';
 import { services } from '../data/services';
-
-const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
+import { team } from '../data/team';
 
 const PURPOSE = [
   {
     icon: Target,
     title: 'Our mission',
-    text: 'To apply serious engineering to real business problems — and to make advanced technology practical, reliable, and understandable for the teams we work with.',
+    text: 'To apply serious engineering to real business problems, making advanced technology practical, reliable, and understandable for the teams we work with.',
   },
   {
     icon: Compass,
     title: 'Our vision',
-    text: 'A region where ambitious companies can build world-class software without leaving — supported by local engineering talent and honest technical partnerships.',
+    text: 'A region where ambitious companies can build world-class software without leaving, supported by local engineering talent and honest technical partnerships.',
   },
 ];
 
@@ -37,7 +37,7 @@ export function AboutPage() {
         eyebrow="About ATS"
         title="A software studio"
         titleAccent="built by engineers"
-        description="ATS — AI Software & Technology Solutions — is a software company that partners with businesses to design, build, and modernize the systems they run on."
+        description="ATS (AI Software & Technology Solutions) is a software company that partners with businesses to design, build, and modernize the systems they run on."
       />
 
       <Section space="loose">
@@ -83,34 +83,18 @@ export function AboutPage() {
       </Section>
 
       <Section
-        eyebrow="How we work"
-        title="The principles behind"
-        titleAccent="our engineering"
+        eyebrow="Our team"
+        title="The people"
+        titleAccent="behind ATS"
+        description="A small team of engineers and builders who ship, review, and stand behind every system we hand over."
         tone="raised"
       >
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map((value, index) => {
-            const Icon = valueIcons[index] ?? Star;
-            return (
-              <Reveal key={value.title} asChild as="div" className="h-full">
-                <SpotlightCard
-                  as="article"
-                  className="group flex h-full flex-col rounded-4xl border border-ats-line bg-ats-surface/60 p-7 transition-[transform,border-color] duration-500 ease-ats-out hover:border-ats-brand/30 motion-safe:hover:-translate-y-1.5"
-                >
-                  <span
-                    aria-hidden
-                    className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-ats-line bg-ats-surface-raised text-ats-accent"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="font-semibold tracking-tighter2">{value.title}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-ats-ink-muted">
-                    {value.description}
-                  </p>
-                </SpotlightCard>
-              </Reveal>
-            );
-          })}
+          {team.map((member) => (
+            <Reveal key={member.name} asChild as="div" className="h-full">
+              <TeamCard member={member} />
+            </Reveal>
+          ))}
         </Stagger>
       </Section>
 
