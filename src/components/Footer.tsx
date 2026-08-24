@@ -9,7 +9,7 @@ const CAPABILITIES = [
   { href: '/services', label: 'Custom software' },
   { href: '/services', label: 'AI & machine learning' },
   { href: '/services', label: 'Cloud & infrastructure' },
-  { href: '/services', label: 'Technology consulting' },
+  { href: '/services', label: 'Game development' },
 ];
 
 /** Site footer */
@@ -93,12 +93,11 @@ export function Footer() {
           </span>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 text-xs text-ats-ink-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 text-xs text-ats-ink-muted">
           <p>
             © {new Date().getFullYear()} ATS — AI Software &amp; Technology Solutions. All rights
             reserved.
           </p>
-          <p>Built with React, TypeScript, and Tailwind CSS.</p>
         </div>
       </Container>
     </footer>
