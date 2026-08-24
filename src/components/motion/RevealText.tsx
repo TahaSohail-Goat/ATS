@@ -69,7 +69,7 @@ export function RevealText({
       {...trigger}
     >
       {parts.map((part, index) => (
-        <span key={index} className="inline-block">
+        <span key={index}>
           <span className="inline-block overflow-hidden pb-[0.14em]">
             <motion.span
               variants={phraseVariants}
