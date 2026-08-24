@@ -25,7 +25,7 @@ const PURPOSE = [
 ];
 
 const FACTS = [
-  { value: services.length, label: 'Practice areas' },
+  { value: services.length, label: 'Services offered' },
   { value: processSteps.length, label: 'Delivery stages' },
   { value: techStack.length, label: 'Core technologies', suffix: '+' },
 ];

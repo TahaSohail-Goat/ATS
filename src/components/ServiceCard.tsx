@@ -1,4 +1,16 @@
-import { BrainCircuit, Cloud, Code2, Lightbulb, type LucideIcon } from 'lucide-react';
+import {
+  BrainCircuit,
+  Boxes,
+  Cloud,
+  Code2,
+  Gamepad2,
+  Globe,
+  Palette,
+  ShoppingCart,
+  Smartphone,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
 import type { Service } from '../data/services';
 import { SpotlightCard } from './motion/SpotlightCard';
 
@@ -6,7 +18,13 @@ const serviceIcons: Record<string, LucideIcon> = {
   'custom-software': Code2,
   'ai-solutions': BrainCircuit,
   'cloud-infrastructure': Cloud,
-  'technology-consulting': Lightbulb,
+  'web-saas': Globe,
+  'mobile-app': Smartphone,
+  'ui-ux-design': Palette,
+  ecommerce: ShoppingCart,
+  automation: Workflow,
+  'game-development': Gamepad2,
+  'game-asset-creation': Boxes,
 };
 
 interface ServiceCardProps {

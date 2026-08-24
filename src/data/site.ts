@@ -47,7 +47,7 @@ export const processSteps: ProcessStep[] = [
   {
     title: 'Build',
     description:
-      'Working software in short, reviewable iterations — you see progress every sprint.',
+      'Working software in short, reviewable iterations, so you see progress every sprint.',
   },
   {
     title: 'Launch',

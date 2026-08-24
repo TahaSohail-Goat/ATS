@@ -17,7 +17,7 @@ export function ServicesOverview() {
       action={<ArrowLink href="/services">Explore all services</ArrowLink>}
     >
       <Stagger className="grid gap-5 lg:grid-cols-2">
-        {services.map((service, index) => (
+        {services.slice(0, 4).map((service, index) => (
           <Reveal key={service.slug} asChild as="div" className="h-full">
             <ServiceCard service={service} index={index} />
           </Reveal>
