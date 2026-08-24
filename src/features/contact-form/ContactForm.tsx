@@ -17,6 +17,8 @@ const SERVICES = [
   { id: 's06', label: 'E-Commerce Solutions' },
   { id: 's07', label: 'Automation & Business Process Optimization' },
   { id: 's08', label: 'Quality Engineering & Support' },
+  { id: 's09', label: 'Game Development - Android | Desktop | VR' },
+  { id: 's10', label: 'Game Development - Asset Creation' },
 ] as const;
 
 // ── Dynamic Country Helpers ────────────────────────────────────────────────────
