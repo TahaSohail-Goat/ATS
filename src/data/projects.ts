@@ -81,4 +81,68 @@ export const projects: Project[] = [
       'An extensible architecture for future data sources',
     ],
   },
+  {
+    slug: 'ecommerce-storefront-platform',
+    title: 'Unified Commerce Storefront',
+    category: 'E-Commerce',
+    status: 'illustrative',
+    year: '2025',
+    summary:
+      'An illustrative concept for a storefront and checkout experience built to handle demand spikes without losing conversions.',
+    problem:
+      'Fast-growing retailers can lose sales when checkout flows and inventory systems are not built to handle traffic spikes.',
+    solution:
+      'The concept pairs a fast storefront with a resilient checkout flow and real-time inventory sync across channels.',
+    features: ['Fast, responsive storefront', 'Resilient checkout flow', 'Real-time inventory sync'],
+    tech: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
+    highlights: [
+      'A storefront built to stay fast under load',
+      'Checkout designed to reduce drop-off',
+      'Inventory kept in sync across every sales channel',
+    ],
+  },
+  {
+    slug: 'cloud-observability-platform',
+    title: 'Cloud Observability Platform',
+    category: 'Cloud & Infrastructure',
+    status: 'illustrative',
+    year: '2025',
+    summary:
+      'An illustrative concept for a monitoring workspace that gives engineering teams one view across services and environments.',
+    problem:
+      'Teams running many services can lose hours tracing incidents when logs, metrics, and alerts live in separate tools.',
+    solution:
+      'The concept centralizes logs, metrics, and alerts into one dashboard with automated incident timelines.',
+    features: ['Unified logs and metrics', 'Automated incident timelines', 'Configurable alerting rules'],
+    tech: ['TypeScript', 'React', 'Go', 'Kubernetes', 'Grafana'],
+    highlights: [
+      'Faster incident response with one shared view',
+      'Alerting tuned to reduce noise',
+      'An architecture built to scale across environments',
+    ],
+  },
+  {
+    slug: 'hypercasual-mobile-game',
+    title: 'Hyper-Casual Mobile Game',
+    category: 'Game Development',
+    status: 'illustrative',
+    year: '2025',
+    summary:
+      'An illustrative concept for a lightweight, replayable mobile game built for fast sessions and quick iteration.',
+    problem:
+      'Hyper-casual games can lose players quickly when core loops are not tuned and tested before wide release.',
+    solution:
+      'The concept combines a tight core gameplay loop with lightweight analytics to guide balancing decisions.',
+    features: [
+      'Fast-loading core gameplay loop',
+      'Built-in analytics for tuning',
+      'Cross-platform builds for Android and iOS',
+    ],
+    tech: ['Unity', 'C#', 'Android', 'iOS'],
+    highlights: [
+      'A core loop designed for short, replayable sessions',
+      'Analytics built in from day one',
+      'A build pipeline ready for rapid iteration',
+    ],
+  },
 ];
