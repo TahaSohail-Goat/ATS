@@ -1,20 +1,17 @@
 import { useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { Reveal } from '../components/motion/Reveal';
 import { CtaSection } from '../components/CtaSection';
 import { FAQForm } from '../features/faq-form/FAQForm';
 import { faqs } from '../data/faqs';
-import { revealVariants } from '../lib/motion';
 
 const FAQ_CATEGORIES = ['Services', 'Process', 'Engagement', 'Technology', 'Pricing & Budget', 'Team & Expertise', 'Getting Started'];
 
 export function FAQPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const reduceMotion = useReducedMotion();
 
   const categories = useMemo(() => {
     const uniqueCategories = Array.from(new Set(faqs.map((faq) => faq.category)));
@@ -77,8 +74,8 @@ export function FAQPage() {
         {/* FAQ Items */}
         <div className="max-w-4xl space-y-3">
           {filteredFAQs.length > 0 ? (
-            filteredFAQs.map((faq, index) => {
-              const card = (
+            filteredFAQs.map((faq, index) => (
+              <Reveal key={faq.id} immediate delay={Math.min(index * 0.04, 0.3)}>
                 <div className="rounded-xl border border-ats-line bg-ats-surface/40 transition-all duration-200 hover:border-ats-brand/30 hover:bg-ats-surface/60">
                   <button
                     onClick={() => toggleExpanded(faq.id)}
@@ -109,24 +106,8 @@ export function FAQPage() {
                     </div>
                   )}
                 </div>
-              );
-
-              if (reduceMotion) {
-                return <div key={faq.id}>{card}</div>;
-              }
-
-              return (
-                <motion.div
-                  key={faq.id}
-                  variants={revealVariants('up')}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: Math.min(index * 0.04, 0.3) }}
-                >
-                  {card}
-                </motion.div>
-              );
-            })
+              </Reveal>
+            ))
           ) : (
             <p className="py-8 text-center text-ats-ink-muted">No FAQs found in this category.</p>
           )}

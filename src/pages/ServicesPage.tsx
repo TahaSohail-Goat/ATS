@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@ats/ui';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
@@ -10,13 +9,11 @@ import { Reveal } from '../components/motion/Reveal';
 import { ProcessTimeline } from '../components/ProcessTimeline';
 import { services } from '../data/services';
 import { processSteps } from '../data/site';
-import { revealVariants } from '../lib/motion';
 
 const PREVIEW_COUNT = 4;
 
 export function ServicesPage() {
   const [showAll, setShowAll] = useState(false);
-  const reduceMotion = useReducedMotion();
   const visibleServices = showAll ? services : services.slice(0, PREVIEW_COUNT);
   const hasMore = services.length > PREVIEW_COUNT;
 
@@ -35,28 +32,16 @@ export function ServicesPage() {
             trigger never fires again for cards added after the initial
             viewport entry. */}
         <div className="grid gap-5 lg:grid-cols-2">
-          {visibleServices.map((service, index) => {
-            const card = <ServiceCard service={service} index={index} />;
-            if (reduceMotion) {
-              return (
-                <div key={service.slug} className="h-full">
-                  {card}
-                </div>
-              );
-            }
-            return (
-              <motion.div
-                key={service.slug}
-                className="h-full"
-                variants={revealVariants('up')}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: Math.min((index % PREVIEW_COUNT) * 0.06, 0.24) }}
-              >
-                {card}
-              </motion.div>
-            );
-          })}
+          {visibleServices.map((service, index) => (
+            <Reveal
+              key={service.slug}
+              immediate
+              delay={Math.min((index % PREVIEW_COUNT) * 0.06, 0.24)}
+              className="h-full"
+            >
+              <ServiceCard service={service} index={index} />
+            </Reveal>
+          ))}
         </div>
 
         {hasMore && (

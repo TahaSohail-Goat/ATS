@@ -16,6 +16,14 @@ interface RevealProps {
   as?: ElementType;
   /** Animate as a stagger child of a parent `Stagger` instead of on scroll. */
   asChild?: boolean;
+  /**
+   * Animate on mount/update instead of on scroll. Use for items in a list
+   * whose membership changes at runtime (a filter, a "show more" toggle):
+   * `whileInView` only fires once per element, so an item added after the
+   * container's initial trigger has already fired would otherwise stay
+   * invisible forever.
+   */
+  immediate?: boolean;
 }
 
 /**
@@ -31,6 +39,7 @@ export function Reveal({
   className,
   as = 'div',
   asChild = false,
+  immediate = false,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
   const Component = motion[as as keyof typeof motion] as typeof motion.div;
@@ -45,6 +54,20 @@ export function Reveal({
   if (asChild) {
     return (
       <Component className={className} variants={variants}>
+        {children}
+      </Component>
+    );
+  }
+
+  if (immediate) {
+    return (
+      <Component
+        className={className}
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay }}
+      >
         {children}
       </Component>
     );
