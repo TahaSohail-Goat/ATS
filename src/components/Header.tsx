@@ -47,7 +47,11 @@ export function Header() {
   }
 
   return (
-    <header className="ats-glass sticky top-0 z-50 border-b border-ats-line shadow-[0_12px_40px_-28px_rgb(var(--ats-primary)/0.9)]">
+    <header className="sticky top-0 z-50 border-b border-ats-line shadow-[0_12px_40px_-28px_rgb(var(--ats-primary)/0.9)]">
+      {/* Glass background lives on its own layer, not on `header` itself,
+          so `backdrop-filter` doesn't become the containing block for the
+          fixed-position mobile menu below (that would collapse its height). */}
+      <div className="ats-glass pointer-events-none absolute inset-0 -z-10" aria-hidden />
       <div
         className={`mx-auto flex h-20 w-full max-w-shell items-center justify-between gap-4 px-5 sm:px-8 lg:px-12`}
       >
