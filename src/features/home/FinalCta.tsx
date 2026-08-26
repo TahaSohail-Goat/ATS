@@ -6,7 +6,7 @@ export function FinalCta() {
     <CtaSection
       title="Have an idea?"
       titleAccent="Let's build it together."
-      description="Tell us what you're building — we'll reply with honest technical feedback and a clear first step."
+      description="Tell us what you're building. We'll reply with honest technical feedback and a clear first step."
     />
   );
 }

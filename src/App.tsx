@@ -15,10 +15,10 @@ export function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="flex min-h-screen flex-col bg-ats-canvas text-ats-ink">
+      <div className="flex min-h-screen flex-col bg-ast-canvas text-ast-ink">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ats-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ast-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
         >
           Skip to content
         </a>

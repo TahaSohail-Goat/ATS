@@ -30,15 +30,15 @@ export function Marquee({
 }: MarqueeProps) {
   return (
     <div
-      className={`ats-fade-x group relative flex overflow-hidden ${className}`}
+      className={`ast-fade-x group relative flex overflow-hidden ${className}`}
       aria-label={ariaLabel}
       role={ariaLabel ? 'group' : undefined}
     >
       <div
-        className={`ats-gpu flex w-max shrink-0 items-center ${
-          reverse ? 'animate-ats-marquee-reverse' : 'animate-ats-marquee'
+        className={`ast-gpu flex w-max shrink-0 items-center ${
+          reverse ? 'animate-ast-marquee-reverse' : 'animate-ast-marquee'
         } ${pauseOnHover ? 'group-hover:[animation-play-state:paused]' : ''}`}
-        style={{ '--ats-marquee-duration': `${speed}s` } as CSSProperties}
+        style={{ '--ast-marquee-duration': `${speed}s` } as CSSProperties}
       >
         {children}
         {/* Duplicate copy completes the seamless loop; hidden from AT so the

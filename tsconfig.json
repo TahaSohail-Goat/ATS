@@ -22,8 +22,8 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@ats/ui": ["./src/ui/index.ts"],
-      "@ats/ui/*": ["./src/ui/*"]
+      "@ast/ui": ["./src/ui/index.ts"],
+      "@ast/ui/*": ["./src/ui/*"]
     }
   },
   "include": ["src", "vite.config.ts"],

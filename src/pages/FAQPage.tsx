@@ -49,8 +49,8 @@ export function FAQPage() {
               onClick={() => setSelectedCategory(null)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 selectedCategory === null
-                  ? 'border-ats-brand bg-ats-brand/10 text-ats-brand'
-                  : 'border-ats-line bg-ats-surface/60 text-ats-ink-muted hover:border-ats-brand/30 hover:text-ats-ink'
+                  ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
+                  : 'border-ast-line bg-ast-surface/60 text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
               }`}
             >
               All
@@ -61,8 +61,8 @@ export function FAQPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'border-ats-brand bg-ats-brand/10 text-ats-brand'
-                    : 'border-ats-line bg-ats-surface/60 text-ats-ink-muted hover:border-ats-brand/30 hover:text-ats-ink'
+                    ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
+                    : 'border-ast-line bg-ast-surface/60 text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
                 }`}
               >
                 {category}
@@ -76,7 +76,7 @@ export function FAQPage() {
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <Reveal key={faq.id} immediate delay={Math.min(index * 0.04, 0.3)}>
-                <div className="rounded-xl border border-ats-line bg-ats-surface/40 transition-all duration-200 hover:border-ats-brand/30 hover:bg-ats-surface/60">
+                <div className="rounded-xl border border-ast-line bg-ast-surface/40 transition-all duration-200 hover:border-ast-brand/30 hover:bg-ast-surface/60">
                   <button
                     onClick={() => toggleExpanded(faq.id)}
                     className="flex w-full items-start gap-4 px-6 py-4 text-left"
@@ -84,13 +84,13 @@ export function FAQPage() {
                     aria-controls={`faq-${faq.id}`}
                   >
                     <span className="flex-1">
-                      <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ats-accent">
+                      <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ast-accent">
                         {faq.category}
                       </span>
-                      <h3 className="mt-1.5 text-base font-semibold text-ats-ink">{faq.question}</h3>
+                      <h3 className="mt-1.5 text-base font-semibold text-ast-ink">{faq.question}</h3>
                     </span>
                     <ChevronDown
-                      className={`mt-1 h-5 w-5 shrink-0 text-ats-ink-muted transition-transform duration-300 ${
+                      className={`mt-1 h-5 w-5 shrink-0 text-ast-ink-muted transition-transform duration-300 ${
                         expandedId === faq.id ? 'rotate-180' : ''
                       }`}
                       aria-hidden
@@ -100,7 +100,7 @@ export function FAQPage() {
                   {expandedId === faq.id && (
                     <div
                       id={`faq-${faq.id}`}
-                      className="border-t border-ats-line px-6 py-4 text-sm leading-relaxed text-ats-ink-muted"
+                      className="border-t border-ast-line px-6 py-4 text-sm leading-relaxed text-ast-ink-muted"
                     >
                       {faq.answer}
                     </div>
@@ -109,7 +109,7 @@ export function FAQPage() {
               </Reveal>
             ))
           ) : (
-            <p className="py-8 text-center text-ats-ink-muted">No FAQs found in this category.</p>
+            <p className="py-8 text-center text-ast-ink-muted">No FAQs found in this category.</p>
           )}
         </div>
       </Section>
@@ -123,7 +123,7 @@ export function FAQPage() {
         tone="raised"
       >
         <div className="max-w-3xl">
-          <Reveal className="rounded-3xl border border-ats-line bg-ats-surface/70 p-8 sm:p-10 shadow-ats-lifted">
+          <Reveal className="rounded-3xl border border-ast-line bg-ast-surface/70 p-8 sm:p-10 shadow-ast-lifted">
             <FAQForm />
           </Reveal>
         </div>

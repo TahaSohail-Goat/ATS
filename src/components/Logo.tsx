@@ -1,4 +1,4 @@
-const logoMark = '/brand/ats-logo.jpeg';
+const logoMark = '/brand/ast-logo.jpeg';
 
 interface LogoProps {
   className?: string;
@@ -10,7 +10,7 @@ interface LogoProps {
 }
 
 /**
- * ATS mark + wordmark.
+ * AST mark + wordmark.
  */
 export function Logo({
   className = '',
@@ -26,22 +26,22 @@ export function Logo({
       >
         <span
           aria-hidden
-          className="absolute inset-1 rounded-xl bg-ats-brand/40 opacity-60 blur-lg transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-1 rounded-xl bg-ast-brand/40 opacity-60 blur-lg transition-opacity duration-500 group-hover:opacity-100"
         />
         <img
           src={logoMark}
-          alt="ATS Logo"
+          alt="AST Logo"
           width={size}
           height={size}
-          className="relative rounded-xl border border-ats-line object-cover transition-transform duration-500 ease-ats-out motion-safe:group-hover:scale-[1.05]"
+          className="relative rounded-xl border border-ast-line object-cover transition-transform duration-500 ease-ast-out motion-safe:group-hover:scale-[1.05]"
         />
       </span>
 
       {showWordmark && (
         <span className="flex flex-col leading-none">
-          <span className="text-lg font-bold tracking-tighter2">ATS</span>
+          <span className="text-lg font-bold tracking-tighter2">AST</span>
           {showTagline && (
-            <span className="mt-1 hidden text-[0.7rem] font-medium text-ats-ink-muted sm:block">
+            <span className="mt-1 hidden text-[0.7rem] font-medium text-ast-ink-muted sm:block">
               AI Software &amp; Technology Solutions
             </span>
           )}

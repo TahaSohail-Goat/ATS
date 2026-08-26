@@ -1,5 +1,5 @@
 /**
- * ATS brand color tokens — single source of truth.
+ * AST brand color tokens — single source of truth.
  * See docs/frontend/design-system.md. Never hardcode these hex values
  * anywhere else in the codebase; import from here (or the corresponding
  * Tailwind classes wired up in tailwind.config.ts).
@@ -9,7 +9,7 @@
  *  - `theme`   — semantic surface/ink/line roles per color scheme, consumed
  *                by tailwind.config.ts to emit CSS custom
  *                properties. Components should use the semantic Tailwind
- *                classes (`bg-ats-surface`, `text-ats-ink-muted`, …) so a
+ *                classes (`bg-ast-surface`, `text-ast-ink-muted`, …) so a
  *                single token change re-themes the whole site.
  */
 export const colors = {

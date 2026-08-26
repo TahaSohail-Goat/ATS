@@ -56,7 +56,7 @@ function buildCountryList(): CountryEntry[] {
 const COUNTRY_LIST = buildCountryList();
 const DEFAULT_ISO: PhoneCountryCode = 'PK';
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/tsasolutions1@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
 
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
@@ -120,12 +120,12 @@ function buildMailtoHref(data: FormState, dialCode: string): string {
   const body = encodeURIComponent(
     `Name: ${data.name}\nEmail: ${data.email}\n${phoneStr}\n${servicesStr}\n\nMessage:\n${data.message}`,
   );
-  return `mailto:tsasolutions1@gmail.com?subject=${subject}&body=${body}`;
+  return `mailto:ast.devz@gmail.com?subject=${subject}&body=${body}`;
 }
 
 // ── Shared input styles ────────────────────────────────────────────────────────
 const inputBase =
-  'w-full rounded-xl border border-ats-line bg-ats-surface/60 px-4 py-3 text-sm text-ats-ink placeholder-ats-ink-muted/60 outline-none transition-all duration-200 focus:border-ats-brand/60 focus:ring-2 focus:ring-ats-brand/20';
+  'w-full rounded-xl border border-ast-line bg-ast-surface/60 px-4 py-3 text-sm text-ast-ink placeholder-ast-ink-muted/60 outline-none transition-all duration-200 focus:border-ast-brand/60 focus:ring-2 focus:ring-ast-brand/20';
 
 // ── Component ──────────────────────────────────────────────────────────────────
 export function ContactForm() {
@@ -232,13 +232,13 @@ export function ContactForm() {
     return (
       <div
         role="status"
-        className="flex flex-col items-start gap-3 rounded-2xl border border-ats-success/30 bg-ats-success/10 p-6"
+        className="flex flex-col items-start gap-3 rounded-2xl border border-ast-success/30 bg-ast-success/10 p-6"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ats-success/20 text-ats-success">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ast-success/20 text-ast-success">
           <Check className="h-5 w-5" />
         </span>
-        <p className="font-semibold text-ats-ink">Message sent!</p>
-        <p className="text-sm leading-relaxed text-ats-ink-muted">
+        <p className="font-semibold text-ast-ink">Message sent!</p>
+        <p className="text-sm leading-relaxed text-ast-ink-muted">
           Thank you for reaching out. We reply to every message usually within one business day.
         </p>
       </div>
@@ -249,15 +249,15 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
       {status === 'error' && (
-        <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ats-error/30 bg-ats-error/10 p-5">
-          <p className="text-sm font-semibold text-ats-error">
+        <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ast-error/30 bg-ast-error/10 p-5">
+          <p className="text-sm font-semibold text-ast-error">
             Your message could not be sent. Please try again.
           </p>
-          <p className="text-sm leading-relaxed text-ats-ink-muted">
+          <p className="text-sm leading-relaxed text-ast-ink-muted">
             If the problem persists,{' '}
             <a
               href={buildMailtoHref(form, selectedCountry.dialCode)}
-              className="font-medium text-ats-brand underline underline-offset-2 hover:text-ats-brand-strong"
+              className="font-medium text-ast-brand underline underline-offset-2 hover:text-ast-brand-strong"
             >
               send it through your email app
             </a>{' '}
@@ -268,8 +268,8 @@ export function ContactForm() {
       {/* Name + Email */}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ats-ink">
-            Full Name <span className="text-ats-error" aria-hidden>*</span>
+          <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ast-ink">
+            Full Name <span className="text-ast-error" aria-hidden>*</span>
           </label>
           <input
             id="name"
@@ -284,15 +284,15 @@ export function ContactForm() {
             aria-describedby={errors.name ? 'name-error' : undefined}
           />
           {errors.name && (
-            <p id="name-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+            <p id="name-error" role="alert" className="mt-1.5 text-xs text-ast-error">
               {errors.name}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ats-ink">
-            Email Address <span className="text-ats-error" aria-hidden>*</span>
+          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ast-ink">
+            Email Address <span className="text-ast-error" aria-hidden>*</span>
           </label>
           <input
             id="email"
@@ -307,7 +307,7 @@ export function ContactForm() {
             aria-describedby={errors.email ? 'email-error' : undefined}
           />
           {errors.email && (
-            <p id="email-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+            <p id="email-error" role="alert" className="mt-1.5 text-xs text-ast-error">
               {errors.email}
             </p>
           )}
@@ -316,9 +316,9 @@ export function ContactForm() {
 
       {/* Phone with dynamic dial code */}
       <div>
-        <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ats-ink">
+        <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ast-ink">
           Phone Number{' '}
-          <span className="text-xs font-normal text-ats-ink-muted">(optional)</span>
+          <span className="text-xs font-normal text-ast-ink-muted">(optional)</span>
         </label>
         <div className="flex gap-2">
           {/* Dial Code Selector */}
@@ -330,7 +330,7 @@ export function ContactForm() {
               aria-expanded={dialOpen}
               aria-label={`Country code: ${selectedCountry.name} ${selectedCountry.dialCode}`}
               onClick={() => setDialOpen((o) => !o)}
-              className="flex h-full min-w-[7rem] items-center gap-1.5 rounded-xl border border-ats-line bg-ats-surface/60 px-3 py-3 text-sm text-ats-ink transition-all duration-200 hover:border-ats-brand/60 focus:outline-none focus:ring-2 focus:ring-ats-brand/20"
+              className="flex h-full min-w-[7rem] items-center gap-1.5 rounded-xl border border-ast-line bg-ast-surface/60 px-3 py-3 text-sm text-ast-ink transition-all duration-200 hover:border-ast-brand/60 focus:outline-none focus:ring-2 focus:ring-ast-brand/20"
             >
               <span
                 aria-hidden
@@ -338,22 +338,22 @@ export function ContactForm() {
               />
               <span className="font-mono font-medium">{selectedCountry.dialCode}</span>
               <ChevronDown
-                className={`ml-auto h-3.5 w-3.5 shrink-0 text-ats-ink-muted transition-transform duration-200 ${dialOpen ? 'rotate-180' : ''}`}
+                className={`ml-auto h-3.5 w-3.5 shrink-0 text-ast-ink-muted transition-transform duration-200 ${dialOpen ? 'rotate-180' : ''}`}
                 aria-hidden
               />
             </button>
 
             {/* Dropdown */}
             {dialOpen && (
-              <div className="absolute left-0 top-full z-50 mt-1.5 w-64 rounded-xl border border-ats-line bg-ats-surface shadow-ats-lifted">
+              <div className="absolute left-0 top-full z-50 mt-1.5 w-64 rounded-xl border border-ast-line bg-ast-surface shadow-ast-lifted">
                 {/* Search */}
-                <div className="border-b border-ats-line p-2">
+                <div className="border-b border-ast-line p-2">
                   <input
                     type="text"
                     placeholder="Search country or code..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full rounded-lg border border-ats-line bg-ats-surface/60 px-3 py-2 text-xs text-ats-ink placeholder-ats-ink-muted/60 outline-none focus:border-ats-brand/50 focus:ring-1 focus:ring-ats-brand/20"
+                    className="w-full rounded-lg border border-ast-line bg-ast-surface/60 px-3 py-2 text-xs text-ast-ink placeholder-ast-ink-muted/60 outline-none focus:border-ast-brand/50 focus:ring-1 focus:ring-ast-brand/20"
                     autoFocus
                   />
                 </div>
@@ -363,7 +363,7 @@ export function ContactForm() {
                   className="max-h-56 overflow-y-auto py-1"
                 >
                   {filteredCountries.length === 0 ? (
-                    <li className="px-4 py-3 text-xs text-ats-ink-muted">No countries found.</li>
+                    <li className="px-4 py-3 text-xs text-ast-ink-muted">No countries found.</li>
                   ) : (
                     filteredCountries.map((c) => (
                       <li
@@ -374,14 +374,14 @@ export function ContactForm() {
                         <button
                           type="button"
                           onClick={() => handleSelectCountry(c.iso)}
-                          className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition-colors hover:bg-ats-brand/10 ${c.iso === form.iso ? 'bg-ats-brand/10 font-medium text-ats-brand' : 'text-ats-ink'}`}
+                          className={`flex w-full items-center gap-2.5 px-3 py-2 text-sm transition-colors hover:bg-ast-brand/10 ${c.iso === form.iso ? 'bg-ast-brand/10 font-medium text-ast-brand' : 'text-ast-ink'}`}
                         >
                           <span
                             aria-hidden
                             className={`fi fi-${c.iso.toLowerCase()} shrink-0 rounded-[2px]`}
                           />
                           <span className="min-w-0 flex-1 truncate">{c.name}</span>
-                          <span className="ml-auto shrink-0 font-mono text-xs text-ats-ink-muted">
+                          <span className="ml-auto shrink-0 font-mono text-xs text-ast-ink-muted">
                             {c.dialCode}
                           </span>
                         </button>
@@ -409,11 +409,11 @@ export function ContactForm() {
           />
         </div>
         {errors.phone ? (
-          <p id="phone-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+          <p id="phone-error" role="alert" className="mt-1.5 text-xs text-ast-error">
             {errors.phone}
           </p>
         ) : (
-          <p id="phone-hint" className="mt-1.5 text-xs text-ats-ink-muted">
+          <p id="phone-hint" className="mt-1.5 text-xs text-ast-ink-muted">
             Enter digits only no spaces or dashes required.
           </p>
         )}
@@ -421,8 +421,8 @@ export function ContactForm() {
 
       {/* Services */}
       <div>
-        <p className="mb-3 text-sm font-medium text-ats-ink">
-          Services of Interest <span className="text-ats-error" aria-hidden>*</span>
+        <p className="mb-3 text-sm font-medium text-ast-ink">
+          Services of Interest <span className="text-ast-error" aria-hidden>*</span>
         </p>
         <div role="group" aria-label="Services of interest" className="grid gap-2.5 sm:grid-cols-2">
           {SERVICES.map((service) => {
@@ -432,15 +432,15 @@ export function ContactForm() {
                 key={service.id}
                 htmlFor={service.id}
                 className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 text-sm transition-all duration-200 ${checked
-                  ? 'border-ats-brand/50 bg-ats-brand/8 text-ats-ink'
-                  : 'border-ats-line bg-ats-surface/40 text-ats-ink-muted hover:border-ats-brand/30 hover:bg-ats-surface/60 hover:text-ats-ink'
+                  ? 'border-ast-brand/50 bg-ast-brand/8 text-ast-ink'
+                  : 'border-ast-line bg-ast-surface/40 text-ast-ink-muted hover:border-ast-brand/30 hover:bg-ast-surface/60 hover:text-ast-ink'
                   }`}
               >
                 <span
                   aria-hidden
                   className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all duration-200 ${checked
-                    ? 'border-ats-brand bg-ats-brand'
-                    : 'border-ats-line bg-ats-surface'
+                    ? 'border-ast-brand bg-ast-brand'
+                    : 'border-ast-line bg-ast-surface'
                     }`}
                 >
                   {checked && <Check className="h-2.5 w-2.5 text-white" aria-hidden />}
@@ -455,7 +455,7 @@ export function ContactForm() {
                   className="sr-only"
                 />
                 <span className="leading-tight">
-                  <span className="mr-1.5 font-mono text-[10px] font-semibold text-ats-accent">
+                  <span className="mr-1.5 font-mono text-[10px] font-semibold text-ast-accent">
                     {service.id.replace('s', '').padStart(2, '0')}
                   </span>
                   {service.label}
@@ -465,7 +465,7 @@ export function ContactForm() {
           })}
         </div>
         {errors.services && (
-          <p role="alert" className="mt-2 text-xs text-ats-error">
+          <p role="alert" className="mt-2 text-xs text-ast-error">
             {errors.services}
           </p>
         )}
@@ -473,8 +473,8 @@ export function ContactForm() {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ats-ink">
-          Message <span className="text-ats-error" aria-hidden>*</span>
+        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ast-ink">
+          Message <span className="text-ast-error" aria-hidden>*</span>
         </label>
         <textarea
           id="message"
@@ -488,7 +488,7 @@ export function ContactForm() {
           aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message && (
-          <p id="message-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+          <p id="message-error" role="alert" className="mt-1.5 text-xs text-ast-error">
             {errors.message}
           </p>
         )}
@@ -498,7 +498,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ats-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ats-brand-strong hover:shadow-ats-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ast-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ast-brand-strong hover:shadow-ast-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ast-brand disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'sending' ? (
           <>
@@ -514,8 +514,8 @@ export function ContactForm() {
         />
       </button>
 
-      <p className="text-center text-xs text-ats-ink-muted">
-        <span className="text-ats-error">*</span> Required fields. We reply to every message
+      <p className="text-center text-xs text-ast-ink-muted">
+        <span className="text-ast-error">*</span> Required fields. We reply to every message
         within one business day.
       </p>
     </form>

@@ -47,7 +47,7 @@ export function RevealText({
     return (
       <Component className={className}>
         {parts.map((part, index) => (
-          <span key={index} className={part.gradient ? 'ats-text-gradient' : undefined}>
+          <span key={index} className={part.gradient ? 'ast-text-gradient' : undefined}>
             {part.text}
             {index < parts.length - 1 ? ' ' : null}
           </span>
@@ -73,7 +73,7 @@ export function RevealText({
           <span className="inline-block overflow-hidden pb-[0.14em]">
             <motion.span
               variants={phraseVariants}
-              className={`inline-block ${part.gradient ? 'ats-text-gradient' : ''}`}
+              className={`inline-block ${part.gradient ? 'ast-text-gradient' : ''}`}
             >
               {part.text}
             </motion.span>

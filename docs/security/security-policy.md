@@ -13,5 +13,5 @@
 
 ## Future services
 
-If ATS later introduces an API, database, authentication, or private admin
+If AST later introduces an API, database, authentication, or private admin
 surface, document the threat model and architecture in an ADR before coding.

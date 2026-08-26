@@ -1,5 +1,5 @@
 /**
- * ATS team roster. Photos live in `public/team/`; cards fall back to an
+ * AST team roster. Photos live in `public/team/`; cards fall back to an
  * initials monogram derived from `name` when `photo` is omitted.
  */
 export interface TeamMember {
@@ -15,14 +15,14 @@ export const team: TeamMember[] = [
   {
     name: 'Taha Sohail',
     role: 'Founder & CEO & Agentic AI Full Stack Developer',
-    bio: 'Leads ATS end to end, setting technical direction and client partnerships while building agentic AI systems across the full stack.',
+    bio: 'Leads AST end to end, setting technical direction and client partnerships while building agentic AI systems across the full stack.',
     photo: '/team/taha-sohail.jpeg',
     photoPosition: 'top',
   },
   {
     name: 'Abdullah Adnan',
     role: 'Co-founder & AI Engineer',
-    bio: 'Designs and ships the AI and machine learning systems behind ATS products, from model training to production deployment.',
+    bio: 'Designs and ships the AI and machine learning systems behind AST products, from model training to production deployment.',
     photo: '/team/abdullah-adnan.jpeg',
   },
   {
@@ -34,7 +34,7 @@ export const team: TeamMember[] = [
   {
     name: 'Rayyan Hassan',
     role: 'Co-founder & Backend Developer & Product Engineer',
-    bio: 'Builds the backend systems and APIs that power ATS products, and drives product engineering from architecture to launch.',
+    bio: 'Builds the backend systems and APIs that power AST products, and drives product engineering from architecture to launch.',
     photo: '/team/rayyan-hassan.jpeg',
   },
 ];

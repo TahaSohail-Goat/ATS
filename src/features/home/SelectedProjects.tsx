@@ -12,7 +12,7 @@ export function SelectedProjects() {
       eyebrow="Selected Work"
       title="Projects we are"
       titleAccent="proud of"
-      description="A few recent engagements — each one a partnership, not a hand-off."
+      description="A few recent engagements, each one a partnership, not a hand-off."
       action={<ArrowLink href="/projects">View all projects</ArrowLink>}
       tone="raised"
     >

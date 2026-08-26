@@ -21,7 +21,7 @@
   4. The provider handles delivery, spam protection, and any retention policy.
 - **Alternative flow:** If no endpoint is configured, the form explains how to
   enable it and does not pretend that a message was delivered.
-- **Acceptance criteria:** No ATS API or local database is required; the form
+- **Acceptance criteria:** No AST API or local database is required; the form
   never posts visitor data to an unknown URL; required fields are labelled and
   keyboard operable.
 - **Priority:** Should

@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a defect in the ATS website or API
+about: Report a defect in the AST website or API
 labels: bug
 ---
 

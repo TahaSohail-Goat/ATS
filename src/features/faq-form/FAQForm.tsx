@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, LoaderCircle } from 'lucide-react';
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/tsasolutions1@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
 
 type FormState = {
   name: string;
@@ -35,7 +35,7 @@ function validate(data: FormState): FieldErrors {
 }
 
 const inputBase =
-  'w-full rounded-xl border border-ats-line bg-ats-surface/60 px-4 py-3 text-sm text-ats-ink placeholder-ats-ink-muted/60 outline-none transition-all duration-200 focus:border-ats-brand/60 focus:ring-2 focus:ring-ats-brand/20';
+  'w-full rounded-xl border border-ast-line bg-ast-surface/60 px-4 py-3 text-sm text-ast-ink placeholder-ast-ink-muted/60 outline-none transition-all duration-200 focus:border-ast-brand/60 focus:ring-2 focus:ring-ast-brand/20';
 
 const CATEGORIES = [
   { value: 'services', label: 'Services & Capabilities' },
@@ -108,13 +108,13 @@ export function FAQForm() {
     return (
       <div
         role="status"
-        className="flex flex-col items-start gap-3 rounded-2xl border border-ats-success/30 bg-ats-success/10 p-6"
+        className="flex flex-col items-start gap-3 rounded-2xl border border-ast-success/30 bg-ast-success/10 p-6"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ats-success/20 text-ats-success">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ast-success/20 text-ast-success">
           <Check className="h-5 w-5" />
         </span>
-        <p className="font-semibold text-ats-ink">Question submitted!</p>
-        <p className="text-sm leading-relaxed text-ats-ink-muted">
+        <p className="font-semibold text-ast-ink">Question submitted!</p>
+        <p className="text-sm leading-relaxed text-ast-ink-muted">
           Thank you for your question. We'll review it and add it to our FAQs if it would help others. You'll receive an email response within one business day.
         </p>
       </div>
@@ -124,8 +124,8 @@ export function FAQForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
       {status === 'error' && (
-        <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ats-error/30 bg-ats-error/10 p-5">
-          <p className="text-sm font-semibold text-ats-error">
+        <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ast-error/30 bg-ast-error/10 p-5">
+          <p className="text-sm font-semibold text-ast-error">
             Your question could not be sent. Please try again.
           </p>
         </div>
@@ -134,8 +134,8 @@ export function FAQForm() {
       {/* Name + Email */}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="faq-name" className="mb-1.5 block text-sm font-medium text-ats-ink">
-            Full Name <span className="text-ats-error" aria-hidden>*</span>
+          <label htmlFor="faq-name" className="mb-1.5 block text-sm font-medium text-ast-ink">
+            Full Name <span className="text-ast-error" aria-hidden>*</span>
           </label>
           <input
             id="faq-name"
@@ -150,15 +150,15 @@ export function FAQForm() {
             aria-describedby={errors.name ? 'name-error' : undefined}
           />
           {errors.name && (
-            <p id="name-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+            <p id="name-error" role="alert" className="mt-1.5 text-xs text-ast-error">
               {errors.name}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="faq-email" className="mb-1.5 block text-sm font-medium text-ats-ink">
-            Email Address <span className="text-ats-error" aria-hidden>*</span>
+          <label htmlFor="faq-email" className="mb-1.5 block text-sm font-medium text-ast-ink">
+            Email Address <span className="text-ast-error" aria-hidden>*</span>
           </label>
           <input
             id="faq-email"
@@ -173,7 +173,7 @@ export function FAQForm() {
             aria-describedby={errors.email ? 'email-error' : undefined}
           />
           {errors.email && (
-            <p id="email-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+            <p id="email-error" role="alert" className="mt-1.5 text-xs text-ast-error">
               {errors.email}
             </p>
           )}
@@ -182,8 +182,8 @@ export function FAQForm() {
 
       {/* Category */}
       <div>
-        <label htmlFor="faq-category" className="mb-1.5 block text-sm font-medium text-ats-ink">
-          Question Category <span className="text-ats-error" aria-hidden>*</span>
+        <label htmlFor="faq-category" className="mb-1.5 block text-sm font-medium text-ast-ink">
+          Question Category <span className="text-ast-error" aria-hidden>*</span>
         </label>
         <select
           id="faq-category"
@@ -202,7 +202,7 @@ export function FAQForm() {
           ))}
         </select>
         {errors.category && (
-          <p id="category-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+          <p id="category-error" role="alert" className="mt-1.5 text-xs text-ast-error">
             {errors.category}
           </p>
         )}
@@ -210,8 +210,8 @@ export function FAQForm() {
 
       {/* Question */}
       <div>
-        <label htmlFor="faq-question" className="mb-1.5 block text-sm font-medium text-ats-ink">
-          Your Question <span className="text-ats-error" aria-hidden>*</span>
+        <label htmlFor="faq-question" className="mb-1.5 block text-sm font-medium text-ast-ink">
+          Your Question <span className="text-ast-error" aria-hidden>*</span>
         </label>
         <textarea
           id="faq-question"
@@ -225,7 +225,7 @@ export function FAQForm() {
           aria-describedby={errors.question ? 'question-error' : undefined}
         />
         {errors.question && (
-          <p id="question-error" role="alert" className="mt-1.5 text-xs text-ats-error">
+          <p id="question-error" role="alert" className="mt-1.5 text-xs text-ast-error">
             {errors.question}
           </p>
         )}
@@ -235,7 +235,7 @@ export function FAQForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ats-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ats-brand-strong hover:shadow-ats-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ast-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ast-brand-strong hover:shadow-ast-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ast-brand disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'sending' ? (
           <>
@@ -251,8 +251,8 @@ export function FAQForm() {
         />
       </button>
 
-      <p className="text-center text-xs text-ats-ink-muted">
-        <span className="text-ats-error">*</span> Required fields. We reply to every question within one business day.
+      <p className="text-center text-xs text-ast-ink-muted">
+        <span className="text-ast-error">*</span> Required fields. We reply to every question within one business day.
       </p>
     </form>
   );

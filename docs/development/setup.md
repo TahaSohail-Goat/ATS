@@ -9,7 +9,7 @@
 
 ```bash
 git clone <repository-url>
-cd ats
+cd ast
 npm install
 npm run dev
 ```

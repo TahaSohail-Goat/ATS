@@ -1,13 +1,13 @@
-# ATS Documentation
+# AST Documentation
 
-This directory is the source of truth for the current frontend-first ATS
+This directory is the source of truth for the current frontend-first AST
 portfolio. The site intentionally has no API server or database in this phase.
 
 ## Map
 
 | Section                           | Purpose                                                      |
 | --------------------------------- | ------------------------------------------------------------ |
-| [`product/`](./product)           | What ATS is building and why                                 |
+| [`product/`](./product)           | What AST is building and why                                 |
 | [`requirements/`](./requirements) | Current website requirements                                 |
 | [`architecture/`](./architecture) | System, frontend, security, and deployment                   |
 | [`use-cases/`](./use-cases)       | Visitor journeys                                             |

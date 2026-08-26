@@ -2,17 +2,17 @@ import { forwardRef, type InputHTMLAttributes, type TextareaHTMLAttributes } fro
 import { cn } from '../lib/cn';
 
 const field = cn(
-  'w-full rounded-xl border bg-ats-surface-raised/70 px-4 text-sm text-ats-ink',
-  'placeholder:text-ats-ink-muted',
+  'w-full rounded-xl border bg-ast-surface-raised/70 px-4 text-sm text-ast-ink',
+  'placeholder:text-ast-ink-muted',
   'transition-[border-color,box-shadow,background-color] duration-200 ease-out',
-  'focus:border-ats-brand/60 focus:bg-ats-surface focus:outline-none',
-  'focus:shadow-[0_0_0_4px_rgb(var(--ats-brand)/0.14)]',
+  'focus:border-ast-brand/60 focus:bg-ast-surface focus:outline-none',
+  'focus:shadow-[0_0_0_4px_rgb(var(--ast-brand)/0.14)]',
   'disabled:cursor-not-allowed disabled:opacity-60',
 );
 
 const invalidField = cn(
-  'border-ats-error/60 focus:border-ats-error',
-  'focus:shadow-[0_0_0_4px_rgb(var(--ats-error)/0.14)]',
+  'border-ast-error/60 focus:border-ast-error',
+  'focus:shadow-[0_0_0_4px_rgb(var(--ast-error)/0.14)]',
 );
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -28,7 +28,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     <input
       ref={ref}
       aria-invalid={invalid || undefined}
-      className={cn(field, 'h-12', invalid ? invalidField : 'border-ats-line', className)}
+      className={cn(field, 'h-12', invalid ? invalidField : 'border-ast-line', className)}
       {...props}
     />
   );
@@ -47,7 +47,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
     <textarea
       ref={ref}
       aria-invalid={invalid || undefined}
-      className={cn(field, 'py-3.5', invalid ? invalidField : 'border-ats-line', className)}
+      className={cn(field, 'py-3.5', invalid ? invalidField : 'border-ast-line', className)}
       {...props}
     />
   );

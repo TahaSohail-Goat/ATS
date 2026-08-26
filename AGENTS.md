@@ -1,6 +1,6 @@
-# AGENTS.md — ATS Portfolio Instructions
+# AGENTS.md — AST Portfolio Instructions
 
-This repository contains the ATS public portfolio/company website.
+This repository contains the AST public portfolio/company website.
 The frontend is a visual, client-side SPA built with Vite and React. Do not add backend, database, authentication, queues, or other runtime services unless the user requests a concrete product requirement and an ADR is written first.
 
 ## Technology stack
@@ -33,7 +33,7 @@ docs/           Design system, architecture, product, and development guides
 - React SPA with React Router.
 - Static project/service content belongs in `src/data/`.
 - Reusable brand primitives belong in `src/ui/`.
-- Use semantic design tokens (`--ats-*`), not hardcoded brand hex values.
+- Use semantic design tokens (`--ast-*`), not hardcoded brand hex values.
 - Keep animation boundaries purposeful. Avoid heavy continuous SVG grain or excessive blur layers.
 - Every route needs accessible labels, focus states, responsive layouts, and reduced-motion fallbacks.
 

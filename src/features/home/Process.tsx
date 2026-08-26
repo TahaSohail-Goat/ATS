@@ -13,7 +13,7 @@ import { processSteps } from '../../data/site';
 export function Process() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
-      <div aria-hidden className="ats-dots pointer-events-none absolute inset-0 opacity-40" />
+      <div aria-hidden className="ast-dots pointer-events-none absolute inset-0 opacity-40" />
 
       <Container className="relative">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">

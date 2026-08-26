@@ -1,8 +1,8 @@
 export type Theme = 'dark' | 'light';
 
-export const THEME_STORAGE_KEY = 'ats-theme';
+export const THEME_STORAGE_KEY = 'ast-theme';
 
-/** ATS defaults to the dark scheme; light is an explicit user choice. */
+/** AST defaults to the dark scheme; light is an explicit user choice. */
 export const DEFAULT_THEME: Theme = 'dark';
 
 /**

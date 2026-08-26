@@ -4,9 +4,9 @@
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-If you discover a vulnerability in this repository or the ATS website, report
+If you discover a vulnerability in this repository or the AST website, report
 it privately through GitHub's private vulnerability reporting feature if it is
-enabled. A dedicated security email will be added once ATS has one.
+enabled. A dedicated security email will be added once AST has one.
 
 Please include a description, impact, reproduction steps, and affected routes
 or assets. Do not include real visitor data or secrets in a report.

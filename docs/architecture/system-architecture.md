@@ -2,7 +2,7 @@
 
 ## Current phase
 
-ATS is a frontend-first portfolio website built as a modern client-side React application with Vite.
+AST is a frontend-first portfolio website built as a modern client-side React application with Vite.
 
 ```mermaid
 flowchart LR

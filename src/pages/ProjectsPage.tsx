@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Badge, Button } from '@ats/ui';
+import { Badge, Button } from '@ast/ui';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { ProjectCard } from '../components/ProjectCard';
@@ -21,7 +21,7 @@ export function ProjectsPage() {
         eyebrow="Selected Work"
         title="Illustrative work for"
         titleAccent="future case studies"
-        description="These concepts show how ATS approaches complex software problems. Approved case studies will replace them as they become available."
+        description="These concepts show how AST approaches complex software problems. Approved case studies will replace them as they become available."
       >
         <Reveal delay={0.16} className="mt-8">
           <Badge tone="accent" dot>

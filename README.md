@@ -1,6 +1,6 @@
-# ATS — AI Software and Technology Solutions
+# AST — AI Software and Technology Solutions
 
-ATS is a modern React portfolio and company website for a software studio, built with **Vite**, **React 19**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **React Router**.
+AST is a modern React portfolio and company website for a software studio, built with **Vite**, **React 19**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **React Router**.
 
 The architecture is lightweight and frontend-first: instant client-side page transitions, brand design, smooth animations, and zero server or database complexity.
 
@@ -47,6 +47,6 @@ npm run typecheck  # Typecheck TypeScript code
 ## Architecture Guidelines
 
 - Keep client components focused and lightweight.
-- Use semantic design tokens (`--ats-*`) rather than hardcoded hex values.
+- Use semantic design tokens (`--ast-*`) rather than hardcoded hex values.
 - Respect reduced motion and accessibility standards (`aria-*`, keyboard navigation).
 - All static content lives in `src/data/`.

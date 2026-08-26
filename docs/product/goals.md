@@ -1,6 +1,6 @@
 # Product Goals — Website (Current Phase)
 
-1. Present ATS identity, capabilities, and services credibly to
+1. Present AST identity, capabilities, and services credibly to
    prospective clients and partners.
 2. Capture qualified leads through a contact/inquiry flow.
 3. Be fast, accessible, and SEO-solid (see

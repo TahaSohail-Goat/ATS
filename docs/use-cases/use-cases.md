@@ -1,6 +1,6 @@
 # Use Cases
 
-## UC-001 — Explore the ATS website
+## UC-001 — Explore the AST website
 
 - **Primary actor:** Website visitor
 - **Trigger:** Visitor opens the site or follows a shared route.

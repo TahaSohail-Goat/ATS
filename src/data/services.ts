@@ -1,5 +1,5 @@
 /**
- * Placeholder service data — replace with ATS's real offerings (TBD,
+ * Placeholder service data — replace with AST's real offerings (TBD,
  * see docs/frontend/website-design-brief.md). Shape is the contract for both the
  * Home services overview and the /services page.
  *

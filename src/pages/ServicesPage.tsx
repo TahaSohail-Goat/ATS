@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Button } from '@ats/ui';
+import { Button } from '@ast/ui';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { ServiceCard } from '../components/ServiceCard';
@@ -21,7 +21,7 @@ export function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="What ATS can"
+        title="What AST can"
         titleAccent="build for you"
         description={`${services.length} services, one standard: production-grade engineering you can rely on.`}
       />

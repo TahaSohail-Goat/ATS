@@ -9,9 +9,9 @@ export const faqs: FAQ[] = [
   {
     id: 'faq-01',
     category: 'Services',
-    question: 'What services does ATS offer?',
+    question: 'What services does AST offer?',
     answer:
-      'ATS specializes in Custom Software Development, AI & Machine Learning, Cloud & Infrastructure, and Technology Consulting. We also offer specialized game development services including Android/Desktop/VR development and asset creation. Whether you need end-to-end product engineering or technical advisory, we have the expertise to help.',
+      'AST specializes in Custom Software Development, AI & Machine Learning, Cloud & Infrastructure, and Technology Consulting. We also offer specialized game development services including Android/Desktop/VR development and asset creation. Whether you need end-to-end product engineering or technical advisory, we have the expertise to help.',
   },
   {
     id: 'faq-02',
@@ -100,22 +100,22 @@ export const faqs: FAQ[] = [
   {
     id: 'faq-14',
     category: 'Team & Expertise',
-    question: 'What makes ATS different from other development agencies?',
+    question: 'What makes AST different from other development agencies?',
     answer:
       'We prioritize engineering excellence, transparent processes, and long-term thinking. We build for maintainability and growth, not just speed. Our team brings real-world experience shipping products at scale, and we focus on delivering systems you can trust and operate independently.',
   },
   {
     id: 'faq-15',
     category: 'Getting Started',
-    question: 'How do I get started with ATS?',
+    question: 'How do I get started with AST?',
     answer:
-      'Start by reaching out through our contact page. Describe your project, goals, or challenge, and we\'ll schedule an initial conversation to understand your needs. There\'s no obligation — we\'re happy to give honest feedback on whether we\'re the right fit and what solutions might work.',
+      'Start by reaching out through our contact page. Describe your project, goals, or challenge, and we\'ll schedule an initial conversation to understand your needs. There\'s no obligation. We\'re happy to give honest feedback on whether we\'re the right fit and what solutions might work.',
   },
   {
     id: 'faq-16',
     category: 'Getting Started',
     question: 'What if I\'m not sure exactly what I need?',
     answer:
-      'That\'s normal. Describe the problem you\'re trying to solve, and we\'ll help you figure out the right approach. During the Discover phase, we map out constraints, goals, and realistic timelines — even if that means recommending a smaller initial scope than you expected.',
+      'That\'s normal. Describe the problem you\'re trying to solve, and we\'ll help you figure out the right approach. During the Discover phase, we map out constraints, goals, and realistic timelines, even if that means recommending a smaller initial scope than you expected.',
   },
 ];

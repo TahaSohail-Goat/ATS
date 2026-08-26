@@ -1,10 +1,10 @@
 # Product Vision
 
-ATS — AI Software and Technology Solutions — builds software, AI products, and
+AST — AI Software and Technology Solutions — builds software, AI products, and
 technology solutions for clients and, over time, its own SaaS/AI products.
 
 The current deliverable is a polished public portfolio/company website that
-explains ATS's capabilities, shows illustrative work, and gives prospective
+explains AST's capabilities, shows illustrative work, and gives prospective
 clients a clear way to start a conversation.
 
 ## Current boundary

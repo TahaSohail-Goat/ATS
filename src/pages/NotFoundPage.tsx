@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button } from '@ats/ui';
+import { Button } from '@ast/ui';
 import { Container } from '../components/Container';
 import { Aurora } from '../components/Aurora';
 import { ArrowLink } from '../components/ArrowLink';
@@ -13,7 +13,7 @@ export function NotFoundPage() {
       <Aurora variant="band" />
       <Container className="relative py-20 text-center">
         <Reveal direction="none">
-          <p className="font-mono text-eyebrow font-semibold uppercase text-ats-accent">
+          <p className="font-mono text-eyebrow font-semibold uppercase text-ast-accent">
             Error 404
           </p>
         </Reveal>
@@ -26,7 +26,7 @@ export function NotFoundPage() {
         />
 
         <Reveal delay={0.25}>
-          <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-ats-ink-muted">
+          <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-ast-ink-muted">
             The link may be out of date, or the page may have moved. Here is the way back.
           </p>
         </Reveal>
@@ -38,14 +38,14 @@ export function NotFoundPage() {
           <ArrowLink href="/contact">Report a broken link</ArrowLink>
         </Reveal>
 
-        <Reveal delay={0.45} className="mt-16 border-t border-ats-line pt-8">
+        <Reveal delay={0.45} className="mt-16 border-t border-ast-line pt-8">
           <nav aria-label="Site sections">
             <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
               {NAV_LINKS.filter((link) => link.href !== '/').map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-ats-ink-muted transition-colors hover:text-ats-brand"
+                    className="text-sm text-ast-ink-muted transition-colors hover:text-ast-brand"
                   >
                     {link.label}
                   </Link>

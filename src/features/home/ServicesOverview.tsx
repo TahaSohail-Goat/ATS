@@ -13,7 +13,7 @@ export function ServicesOverview() {
       eyebrow="Services"
       title="What we build"
       titleAccent="for you"
-      description="Full-cycle engineering — from product thinking to deployed, supported software."
+      description="Full-cycle engineering, from product thinking to deployed, supported software."
       action={<ArrowLink href="/services">Explore all services</ArrowLink>}
     >
       <Stagger className="grid gap-5 lg:grid-cols-2">

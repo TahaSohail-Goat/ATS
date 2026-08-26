@@ -1,6 +1,6 @@
 # Website Design Brief
 
-Design decisions for the public ATS website. This is a **design** brief: it
+Design decisions for the public AST website. This is a **design** brief: it
 covers layout, hierarchy, and motion. It deliberately does not set marketing
 positioning — that is a business decision tracked in
 `docs/product/vision.md`, and copy in `apps/web/src/data/*` is placeholder
@@ -12,8 +12,8 @@ Companion docs: `design-system.md` (tokens and components),
 ## Intent
 
 The site has to be credible to two readers at once: a non-technical buyer
-deciding whether ATS looks like a serious company, and an engineer deciding
-whether ATS can actually build. That points to a dark, precise,
+deciding whether AST looks like a serious company, and an engineer deciding
+whether AST can actually build. That points to a dark, precise,
 engineering-flavoured interface rather than a bright generic agency template —
 depth from gradient mesh and hairlines, structure from grids and monospace
 labels, motion that is present but never in the way.
@@ -66,7 +66,7 @@ how → CTA**:
 2. **Intro** — the three modes of work: Build, Modernize, Accelerate with AI.
 3. **Services** — the four practice areas as spotlight cards.
 4. **Selected work** — three project concepts, labelled as concepts.
-5. **Why ATS** — the four principles in an asymmetric 2·1·1·2 bento so they
+5. **Why AST** — the four principles in an asymmetric 2·1·1·2 bento so they
    read as a composition rather than a row of identical boxes.
 6. **Process** — pinned heading beside a timeline whose rail fills with scroll
    position, so process reads as progress.

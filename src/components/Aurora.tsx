@@ -19,14 +19,14 @@ export function Aurora({ variant = 'hero', className = '' }: AuroraProps) {
 
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-0 ${className}`}>
-      <div className={`ats-grid absolute inset-0 ${intensity.grid}`} />
+      <div className={`ast-grid absolute inset-0 ${intensity.grid}`} />
       <div
-        className={`absolute left-1/2 top-[-24%] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-ats-brand/40 blur-[96px] ${intensity.brand} ${animated ? 'motion-safe:animate-ats-drift' : ''}`}
+        className={`absolute left-1/2 top-[-24%] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-ast-brand/40 blur-[96px] ${intensity.brand} ${animated ? 'motion-safe:animate-ast-drift' : ''}`}
       />
       <div
-        className={`absolute -left-[8%] top-[30%] h-[26rem] w-[26rem] rounded-full bg-ats-accent/35 blur-[88px] ${intensity.accent} ${animated ? 'motion-safe:animate-ats-drift-slow' : ''}`}
+        className={`absolute -left-[8%] top-[30%] h-[26rem] w-[26rem] rounded-full bg-ast-accent/35 blur-[88px] ${intensity.accent} ${animated ? 'motion-safe:animate-ast-drift-slow' : ''}`}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ats-canvas/20 via-ats-canvas/45 to-ats-canvas" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ast-canvas/20 via-ast-canvas/45 to-ast-canvas" />
     </div>
   );
 }

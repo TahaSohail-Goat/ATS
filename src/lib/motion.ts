@@ -1,5 +1,5 @@
 import type { Transition, Variants } from 'framer-motion';
-import { duration, easing, stagger } from '@ats/ui';
+import { duration, easing, stagger } from '@ast/ui';
 
 /**
  * Shared motion vocabulary for the site. Every animated component pulls its

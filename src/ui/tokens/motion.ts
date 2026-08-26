@@ -1,5 +1,5 @@
 /**
- * Motion tokens — the only durations/easings the ATS brand uses.
+ * Motion tokens — the only durations/easings the AST brand uses.
  * See docs/frontend/animation-guidelines.md for when each tier applies.
  * Every consumer must provide a `prefers-reduced-motion` fallback.
  */

@@ -24,7 +24,7 @@
 
 - Every route defines title, description, and canonical metadata.
 - Favicon, Apple touch icon, Open Graph, and Twitter images come from the
-  supplied ATS logo and Next file conventions.
+  supplied AST logo and Next file conventions.
 - Sitemap and robots routes remain available.
 
 ## Security

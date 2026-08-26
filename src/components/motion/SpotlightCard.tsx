@@ -16,7 +16,7 @@ export function SpotlightCard({ children, as = 'div', className = '' }: Spotligh
   const Component = as as ElementType;
 
   return (
-    <Component className={`ats-spotlight relative isolate overflow-hidden ${className}`}>
+    <Component className={`ast-spotlight relative isolate overflow-hidden ${className}`}>
       {children}
     </Component>
   );

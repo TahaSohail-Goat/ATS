@@ -2,7 +2,7 @@ import { Hero } from '../features/home/Hero';
 import { Intro } from '../features/home/Intro';
 import { ServicesOverview } from '../features/home/ServicesOverview';
 import { SelectedProjects } from '../features/home/SelectedProjects';
-import { WhyAts } from '../features/home/WhyAts';
+import { WhyAst } from '../features/home/WhyAst';
 import { Process } from '../features/home/Process';
 import { Testimonials } from '../features/home/Testimonials';
 import { TechStack } from '../features/home/TechStack';
@@ -15,7 +15,7 @@ export function HomePage() {
       <Intro />
       <ServicesOverview />
       <SelectedProjects />
-      <WhyAts />
+      <WhyAst />
       <Process />
       <Testimonials />
       <TechStack />

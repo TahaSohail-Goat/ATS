@@ -40,12 +40,12 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <SpotlightCard
       as="article"
-      className="ats-ring-gradient group flex h-full flex-col rounded-4xl border border-ats-line bg-ats-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ats-out hover:border-ats-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
+      className="ast-ring-gradient group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
     >
       {typeof index === 'number' && (
         <span
           aria-hidden
-          className="absolute right-7 top-7 font-mono text-xs tabular-nums text-ats-ink-muted"
+          className="absolute right-7 top-7 font-mono text-xs tabular-nums text-ast-ink-muted"
         >
           {String(index + 1).padStart(2, '0')}
         </span>
@@ -53,20 +53,20 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
 
       <span
         aria-hidden
-        className="relative mb-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-ats-line bg-ats-surface-raised text-ats-accent transition-transform duration-500 ease-ats-out motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:scale-105"
+        className="relative mb-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-ast-line bg-ast-surface-raised text-ast-accent transition-transform duration-500 ease-ast-out motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:scale-105"
       >
-        <span className="absolute inset-0 rounded-2xl bg-ats-brand-gradient opacity-0 transition-opacity duration-500 group-hover:opacity-15" />
+        <span className="absolute inset-0 rounded-2xl bg-ast-brand-gradient opacity-0 transition-opacity duration-500 group-hover:opacity-15" />
         <Icon className="relative h-6 w-6" />
       </span>
 
       <h3 className="text-xl font-semibold tracking-tighter2 sm:text-2xl">{service.title}</h3>
-      <p className="mt-3 flex-1 leading-relaxed text-ats-ink-muted">{service.description}</p>
+      <p className="mt-3 flex-1 leading-relaxed text-ast-ink-muted">{service.description}</p>
 
-      <ul className="mt-7 flex flex-wrap gap-2 border-t border-ats-line pt-6">
+      <ul className="mt-7 flex flex-wrap gap-2 border-t border-ast-line pt-6">
         {service.deliverables.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-ats-line bg-ats-surface-raised/60 px-3 py-1.5 text-xs font-medium text-ats-ink-muted transition-colors duration-300 group-hover:border-ats-brand/20 group-hover:text-ats-ink"
+            className="rounded-full border border-ast-line bg-ast-surface-raised/60 px-3 py-1.5 text-xs font-medium text-ast-ink-muted transition-colors duration-300 group-hover:border-ast-brand/20 group-hover:text-ast-ink"
           >
             {item}
           </li>

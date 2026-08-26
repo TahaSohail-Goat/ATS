@@ -1,6 +1,6 @@
 # AI Agent Documentation
 
-This section expands the authoritative root `AGENTS.md` for the ATS portfolio.
+This section expands the authoritative root `AGENTS.md` for the AST portfolio.
 
 - [`agent-workflow.md`](./agent-workflow.md)
 - [`coding-rules.md`](./coding-rules.md)
@@ -12,7 +12,7 @@ This section expands the authoritative root `AGENTS.md` for the ATS portfolio.
 
 ## Quick answers
 
-> **What is this project?** ATS's React portfolio/company website built with Vite in `src/`, with shared brand primitives in `src/ui/`.
+> **What is this project?** AST's React portfolio/company website built with Vite in `src/`, with shared brand primitives in `src/ui/`.
 
 > **Where should a feature be implemented?** Page-specific views belong under `src/pages/` and `src/features/`; reusable brand primitives belong in `src/ui/`. Static project/service copy belongs in `src/data/`.
 

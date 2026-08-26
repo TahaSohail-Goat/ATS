@@ -13,14 +13,14 @@ const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
  */
 const spans = ['lg:col-span-2', 'lg:col-span-1', 'lg:col-span-1', 'lg:col-span-2'];
 
-/** Home "Why ATS" — the values that make the difference. */
-export function WhyAts() {
+/** Home "Why AST" — the values that make the difference. */
+export function WhyAst() {
   return (
     <Section
-      eyebrow="Why ATS"
+      eyebrow="Why AST"
       title="Built on principles,"
       titleAccent="not promises"
-      description="The habits behind every engagement — the ones that decide whether software still works in three years."
+      description="The habits behind every engagement, the ones that decide whether software still works in three years."
     >
       <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {values.map((value, index) => {
@@ -36,13 +36,13 @@ export function WhyAts() {
             >
               <SpotlightCard
                 as="article"
-                className="ats-ring-gradient group flex h-full flex-col justify-between gap-8 rounded-4xl border border-ats-line bg-ats-surface/60 p-8 transition-[transform,border-color] duration-500 ease-ats-out hover:border-ats-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
+                className="ast-ring-gradient group flex h-full flex-col justify-between gap-8 rounded-4xl border border-ast-line bg-ast-surface/60 p-8 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
               >
                 <span
                   aria-hidden
-                  className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-ats-line bg-ats-surface-raised text-ats-accent"
+                  className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-ast-line bg-ast-surface-raised text-ast-accent"
                 >
-                  <span className="absolute inset-0 rounded-2xl bg-ats-brand-gradient opacity-0 transition-opacity duration-500 group-hover:opacity-15" />
+                  <span className="absolute inset-0 rounded-2xl bg-ast-brand-gradient opacity-0 transition-opacity duration-500 group-hover:opacity-15" />
                   <Icon className="relative h-5 w-5" />
                 </span>
 
@@ -50,7 +50,7 @@ export function WhyAts() {
                   <h3 className="text-xl font-semibold tracking-tighter2 sm:text-2xl">
                     {value.title}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-ats-ink-muted">{value.description}</p>
+                  <p className="mt-3 leading-relaxed text-ast-ink-muted">{value.description}</p>
                 </div>
               </SpotlightCard>
             </Reveal>

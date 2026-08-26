@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import { Button } from '@ats/ui';
+import { Button } from '@ast/ui';
 import { Container } from './Container';
 import { Aurora } from './Aurora';
 import { Reveal } from './motion/Reveal';
@@ -28,9 +28,9 @@ export function CtaSection({
   children,
 }: CtaSectionProps) {
   return (
-    <section className="relative isolate overflow-hidden border-t border-ats-line bg-ats-canvas py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden border-t border-ast-line bg-ast-canvas py-24 sm:py-32">
       <Aurora variant="band" />
-      <div aria-hidden className="ats-hairline absolute inset-x-0 top-0 h-px" />
+      <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
 
       <Container className="relative text-center">
         <RevealText
@@ -44,7 +44,7 @@ export function CtaSection({
         />
         {description && (
           <Reveal delay={0.08}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ats-ink-muted">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink-muted">
               {description}
             </p>
           </Reveal>

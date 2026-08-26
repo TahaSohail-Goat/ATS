@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, MoveDown } from 'lucide-react';
-import { Button } from '@ats/ui';
+import { Button } from '@ast/ui';
 import { Container } from '../../components/Container';
 import { Aurora } from '../../components/Aurora';
 import { Reveal } from '../../components/motion/Reveal';
@@ -25,10 +25,10 @@ export function Hero() {
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal direction="none">
-            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-ats-line bg-ats-surface/60 px-4 py-2 text-eyebrow font-semibold uppercase text-ats-accent backdrop-blur-sm">
+            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-4 py-2 text-eyebrow font-semibold uppercase text-ast-accent backdrop-blur-sm">
               <span className="relative flex h-1.5 w-1.5 items-center justify-center" aria-hidden>
-                <span className="absolute h-1.5 w-1.5 rounded-full bg-ats-accent motion-safe:animate-ats-pulse-ring" />
-                <span className="h-1.5 w-1.5 rounded-full bg-ats-accent" />
+                <span className="absolute h-1.5 w-1.5 rounded-full bg-ast-accent motion-safe:animate-ast-pulse-ring" />
+                <span className="h-1.5 w-1.5 rounded-full bg-ast-accent" />
               </span>
               AI Software &amp; Technology Solutions
             </p>
@@ -45,9 +45,9 @@ export function Hero() {
           />
 
           <Reveal delay={0.35}>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ats-ink-muted sm:text-xl">
-              ATS designs and ships custom software, AI features, and cloud infrastructure for
-              companies that outgrow templates — clean architecture, measurable results, and a team
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
+              AST designs and ships custom software, AI features, and cloud infrastructure for
+              companies that outgrow templates: clean architecture, measurable results, and a team
               you can actually reach.
             </p>
           </Reveal>
@@ -74,7 +74,7 @@ export function Hero() {
 
         {/* Verifiable facts, counted from site data. */}
         <Reveal delay={0.6} className="mt-20">
-          <dl className="mx-auto grid max-w-3xl grid-cols-1 divide-y divide-ats-line border-y border-ats-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <dl className="mx-auto grid max-w-3xl grid-cols-1 divide-y divide-ast-line border-y border-ast-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {FACTS.map((fact) => (
               <div key={fact.label} className="px-6 py-6 text-center">
                 <dt className="sr-only">{fact.label}</dt>
@@ -82,9 +82,9 @@ export function Hero() {
                   <Counter
                     value={fact.value}
                     suffix={fact.suffix}
-                    className="block bg-ats-brand-gradient bg-clip-text text-4xl font-semibold tracking-display text-transparent sm:text-5xl"
+                    className="block bg-ast-brand-gradient bg-clip-text text-4xl font-semibold tracking-display text-transparent sm:text-5xl"
                   />
-                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ats-ink-muted">
+                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ast-ink-muted">
                     {fact.label}
                   </span>
                 </dd>
@@ -95,22 +95,22 @@ export function Hero() {
 
         <Reveal
           delay={0.7}
-          className="mt-12 hidden items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-ats-ink-muted sm:flex"
+          className="mt-12 hidden items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-ast-ink-muted sm:flex"
         >
-          <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ats-scroll-hint" aria-hidden />
+          <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore
         </Reveal>
       </Container>
 
       {/* Capability marquee closes the hero and bridges into the page. */}
-      <div className="relative border-y border-ats-line bg-ats-surface/40 py-5">
-        <Marquee speed={46} aria-label="ATS capabilities">
+      <div className="relative border-y border-ast-line bg-ast-surface/40 py-5">
+        <Marquee speed={46} aria-label="AST capabilities">
           {capabilities.map((capability) => (
             <span key={capability} className="flex items-center gap-8 px-8">
-              <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.16em] text-ats-ink-muted">
+              <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.16em] text-ast-ink-muted">
                 {capability}
               </span>
-              <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-ats-accent/60" />
+              <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-ast-accent/60" />
             </span>
           ))}
         </Marquee>

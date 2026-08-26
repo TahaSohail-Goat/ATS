@@ -1,4 +1,4 @@
-# Contributing to ATS
+# Contributing to AST
 
 ## Branch naming
 

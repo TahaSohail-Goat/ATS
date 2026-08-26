@@ -5,8 +5,8 @@ future extension points.
 
 ## Website Visitor
 
-Prospective client or partner researching ATS. Wants to quickly understand
-what ATS does and how to get in touch. No account required.
+Prospective client or partner researching AST. Wants to quickly understand
+what AST does and how to get in touch. No account required.
 
 ## Content Manager (future)
 

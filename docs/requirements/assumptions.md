@@ -1,6 +1,6 @@
 # Assumptions
 
-- The initial audience is prospective clients evaluating ATS for software/AI
+- The initial audience is prospective clients evaluating AST for software/AI
   work, not end consumers.
 - English-only content for v1.
 - No payment processing in v1.

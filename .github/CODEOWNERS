@@ -1,8 +1,8 @@
 # Default owners for everything in the repo, until team structure grows.
-* @ats-org/engineering
+* @ast-org/engineering
 
 # Docs changes should be reviewable by anyone with product context.
-/docs/ @ats-org/engineering @ats-org/product
+/docs/ @ast-org/engineering @ast-org/product
 
 # Shared config changes are repo-wide — extra scrutiny.
-/packages/config/ @ats-org/engineering
+/packages/config/ @ast-org/engineering

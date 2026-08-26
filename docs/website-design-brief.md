@@ -1,28 +1,28 @@
-# ATS Website — Design Brief
+# AST Website — Design Brief
 
-Canonical product/vision brief for the ATS website v1 (AI Software &
+Canonical product/vision brief for the AST website v1 (AI Software &
 Technology Solutions). Companion docs: `frontend/design-system.md`,
 `frontend/accessibility.md`, `frontend/responsive-design.md`,
 `frontend/animation-guidelines.md`, and tokens in `packages/ui/src/tokens`.
 
 ## Role
 
-Act as the product owner and senior UX strategist for ATS.
+Act as the product owner and senior UX strategist for AST.
 
-ATS — AI Software & Technology Solutions — is a technology startup and
+AST — AI Software & Technology Solutions — is a technology startup and
 software company. The current website is a public-facing company/portfolio
-website. The repo itself currently identifies `apps/web` as the public ATS
+website. The repo itself currently identifies `apps/web` as the public AST
 website.
 
 ## Primary Goals
 
 The website must:
 
-- Present ATS professionally.
-- Explain what ATS builds.
+- Present AST professionally.
+- Explain what AST builds.
 - Showcase projects.
 - Present services.
-- Communicate ATS's identity and values.
+- Communicate AST's identity and values.
 - Build credibility through projects, testimonials and technology
   expertise.
 - Generate client inquiries.
@@ -59,10 +59,10 @@ The homepage should contain:
 
 - Navigation
 - Strong hero
-- ATS introduction
+- AST introduction
 - Services overview
 - Selected projects
-- Why ATS
+- Why AST
 - How we work
 - Testimonials
 - Technology/expertise
@@ -90,7 +90,7 @@ Mobile:
 
 ## Brand Direction
 
-ATS should feel:
+AST should feel:
 
 - premium
 - modern
@@ -132,11 +132,11 @@ Use the existing repository design tokens whenever possible.
 
 The website should tell a story:
 
-1. Who ATS is
-2. What ATS does
-3. What ATS has built
-4. Why someone should trust ATS
-5. How ATS works
+1. Who AST is
+2. What AST does
+3. What AST has built
+4. Why someone should trust AST
+5. How AST works
 6. How to start a project
 
 The site should prioritize visual storytelling rather than having many

@@ -5,7 +5,7 @@ import './styles/globals.css';
 import 'flag-icons/css/flag-icons.min.css';
 
 // Initialize theme from localStorage or system preference
-const stored = localStorage.getItem('ats-theme');
+const stored = localStorage.getItem('ast-theme');
 if (stored === 'light') {
   document.documentElement.classList.remove('dark');
   document.documentElement.classList.add('light');

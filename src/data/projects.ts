@@ -1,5 +1,5 @@
 /**
- * Illustrative project concepts. Replace these with approved ATS case studies
+ * Illustrative project concepts. Replace these with approved AST case studies
  * before presenting them as client work. This shape powers the homepage,
  * projects index, and dynamic project detail route.
  */
@@ -15,32 +15,74 @@ export interface Project {
   features: string[];
   tech: string[];
   highlights: string[];
+  /** External live demo URL, shown as a link on the project detail page. */
+  demoUrl?: string;
+  /** Card/detail hero image. Falls back to the gradient placeholder when omitted. */
+  image?: string;
+  imageAlt?: string;
+  /** Google Drive share link for a demo video. Replaces the hero image on the detail page when set. */
+  videoUrl?: string;
 }
 
 export const projects: Project[] = [
   {
-    slug: 'logistics-ai-platform',
-    title: 'Logistics Intelligence Platform',
+    slug: 'studify',
+    title: 'Studify: AI Study Companion',
     category: 'AI & Machine Learning',
-    status: 'illustrative',
-    year: '2025',
+    status: 'published',
+    year: '2026',
     summary:
-      'An illustrative concept for a planning workspace that brings demand signals and capacity decisions into one place.',
+      'A full-stack MERN app where students upload their notes and slides, then chat with them, get instant summaries, generate quizzes, and track progress, all grounded in their own material.',
     problem:
-      'Growing operations can struggle when route and capacity planning lives across spreadsheets and disconnected tools.',
+      'Students juggle notes, slides, and PDFs across formats with no fast way to review them, get straight answers, or test what has actually sunk in before an exam.',
     solution:
-      'The concept pairs forecasting models with an interactive planning interface and live operational data.',
+      'Studify centralizes uploaded course material and grounds every AI feature (chat, summaries, and quizzes) in a custom retrieval-augmented generation (RAG) pipeline, so answers cite the exact source notes instead of guessing.',
     features: [
-      'Demand forecasting models',
-      'Interactive capacity planning',
-      'Live integration with fleet data',
+      'AI chat that answers from your notes, with source citations under every reply',
+      'One-click document summaries, exportable as PDF or CSV',
+      'Auto-generated multiple-choice quizzes with instant scoring and explanations',
+      'Study analytics and an AI study coach that reads your activity and streak',
+      'Secure accounts with email OTP sign-up, JWT auth, and password reset',
     ],
-    tech: ['TypeScript', 'Next.js', 'Python', 'PostgreSQL', 'AWS'],
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Groq', 'Transformers.js'],
     highlights: [
-      'A focused workflow for forecasting and capacity planning',
-      'Live operational data alongside planning decisions',
-      'A flexible foundation for teams operating across regions',
+      'Custom RAG pipeline with local neural embeddings, no external vector database or embeddings API',
+      'Every AI answer, summary, and quiz is grounded in and cited from the user’s own uploaded material',
+      'Shipped and deployed end-to-end across Vercel, Railway, and MongoDB Atlas',
     ],
+    demoUrl: 'https://studify-six.vercel.app/login',
+    image: '/projects/studify-cover.jpg',
+    imageAlt: 'A cozy study desk at sunset, the visual used on the Studify sign-in screen',
+  },
+  {
+    slug: 'cat-connect',
+    title: 'Cat Connect',
+    category: 'Web Application',
+    status: 'published',
+    year: '2026',
+    summary:
+      'A cat welfare management platform for shelters: intake, medical records, adoption, fostering, lost & found, donations, and messaging, built as a Django REST API with a React single-page app.',
+    problem:
+      'Shelters and rescues track a cat\'s entire lifecycle (intake, medical care, fostering, adoption) across spreadsheets and paper logs, making it hard for shelter staff, vets, and volunteers to coordinate.',
+    solution:
+      'Cat Connect gives every role, from shelter admins to vets to volunteers, one role-based system covering the full lifecycle of a cat\'s care, backed by scheduled background jobs for reminders and matching.',
+    features: [
+      'Cat registry with intake and discharge tracking',
+      'Medical records and vet appointment scheduling',
+      'Adoption and fostering workflows',
+      'Lost and found matching engine',
+      'Donation campaigns and volunteer coordination',
+      'Role-based accounts (admin, shelter admin, vet, volunteer) with JWT auth and email verification',
+    ],
+    tech: ['Python', 'Django', 'PostgreSQL', 'Redis', 'React', 'Tailwind CSS'],
+    highlights: [
+      '18 Django apps covering the full shelter workflow: medical, wellness, adoption, foster, rescue, and more',
+      'Scheduled background jobs via Celery for reminders and the lost & found matching engine',
+      'Full OpenAPI/Swagger documentation generated from the API',
+    ],
+    image: '/projects/cat-connect-cover.svg',
+    imageAlt: 'A paw print mark on a dark gradient, styled after the Cat Connect app icon',
+    videoUrl: 'https://drive.google.com/file/d/1DOXkn57jIr1e7NH8YxkYOpVUYGSf8xFq/view?usp=drive_link',
   },
   {
     slug: 'healthcare-patient-app',

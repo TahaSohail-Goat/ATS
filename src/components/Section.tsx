@@ -54,12 +54,12 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative ${spacing[space]} ${tone === 'raised' ? 'bg-ats-surface/50' : ''} ${className}`}
+      className={`relative ${spacing[space]} ${tone === 'raised' ? 'bg-ast-surface/50' : ''} ${className}`}
     >
       {tone === 'raised' && (
         <>
-          <div aria-hidden className="ats-hairline absolute inset-x-0 top-0 h-px" />
-          <div aria-hidden className="ats-dots pointer-events-none absolute inset-0 opacity-60" />
+          <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
+          <div aria-hidden className="ast-dots pointer-events-none absolute inset-0 opacity-60" />
         </>
       )}
 

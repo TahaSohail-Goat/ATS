@@ -1,6 +1,6 @@
 # Security Architecture
 
-The current ATS runtime is a public Next.js website with static content and an
+The current AST runtime is a public Next.js website with static content and an
 optional hosted contact-form POST.
 
 - No API keys, database credentials, or private secrets are required by the

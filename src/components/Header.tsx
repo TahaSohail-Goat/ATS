@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import { Button } from '@ats/ui';
+import { Button } from '@ast/ui';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { NAV_LINKS } from '../data/navigation';
@@ -47,24 +47,24 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ats-line shadow-[0_12px_40px_-28px_rgb(var(--ats-primary)/0.9)]">
+    <header className="sticky top-0 z-50 border-b border-ast-line shadow-[0_12px_40px_-28px_rgb(var(--ast-primary)/0.9)]">
       {/* Glass background lives on its own layer, not on `header` itself,
           so `backdrop-filter` doesn't become the containing block for the
           fixed-position mobile menu below (that would collapse its height). */}
-      <div className="ats-glass pointer-events-none absolute inset-0 -z-10" aria-hidden />
+      <div className="ast-glass pointer-events-none absolute inset-0 -z-10" aria-hidden />
       <div
         className={`mx-auto flex h-20 w-full max-w-shell items-center justify-between gap-4 px-5 sm:px-8 lg:px-12`}
       >
         <Link
           to="/"
-          className="group flex items-center rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ats-brand"
-          aria-label="ATS — home"
+          className="group flex items-center rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ast-brand"
+          aria-label="AST home"
         >
           <Logo showTagline priority />
         </Link>
 
         <nav className="hidden items-center lg:flex" aria-label="Main">
-          <ul className="flex items-center gap-1 rounded-full border border-ats-line bg-ats-surface/50 p-1.5 backdrop-blur-sm">
+          <ul className="flex items-center gap-1 rounded-full border border-ast-line bg-ast-surface/50 p-1.5 backdrop-blur-sm">
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
               return (
@@ -73,14 +73,14 @@ export function Header() {
                     to={link.href}
                     aria-current={active ? 'page' : undefined}
                     className={`relative flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                      active ? 'text-ats-ink' : 'text-ats-ink-muted hover:text-ats-ink'
+                      active ? 'text-ast-ink' : 'text-ast-ink-muted hover:text-ast-ink'
                     }`}
                   >
                     {active && (
                       <motion.span
                         layoutId="active-navigation"
                         aria-hidden
-                        className="bg-ats-brand/12 absolute inset-0 rounded-full border border-ats-brand/25"
+                        className="bg-ast-brand/12 absolute inset-0 rounded-full border border-ast-brand/25"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -106,7 +106,7 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ats-line bg-ats-surface/60 text-ats-ink-muted transition-colors duration-200 hocus:border-ats-brand/40 hocus:text-ats-brand lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ast-line bg-ast-surface/60 text-ast-ink-muted transition-colors duration-200 hocus:border-ast-brand/40 hocus:text-ast-brand lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -125,7 +125,7 @@ export function Header() {
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            className="ats-glass fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-ats-line lg:hidden"
+            className="ast-glass fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-ast-line lg:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -153,14 +153,14 @@ export function Header() {
                           transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
                         },
                       }}
-                      className="border-b border-ats-line/70"
+                      className="border-b border-ast-line/70"
                     >
                       <Link
                         to={link.href}
                         aria-current={active ? 'page' : undefined}
                         onClick={() => setMenuOpen(false)}
                         className={`flex items-center justify-between py-4 text-2xl font-semibold tracking-display transition-colors ${
-                          active ? 'text-ats-brand' : 'text-ats-ink hover:text-ats-brand'
+                          active ? 'text-ast-brand' : 'text-ast-ink hover:text-ast-brand'
                         }`}
                       >
                         {link.label}

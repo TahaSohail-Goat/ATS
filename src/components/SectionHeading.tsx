@@ -39,11 +39,11 @@ export function SectionHeading({
       {eyebrow && (
         <Reveal direction="none">
           <p
-            className={`mb-5 inline-flex items-center gap-2.5 rounded-full border border-ats-line bg-ats-surface/60 px-3.5 py-1.5 text-eyebrow font-semibold uppercase text-ats-accent ${
+            className={`mb-5 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-3.5 py-1.5 text-eyebrow font-semibold uppercase text-ast-accent ${
               centered ? 'mx-auto' : ''
             }`}
           >
-            <span aria-hidden className="h-1 w-1 rounded-full bg-ats-accent" />
+            <span aria-hidden className="h-1 w-1 rounded-full bg-ast-accent" />
             {eyebrow}
           </p>
         </Reveal>
@@ -64,7 +64,7 @@ export function SectionHeading({
       {description && (
         <Reveal delay={0.08}>
           <p
-            className={`mt-6 text-lg leading-relaxed text-ats-ink-muted ${
+            className={`mt-6 text-lg leading-relaxed text-ast-ink-muted ${
               centered ? 'mx-auto max-w-prose' : 'max-w-prose'
             }`}
           >

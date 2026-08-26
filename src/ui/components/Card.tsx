@@ -23,13 +23,13 @@ export const Card = forwardRef<HTMLElement, CardProps>(function Card(
     <Component
       ref={ref}
       className={cn(
-        'border-ats-line bg-ats-surface relative rounded-2xl border',
+        'border-ast-line bg-ast-surface relative rounded-2xl border',
         !flush && 'p-6 sm:p-7',
         interactive &&
           cn(
             'transition-[transform,border-color,box-shadow] duration-300 ease-out',
-            'hover:border-ats-brand/35 motion-safe:hover:-translate-y-1',
-            'hover:shadow-[0_24px_60px_-32px_rgb(var(--ats-brand)/0.45)]',
+            'hover:border-ast-brand/35 motion-safe:hover:-translate-y-1',
+            'hover:shadow-[0_24px_60px_-32px_rgb(var(--ast-brand)/0.45)]',
           ),
         className,
       )}

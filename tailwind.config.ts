@@ -2,12 +2,12 @@ import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 import { theme, themeConstant } from './src/ui/tokens/colors';
 
-// ATS design tokens are the single source of color truth — see
+// AST design tokens are the single source of color truth — see
 // docs/frontend/design-system.md and packages/ui/src/tokens.
 //
 // Semantic roles (canvas/surface/line/ink/brand) are emitted as CSS custom
 // properties holding "R G B" channel triplets so that every Tailwind color
-// utility supports opacity modifiers (`bg-ats-surface/60`) while a single
+// utility supports opacity modifiers (`bg-ast-surface/60`) while a single
 // `.light` / `.dark` class on <html> re-themes the entire site.
 
 /** '#2563EB' → '37 99 235' */
@@ -32,15 +32,15 @@ function tokenColor(variable: string) {
 }
 
 const SEMANTIC_VARS = {
-  canvas: '--ats-canvas',
-  surface: '--ats-surface',
-  surfaceRaised: '--ats-surface-raised',
-  line: '--ats-line',
-  ink: '--ats-ink',
-  inkMuted: '--ats-ink-muted',
-  brand: '--ats-brand',
-  brandStrong: '--ats-brand-strong',
-  accent: '--ats-accent',
+  canvas: '--ast-canvas',
+  surface: '--ast-surface',
+  surfaceRaised: '--ast-surface-raised',
+  line: '--ast-line',
+  ink: '--ast-ink',
+  inkMuted: '--ast-ink-muted',
+  brand: '--ast-brand',
+  brandStrong: '--ast-brand-strong',
+  accent: '--ast-accent',
 } as const;
 
 function schemeVars(scheme: 'dark' | 'light'): Record<string, string> {
@@ -53,7 +53,7 @@ function schemeVars(scheme: 'dark' | 'light'): Record<string, string> {
 }
 
 const constantVars: Record<string, string> = Object.fromEntries(
-  Object.entries(themeConstant).map(([role, hex]) => [`--ats-${role}`, channels(hex)]),
+  Object.entries(themeConstant).map(([role, hex]) => [`--ast-${role}`, channels(hex)]),
 );
 
 const config: Config = {
@@ -63,20 +63,20 @@ const config: Config = {
     extend: {
       colors: {
         // Semantic, theme-aware roles — prefer these in components.
-        'ats-canvas': tokenColor(SEMANTIC_VARS.canvas),
-        'ats-surface': tokenColor(SEMANTIC_VARS.surface),
-        'ats-surface-raised': tokenColor(SEMANTIC_VARS.surfaceRaised),
-        'ats-line': tokenColor(SEMANTIC_VARS.line),
-        'ats-ink': tokenColor(SEMANTIC_VARS.ink),
-        'ats-ink-muted': tokenColor(SEMANTIC_VARS.inkMuted),
-        'ats-brand': tokenColor(SEMANTIC_VARS.brand),
-        'ats-brand-strong': tokenColor(SEMANTIC_VARS.brandStrong),
-        'ats-accent': tokenColor(SEMANTIC_VARS.accent),
-        'ats-primary': tokenColor('--ats-primary'),
-        'ats-secondary': tokenColor('--ats-secondary'),
-        'ats-violet': tokenColor('--ats-violet'),
-        'ats-success': tokenColor('--ats-success'),
-        'ats-error': tokenColor('--ats-error'),
+        'ast-canvas': tokenColor(SEMANTIC_VARS.canvas),
+        'ast-surface': tokenColor(SEMANTIC_VARS.surface),
+        'ast-surface-raised': tokenColor(SEMANTIC_VARS.surfaceRaised),
+        'ast-line': tokenColor(SEMANTIC_VARS.line),
+        'ast-ink': tokenColor(SEMANTIC_VARS.ink),
+        'ast-ink-muted': tokenColor(SEMANTIC_VARS.inkMuted),
+        'ast-brand': tokenColor(SEMANTIC_VARS.brand),
+        'ast-brand-strong': tokenColor(SEMANTIC_VARS.brandStrong),
+        'ast-accent': tokenColor(SEMANTIC_VARS.accent),
+        'ast-primary': tokenColor('--ast-primary'),
+        'ast-secondary': tokenColor('--ast-secondary'),
+        'ast-violet': tokenColor('--ast-violet'),
+        'ast-success': tokenColor('--ast-success'),
+        'ast-error': tokenColor('--ast-error'),
       },
       fontFamily: {
         sans: ['Inter', 'var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
@@ -104,61 +104,61 @@ const config: Config = {
         '5xl': '2.75rem',
       },
       boxShadow: {
-        'ats-card': '0 1px 2px 0 rgb(var(--ats-primary) / 0.06)',
-        'ats-lifted': '0 28px 70px -34px rgb(var(--ats-primary) / 0.5)',
-        'ats-glow':
-          '0 0 0 1px rgb(var(--ats-brand) / 0.28), 0 24px 60px -26px rgb(var(--ats-brand) / 0.55)',
-        'ats-inset': 'inset 0 1px 0 0 rgb(255 255 255 / 0.06)',
+        'ast-card': '0 1px 2px 0 rgb(var(--ast-primary) / 0.06)',
+        'ast-lifted': '0 28px 70px -34px rgb(var(--ast-primary) / 0.5)',
+        'ast-glow':
+          '0 0 0 1px rgb(var(--ast-brand) / 0.28), 0 24px 60px -26px rgb(var(--ast-brand) / 0.55)',
+        'ast-inset': 'inset 0 1px 0 0 rgb(255 255 255 / 0.06)',
       },
       backgroundImage: {
-        'ats-brand-gradient':
-          'linear-gradient(120deg, rgb(var(--ats-brand)) 0%, rgb(var(--ats-accent)) 55%, rgb(var(--ats-violet)) 100%)',
-        'ats-ink-gradient':
-          'linear-gradient(180deg, rgb(var(--ats-ink)) 0%, rgb(var(--ats-ink) / 0.62) 100%)',
+        'ast-brand-gradient':
+          'linear-gradient(120deg, rgb(var(--ast-brand)) 0%, rgb(var(--ast-accent)) 55%, rgb(var(--ast-violet)) 100%)',
+        'ast-ink-gradient':
+          'linear-gradient(180deg, rgb(var(--ast-ink)) 0%, rgb(var(--ast-ink) / 0.62) 100%)',
       },
       transitionTimingFunction: {
-        'ats-out': 'cubic-bezier(0.22, 1, 0.36, 1)',
-        'ats-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
+        'ast-out': 'cubic-bezier(0.22, 1, 0.36, 1)',
+        'ast-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },
       keyframes: {
-        'ats-drift': {
+        'ast-drift': {
           '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
           '50%': { transform: 'translate3d(4%, -6%, 0) scale(1.12)' },
         },
-        'ats-drift-slow': {
+        'ast-drift-slow': {
           '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1.08)' },
           '50%': { transform: 'translate3d(-5%, 5%, 0) scale(1)' },
         },
-        'ats-marquee': {
+        'ast-marquee': {
           from: { transform: 'translate3d(0, 0, 0)' },
           to: { transform: 'translate3d(-50%, 0, 0)' },
         },
-        'ats-marquee-reverse': {
+        'ast-marquee-reverse': {
           from: { transform: 'translate3d(-50%, 0, 0)' },
           to: { transform: 'translate3d(0, 0, 0)' },
         },
-        'ats-shimmer': {
+        'ast-shimmer': {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
         },
-        'ats-pulse-ring': {
+        'ast-pulse-ring': {
           '0%': { transform: 'scale(0.9)', opacity: '0.7' },
           '70%, 100%': { transform: 'scale(2.2)', opacity: '0' },
         },
-        'ats-scroll-hint': {
+        'ast-scroll-hint': {
           '0%, 100%': { transform: 'translateY(0)', opacity: '0.35' },
           '50%': { transform: 'translateY(6px)', opacity: '1' },
         },
       },
       animation: {
-        'ats-drift': 'ats-drift 22s cubic-bezier(0.45, 0, 0.55, 1) infinite',
-        'ats-drift-slow': 'ats-drift-slow 30s cubic-bezier(0.45, 0, 0.55, 1) infinite',
-        'ats-marquee': 'ats-marquee var(--ats-marquee-duration, 40s) linear infinite',
-        'ats-marquee-reverse':
-          'ats-marquee-reverse var(--ats-marquee-duration, 40s) linear infinite',
-        'ats-shimmer': 'ats-shimmer 6s linear infinite',
-        'ats-pulse-ring': 'ats-pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite',
-        'ats-scroll-hint': 'ats-scroll-hint 2s ease-in-out infinite',
+        'ast-drift': 'ast-drift 22s cubic-bezier(0.45, 0, 0.55, 1) infinite',
+        'ast-drift-slow': 'ast-drift-slow 30s cubic-bezier(0.45, 0, 0.55, 1) infinite',
+        'ast-marquee': 'ast-marquee var(--ast-marquee-duration, 40s) linear infinite',
+        'ast-marquee-reverse':
+          'ast-marquee-reverse var(--ast-marquee-duration, 40s) linear infinite',
+        'ast-shimmer': 'ast-shimmer 6s linear infinite',
+        'ast-pulse-ring': 'ast-pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite',
+        'ast-scroll-hint': 'ast-scroll-hint 2s ease-in-out infinite',
       },
     },
   },

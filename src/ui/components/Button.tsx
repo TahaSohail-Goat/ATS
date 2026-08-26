@@ -23,26 +23,26 @@ const base = cn(
   'group/button relative inline-flex items-center justify-center gap-2 rounded-full',
   'font-semibold leading-none tracking-[-0.01em] whitespace-nowrap',
   'transition-[transform,background-color,border-color,color,box-shadow] duration-200 ease-out',
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ats-brand',
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ast-brand',
   'disabled:pointer-events-none disabled:opacity-55',
   'motion-safe:active:scale-[0.98]',
 );
 
 const variants: Record<ButtonVariant, string> = {
   primary: cn(
-    'bg-ats-brand text-white shadow-[0_1px_0_0_rgb(255_255_255/0.18)_inset,0_10px_30px_-12px_rgb(var(--ats-brand)/0.75)]',
-    'hover:bg-ats-brand-strong motion-safe:hover:-translate-y-0.5',
+    'bg-ast-brand text-white shadow-[0_1px_0_0_rgb(255_255_255/0.18)_inset,0_10px_30px_-12px_rgb(var(--ast-brand)/0.75)]',
+    'hover:bg-ast-brand-strong motion-safe:hover:-translate-y-0.5',
   ),
   secondary: cn(
-    'bg-ats-secondary text-white shadow-[0_10px_30px_-14px_rgb(var(--ats-brand)/0.55)]',
-    'hover:bg-ats-secondary/90 motion-safe:hover:-translate-y-0.5',
+    'bg-ast-secondary text-white shadow-[0_10px_30px_-14px_rgb(var(--ast-brand)/0.55)]',
+    'hover:bg-ast-secondary/90 motion-safe:hover:-translate-y-0.5',
   ),
   outline: cn(
-    'border border-ats-line bg-ats-surface/60 text-ats-ink backdrop-blur-sm',
-    'hover:border-ats-brand/45 hover:bg-ats-surface motion-safe:hover:-translate-y-0.5',
+    'border border-ast-line bg-ast-surface/60 text-ast-ink backdrop-blur-sm',
+    'hover:border-ast-brand/45 hover:bg-ast-surface motion-safe:hover:-translate-y-0.5',
   ),
-  subtle: 'bg-ats-ink/[0.06] text-ats-ink hover:bg-ats-ink/[0.1]',
-  ghost: 'bg-transparent text-ats-brand hover:bg-ats-brand/10',
+  subtle: 'bg-ast-ink/[0.06] text-ast-ink hover:bg-ast-ink/[0.1]',
+  ghost: 'bg-transparent text-ast-brand hover:bg-ast-brand/10',
 };
 
 const sizes: Record<ButtonSize, string> = {

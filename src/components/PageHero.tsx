@@ -27,7 +27,7 @@ export function PageHero({
   children,
 }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-ats-line pb-16 pt-16 sm:pb-24 sm:pt-24">
+    <section className="relative isolate overflow-hidden border-b border-ast-line pb-16 pt-16 sm:pb-24 sm:pt-24">
       <Aurora variant="quiet" />
       <Container className="relative">
         <SectionHeading
