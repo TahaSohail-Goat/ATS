@@ -8,12 +8,12 @@ import { values } from '../../data/site';
 const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
 
 /**
- * Asymmetric bento spans — a 3-column grid filled as 2·1·1·2 so the four
+ * Asymmetric bento spans, a 3-column grid filled as 2·1·1·2 so the four
  * values read as a composed layout rather than a row of identical boxes.
  */
 const spans = ['lg:col-span-2', 'lg:col-span-1', 'lg:col-span-1', 'lg:col-span-2'];
 
-/** Home "Why AST" — the values that make the difference. */
+/** Home "Why AST", the values that make the difference. */
 export function WhyAst() {
   return (
     <Section

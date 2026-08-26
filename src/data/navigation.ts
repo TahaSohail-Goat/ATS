@@ -5,7 +5,7 @@ export interface NavLink {
   hint?: string;
 }
 
-/** Single source of truth for site navigation — header, footer, mobile panel. */
+/** Single source of truth for site navigation, header, footer, mobile panel. */
 export const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Home', hint: 'Start here' },
   { href: '/services', label: 'Services', hint: 'What we build' },

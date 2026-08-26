@@ -13,10 +13,14 @@ import { SpotlightCard } from '../components/motion/SpotlightCard';
 import { projects } from '../data/projects';
 import { getTechIcon } from '../data/techIcons';
 import { getDriveEmbedUrl } from '../lib/video';
+import { useSeo } from '../lib/seo';
 
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
+
+  // Hooks must run before any early return, so this tolerates a missing project.
+  useSeo({ title: project?.title, description: project?.summary });
 
   if (!project) {
     return <Navigate to="/projects" replace />;

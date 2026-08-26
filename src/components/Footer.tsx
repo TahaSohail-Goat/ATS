@@ -5,6 +5,9 @@ import { Container } from './Container';
 import { Logo } from './Logo';
 import { NAV_LINKS } from '../data/navigation';
 
+/** Careers is footer-only: reachable, but kept out of the main nav. */
+const FOOTER_LINKS = [...NAV_LINKS, { href: '/careers', label: 'Careers' }];
+
 const CAPABILITIES = [
   { href: '/services', label: 'Custom software' },
   { href: '/services', label: 'AI & machine learning' },
@@ -38,7 +41,7 @@ export function Footer() {
           <nav aria-label="Footer" className="lg:col-span-1">
             <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Site</h2>
             <ul className="mt-5 space-y-3">
-              {NAV_LINKS.map((link) => (
+              {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -83,7 +86,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Oversized wordmark — anchors the page without competing for attention. */}
+        {/* Oversized wordmark, anchors the page without competing for attention. */}
         <div
           aria-hidden
           className="pointer-events-none mt-16 select-none overflow-hidden border-t border-ast-line pt-8"

@@ -1,5 +1,5 @@
 /**
- * Placeholder site content — values, process steps, and technology
+ * Placeholder site content, values, process steps, and technology
  * stack used on the Home page (TBD, see docs/frontend/website-design-brief.md).
  */
 export interface Value {
@@ -59,36 +59,32 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-export const techStack: string[] = [
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Node.js',
-  'Python',
-  'PostgreSQL',
-  'AWS',
-  'Docker',
-  'Kubernetes',
-  'CI/CD',
-  'LLMs & AI',
-  'Data Pipelines',
-];
-
 export interface TechGroup {
   label: string;
   items: string[];
 }
 
-/**
- * The same stack as `techStack`, grouped by layer for display. Keep the two
- * in sync — `techStack` remains the flat list for compact contexts.
- */
 export const techGroups: TechGroup[] = [
-  { label: 'Product & Frontend', items: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS'] },
-  { label: 'Backend & Data', items: ['Node.js', 'Python', 'PostgreSQL', 'Data Pipelines'] },
-  { label: 'Cloud & Delivery', items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'] },
-  { label: 'AI & Machine Learning', items: ['LLMs & AI', 'Forecasting', 'Classification', 'RAG'] },
+  {
+    label: 'Product & Frontend',
+    items: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Vite', 'Framer Motion'],
+  },
+  {
+    label: 'Backend & Data',
+    items: ['Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'MongoDB', 'Redis'],
+  },
+  {
+    label: 'Cloud & Delivery',
+    items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Vercel', 'GitHub Actions'],
+  },
+  {
+    label: 'AI & Machine Learning',
+    items: ['LLMs & AI', 'RAG', 'Forecasting', 'Classification', 'Groq', 'Transformers.js'],
+  },
 ];
+
+/** Flattened `techGroups`, for compact contexts (e.g. the "N+ core technologies" stat). */
+export const techStack: string[] = techGroups.flatMap((group) => group.items);
 
 /** Short capability keywords for the hero marquee. */
 export const capabilities: string[] = [

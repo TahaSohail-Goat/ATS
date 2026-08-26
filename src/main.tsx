@@ -4,15 +4,9 @@ import { App } from './App';
 import './styles/globals.css';
 import 'flag-icons/css/flag-icons.min.css';
 
-// Initialize theme from localStorage or system preference
-const stored = localStorage.getItem('ast-theme');
-if (stored === 'light') {
-  document.documentElement.classList.remove('dark');
-  document.documentElement.classList.add('light');
-} else {
-  document.documentElement.classList.remove('light');
-  document.documentElement.classList.add('dark');
-}
+// The theme is applied before first paint by the inline script in index.html,
+// which also swallows the SecurityError that reading localStorage throws in
+// private/locked-down browsers. Nothing to do here.
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -12,15 +12,28 @@ type FormState = {
 
 type FieldErrors = Partial<Record<'name' | 'email' | 'category' | 'question', string>>;
 
+/**
+ * Field length caps. The endpoint is a public third-party inbox with its
+ * captcha disabled, so the client must not relay unbounded payloads to it.
+ * Enforced both by `maxLength` (typing) and in `validate` (paste/scripted).
+ */
+const LIMITS = { name: 100, email: 254, question: 2000 } as const;
+
 function validate(data: FormState): FieldErrors {
   const errors: FieldErrors = {};
 
-  if (!data.name.trim()) errors.name = 'Name is required.';
+  if (!data.name.trim()) {
+    errors.name = 'Name is required.';
+  } else if (data.name.length > LIMITS.name) {
+    errors.name = `Name must be ${LIMITS.name} characters or fewer.`;
+  }
 
   if (!data.email.trim()) {
     errors.email = 'Email is required.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = 'Please enter a valid email address.';
+  } else if (data.email.length > LIMITS.email) {
+    errors.email = `Email must be ${LIMITS.email} characters or fewer.`;
   }
 
   if (!data.category.trim()) errors.category = 'Please select a category.';
@@ -29,6 +42,8 @@ function validate(data: FormState): FieldErrors {
     errors.question = 'Question is required.';
   } else if (data.question.trim().length < 10) {
     errors.question = 'Question must be at least 10 characters.';
+  } else if (data.question.length > LIMITS.question) {
+    errors.question = `Question must be ${LIMITS.question} characters or fewer.`;
   }
 
   return errors;
@@ -57,6 +72,8 @@ export function FAQForm() {
   });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  /** Honeypot: hidden from people, commonly auto-filled by bots. */
+  const [botField, setBotField] = useState('');
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = e.target;
@@ -76,6 +93,13 @@ export function FAQForm() {
       return;
     }
 
+    // A filled honeypot means a bot. Show the success state without sending so
+    // the crawler gets no signal about what gave it away.
+    if (botField) {
+      setStatus('sent');
+      return;
+    }
+
     setStatus('sending');
     try {
       const response = await fetch(FORMSUBMIT_ENDPOINT, {
@@ -86,6 +110,7 @@ export function FAQForm() {
           _template: 'table',
           _captcha: 'false',
           _replyto: form.email,
+          _honey: '',
           Name: form.name,
           Email: form.email,
           Category: form.category,
@@ -123,6 +148,20 @@ export function FAQForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+      {/* Honeypot: off-screen and hidden from assistive tech, so only bots fill it. */}
+      <div aria-hidden className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="faq-company-website">Company website (leave blank)</label>
+        <input
+          id="faq-company-website"
+          name="faq-company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botField}
+          onChange={(e) => setBotField(e.target.value)}
+        />
+      </div>
+
       {status === 'error' && (
         <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ast-error/30 bg-ast-error/10 p-5">
           <p className="text-sm font-semibold text-ast-error">
@@ -142,6 +181,7 @@ export function FAQForm() {
             name="name"
             type="text"
             autoComplete="name"
+            maxLength={LIMITS.name}
             placeholder="Jane Smith"
             value={form.name}
             onChange={handleChange}
@@ -165,6 +205,7 @@ export function FAQForm() {
             name="email"
             type="email"
             autoComplete="email"
+            maxLength={LIMITS.email}
             placeholder="jane@company.com"
             value={form.email}
             onChange={handleChange}
@@ -217,6 +258,7 @@ export function FAQForm() {
           id="faq-question"
           name="question"
           rows={4}
+          maxLength={LIMITS.question}
           placeholder="Ask your question here..."
           value={form.question}
           onChange={handleChange}

@@ -2,8 +2,15 @@ import { ContactForm } from '../features/contact-form/ContactForm';
 import { Container } from '../components/Container';
 import { Aurora } from '../components/Aurora';
 import { Reveal } from '../components/motion/Reveal';
+import { useSeo } from '../lib/seo';
 
 export function ContactPage() {
+  useSeo({
+    title: 'Contact',
+    description:
+      'Start a project with AST. Tell us what you are building and we reply with honest technical feedback and a clear first step.',
+  });
+
   return (
     <section className="relative isolate overflow-hidden py-16 sm:py-24">
       <Aurora variant="hero" />

@@ -6,10 +6,17 @@ import { Reveal } from '../components/motion/Reveal';
 import { CtaSection } from '../components/CtaSection';
 import { FAQForm } from '../features/faq-form/FAQForm';
 import { faqs } from '../data/faqs';
+import { useSeo } from '../lib/seo';
 
 const FAQ_CATEGORIES = ['Services', 'Process', 'Engagement', 'Technology', 'Pricing & Budget', 'Team & Expertise', 'Getting Started'];
 
 export function FAQPage() {
+  useSeo({
+    title: 'FAQ',
+    description:
+      'Answers to common questions about AST services, process, timelines, pricing, and technology.',
+  });
+
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -41,7 +48,7 @@ export function FAQPage() {
         description="Find answers to common questions about our services, process, and how we work. Don't see what you're looking for? Ask us directly."
       />
 
-      <Section space="loose">
+      <Section space="loose" srTitle="Questions and answers">
         {/* Category Filter */}
         <Reveal>
           <div className="mb-10 flex flex-wrap gap-2">

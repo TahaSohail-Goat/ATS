@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* AST brand tokens are consumed via Tailwind (see tailwind.config.ts and
-   packages/ui/src/tokens/colors.ts) — no hardcoded hex values here. The
+   packages/ui/src/tokens/colors.ts), no hardcoded hex values here. The
    semantic `--ast-*` custom properties below are emitted by the Tailwind
    plugin in tailwind.config.ts and hold "R G B" channel triplets. */
 
@@ -15,7 +15,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Sticky header height — anchored sections stop below it. */
+    /* Sticky header height, anchored sections stop below it. */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
   }  body {
@@ -111,7 +111,7 @@
     -webkit-backdrop-filter: blur(12px);
   }
 
-  /* One-pixel gradient hairline — section dividers and top-of-band accents. */
+  /* One-pixel gradient hairline, section dividers and top-of-band accents. */
   .ast-hairline {
     background-image: linear-gradient(
       to right,
@@ -122,7 +122,7 @@
     );
   }
 
-  /* Gradient border via mask compositing — no wrapper element needed. */
+  /* Gradient border via mask compositing, no wrapper element needed. */
   .ast-ring-gradient::before {
     content: '';
     position: absolute;

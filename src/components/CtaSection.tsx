@@ -18,7 +18,7 @@ interface CtaSectionProps {
   children?: ReactNode;
 }
 
-/** Shared closing CTA band — used on every content page. */
+/** Shared closing CTA band, used on every content page. */
 export function CtaSection({
   title,
   titleAccent,

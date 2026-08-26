@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 625">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#EF4444" stop-opacity="0.35" />
+      <stop offset="45%" stop-color="#2563EB" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#080D1C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#172554" />
+      <stop offset="55%" stop-color="#0B1220" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#E6EDF8" stroke-opacity="0.05" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="625" fill="url(#base)" />
+  <rect width="1000" height="625" fill="url(#glow)" />
+  <rect width="1000" height="625" fill="url(#grid)" />
+
+  <!-- Radar sweep rings, coordination/response motif -->
+  <g fill="none" stroke="#22D3EE" stroke-opacity="0.5">
+    <circle cx="560" cy="300" r="70" stroke-width="1.5" />
+    <circle cx="560" cy="300" r="120" stroke-opacity="0.32" stroke-width="1.5" />
+    <circle cx="560" cy="300" r="175" stroke-opacity="0.18" stroke-width="1.5" />
+  </g>
+
+  <!-- Response node markers -->
+  <g fill="#F4E9DD">
+    <circle cx="560" cy="300" r="9" />
+    <circle cx="470" cy="245" r="5" opacity="0.85" />
+    <circle cx="645" cy="360" r="5" opacity="0.85" />
+    <circle cx="500" cy="390" r="4" opacity="0.7" />
+  </g>
+  <g stroke="#94A3B8" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="3 4">
+    <line x1="560" y1="300" x2="470" y2="245" />
+    <line x1="560" y1="300" x2="645" y2="360" />
+    <line x1="560" y1="300" x2="500" y2="390" />
+  </g>
+
+  <!-- Alert pulse (EKG-style) leading into the cluster -->
+  <path d="M120 300 H300 L330 260 L360 340 L390 300 H430"
+        fill="none" stroke="#EF4444" stroke-opacity="0.65" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round" />
+</svg>

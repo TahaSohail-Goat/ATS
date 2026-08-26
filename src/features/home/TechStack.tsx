@@ -3,14 +3,14 @@ import { Reveal } from '../../components/motion/Reveal';
 import { Stagger } from '../../components/motion/Stagger';
 import { techGroups } from '../../data/site';
 
-/** Home technology/expertise — the stack and skills behind the work. */
+/** Home technology/expertise, the stack and skills behind the work. */
 export function TechStack() {
   return (
     <Section
       eyebrow="Technology & Expertise"
       title="Tools we"
       titleAccent="trust"
-      description="A deliberately small stack we know deeply, chosen for longevity and hiring pool, not novelty."
+      description="A modern, battle-tested stack across product, data, cloud, and AI, chosen for longevity and hiring pool, not novelty."
     >
       <Stagger className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
         {techGroups.map((group) => (

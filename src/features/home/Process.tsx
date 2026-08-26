@@ -5,7 +5,7 @@ import { ProcessTimeline } from '../../components/ProcessTimeline';
 import { processSteps } from '../../data/site';
 
 /**
- * Home "How we work" — the engagement process, step by step.
+ * Home "How we work", the engagement process, step by step.
  *
  * Custom two-column layout rather than `Section`: the heading pins while the
  * timeline scrolls past it, which is the point of the section.

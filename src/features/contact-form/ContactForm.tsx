@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, ChevronDown, LoaderCircle } from 'lucide-react';
 import {
   getCountries,
@@ -70,6 +70,13 @@ type FormState = {
 
 type FieldErrors = Partial<Record<'name' | 'email' | 'phone' | 'services' | 'message', string>>;
 
+/**
+ * Field length caps. The endpoint is a public third-party inbox with its
+ * captcha disabled, so the client must not relay unbounded payloads to it.
+ * Enforced both by `maxLength` (typing) and in `validate` (paste/scripted).
+ */
+const LIMITS = { name: 100, email: 254, message: 5000 } as const;
+
 function validatePhone(iso: PhoneCountryCode, phone: string): string | undefined {
   if (!phone.trim()) return undefined; // optional field
   const raw = phone.replace(/\D/g, '');
@@ -89,12 +96,18 @@ function validatePhone(iso: PhoneCountryCode, phone: string): string | undefined
 function validate(data: FormState): FieldErrors {
   const errors: FieldErrors = {};
 
-  if (!data.name.trim()) errors.name = 'Name is required.';
+  if (!data.name.trim()) {
+    errors.name = 'Name is required.';
+  } else if (data.name.length > LIMITS.name) {
+    errors.name = `Name must be ${LIMITS.name} characters or fewer.`;
+  }
 
   if (!data.email.trim()) {
     errors.email = 'Email is required.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = 'Please enter a valid email address.';
+  } else if (data.email.length > LIMITS.email) {
+    errors.email = `Email must be ${LIMITS.email} characters or fewer.`;
   }
 
   const phoneErr = validatePhone(data.iso, data.phone);
@@ -108,6 +121,8 @@ function validate(data: FormState): FieldErrors {
     errors.message = 'Message is required.';
   } else if (data.message.trim().length < 10) {
     errors.message = 'Message must be at least 10 characters.';
+  } else if (data.message.length > LIMITS.message) {
+    errors.message = `Message must be ${LIMITS.message} characters or fewer.`;
   }
 
   return errors;
@@ -141,11 +156,42 @@ export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [dialOpen, setDialOpen] = useState(false);
   const [search, setSearch] = useState('');
+  /** Honeypot: hidden from people, commonly auto-filled by bots. */
+  const [botField, setBotField] = useState('');
+
+  const dialRef = useRef<HTMLDivElement>(null);
 
   const selectedCountry = useMemo(
     () => COUNTRY_LIST.find((c) => c.iso === form.iso) ?? COUNTRY_LIST[0],
     [form.iso],
   );
+
+  // Dismiss the dial-code popover the way any menu is expected to close.
+  // Without this it can only be closed by clicking its own trigger again.
+  useEffect(() => {
+    if (!dialOpen) return;
+
+    function onPointerDown(event: PointerEvent) {
+      if (!dialRef.current?.contains(event.target as Node)) closeDial();
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      closeDial();
+      document.getElementById('dial-code-btn')?.focus();
+    }
+
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [dialOpen]);
+
+  function closeDial() {
+    setDialOpen(false);
+    setSearch('');
+  }
 
   const filteredCountries = useMemo(() => {
     if (!search.trim()) return COUNTRY_LIST;
@@ -198,6 +244,13 @@ export function ContactForm() {
       return;
     }
 
+    // A filled honeypot means a bot. Show the success state without sending so
+    // the crawler gets no signal about what gave it away.
+    if (botField) {
+      setStatus('sent');
+      return;
+    }
+
     setStatus('sending');
     try {
       const response = await fetch(FORMSUBMIT_ENDPOINT, {
@@ -208,6 +261,7 @@ export function ContactForm() {
           _template: 'table',
           _captcha: 'false',
           _replyto: form.email,
+          _honey: '',
           Name: form.name,
           Email: form.email,
           Phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : 'Not provided',
@@ -248,6 +302,20 @@ export function ContactForm() {
   // ── Form ─────────────────────────────────────────────────────────────────────
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+      {/* Honeypot: off-screen and hidden from assistive tech, so only bots fill it. */}
+      <div aria-hidden className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="company-website">Company website (leave blank)</label>
+        <input
+          id="company-website"
+          name="company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botField}
+          onChange={(e) => setBotField(e.target.value)}
+        />
+      </div>
+
       {status === 'error' && (
         <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ast-error/30 bg-ast-error/10 p-5">
           <p className="text-sm font-semibold text-ast-error">
@@ -276,6 +344,7 @@ export function ContactForm() {
             name="name"
             type="text"
             autoComplete="name"
+            maxLength={LIMITS.name}
             placeholder="Jane Smith"
             value={form.name}
             onChange={handleChange}
@@ -299,6 +368,7 @@ export function ContactForm() {
             name="email"
             type="email"
             autoComplete="email"
+            maxLength={LIMITS.email}
             placeholder="jane@company.com"
             value={form.email}
             onChange={handleChange}
@@ -322,7 +392,7 @@ export function ContactForm() {
         </label>
         <div className="flex gap-2">
           {/* Dial Code Selector */}
-          <div className="relative shrink-0">
+          <div className="relative shrink-0" ref={dialRef}>
             <button
               type="button"
               id="dial-code-btn"
@@ -399,7 +469,7 @@ export function ContactForm() {
             name="phone"
             type="tel"
             autoComplete="tel-national"
-            placeholder="Enter phone number"
+            placeholder="300 1234567"
             value={form.phone}
             onChange={handlePhoneChange}
             maxLength={15}
@@ -480,6 +550,7 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={5}
+          maxLength={LIMITS.message}
           placeholder="Tell us about your project, goals, or questions..."
           value={form.message}
           onChange={handleChange}

@@ -7,10 +7,17 @@ import { ProjectCard } from '../components/ProjectCard';
 import { CtaSection } from '../components/CtaSection';
 import { Reveal } from '../components/motion/Reveal';
 import { projects } from '../data/projects';
+import { useSeo } from '../lib/seo';
 
 const PREVIEW_COUNT = 3;
 
 export function ProjectsPage() {
+  useSeo({
+    title: 'Projects',
+    description:
+      'Selected work from AST, including AI study tools, shelter management platforms, and disaster response systems.',
+  });
+
   const [showAll, setShowAll] = useState(false);
   const visibleProjects = showAll ? projects : projects.slice(0, PREVIEW_COUNT);
   const hasMore = projects.length > PREVIEW_COUNT;
@@ -30,7 +37,7 @@ export function ProjectsPage() {
         </Reveal>
       </PageHero>
 
-      <Section space="loose">
+      <Section space="loose" srTitle="All projects">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project, index) => (
             <Reveal

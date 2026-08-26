@@ -1,5 +1,5 @@
 /**
- * Spacing scale reference — mirrors Tailwind's default 4px-based scale.
+ * Spacing scale reference, mirrors Tailwind's default 4px-based scale.
  * Documented here so non-Tailwind consumers (if any emerge) have a
  * single source. See docs/frontend/design-system.md.
  */

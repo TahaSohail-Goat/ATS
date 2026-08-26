@@ -6,8 +6,15 @@ import { ArrowLink } from '../components/ArrowLink';
 import { Reveal } from '../components/motion/Reveal';
 import { RevealText } from '../components/motion/RevealText';
 import { NAV_LINKS } from '../data/navigation';
+import { useSeo } from '../lib/seo';
 
 export function NotFoundPage() {
+  useSeo({
+    title: 'Page not found',
+    description:
+      'The page you are looking for does not exist. Browse AST services, projects, and contact details instead.',
+  });
+
   return (
     <section className="relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden">
       <Aurora variant="band" />

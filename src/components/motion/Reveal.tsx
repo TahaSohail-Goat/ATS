@@ -12,7 +12,7 @@ interface RevealProps {
   /** Adds a short blur-in. Reserve for hero-level content. */
   blur?: boolean;
   className?: string;
-  /** Element to render — use `li`/`article` to keep markup semantic. */
+  /** Element to render, use `li`/`article` to keep markup semantic. */
   as?: ElementType;
   /** Animate as a stagger child of a parent `Stagger` instead of on scroll. */
   asChild?: boolean;
@@ -28,7 +28,7 @@ interface RevealProps {
 
 /**
  * Scroll-in reveal (opacity + transform only). Respects
- * prefers-reduced-motion by rendering content immediately — see
+ * prefers-reduced-motion by rendering content immediately, see
  * docs/frontend/animation-guidelines.md.
  */
 export function Reveal({

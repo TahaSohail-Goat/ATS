@@ -5,7 +5,7 @@ import { Reveal } from '../../components/motion/Reveal';
 import { Stagger } from '../../components/motion/Stagger';
 import { services } from '../../data/services';
 
-/** Home services overview — 4 services, linked to /services. */
+/** Home services overview, 4 services, linked to /services. */
 export function ServicesOverview() {
   return (
     <Section

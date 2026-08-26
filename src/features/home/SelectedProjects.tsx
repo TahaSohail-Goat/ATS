@@ -5,7 +5,7 @@ import { Reveal } from '../../components/motion/Reveal';
 import { Stagger } from '../../components/motion/Stagger';
 import { projects } from '../../data/projects';
 
-/** Home selected projects — 3 featured case studies, linked to /projects. */
+/** Home selected projects, 3 featured case studies, linked to /projects. */
 export function SelectedProjects() {
   return (
     <Section

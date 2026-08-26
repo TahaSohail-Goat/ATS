@@ -8,10 +8,17 @@ import { Reveal } from '../components/motion/Reveal';
 import { Stagger } from '../components/motion/Stagger';
 import { SpotlightCard } from '../components/motion/SpotlightCard';
 import { values } from '../data/site';
+import { useSeo } from '../lib/seo';
 
 const valueIcons: LucideIcon[] = [Star, Handshake, Eye, TrendingUp];
 
 export function CareersPage() {
+  useSeo({
+    title: 'Careers',
+    description:
+      'Work with AST. A small, senior team building serious software. We review speculative applications year-round.',
+  });
+
   return (
     <>
       <PageHero

@@ -33,7 +33,7 @@ interface ServiceCardProps {
   index?: number;
 }
 
-/** Service card — shared between the Home overview and the /services page. */
+/** Service card, shared between the Home overview and the /services page. */
 export function ServiceCard({ service, index }: ServiceCardProps) {
   const Icon = serviceIcons[service.slug] ?? Code2;
 

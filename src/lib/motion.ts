@@ -68,7 +68,7 @@ export function staggerContainer(step: number = stagger.base, delayChildren = 0)
   };
 }
 
-/** Word-level heading reveal — pairs with `staggerContainer`. */
+/** Word-level heading reveal, pairs with `staggerContainer`. */
 export const wordVariants: Variants = {
   hidden: { opacity: 0, y: '0.42em' },
   visible: { opacity: 1, y: 0, transition: { duration: duration.slower, ease: easeOut } },

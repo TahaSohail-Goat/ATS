@@ -1,5 +1,5 @@
 /**
- * Placeholder service data — replace with AST's real offerings (TBD,
+ * Placeholder service data, replace with AST's real offerings (TBD,
  * see docs/frontend/website-design-brief.md). Shape is the contract for both the
  * Home services overview and the /services page.
  *
@@ -30,11 +30,11 @@ export const services: Service[] = [
     deliverables: ['AI Solutions & Integration', 'ML Model Deployment', 'Data Pipelines'],
   },
   {
-    slug: 'cloud-infrastructure',
-    title: 'Cloud & Infrastructure',
+    slug: 'mobile-app',
+    title: 'Mobile App Development',
     description:
-      'AWS, containers, and CI/CD configured so your systems stay fast, available, and predictable to operate.',
-    deliverables: ['Cloud Architecture', 'DevOps & CI/CD', 'Observability'],
+      'Native and cross-platform apps built for iOS and Android, shipped to the app stores and supported after launch.',
+    deliverables: ['iOS & Android', 'Cross-Platform Builds', 'App Store Delivery'],
   },
   {
     slug: 'web-saas',
@@ -44,11 +44,11 @@ export const services: Service[] = [
     deliverables: ['SaaS Platforms', 'Marketing Sites', 'API Integrations'],
   },
   {
-    slug: 'mobile-app',
-    title: 'Mobile App Development',
+    slug: 'cloud-infrastructure',
+    title: 'Cloud & Infrastructure',
     description:
-      'Native and cross-platform apps built for iOS and Android, shipped to the app stores and supported after launch.',
-    deliverables: ['iOS & Android', 'Cross-Platform Builds', 'App Store Delivery'],
+      'AWS, containers, and CI/CD configured so your systems stay fast, available, and predictable to operate.',
+    deliverables: ['Cloud Architecture', 'DevOps & CI/CD', 'Observability'],
   },
   {
     slug: 'ui-ux-design',

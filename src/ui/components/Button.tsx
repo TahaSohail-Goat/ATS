@@ -53,7 +53,7 @@ const sizes: Record<ButtonSize, string> = {
 };
 
 /**
- * Brand-level Button primitive. Generic and app-agnostic — see
+ * Brand-level Button primitive. Generic and app-agnostic, see
  * packages/ui/AGENTS.md before adding app-specific variants here.
  * Pass `asChild` + a single child (e.g. `<Link>`) to render as a link.
  */

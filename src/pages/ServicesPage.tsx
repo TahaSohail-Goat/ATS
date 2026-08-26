@@ -9,10 +9,17 @@ import { Reveal } from '../components/motion/Reveal';
 import { ProcessTimeline } from '../components/ProcessTimeline';
 import { services } from '../data/services';
 import { processSteps } from '../data/site';
+import { useSeo } from '../lib/seo';
 
 const PREVIEW_COUNT = 4;
 
 export function ServicesPage() {
+  useSeo({
+    title: 'Services',
+    description:
+      'Full-cycle engineering from AST: custom software, AI and machine learning, mobile apps, cloud infrastructure, and more.',
+  });
+
   const [showAll, setShowAll] = useState(false);
   const visibleServices = showAll ? services : services.slice(0, PREVIEW_COUNT);
   const hasMore = services.length > PREVIEW_COUNT;
@@ -26,7 +33,7 @@ export function ServicesPage() {
         description={`${services.length} services, one standard: production-grade engineering you can rely on.`}
       />
 
-      <Section space="loose">
+      <Section space="loose" srTitle="All services">
         {/* Mount-based reveal (not scroll-triggered): this grid grows when
             "Show all services" is clicked, and a scroll-only whileInView
             trigger never fires again for cards added after the initial

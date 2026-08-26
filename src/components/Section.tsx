@@ -16,6 +16,12 @@ interface SectionProps {
   align?: 'left' | 'center';
   /** `lg` for page-opening headings, `md` for in-page sections. */
   headingSize?: 'md' | 'lg';
+  /**
+   * Screen-reader-only heading for sections with no visible title. Without it
+   * a card grid jumps straight from the page `h1` to the cards' `h3`, which
+   * skips a level for anyone navigating by headings.
+   */
+  srTitle?: string;
   /** `raised` tints the band so adjacent sections separate without borders. */
   tone?: 'canvas' | 'raised';
   /** Vertical rhythm. `tight` for stacked sub-sections. */
@@ -43,6 +49,7 @@ export function Section({
   action,
   align = 'left',
   headingSize = 'md',
+  srTitle,
   tone = 'canvas',
   space = 'base',
   className = '',
@@ -64,6 +71,7 @@ export function Section({
       )}
 
       <Container className="relative">
+        {srTitle && !hasHeading && <h2 className="sr-only">{srTitle}</h2>}
         {hasHeading && (
           <div
             className={`mb-12 flex flex-col gap-8 sm:mb-16 ${

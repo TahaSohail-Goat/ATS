@@ -14,7 +14,7 @@ const widths = {
   wide: 'max-w-[110rem]',
 } as const;
 
-/** Centered content wrapper — max width + horizontal gutters for all sections. */
+/** Centered content wrapper, max width + horizontal gutters for all sections. */
 export function Container({
   className = '',
   children,

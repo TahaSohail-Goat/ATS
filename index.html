@@ -4,11 +4,42 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/brand/ast-logo.jpeg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AST</title>
+    <title>AST, AI Software &amp; Technology Solutions</title>
     <meta
       name="description"
       content="AST builds AI-powered software, cloud systems, and modern digital experiences for ambitious teams."
     />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#E2E8F0" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AST" />
+    <meta property="og:title" content="AST, AI Software &amp; Technology Solutions" />
+    <meta
+      property="og:description"
+      content="AST builds AI-powered software, cloud systems, and modern digital experiences for ambitious teams."
+    />
+    <meta property="og:image" content="/opengraph-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Applies the saved theme before first paint so there is no flash of the
+         wrong scheme. Must stay inline, synchronous, and dependency-free; the
+         try/catch is required because reading localStorage throws outright in
+         private mode and locked-down browsers. Storage key must match
+         THEME_STORAGE_KEY in src/lib/theme.ts. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('ast-theme');
+          if (t !== 'light' && t !== 'dark') t = 'dark';
+          var r = document.documentElement;
+          r.classList.toggle('light', t === 'light');
+          r.classList.toggle('dark', t === 'dark');
+          r.style.colorScheme = t;
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

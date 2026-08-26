@@ -6,9 +6,24 @@ export const THEME_STORAGE_KEY = 'ast-theme';
 export const DEFAULT_THEME: Theme = 'dark';
 
 /**
- * The document element is the source of truth for the active theme: the
- * inline script in `app/layout.tsx` sets it before first paint, so nothing
- * needs to re-derive it from storage during render.
+ * Reads the stored theme. Accessing `localStorage` throws outright in some
+ * privacy modes and locked-down enterprise browsers, so every read and write
+ * is guarded: a blocked store must degrade to the default theme, never break
+ * the page.
+ */
+export function readStoredTheme(): Theme | null {
+  try {
+    const value = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return value === 'light' || value === 'dark' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The document element is the source of truth for the active theme: it is set
+ * before first paint, so nothing needs to re-derive it from storage during
+ * render.
  *
  * Exposed as an external store (subscribe/getSnapshot) so components can read
  * it with `useSyncExternalStore` instead of syncing it into state via an
@@ -25,7 +40,7 @@ export function getThemeSnapshot(): Theme {
   return document.documentElement.classList.contains('light') ? 'light' : 'dark';
 }
 
-/** Hydration snapshot — matches the class rendered by the server. */
+/** Hydration snapshot, matches the class rendered by the server. */
 export function getServerThemeSnapshot(): Theme {
   return DEFAULT_THEME;
 }
@@ -47,14 +62,8 @@ export function setTheme(theme: Theme): void {
   try {
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
-    // Storage can be unavailable (private mode, blocked cookies) — the
+    // Storage can be unavailable (private mode, blocked cookies), the
     // choice still applies for this page view.
   }
   listeners.forEach((listener) => listener());
 }
-
-/**
- * Runs before paint in `<head>` to prevent a theme flash. Kept as a string so
- * it can be inlined; it must stay dependency-free and synchronous.
- */
-export const themeInitScript = `(function(){try{var t=localStorage.getItem('${THEME_STORAGE_KEY}');if(t!=='light'&&t!=='dark'){t='${DEFAULT_THEME}';}var r=document.documentElement;r.classList.toggle('light',t==='light');r.classList.toggle('dark',t==='dark');r.style.colorScheme=t;}catch(e){}})();`;

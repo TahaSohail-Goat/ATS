@@ -4,7 +4,7 @@ interface LogoProps {
   className?: string;
   showWordmark?: boolean;
   showTagline?: boolean;
-  /** Rendered mark size in px. Kept square — the source asset is 1:1. */
+  /** Rendered mark size in px. Kept square, the source asset is 1:1. */
   size?: number;
   priority?: boolean;
 }

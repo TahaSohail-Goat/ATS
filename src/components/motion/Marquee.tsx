@@ -17,7 +17,7 @@ interface MarqueeProps {
  * loop is seamless and the whole thing renders on the server.
  *
  * Reduced motion: the global `prefers-reduced-motion` rule in globals.css
- * collapses the animation, which leaves the first (visible) copy in place —
+ * collapses the animation, which leaves the first (visible) copy in place,
  * the content stays fully readable and static.
  */
 export function Marquee({

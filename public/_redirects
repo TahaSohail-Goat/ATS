@@ -1,0 +1,4 @@
+# SPA fallback for Netlify and Cloudflare Pages: every route is resolved by
+# the client-side router, so unknown paths must serve index.html rather than
+# a host 404. Vercel uses vercel.json instead.
+/*  /index.html  200

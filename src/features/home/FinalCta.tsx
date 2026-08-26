@@ -1,6 +1,6 @@
 import { CtaSection } from '../../components/CtaSection';
 
-/** Home final CTA — contrast band closing the conversion path. */
+/** Home final CTA, contrast band closing the conversion path. */
 export function FinalCta() {
   return (
     <CtaSection

@@ -10,6 +10,7 @@ import { TeamCard } from '../components/TeamCard';
 import { processSteps, techStack } from '../data/site';
 import { services } from '../data/services';
 import { team } from '../data/team';
+import { useSeo } from '../lib/seo';
 
 const PURPOSE = [
   {
@@ -31,6 +32,12 @@ const FACTS = [
 ];
 
 export function AboutPage() {
+  useSeo({
+    title: 'About',
+    description:
+      'AST is a software company that partners with businesses to design, build, and modernize the systems they run on.',
+  });
+
   return (
     <>
       <PageHero
