@@ -163,12 +163,13 @@ const config: Config = {
     },
   },
   plugins: [
-    // Emit the semantic token variables. Dark is the default scheme for the
-    // marketing site; `.light` on <html> is the manual override.
+    // Emit the semantic token variables. Light is the default scheme for the
+    // marketing site, so it lives on `:root` and stays correct even if the
+    // pre-paint script never runs; `.dark` on <html> is the manual override.
     plugin(({ addBase, addVariant }) => {
       addBase({
-        ':root': { ...constantVars, ...schemeVars('dark'), 'color-scheme': 'dark' },
-        '.light': { ...schemeVars('light'), 'color-scheme': 'light' },
+        ':root': { ...constantVars, ...schemeVars('light'), 'color-scheme': 'light' },
+        '.dark': { ...schemeVars('dark'), 'color-scheme': 'dark' },
       });
       // `hocus:` — hover and focus-visible in one place for CTA affordances.
       addVariant('hocus', ['&:hover', '&:focus-visible']);

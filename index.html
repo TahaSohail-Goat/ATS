@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/brand/ast-logo.jpeg" />
@@ -9,8 +9,10 @@
       name="description"
       content="AST builds AI-powered software, cloud systems, and modern digital experiences for ambitious teams."
     />
-    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#E2E8F0" media="(prefers-color-scheme: light)" />
+    <!-- Tracks the active theme, not the OS preference: the site has its own
+         light default and an explicit toggle. Kept in sync by the script below
+         and by applyTheme() in src/lib/theme.ts. -->
+    <meta name="theme-color" content="#E2E8F0" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AST" />
@@ -31,11 +33,13 @@
       (function () {
         try {
           var t = localStorage.getItem('ast-theme');
-          if (t !== 'light' && t !== 'dark') t = 'dark';
+          if (t !== 'light' && t !== 'dark') t = 'light';
           var r = document.documentElement;
           r.classList.toggle('light', t === 'light');
           r.classList.toggle('dark', t === 'dark');
           r.style.colorScheme = t;
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', t === 'dark' ? '#020617' : '#E2E8F0');
         } catch (e) {}
       })();
     </script>

@@ -5,9 +5,9 @@ import { Moon, Sun } from 'lucide-react';
 import { getServerThemeSnapshot, getThemeSnapshot, setTheme, subscribeTheme } from '../lib/theme';
 
 /**
- * Manual light/dark override. Dark is the AST default; the choice persists in
+ * Manual light/dark override. Light is the AST default; the choice persists in
  * localStorage and is applied before paint by the inline script in
- * `app/layout.tsx`, so there is no flash on reload or navigation.
+ * `index.html`, so there is no flash on reload or navigation.
  *
  * The active theme is read from the document with `useSyncExternalStore`
  * rather than copied into state, which keeps hydration correct without an

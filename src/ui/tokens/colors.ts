@@ -43,8 +43,8 @@ export const colors = {
 export type ColorToken = keyof typeof colors;
 
 /**
- * Semantic roles per color scheme. `dark` is the default scheme for the
- * marketing site; `light` is the manual override.
+ * Semantic roles per color scheme. `light` is the default scheme for the
+ * marketing site; `dark` is the manual override.
  */
 export const theme = {
   dark: {

@@ -48,7 +48,7 @@
     color: rgb(var(--ast-ink));
   }
 
-  /* Scrollbar tuned to the canvas so the dark theme stays cohesive. */
+  /* Scrollbar tinted from the ink token so it suits whichever theme is active. */
   * {
     scrollbar-color: rgb(var(--ast-ink) / 0.2) transparent;
     scrollbar-width: thin;

@@ -2,8 +2,8 @@ export type Theme = 'dark' | 'light';
 
 export const THEME_STORAGE_KEY = 'ast-theme';
 
-/** AST defaults to the dark scheme; light is an explicit user choice. */
-export const DEFAULT_THEME: Theme = 'dark';
+/** AST defaults to the light scheme; dark is an explicit user choice. */
+export const DEFAULT_THEME: Theme = 'light';
 
 /**
  * Reads the stored theme. Accessing `localStorage` throws outright in some
@@ -37,7 +37,7 @@ export function subscribeTheme(onChange: () => void): () => void {
 }
 
 export function getThemeSnapshot(): Theme {
-  return document.documentElement.classList.contains('light') ? 'light' : 'dark';
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 }
 
 /** Hydration snapshot, matches the class rendered by the server. */
@@ -54,6 +54,11 @@ export function applyTheme(theme: Theme): void {
   root.classList.toggle('light', theme === 'light');
   root.classList.toggle('dark', theme === 'dark');
   root.style.colorScheme = theme;
+
+  // Keep the browser-chrome tint matching the scheme the user chose. The
+  // initial value is set pre-paint by the inline script in index.html.
+  const meta = document.querySelector('meta[name="theme-color"]');
+  meta?.setAttribute('content', theme === 'dark' ? '#020617' : '#E2E8F0');
 }
 
 /** Applies, persists, and notifies subscribers. */
