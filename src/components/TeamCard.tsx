@@ -25,7 +25,7 @@ export function TeamCard({ member }: TeamCardProps) {
         ) : (
           <div
             aria-hidden
-            className="relative flex h-full w-full items-center justify-center bg-gradient-to-br from-ast-secondary via-ast-primary to-ast-canvas"
+            className="relative flex h-full w-full items-center justify-center bg-gradient-to-br from-ast-secondary to-ast-primary"
           >
             <div className="ast-grid absolute inset-0 opacity-70" />
             <div className="absolute -right-8 -top-8 h-2/3 w-2/3 rounded-full bg-ast-accent/25 blur-3xl transition-transform duration-700 ease-ast-out motion-safe:group-hover:scale-125" />

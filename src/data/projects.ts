@@ -53,6 +53,7 @@ export const projects: Project[] = [
     demoUrl: 'https://studify-six.vercel.app/login',
     image: '/projects/studify-cover.jpg',
     imageAlt: 'A cozy study desk at sunset, the visual used on the Studify sign-in screen',
+    videoUrl: 'https://drive.google.com/file/d/1n-E1djSJhWoz2xooLSq8vdMTPi1vxmqy/view?usp=drive_link',
   },
   {
     slug: 'cat-connect',
@@ -83,6 +84,20 @@ export const projects: Project[] = [
     image: '/projects/cat-connect-cover.svg',
     imageAlt: 'A paw print mark on a dark gradient, styled after the Cat Connect app icon',
     videoUrl: 'https://drive.google.com/file/d/1DOXkn57jIr1e7NH8YxkYOpVUYGSf8xFq/view?usp=drive_link',
+  },
+  {
+    // Placeholder entry: full write-up, demo link, and video are pending.
+    slug: 'aarhti-management-system',
+    title: 'Aarhti Management System',
+    category: 'Desktop Application',
+    status: 'published',
+    year: '2026',
+    summary: 'A desktop management system for aarhtis. Full details, demo, and a walkthrough video are coming soon.',
+    problem: 'Full write-up coming soon.',
+    solution: 'Full write-up coming soon.',
+    features: ['Full feature list coming soon.'],
+    tech: [],
+    highlights: ['More on this soon.'],
   },
   {
     slug: 'healthcare-patient-app',

@@ -23,13 +23,13 @@ export const colors = {
   accentBright: '#22D3EE', // Cyan — accent role on dark surfaces
   accentDeep: '#0E7490', // Cyan — accent role on light surfaces (AA text contrast)
   violet: '#7C3AED', // Violet — third gradient stop only
-  backgroundLight: '#EEF1F6', // Soft Gray — dimmer than white cards so they visibly lift off the page
+  backgroundLight: '#E2E8F0', // Slate-200 — clearly dimmer than white cards so they visibly lift off the page
   backgroundDark: '#020617', // Near Black
   surfaceLight: '#FFFFFF', // Light-mode card surface
-  surfaceLightRaised: '#E2E8F0', // Light-mode raised/inset surface (Slate-200)
+  surfaceLightRaised: '#CBD5E1', // Light-mode raised/inset surface (Slate-300)
   surfaceDark: '#080D1C', // Dark-mode card surface
   surfaceDarkRaised: '#0E1628', // Dark-mode raised/inset surface
-  lineLight: '#CBD5E1', // Light-mode hairline/border (Slate-300)
+  lineLight: '#94A3B8', // Light-mode hairline/border (Slate-400) — visible against both canvas and white cards
   lineDark: '#1B2438', // Dark-mode hairline/border
   text: '#0F172A', // Slate
   textMuted: '#64748B', // Gray — decorative/icon use on light surfaces

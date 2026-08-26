@@ -33,7 +33,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ) : (
           <>
             <Parallax distance={40} className="absolute inset-0 scale-110">
-              <div className="h-full w-full bg-gradient-to-br from-ast-secondary via-ast-primary to-ast-canvas" />
+              <div className="h-full w-full bg-gradient-to-br from-ast-secondary to-ast-primary" />
             </Parallax>
             <div className="ast-grid absolute inset-0 opacity-70" />
           </>
