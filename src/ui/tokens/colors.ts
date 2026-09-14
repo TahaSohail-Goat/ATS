@@ -23,9 +23,9 @@ export const colors = {
   accentBright: '#22D3EE', // Cyan, accent role on dark surfaces
   accentDeep: '#0E7490', // Cyan, accent role on light surfaces (AA text contrast)
   violet: '#7C3AED', // Violet, third gradient stop only
-  backgroundLight: '#E2E8F0', // Slate-200, clearly dimmer than white cards so they visibly lift off the page
+  backgroundLight: '#DCE3EB', // Muted slate canvas, dimmer than cards so they visibly lift off the page
   backgroundDark: '#020617', // Near Black
-  surfaceLight: '#FFFFFF', // Light-mode card surface
+  surfaceLight: '#EEF2F6', // Light-mode card surface, soft off-white (was pure #FFFFFF — too glaring next to the canvas)
   surfaceLightRaised: '#CBD5E1', // Light-mode raised/inset surface (Slate-300)
   surfaceDark: '#080D1C', // Dark-mode card surface
   surfaceDarkRaised: '#0E1628', // Dark-mode raised/inset surface
