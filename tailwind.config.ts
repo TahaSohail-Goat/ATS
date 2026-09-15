@@ -121,14 +121,6 @@ const config: Config = {
         'ast-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },
       keyframes: {
-        'ast-drift': {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
-          '50%': { transform: 'translate3d(4%, -6%, 0) scale(1.12)' },
-        },
-        'ast-drift-slow': {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1.08)' },
-          '50%': { transform: 'translate3d(-5%, 5%, 0) scale(1)' },
-        },
         'ast-marquee': {
           from: { transform: 'translate3d(0, 0, 0)' },
           to: { transform: 'translate3d(-50%, 0, 0)' },
@@ -151,8 +143,6 @@ const config: Config = {
         },
       },
       animation: {
-        'ast-drift': 'ast-drift 22s cubic-bezier(0.45, 0, 0.55, 1) infinite',
-        'ast-drift-slow': 'ast-drift-slow 30s cubic-bezier(0.45, 0, 0.55, 1) infinite',
         'ast-marquee': 'ast-marquee var(--ast-marquee-duration, 40s) linear infinite',
         'ast-marquee-reverse':
           'ast-marquee-reverse var(--ast-marquee-duration, 40s) linear infinite',

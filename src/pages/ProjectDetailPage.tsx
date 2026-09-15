@@ -127,7 +127,7 @@ export function ProjectDetailPage() {
             <Reveal key={block.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="ast-ring-gradient flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/60 p-8 sm:p-11"
+                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/60 p-8 sm:p-11"
               >
                 <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
                 <p className="mt-4 leading-relaxed text-ast-ink-muted">{block.text}</p>

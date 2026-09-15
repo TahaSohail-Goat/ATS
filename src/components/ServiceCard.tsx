@@ -40,7 +40,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <SpotlightCard
       as="article"
-      className="ast-ring-gradient group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
+      className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
     >
       {typeof index === 'number' && (
         <span

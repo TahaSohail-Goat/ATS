@@ -123,6 +123,22 @@ export function Hero() {
           ))}
         </Marquee>
       </div>
+
+      {/* Real proof, not another gradient: the team actually writing the code. */}
+      <div className="relative h-64 overflow-hidden border-b border-ast-line sm:h-80">
+        <img
+          src="/stock/hero-team.jpg"
+          alt="AST engineers pairing on a live codebase"
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-ast-canvas via-ast-canvas/10 to-transparent"
+        />
+        <div aria-hidden className="absolute inset-0 bg-ast-brand/10 mix-blend-multiply" />
+      </div>
     </section>
   );
 }

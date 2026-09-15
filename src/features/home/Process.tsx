@@ -27,6 +27,16 @@ export function Process() {
             <div className="mt-8">
               <ArrowLink href="/contact">Talk through your project</ArrowLink>
             </div>
+
+            <div className="mt-10 hidden overflow-hidden rounded-3xl border border-ast-line lg:block">
+              <img
+                src="/stock/process-planning.jpg"
+                alt="An AST planning session, mapping a build on the whiteboard"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
           </div>
 
           <ProcessTimeline steps={processSteps} />

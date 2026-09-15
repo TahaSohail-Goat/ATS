@@ -68,7 +68,7 @@ export function CareersPage() {
 
       <Section eyebrow="Openings" title="Current" titleAccent="positions" tone="raised">
         <Reveal>
-          <div className="ast-ring-gradient relative overflow-hidden rounded-4xl border border-dashed border-ast-line bg-ast-surface/50 px-8 py-16 text-center">
+          <div className="relative overflow-hidden rounded-4xl border border-dashed border-ast-line bg-ast-surface/50 px-8 py-16 text-center">
             <p className="text-xl font-semibold tracking-tighter2">No open positions right now.</p>
             <p className="mx-auto mt-3 max-w-md leading-relaxed text-ast-ink-muted">
               We&apos;re always interested in exceptional engineers and designers. Tell us why

@@ -29,7 +29,23 @@ export function CtaSection({
 }: CtaSectionProps) {
   return (
     <section className="relative isolate overflow-hidden border-t border-ast-line bg-ast-canvas py-24 sm:py-32">
-      <Aurora variant="band" />
+      <img
+        src="/stock/cta-office.jpg"
+        alt=""
+        aria-hidden
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover opacity-40"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 65% 85% at 50% 50%, rgb(var(--ast-canvas) / 0.95), rgb(var(--ast-canvas) / 0.55) 100%)',
+        }}
+      />
+      <Aurora variant="band" className="opacity-60" />
       <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
 
       <Container className="relative text-center">
