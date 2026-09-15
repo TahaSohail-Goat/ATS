@@ -39,7 +39,7 @@ export function SectionHeading({
       {eyebrow && (
         <Reveal direction="none">
           <p
-            className={`mb-5 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-3.5 py-1.5 text-eyebrow font-semibold uppercase text-ast-accent ${
+            className={`mb-5 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-ast-accent ${
               centered ? 'mx-auto' : ''
             }`}
           >

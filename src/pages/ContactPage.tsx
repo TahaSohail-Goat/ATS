@@ -16,7 +16,7 @@ export function ContactPage() {
       <Aurora variant="hero" />
       <Container className="relative max-w-3xl">
         <Reveal direction="none">
-          <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-4 py-1.5 text-eyebrow font-semibold uppercase text-ast-accent backdrop-blur-sm">
+          <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-4 py-1.5 text-xs font-semibold tracking-wide text-ast-accent backdrop-blur-sm">
             Get in touch
           </p>
         </Reveal>

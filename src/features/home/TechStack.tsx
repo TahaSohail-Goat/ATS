@@ -16,7 +16,7 @@ export function TechStack() {
         {techGroups.map((group) => (
           <Reveal key={group.label} asChild as="div">
             <div>
-              <h3 className="flex items-center gap-3 text-eyebrow font-semibold uppercase text-ast-ink-muted">
+              <h3 className="flex items-center gap-3 text-xs font-semibold tracking-wide text-ast-ink-muted">
                 <span aria-hidden className="h-px w-6 bg-ast-brand-gradient" />
                 {group.label}
               </h3>

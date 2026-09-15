@@ -5,6 +5,7 @@ import { Process } from '../features/home/Process';
 import { Testimonials } from '../features/home/Testimonials';
 import { TechStack } from '../features/home/TechStack';
 import { FinalCta } from '../features/home/FinalCta';
+import { SectionTransition } from '../components/SectionTransition';
 import { useSeo } from '../lib/seo';
 
 export function HomePage() {
@@ -16,11 +17,15 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <SectionTransition direction="to-light" />
       <ServicesOverview />
       <SelectedProjects />
+      <SectionTransition direction="to-dark" />
       <Process />
+      <SectionTransition direction="to-light" />
       <Testimonials />
       <TechStack />
+      <SectionTransition direction="to-dark" />
       <FinalCta />
     </>
   );

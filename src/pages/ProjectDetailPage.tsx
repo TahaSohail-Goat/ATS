@@ -140,7 +140,7 @@ export function ProjectDetailPage() {
       <Section space="base" tone="raised">
         <div className="grid gap-12 lg:grid-cols-3">
           <Reveal>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">
               Key features
             </h2>
             <ul className="mt-6 space-y-4">
@@ -159,7 +159,7 @@ export function ProjectDetailPage() {
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Technology</h2>
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">Technology</h2>
             <ul className="mt-6 flex flex-wrap gap-2">
               {project.tech.map((tech) => {
                 const { Icon, color } = getTechIcon(tech);
@@ -177,7 +177,7 @@ export function ProjectDetailPage() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">
               {project.status === 'illustrative' ? 'Concept highlights' : 'Results'}
             </h2>
             <ul className="mt-6 space-y-4">
@@ -201,7 +201,7 @@ export function ProjectDetailPage() {
         <Section space="tight">
           <Reveal className="flex flex-col gap-4 border-t border-ast-line pt-10 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+              <p className="text-xs font-semibold tracking-wide text-ast-ink-muted">
                 Next project
               </p>
               <p className="mt-2 text-xl font-semibold tracking-tighter2">{next.title}</p>

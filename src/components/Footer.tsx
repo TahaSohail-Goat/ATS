@@ -44,7 +44,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-1">
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-on-dark-muted">Site</h2>
+            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">Site</h2>
             <ul className="mt-5 space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -64,7 +64,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-on-dark-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">
               Capabilities
             </h2>
             <ul className="mt-5 space-y-3">
@@ -82,7 +82,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-on-dark-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">
               Engagement
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-ast-on-dark-muted">

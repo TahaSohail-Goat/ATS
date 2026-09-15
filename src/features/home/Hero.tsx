@@ -6,15 +6,6 @@ import { Reveal } from '../../components/motion/Reveal';
 import { RevealText } from '../../components/motion/RevealText';
 import { CyclingWord } from '../../components/motion/CyclingWord';
 import { Magnetic } from '../../components/motion/Magnetic';
-import { Counter } from '../../components/motion/Counter';
-import { processSteps, techStack } from '../../data/site';
-import { services } from '../../data/services';
-
-const FACTS = [
-  { value: services.length, label: 'Practice areas', suffix: '' },
-  { value: processSteps.length, label: 'Stage delivery process', suffix: '' },
-  { value: techStack.length, label: 'Core technologies', suffix: '+' },
-];
 
 export function Hero() {
   return (
@@ -33,7 +24,7 @@ export function Hero() {
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal direction="none">
-            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-4 py-2 text-eyebrow font-semibold uppercase text-ast-accent-on-dark">
+            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-4 py-2 text-xs font-semibold tracking-wide text-ast-accent-on-dark">
               <span className="relative flex h-1.5 w-1.5 items-center justify-center" aria-hidden>
                 <span className="absolute h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark motion-safe:animate-ast-pulse-ring" />
                 <span className="h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark" />
@@ -93,30 +84,9 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Verifiable facts, counted from site data. */}
-        <Reveal delay={0.6} className="mt-20">
-          <dl className="mx-auto grid max-w-3xl grid-cols-1 divide-y divide-white/15 border-y border-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {FACTS.map((fact) => (
-              <div key={fact.label} className="px-6 py-6 text-center">
-                <dt className="sr-only">{fact.label}</dt>
-                <dd>
-                  <Counter
-                    value={fact.value}
-                    suffix={fact.suffix}
-                    className="block text-4xl font-semibold tracking-display text-ast-accent-on-dark sm:text-5xl"
-                  />
-                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ast-on-dark-muted">
-                    {fact.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
-
         <Reveal
-          delay={0.7}
-          className="mt-12 hidden items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-ast-on-dark-muted sm:flex"
+          delay={0.6}
+          className="mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-on-dark-muted sm:flex"
         >
           <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore

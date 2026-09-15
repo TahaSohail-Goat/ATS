@@ -21,7 +21,7 @@ export function Process() {
         <div className="grid gap-14 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal direction="none">
-              <p className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-3.5 py-1.5 text-eyebrow font-semibold uppercase text-ast-accent-on-dark">
+              <p className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-ast-accent-on-dark">
                 <span aria-hidden className="h-1 w-1 rounded-full bg-ast-accent-on-dark" />
                 How we work
               </p>
