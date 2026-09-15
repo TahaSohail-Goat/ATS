@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@ast/ui';
 import { Container } from './Container';
-import { Aurora } from './Aurora';
 import { Reveal } from './motion/Reveal';
-import { RevealText } from './motion/RevealText';
 import { Magnetic } from './motion/Magnetic';
 
 interface CtaSectionProps {
@@ -28,7 +26,7 @@ export function CtaSection({
   children,
 }: CtaSectionProps) {
   return (
-    <section className="relative isolate overflow-hidden border-t border-ast-line bg-ast-canvas py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden border-t border-white/10 bg-ast-primary py-24 sm:py-32">
       <img
         src="/stock/cta-office.jpg"
         alt=""
@@ -42,25 +40,18 @@ export function CtaSection({
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 65% 85% at 50% 50%, rgb(var(--ast-canvas) / 0.95), rgb(var(--ast-canvas) / 0.55) 100%)',
+            'radial-gradient(ellipse 65% 85% at 50% 50%, rgb(var(--ast-primary) / 0.95), rgb(var(--ast-primary) / 0.6) 100%)',
         }}
       />
-      <Aurora variant="band" className="opacity-60" />
-      <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
 
       <Container className="relative text-center">
-        <RevealText
-          as="h2"
-          className="mx-auto max-w-3xl text-display-md font-semibold"
-          parts={
-            titleAccent
-              ? [{ text: title }, { text: titleAccent, gradient: true }]
-              : [{ text: title }]
-          }
-        />
+        <Reveal as="h2" className="mx-auto max-w-3xl text-display-md font-semibold text-ast-on-dark">
+          {title}{' '}
+          {titleAccent && <span className="text-ast-accent-on-dark">{titleAccent}</span>}
+        </Reveal>
         {description && (
           <Reveal delay={0.08}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink-muted">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-on-dark-muted">
               {description}
             </p>
           </Reveal>

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, MoveDown } from 'lucide-react';
 import { Button } from '@ast/ui';
 import { Container } from '../../components/Container';
-import { Aurora } from '../../components/Aurora';
 import { Reveal } from '../../components/motion/Reveal';
 import { RevealText } from '../../components/motion/RevealText';
 import { CyclingWord } from '../../components/motion/CyclingWord';
@@ -21,21 +20,30 @@ const FACTS = [
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      <Aurora variant="hero" />
+      {/* Full-bleed photo hero: real engineers, not a gradient blob. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-cover bg-[center_30%]"
+        style={{ backgroundImage: "url('/stock/hero-team.jpg')" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-primary/50 via-ast-primary/80 to-ast-primary"
+      />
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal direction="none">
-            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-ast-line bg-ast-surface/60 px-4 py-2 text-eyebrow font-semibold uppercase text-ast-accent backdrop-blur-sm">
+            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-4 py-2 text-eyebrow font-semibold uppercase text-ast-accent-on-dark">
               <span className="relative flex h-1.5 w-1.5 items-center justify-center" aria-hidden>
-                <span className="absolute h-1.5 w-1.5 rounded-full bg-ast-accent motion-safe:animate-ast-pulse-ring" />
-                <span className="h-1.5 w-1.5 rounded-full bg-ast-accent" />
+                <span className="absolute h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark motion-safe:animate-ast-pulse-ring" />
+                <span className="h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark" />
               </span>
               AI Software &amp; Technology Solutions
             </p>
           </Reveal>
 
-          <h1 className="text-display-xl font-semibold">
+          <h1 className="text-display-xl font-semibold text-ast-on-dark">
             <RevealText
               as="span"
               immediate
@@ -46,14 +54,14 @@ export function Hero() {
               moves{' '}
               <CyclingWord
                 words={['businesses', 'startups', 'products', 'ideas', 'teams']}
-                className="ast-text-gradient"
+                className="text-ast-accent-on-dark"
               />{' '}
               forward
             </Reveal>
           </h1>
 
           <Reveal delay={0.35}>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-on-dark-muted sm:text-xl">
               AST designs and ships custom software, AI features, and cloud infrastructure for
               companies that outgrow templates: clean architecture, measurable results, and a team
               you can actually reach.
@@ -73,7 +81,13 @@ export function Hero() {
                   </Link>
                 </Button>
               </Magnetic>
-              <Button asChild size="xl" variant="outline" fullWidth className="sm:w-auto">
+              <Button
+                asChild
+                size="xl"
+                variant="outline"
+                fullWidth
+                className="!border-white/25 !bg-white/5 !text-ast-on-dark !backdrop-blur-none hover:!border-white/45 hover:!bg-white/10 sm:w-auto"
+              >
                 <Link to="/projects">View Our Work</Link>
               </Button>
             </div>
@@ -82,7 +96,7 @@ export function Hero() {
 
         {/* Verifiable facts, counted from site data. */}
         <Reveal delay={0.6} className="mt-20">
-          <dl className="mx-auto grid max-w-3xl grid-cols-1 divide-y divide-ast-line border-y border-ast-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <dl className="mx-auto grid max-w-3xl grid-cols-1 divide-y divide-white/15 border-y border-white/15 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {FACTS.map((fact) => (
               <div key={fact.label} className="px-6 py-6 text-center">
                 <dt className="sr-only">{fact.label}</dt>
@@ -90,9 +104,9 @@ export function Hero() {
                   <Counter
                     value={fact.value}
                     suffix={fact.suffix}
-                    className="block bg-ast-brand-gradient bg-clip-text text-4xl font-semibold tracking-display text-transparent sm:text-5xl"
+                    className="block text-4xl font-semibold tracking-display text-ast-accent-on-dark sm:text-5xl"
                   />
-                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ast-ink-muted">
+                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ast-on-dark-muted">
                     {fact.label}
                   </span>
                 </dd>
@@ -103,7 +117,7 @@ export function Hero() {
 
         <Reveal
           delay={0.7}
-          className="mt-12 hidden items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-ast-ink-muted sm:flex"
+          className="mt-12 hidden items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-ast-on-dark-muted sm:flex"
         >
           <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore
@@ -111,33 +125,17 @@ export function Hero() {
       </Container>
 
       {/* Capability marquee closes the hero and bridges into the page. */}
-      <div className="relative border-y border-ast-line bg-ast-surface/40 py-5">
+      <div className="relative border-t border-white/10 bg-ast-primary py-5">
         <Marquee speed={46} aria-label="AST capabilities">
           {capabilities.map((capability) => (
             <span key={capability} className="flex items-center gap-8 px-8">
-              <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.16em] text-ast-ink-muted">
+              <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.16em] text-ast-on-dark-muted">
                 {capability}
               </span>
-              <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-ast-accent/60" />
+              <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-ast-accent-on-dark/60" />
             </span>
           ))}
         </Marquee>
-      </div>
-
-      {/* Real proof, not another gradient: the team actually writing the code. */}
-      <div className="relative h-64 overflow-hidden border-b border-ast-line sm:h-80">
-        <img
-          src="/stock/hero-team.jpg"
-          alt="AST engineers pairing on a live codebase"
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-ast-canvas via-ast-canvas/10 to-transparent"
-        />
-        <div aria-hidden className="absolute inset-0 bg-ast-brand/10 mix-blend-multiply" />
       </div>
     </section>
   );

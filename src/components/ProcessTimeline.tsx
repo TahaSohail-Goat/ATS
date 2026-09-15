@@ -5,6 +5,8 @@ const logoMark = '/brand/ast-logo.jpeg';
 
 interface ProcessTimelineProps {
   steps: ProcessStep[];
+  /** Sits on an always-dark photo band (the Home process section) rather than a themed surface. */
+  onDark?: boolean;
 }
 
 /**
@@ -12,13 +14,24 @@ interface ProcessTimelineProps {
  * rather than a plain number, so the brand carries through the whole
  * scroll instead of a bare "01, 02, 03…" list.
  */
-export function ProcessTimeline({ steps }: ProcessTimelineProps) {
+export function ProcessTimeline({ steps, onDark = false }: ProcessTimelineProps) {
+  const lineColor = onDark ? 'via-ast-accent-on-dark to-white/20' : 'via-ast-accent to-ast-line';
+  const badgeBorder = onDark ? 'border-white/25' : 'border-ast-line';
+  const stepLabel = onDark ? 'text-ast-accent-on-dark' : 'text-ast-accent';
+  const titleColor = onDark
+    ? 'text-ast-on-dark group-hover:text-ast-accent-on-dark'
+    : 'text-ast-ink group-hover:text-ast-brand';
+  const descColor = onDark ? 'text-ast-on-dark-muted' : 'text-ast-ink-muted';
+  const hoverPanel = onDark
+    ? 'group-hover:border-white/15 group-hover:bg-white/5'
+    : 'group-hover:border-ast-line/50 group-hover:bg-ast-surface/30';
+
   return (
     <ol className="relative pl-12 sm:pl-16">
       {/* Vertical timeline line */}
       <span
         aria-hidden
-        className="absolute bottom-4 left-[1.1875rem] top-3 w-0.5 bg-gradient-to-b from-ast-brand via-ast-accent to-ast-line sm:left-[1.6875rem]"
+        className={`absolute bottom-4 left-[1.1875rem] top-3 w-0.5 bg-gradient-to-b from-ast-brand ${lineColor} sm:left-[1.6875rem]`}
       />
 
       {steps.map((step, index) => (
@@ -34,21 +47,19 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
               alt=""
               width={44}
               height={44}
-              className="relative h-full w-full rounded-full border border-ast-line object-cover shadow-sm transition-all duration-300 group-hover:scale-[1.08] group-hover:border-ast-brand/60 group-hover:shadow-[0_0_16px_rgb(var(--ast-brand)/0.35)]"
+              className={`relative h-full w-full rounded-full border ${badgeBorder} object-cover shadow-sm transition-all duration-300 group-hover:scale-[1.08] group-hover:border-ast-brand/60 group-hover:shadow-[0_0_16px_rgb(var(--ast-brand)/0.35)]`}
             />
           </span>
 
           {/* Step Content */}
-          <div className="rounded-2xl border border-transparent p-4 transition-colors duration-300 group-hover:border-ast-line/50 group-hover:bg-ast-surface/30">
-            <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-ast-accent">
+          <div className={`rounded-2xl border border-transparent p-4 transition-colors duration-300 ${hoverPanel}`}>
+            <span className={`font-mono text-xs font-semibold uppercase tracking-[0.2em] ${stepLabel}`}>
               Step {String(index + 1).padStart(2, '0')}
             </span>
-            <h3 className="mt-1 text-xl font-semibold tracking-tighter2 text-ast-ink transition-colors group-hover:text-ast-brand sm:text-2xl">
+            <h3 className={`mt-1 text-xl font-semibold tracking-tighter2 transition-colors sm:text-2xl ${titleColor}`}>
               {step.title}
             </h3>
-            <p className="mt-2 max-w-xl text-base leading-relaxed text-ast-ink-muted">
-              {step.description}
-            </p>
+            <p className={`mt-2 max-w-xl text-base leading-relaxed ${descColor}`}>{step.description}</p>
           </div>
         </Reveal>
       ))}
