@@ -46,6 +46,7 @@ export function FAQPage() {
         title="Frequently Asked"
         titleAccent="Questions"
         description="Find answers to common questions about our services, process, and how we work. Don't see what you're looking for? Ask us directly."
+        image="/stock/team-discussion.jpg"
       />
 
       <Section space="loose" srTitle="Questions and answers">
@@ -57,7 +58,7 @@ export function FAQPage() {
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 selectedCategory === null
                   ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
-                  : 'border-ast-line bg-ast-surface/60 text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
+                  : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
               }`}
             >
               All
@@ -69,7 +70,7 @@ export function FAQPage() {
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
                     ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
-                    : 'border-ast-line bg-ast-surface/60 text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
+                    : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
                 }`}
               >
                 {category}
@@ -83,7 +84,7 @@ export function FAQPage() {
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <Reveal key={faq.id} immediate delay={Math.min(index * 0.04, 0.3)}>
-                <div className="rounded-xl border border-ast-line bg-ast-surface/40 transition-all duration-200 hover:border-ast-brand/30 hover:bg-ast-surface/60">
+                <div className="rounded-xl border border-ast-line bg-ast-surface transition-all duration-200 hover:border-ast-brand/30">
                   <button
                     onClick={() => toggleExpanded(faq.id)}
                     className="flex w-full items-start gap-4 px-6 py-4 text-left"
@@ -91,7 +92,7 @@ export function FAQPage() {
                     aria-controls={`faq-${faq.id}`}
                   >
                     <span className="flex-1">
-                      <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ast-accent">
+                      <span className="text-xs font-semibold tracking-wide text-ast-accent">
                         {faq.category}
                       </span>
                       <h3 className="mt-1.5 text-base font-semibold text-ast-ink">{faq.question}</h3>
@@ -123,14 +124,13 @@ export function FAQPage() {
 
       {/* Ask a Question Section */}
       <Section
-        eyebrow="Didn't find it?"
         title="Ask us"
         titleAccent="a question"
         description="If your question isn't answered above, send it our way. We review all submissions and add helpful questions to our FAQ."
-        tone="raised"
+        image="/stock/hero-team.jpg"
       >
         <div className="max-w-3xl">
-          <Reveal className="rounded-3xl border border-ast-line bg-ast-surface/70 p-8 sm:p-10 shadow-ast-lifted">
+          <Reveal className="rounded-3xl border border-ast-line bg-ast-surface p-8 shadow-ast-lifted sm:p-10">
             <FAQForm />
           </Reveal>
         </div>
