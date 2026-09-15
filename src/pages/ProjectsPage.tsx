@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Badge, Button } from '@ast/ui';
+import { Button } from '@ast/ui';
 import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { ProjectCard } from '../components/ProjectCard';
@@ -26,16 +26,10 @@ export function ProjectsPage() {
     <>
       <PageHero
         eyebrow="Selected Work"
-        title="Illustrative work for"
-        titleAccent="future case studies"
-        description="These concepts show how AST approaches complex software problems. Approved case studies will replace them as they become available."
-      >
-        <Reveal delay={0.16} className="mt-8">
-          <Badge tone="accent" dot>
-            Concepts, not client claims
-          </Badge>
-        </Reveal>
-      </PageHero>
+        title="Software we've"
+        titleAccent="designed and built"
+        description="A look at recent builds across AI tooling, platforms, and infrastructure."
+      />
 
       <Section space="loose" srTitle="All projects">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
