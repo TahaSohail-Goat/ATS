@@ -50,7 +50,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="group inline-flex items-center gap-1.5 text-sm text-ast-on-dark-muted transition-colors hover:text-ast-accent-on-dark"
+                    className="group inline-flex items-center gap-1.5 text-sm font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
                   >
                     {link.label}
                     <ArrowUpRight
@@ -72,7 +72,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     to={item.href}
-                    className="text-sm text-ast-on-dark-muted transition-colors hover:text-ast-accent-on-dark"
+                    className="text-sm font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
                   >
                     {item.label}
                   </Link>
@@ -111,7 +111,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="inline-flex items-center gap-1.5 text-ast-on-dark-muted transition-colors hover:text-ast-accent-on-dark"
+              className="inline-flex items-center gap-1.5 font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
             >
               <Mail className="h-3.5 w-3.5" aria-hidden />
               {CONTACT_EMAIL}
@@ -122,7 +122,7 @@ export function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-ast-on-dark-muted transition-colors hover:text-ast-accent-on-dark"
+                className="inline-flex items-center gap-1.5 font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
               >
                 <social.icon className="h-3.5 w-3.5" aria-hidden />
                 {social.label}
