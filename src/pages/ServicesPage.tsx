@@ -31,6 +31,7 @@ export function ServicesPage() {
         title="What AST can"
         titleAccent="build for you"
         description={`${services.length} services, one standard: production-grade engineering you can rely on.`}
+        image="/stock/code-editor.jpg"
       />
 
       <Section space="loose" srTitle="All services">

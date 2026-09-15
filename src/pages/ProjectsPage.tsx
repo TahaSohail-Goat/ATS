@@ -29,6 +29,7 @@ export function ProjectsPage() {
         title="Software we've"
         titleAccent="designed and built"
         description="A look at recent builds across AI tooling, platforms, and infrastructure."
+        image="/stock/code-editor.jpg"
       />
 
       <Section space="loose" srTitle="All projects">
