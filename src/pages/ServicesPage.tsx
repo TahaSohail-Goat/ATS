@@ -66,14 +66,13 @@ export function ServicesPage() {
       </Section>
 
       <Section
-        eyebrow="Engagement"
         title="How a project"
         titleAccent="actually runs"
         description="The same five stages apply whether we are building a product from scratch or auditing an existing one."
-        tone="raised"
+        image="/stock/process-planning.jpg"
       >
         <div className="max-w-3xl">
-          <ProcessTimeline steps={processSteps} />
+          <ProcessTimeline steps={processSteps} onDark />
         </div>
       </Section>
 
