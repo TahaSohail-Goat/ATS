@@ -40,7 +40,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <SpotlightCard
       as="article"
-      className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
+      className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-7 shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
     >
       {typeof index === 'number' && (
         <span
@@ -66,7 +66,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {service.deliverables.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-ast-line bg-ast-surface-raised/60 px-3 py-1.5 text-xs font-medium text-ast-ink-muted transition-colors duration-300 group-hover:border-ast-brand/20 group-hover:text-ast-ink"
+            className="rounded-full border border-ast-line bg-ast-surface-raised px-3 py-1.5 text-xs font-medium text-ast-ink-muted transition-colors duration-300 group-hover:border-ast-brand/20 group-hover:text-ast-ink"
           >
             {item}
           </li>
