@@ -10,7 +10,6 @@ export function ServicesOverview() {
   return (
     <Section
       id="services"
-      eyebrow="Services"
       title="What we build"
       titleAccent="for you"
       description="Full-cycle engineering, from product thinking to deployed, supported software."

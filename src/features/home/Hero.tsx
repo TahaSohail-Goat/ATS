@@ -23,16 +23,6 @@ export function Hero() {
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
-          <Reveal direction="none">
-            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/25 px-4 py-2 text-xs font-semibold tracking-wide text-ast-accent-on-dark">
-              <span className="relative flex h-1.5 w-1.5 items-center justify-center" aria-hidden>
-                <span className="absolute h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark motion-safe:animate-ast-pulse-ring" />
-                <span className="h-1.5 w-1.5 rounded-full bg-ast-accent-on-dark" />
-              </span>
-              AI Software &amp; Technology Solutions
-            </p>
-          </Reveal>
-
           <h1 className="text-display-xl font-semibold text-ast-on-dark">
             <RevealText
               as="span"

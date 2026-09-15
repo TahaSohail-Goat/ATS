@@ -16,7 +16,6 @@ export function Testimonials() {
 
   return (
     <Section
-      eyebrow="Testimonials"
       title="What our"
       titleAccent="clients say"
       tone="raised"

@@ -7,7 +7,6 @@ import { techGroups } from '../../data/site';
 export function TechStack() {
   return (
     <Section
-      eyebrow="Technology & Expertise"
       title="Tools we"
       titleAccent="trust"
       description="A modern, battle-tested stack across product, data, cloud, and AI, chosen for longevity and hiring pool, not novelty."
