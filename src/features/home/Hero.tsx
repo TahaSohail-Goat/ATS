@@ -6,9 +6,8 @@ import { Reveal } from '../../components/motion/Reveal';
 import { RevealText } from '../../components/motion/RevealText';
 import { CyclingWord } from '../../components/motion/CyclingWord';
 import { Magnetic } from '../../components/motion/Magnetic';
-import { Marquee } from '../../components/motion/Marquee';
 import { Counter } from '../../components/motion/Counter';
-import { capabilities, processSteps, techStack } from '../../data/site';
+import { processSteps, techStack } from '../../data/site';
 import { services } from '../../data/services';
 
 const FACTS = [
@@ -123,20 +122,6 @@ export function Hero() {
           Scroll to explore
         </Reveal>
       </Container>
-
-      {/* Capability marquee closes the hero and bridges into the page. */}
-      <div className="relative border-t border-white/10 bg-ast-primary py-5">
-        <Marquee speed={46} aria-label="AST capabilities">
-          {capabilities.map((capability) => (
-            <span key={capability} className="flex items-center gap-8 px-8">
-              <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.16em] text-ast-on-dark-muted">
-                {capability}
-              </span>
-              <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-ast-accent-on-dark/60" />
-            </span>
-          ))}
-        </Marquee>
-      </div>
     </section>
   );
 }

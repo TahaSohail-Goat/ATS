@@ -52,7 +52,7 @@ export function ProjectDetailPage() {
                 {project.status === 'illustrative' ? 'Illustrative concept' : 'Case study'}
               </Badge>
               <Badge>{project.category}</Badge>
-              <span className="font-mono text-xs text-ast-ink-muted">{project.year}</span>
+              <span className="text-xs text-ast-ink-muted">{project.year}</span>
             </div>
 
             <RevealText

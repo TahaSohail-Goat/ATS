@@ -83,7 +83,6 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         // Fluid display scale — headline sizes track the viewport so the
@@ -124,14 +123,6 @@ const config: Config = {
         'ast-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },
       keyframes: {
-        'ast-marquee': {
-          from: { transform: 'translate3d(0, 0, 0)' },
-          to: { transform: 'translate3d(-50%, 0, 0)' },
-        },
-        'ast-marquee-reverse': {
-          from: { transform: 'translate3d(-50%, 0, 0)' },
-          to: { transform: 'translate3d(0, 0, 0)' },
-        },
         'ast-shimmer': {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
@@ -146,9 +137,6 @@ const config: Config = {
         },
       },
       animation: {
-        'ast-marquee': 'ast-marquee var(--ast-marquee-duration, 40s) linear infinite',
-        'ast-marquee-reverse':
-          'ast-marquee-reverse var(--ast-marquee-duration, 40s) linear infinite',
         'ast-shimmer': 'ast-shimmer 6s linear infinite',
         'ast-pulse-ring': 'ast-pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite',
         'ast-scroll-hint': 'ast-scroll-hint 2s ease-in-out infinite',

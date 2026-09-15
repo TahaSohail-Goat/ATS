@@ -20,7 +20,7 @@ export function NotFoundPage() {
       <Aurora variant="band" />
       <Container className="relative py-20 text-center">
         <Reveal direction="none">
-          <p className="font-mono text-eyebrow font-semibold uppercase text-ast-accent">
+          <p className="text-eyebrow font-semibold uppercase text-ast-accent">
             Error 404
           </p>
         </Reveal>

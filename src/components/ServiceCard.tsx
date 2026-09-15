@@ -2,9 +2,9 @@ import {
   BrainCircuit,
   Boxes,
   Cloud,
-  Code2,
   Gamepad2,
   Globe,
+  Laptop,
   Palette,
   ShoppingCart,
   Smartphone,
@@ -15,7 +15,7 @@ import type { Service } from '../data/services';
 import { SpotlightCard } from './motion/SpotlightCard';
 
 const serviceIcons: Record<string, LucideIcon> = {
-  'custom-software': Code2,
+  'custom-software': Laptop,
   'ai-solutions': BrainCircuit,
   'cloud-infrastructure': Cloud,
   'web-saas': Globe,
@@ -35,7 +35,7 @@ interface ServiceCardProps {
 
 /** Service card, shared between the Home overview and the /services page. */
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const Icon = serviceIcons[service.slug] ?? Code2;
+  const Icon = serviceIcons[service.slug] ?? Laptop;
 
   return (
     <SpotlightCard
@@ -45,7 +45,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       {typeof index === 'number' && (
         <span
           aria-hidden
-          className="absolute right-7 top-7 font-mono text-xs tabular-nums text-ast-ink-muted"
+          className="absolute right-7 top-7 text-xs tabular-nums text-ast-ink-muted"
         >
           {String(index + 1).padStart(2, '0')}
         </span>

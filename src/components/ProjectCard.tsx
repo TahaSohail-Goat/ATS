@@ -58,7 +58,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="relative flex flex-1 flex-col p-7 sm:p-8">
-        <p className="font-mono text-xs uppercase tracking-[0.14em] text-ast-ink-muted">
+        <p className="text-xs uppercase tracking-[0.14em] text-ast-ink-muted">
           {project.status === 'illustrative' ? 'Illustrative concept' : 'Case study'} ·{' '}
           {project.year}
         </p>

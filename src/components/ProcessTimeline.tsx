@@ -53,7 +53,7 @@ export function ProcessTimeline({ steps, onDark = false }: ProcessTimelineProps)
 
           {/* Step Content */}
           <div className={`rounded-2xl border border-transparent p-4 transition-colors duration-300 ${hoverPanel}`}>
-            <span className={`font-mono text-xs font-semibold uppercase tracking-[0.2em] ${stepLabel}`}>
+            <span className={`text-xs font-semibold uppercase tracking-[0.2em] ${stepLabel}`}>
               Step {String(index + 1).padStart(2, '0')}
             </span>
             <h3 className={`mt-1 text-xl font-semibold tracking-tighter2 transition-colors sm:text-2xl ${titleColor}`}>
