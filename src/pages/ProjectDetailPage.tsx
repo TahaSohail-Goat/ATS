@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Check, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Badge, Button } from '@ast/ui';
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
@@ -143,14 +143,8 @@ export function ProjectDetailPage() {
             </h2>
             <ul className="mt-6 space-y-4">
               {project.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ast-brand/30 bg-ast-brand/10 text-ast-brand"
-                  >
-                    <Check className="h-3 w-3" />
-                  </span>
-                  <span className="text-sm leading-relaxed text-ast-ink">{feature}</span>
+                <li key={feature} className="border-l-2 border-ast-brand/40 pl-4 text-base font-medium leading-relaxed text-ast-ink">
+                  {feature}
                 </li>
               ))}
             </ul>
@@ -180,14 +174,8 @@ export function ProjectDetailPage() {
             </h2>
             <ul className="mt-6 space-y-4">
               {project.highlights.map((highlight) => (
-                <li key={highlight} className="flex items-start gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ast-accent/30 bg-ast-accent/10 text-ast-accent"
-                  >
-                    <Sparkles className="h-3 w-3" />
-                  </span>
-                  <span className="text-sm leading-relaxed text-ast-ink">{highlight}</span>
+                <li key={highlight} className="border-l-2 border-ast-accent/40 pl-4 text-base font-medium leading-relaxed text-ast-ink">
+                  {highlight}
                 </li>
               ))}
             </ul>
