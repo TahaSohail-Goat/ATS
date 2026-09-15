@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail, Instagram } from 'lucide-react';
 import { Button } from '@ast/ui';
 import { Container } from './Container';
 import { Logo } from './Logo';
 import { NAV_LINKS } from '../data/navigation';
 
-/** Careers is footer-only: reachable, but kept out of the main nav. */
-const FOOTER_LINKS = [...NAV_LINKS, { href: '/careers', label: 'Careers' }];
+const CONTACT_EMAIL = 'ast.devz@gmail.com';
+
+const SOCIAL_LINKS = [
+  { href: 'https://instagram.com/ast.dev', label: 'Instagram', icon: Instagram },
+];
 
 const CAPABILITIES = [
   { href: '/services', label: 'Custom software' },
@@ -41,7 +44,7 @@ export function Footer() {
           <nav aria-label="Footer" className="lg:col-span-1">
             <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Site</h2>
             <ul className="mt-5 space-y-3">
-              {FOOTER_LINKS.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -96,11 +99,32 @@ export function Footer() {
           </span>
         </div>
 
-        <div className="mt-8 text-xs text-ast-ink-muted">
+        <div className="mt-8 flex flex-col gap-4 text-xs text-ast-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} AST, AI Software &amp; Technology Solutions. All rights
             reserved.
           </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="inline-flex items-center gap-1.5 text-ast-ink-muted transition-colors hover:text-ast-brand"
+            >
+              <Mail className="h-3.5 w-3.5" aria-hidden />
+              {CONTACT_EMAIL}
+            </a>
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-ast-ink-muted transition-colors hover:text-ast-brand"
+              >
+                <social.icon className="h-3.5 w-3.5" aria-hidden />
+                {social.label}
+              </a>
+            ))}
+          </div>
         </div>
       </Container>
     </footer>
