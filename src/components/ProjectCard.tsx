@@ -4,6 +4,8 @@ import type { Project } from '../data/projects';
 import { getTechIcon } from '../data/techIcons';
 import { Parallax } from './motion/Parallax';
 
+const logoMark = '/brand/ast-logo.jpeg';
+
 interface ProjectCardProps {
   project: Project;
 }
@@ -11,7 +13,7 @@ interface ProjectCardProps {
 /** Project card, shared between Home, /projects, and detail-page navigation. */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface/70 transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
       {/* Whole card is one link: a single tab stop, one accessible name. */}
       <Link
         to={`/projects/${project.slug}`}
@@ -36,21 +38,27 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <div className="h-full w-full bg-gradient-to-br from-ast-secondary to-ast-primary" />
             </Parallax>
             <div className="ast-grid absolute inset-0 opacity-70" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img
+                src={logoMark}
+                alt=""
+                className="h-14 w-14 rounded-2xl border border-white/20 object-cover opacity-90"
+              />
+            </div>
           </>
         )}
-        <div className="absolute -right-10 -top-10 h-3/4 w-3/4 rounded-full bg-ast-accent/25 blur-3xl transition-transform duration-700 ease-ast-out motion-safe:group-hover:scale-125" />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ast-surface to-transparent" />
 
-        <span className="absolute left-6 top-6 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-white/80 backdrop-blur-sm">
+        <span className="absolute left-6 top-6 rounded-full border border-white/15 bg-ast-primary/70 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-white/80">
           {project.category}
         </span>
-        <span className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/85 backdrop-blur-sm transition-colors duration-300 group-hover:border-transparent group-hover:bg-ast-brand group-hover:text-white">
+        <span className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-ast-primary/70 text-white/85 transition-colors duration-300 group-hover:border-transparent group-hover:bg-ast-brand group-hover:text-white">
           <ArrowUpRight className="h-4 w-4" />
         </span>
 
         {project.videoUrl && (
           <span className="absolute inset-0 flex items-center justify-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-sm transition-transform duration-300 motion-safe:group-hover:scale-110">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-ast-primary/60 text-white transition-transform duration-300 motion-safe:group-hover:scale-110">
               <Play className="h-5 w-5 translate-x-0.5" fill="currentColor" />
             </span>
           </span>
