@@ -47,8 +47,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </>
         )}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ast-surface to-transparent" />
-
         <span className="absolute left-6 top-6 rounded-full border border-white/15 bg-ast-primary/70 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-white/80">
           {project.category}
         </span>
