@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import { Badge, Button } from '@ast/ui';
+import { Button } from '@ast/ui';
 import { Container } from '../components/Container';
 import { Section } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
@@ -45,14 +45,6 @@ export function ProjectDetailPage() {
           </Link>
 
           <header className="mt-10 max-w-4xl">
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <Badge tone="accent" dot>
-                {project.status === 'illustrative' ? 'Illustrative concept' : 'Case study'}
-              </Badge>
-              <Badge>{project.category}</Badge>
-              <span className="text-xs text-ast-ink-muted">{project.year}</span>
-            </div>
-
             <RevealText
               as="h1"
               immediate
