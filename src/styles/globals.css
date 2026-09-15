@@ -9,7 +9,6 @@
 
 :root {
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 @layer base {
@@ -122,30 +121,6 @@
     );
   }
 
-  /* Gradient border via mask compositing, no wrapper element needed. */
-  .ast-ring-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      140deg,
-      rgb(var(--ast-brand) / 0.55),
-      rgb(var(--ast-accent) / 0.28) 45%,
-      transparent 70%
-    );
-    mask:
-      linear-gradient(black, black) content-box,
-      linear-gradient(black, black);
-    -webkit-mask:
-      linear-gradient(black, black) content-box,
-      linear-gradient(black, black);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    pointer-events: none;
-  }
-
   /* ── Type ─────────────────────────────────────────────────────────── */
 
   .ast-text-gradient {
@@ -176,24 +151,6 @@
   }
 
   /* ── Motion helpers ───────────────────────────────────────────────── */
-
-  /* Edge fade for marquees so items enter/exit instead of popping. */
-  .ast-fade-x {
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black var(--ast-fade, 8%),
-      black calc(100% - var(--ast-fade, 8%)),
-      transparent
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black var(--ast-fade, 8%),
-      black calc(100% - var(--ast-fade, 8%)),
-      transparent
-    );
-  }
 
   /* Static glow on hover; no pointer coordinates or per-card listeners. */
   .ast-spotlight::after {

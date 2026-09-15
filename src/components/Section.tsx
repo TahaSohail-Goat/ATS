@@ -26,6 +26,8 @@ interface SectionProps {
   tone?: 'canvas' | 'raised';
   /** Vertical rhythm. `tight` for stacked sub-sections. */
   space?: 'tight' | 'base' | 'loose';
+  /** Full-bleed photo background (always-dark, like the Home hero/CTA) instead of the themed tone. */
+  image?: string;
   className?: string;
   children: ReactNode;
 }
@@ -52,18 +54,31 @@ export function Section({
   srTitle,
   tone = 'canvas',
   space = 'base',
+  image,
   className = '',
   children,
 }: SectionProps) {
   const centered = align === 'center';
   const hasHeading = Boolean(eyebrow || title);
+  const Heading = headingLevel === 1 ? 'h1' : 'h2';
 
   return (
     <section
       id={id}
-      className={`relative ${spacing[space]} ${tone === 'raised' ? 'bg-ast-surface/50' : ''} ${className}`}
+      className={`relative ${spacing[space]} ${!image && tone === 'raised' ? 'bg-ast-surface/50' : ''} ${className}`}
+      style={image ? { backgroundImage: `url('${image}')`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
     >
-      {tone === 'raised' && (
+      {image && (
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(100deg, rgb(var(--ast-primary) / 0.95) 45%, rgb(var(--ast-primary) / 0.65) 100%)',
+          }}
+        />
+      )}
+      {!image && tone === 'raised' && (
         <>
           <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
           <div aria-hidden className="ast-dots pointer-events-none absolute inset-0 opacity-60" />
@@ -82,16 +97,31 @@ export function Section({
                   : ''
             }`}
           >
-            <SectionHeading
-              eyebrow={eyebrow}
-              title={title}
-              titleAccent={titleAccent}
-              headingLevel={headingLevel}
-              description={description}
-              align={align}
-              size={headingSize}
-              className={centered ? 'max-w-3xl' : 'max-w-2xl'}
-            />
+            {image ? (
+              <div className={centered ? 'max-w-3xl text-center' : 'max-w-2xl'}>
+                {title && (
+                  <Heading
+                    className={`font-semibold text-ast-on-dark ${headingSize === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
+                  >
+                    {title} {titleAccent && <span className="text-ast-accent-on-dark">{titleAccent}</span>}
+                  </Heading>
+                )}
+                {description && (
+                  <p className="mt-6 text-lg leading-relaxed text-ast-on-dark-muted">{description}</p>
+                )}
+              </div>
+            ) : (
+              <SectionHeading
+                eyebrow={eyebrow}
+                title={title}
+                titleAccent={titleAccent}
+                headingLevel={headingLevel}
+                description={description}
+                align={align}
+                size={headingSize}
+                className={centered ? 'max-w-3xl' : 'max-w-2xl'}
+              />
+            )}
             {action && <Reveal delay={0.12}>{action}</Reveal>}
           </div>
         )}

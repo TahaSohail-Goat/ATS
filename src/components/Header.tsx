@@ -9,8 +9,10 @@ import { NAV_LINKS } from '../data/navigation';
 import { transitionUi } from '../lib/motion';
 
 /**
- * Site header: a sticky glass navigation bar with a full-screen mobile panel
- * and active-route highlighting.
+ * Site header: an always-dark navy navigation bar (part of the redesign's
+ * fixed dark bookends — header/hero/footer/CTA — independent of the
+ * light/dark toggle, which only affects content sections) with a
+ * full-screen mobile panel and active-route highlighting.
  */
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,11 +49,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ast-line shadow-[0_12px_40px_-28px_rgb(var(--ast-primary)/0.9)]">
-      {/* Glass background lives on its own layer, not on `header` itself,
-          so `backdrop-filter` doesn't become the containing block for the
-          fixed-position mobile menu below (that would collapse its height). */}
-      <div className="ast-glass pointer-events-none absolute inset-0 -z-10" aria-hidden />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-ast-primary shadow-[0_12px_40px_-28px_rgb(0_0_0/0.6)]">
       <div
         className={`mx-auto flex h-20 w-full max-w-shell items-center justify-between gap-4 px-5 sm:px-8 lg:px-12`}
       >
@@ -64,7 +62,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center lg:flex" aria-label="Main">
-          <ul className="flex items-center gap-1 rounded-full border border-ast-line bg-ast-surface/50 p-1.5 backdrop-blur-sm">
+          <ul className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1.5">
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
               return (
@@ -73,14 +71,14 @@ export function Header() {
                     to={link.href}
                     aria-current={active ? 'page' : undefined}
                     className={`relative flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                      active ? 'text-ast-ink' : 'text-ast-ink-muted hover:text-ast-ink'
+                      active ? 'text-ast-on-dark' : 'text-ast-on-dark-muted hover:text-ast-on-dark'
                     }`}
                   >
                     {active && (
                       <motion.span
                         layoutId="active-navigation"
                         aria-hidden
-                        className="bg-ast-brand/12 absolute inset-0 rounded-full border border-ast-brand/25"
+                        className="bg-ast-brand/20 absolute inset-0 rounded-full border border-ast-brand/40"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -106,7 +104,7 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ast-line bg-ast-surface/60 text-ast-ink-muted transition-colors duration-200 hocus:border-ast-brand/40 hocus:text-ast-brand lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-ast-on-dark-muted transition-colors duration-200 hocus:border-ast-accent-on-dark/50 hocus:text-ast-accent-on-dark lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -125,7 +123,7 @@ export function Header() {
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            className="ast-glass fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-ast-line lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto border-t border-white/10 bg-ast-primary lg:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -153,14 +151,16 @@ export function Header() {
                           transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
                         },
                       }}
-                      className="border-b border-ast-line/70"
+                      className="border-b border-white/10"
                     >
                       <Link
                         to={link.href}
                         aria-current={active ? 'page' : undefined}
                         onClick={() => setMenuOpen(false)}
                         className={`flex items-center justify-between py-4 text-2xl font-semibold tracking-display transition-colors ${
-                          active ? 'text-ast-brand' : 'text-ast-ink hover:text-ast-brand'
+                          active
+                            ? 'text-ast-accent-on-dark'
+                            : 'text-ast-on-dark hover:text-ast-accent-on-dark'
                         }`}
                       >
                         {link.label}

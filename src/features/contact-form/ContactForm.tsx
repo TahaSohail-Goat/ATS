@@ -406,7 +406,7 @@ export function ContactForm() {
                 aria-hidden
                 className={`fi fi-${selectedCountry.iso.toLowerCase()} shrink-0 rounded-[2px]`}
               />
-              <span className="font-mono font-medium">{selectedCountry.dialCode}</span>
+              <span className="font-medium">{selectedCountry.dialCode}</span>
               <ChevronDown
                 className={`ml-auto h-3.5 w-3.5 shrink-0 text-ast-ink-muted transition-transform duration-200 ${dialOpen ? 'rotate-180' : ''}`}
                 aria-hidden
@@ -451,7 +451,7 @@ export function ContactForm() {
                             className={`fi fi-${c.iso.toLowerCase()} shrink-0 rounded-[2px]`}
                           />
                           <span className="min-w-0 flex-1 truncate">{c.name}</span>
-                          <span className="ml-auto shrink-0 font-mono text-xs text-ast-ink-muted">
+                          <span className="ml-auto shrink-0 text-xs text-ast-ink-muted">
                             {c.dialCode}
                           </span>
                         </button>
@@ -525,7 +525,7 @@ export function ContactForm() {
                   className="sr-only"
                 />
                 <span className="leading-tight">
-                  <span className="mr-1.5 font-mono text-[10px] font-semibold text-ast-accent">
+                  <span className="mr-1.5 text-[10px] font-semibold text-ast-accent">
                     {service.id.replace('s', '').padStart(2, '0')}
                   </span>
                   {service.label}

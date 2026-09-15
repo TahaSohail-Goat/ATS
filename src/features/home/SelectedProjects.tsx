@@ -9,7 +9,6 @@ import { projects } from '../../data/projects';
 export function SelectedProjects() {
   return (
     <Section
-      eyebrow="Selected Work"
       title="Projects we are"
       titleAccent="proud of"
       description="A few recent engagements, each one a partnership, not a hand-off."

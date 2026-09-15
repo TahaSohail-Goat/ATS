@@ -1,51 +1,85 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail, Instagram, Linkedin, X } from 'lucide-react';
 import { Button } from '@ast/ui';
 import { Container } from './Container';
 import { Logo } from './Logo';
 import { NAV_LINKS } from '../data/navigation';
 
-/** Careers is footer-only: reachable, but kept out of the main nav. */
-const FOOTER_LINKS = [...NAV_LINKS, { href: '/careers', label: 'Careers' }];
+const CONTACT_EMAIL = 'ast.devz@gmail.com';
 
-const CAPABILITIES = [
-  { href: '/services', label: 'Custom software' },
-  { href: '/services', label: 'AI & machine learning' },
-  { href: '/services', label: 'Cloud & infrastructure' },
-  { href: '/services', label: 'Game development' },
+/** Real profile URLs land here as they're provided; undefined renders as an inert placeholder icon. */
+const SOCIAL_LINKS = [
+  { href: 'https://instagram.com/ast.dev', label: 'Instagram', icon: Instagram },
+  { href: undefined, label: 'X', icon: X },
+  { href: undefined, label: 'LinkedIn', icon: Linkedin },
 ];
 
-/** Site footer */
+/** Site footer: always-dark navy, matching the header/hero/CTA bookends. */
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-ast-line bg-ast-surface/30">
-      <div aria-hidden className="ast-dots absolute inset-0 opacity-50" />
-      <div aria-hidden className="ast-hairline absolute inset-x-0 top-0 h-px" />
-
-      <Container className="relative py-16 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-ast-primary">
+      <Container className="relative py-14 sm:py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="max-w-sm">
             <Logo size={44} />
-            <p className="mt-5 text-sm leading-relaxed text-ast-ink-muted">
+            <p className="mt-5 text-sm leading-relaxed text-ast-on-dark-muted">
               AI Software &amp; Technology Solutions. We design, build, and modernize the systems
               companies run on.
             </p>
-            <Button asChild variant="outline" size="sm" className="mt-7">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="mt-7 !border-white/20 !bg-white/5 !text-ast-on-dark !backdrop-blur-none hover:!border-ast-brand/50 hover:!bg-white/10"
+            >
               <Link to="/contact">
                 <Mail className="h-4 w-4" aria-hidden />
                 Start a conversation
               </Link>
             </Button>
+
+            {/* The actual contact channels, so these stay prominent rather than buried in fine print. */}
+            <div className="mt-7 flex items-center gap-2.5">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                aria-label="Email AST"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent-on-dark"
+              >
+                <Mail className="h-[18px] w-[18px]" aria-hidden />
+              </a>
+              {SOCIAL_LINKS.map((social) =>
+                social.href ? (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`AST on ${social.label}`}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent-on-dark"
+                  >
+                    <social.icon className="h-[18px] w-[18px]" aria-hidden />
+                  </a>
+                ) : (
+                  <span
+                    key={social.label}
+                    aria-hidden
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark-muted/30"
+                  >
+                    <social.icon className="h-[18px] w-[18px]" />
+                  </span>
+                ),
+              )}
+            </div>
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-1">
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Site</h2>
+            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">Site</h2>
             <ul className="mt-5 space-y-3">
-              {FOOTER_LINKS.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="group inline-flex items-center gap-1.5 text-sm text-ast-ink-muted transition-colors hover:text-ast-brand"
+                    className="group inline-flex items-center gap-1.5 text-sm font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
                   >
                     {link.label}
                     <ArrowUpRight
@@ -59,44 +93,18 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
-              Capabilities
+            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">
+              Engagement
             </h2>
-            <ul className="mt-5 space-y-3">
-              {CAPABILITIES.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    to={item.href}
-                    className="text-sm text-ast-ink-muted transition-colors hover:text-ast-brand"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Engagement</h2>
-            <p className="mt-5 text-sm leading-relaxed text-ast-ink-muted">
+            <p className="mt-5 text-sm leading-relaxed text-ast-on-dark-muted">
               Tell us what you are building. We reply with honest technical feedback and a clear
               first step.
             </p>
-            <p className="mt-4 text-sm font-medium text-ast-ink">We reply to every message.</p>
+            <p className="mt-4 text-sm font-medium text-ast-on-dark">We reply to every message.</p>
           </div>
         </div>
 
-        {/* Oversized wordmark, anchors the page without competing for attention. */}
-        <div
-          aria-hidden
-          className="pointer-events-none mt-16 select-none overflow-hidden border-t border-ast-line pt-8"
-        >
-          <span className="block bg-ast-ink-gradient bg-clip-text text-[18vw] font-bold leading-[0.8] tracking-display text-transparent opacity-[0.07] sm:text-[16vw]">
-            AST
-          </span>
-        </div>
-
-        <div className="mt-8 text-xs text-ast-ink-muted">
+        <div className="mt-10 border-t border-white/10 pt-6 text-xs text-ast-on-dark-muted">
           <p>
             © {new Date().getFullYear()} AST, AI Software &amp; Technology Solutions. All rights
             reserved.

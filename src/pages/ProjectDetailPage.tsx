@@ -1,8 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Check, Sparkles } from 'lucide-react';
-import { Badge, Button } from '@ast/ui';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { Button } from '@ast/ui';
 import { Container } from '../components/Container';
-import { Aurora } from '../components/Aurora';
 import { Section } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
 import { ArrowLink } from '../components/ArrowLink';
@@ -32,8 +31,7 @@ export function ProjectDetailPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-ast-line pb-16 pt-10 sm:pb-24 sm:pt-14">
-        <Aurora variant="quiet" />
+      <section className="relative isolate overflow-hidden border-b border-ast-line bg-ast-canvas pb-16 pt-10 sm:pb-24 sm:pt-14">
         <Container className="relative">
           <Link
             to="/projects"
@@ -47,14 +45,6 @@ export function ProjectDetailPage() {
           </Link>
 
           <header className="mt-10 max-w-4xl">
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <Badge tone="accent" dot>
-                {project.status === 'illustrative' ? 'Illustrative concept' : 'Case study'}
-              </Badge>
-              <Badge>{project.category}</Badge>
-              <span className="font-mono text-xs text-ast-ink-muted">{project.year}</span>
-            </div>
-
             <RevealText
               as="h1"
               immediate
@@ -127,7 +117,7 @@ export function ProjectDetailPage() {
             <Reveal key={block.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="ast-ring-gradient flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/60 p-8 sm:p-11"
+                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 shadow-ast-card sm:p-11"
               >
                 <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
                 <p className="mt-4 leading-relaxed text-ast-ink-muted">{block.text}</p>
@@ -140,33 +130,27 @@ export function ProjectDetailPage() {
       <Section space="base" tone="raised">
         <div className="grid gap-12 lg:grid-cols-3">
           <Reveal>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">
               Key features
             </h2>
             <ul className="mt-6 space-y-4">
               {project.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ast-brand/30 bg-ast-brand/10 text-ast-brand"
-                  >
-                    <Check className="h-3 w-3" />
-                  </span>
-                  <span className="text-sm leading-relaxed text-ast-ink">{feature}</span>
+                <li key={feature} className="border-l-2 border-ast-brand/40 pl-4 text-base font-medium leading-relaxed text-ast-ink">
+                  {feature}
                 </li>
               ))}
             </ul>
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">Technology</h2>
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">Technology</h2>
             <ul className="mt-6 flex flex-wrap gap-2">
               {project.tech.map((tech) => {
                 const { Icon, color } = getTechIcon(tech);
                 return (
                   <li
                     key={tech}
-                    className="flex items-center gap-2 rounded-full border border-ast-line bg-ast-surface/60 px-3 py-1.5 text-xs font-medium text-ast-ink-muted"
+                    className="flex items-center gap-2 rounded-full border border-ast-line bg-ast-surface px-3 py-1.5 text-xs font-medium text-ast-ink-muted"
                   >
                     <Icon className="h-3.5 w-3.5 shrink-0" style={{ color }} aria-hidden />
                     {tech}
@@ -177,19 +161,13 @@ export function ProjectDetailPage() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <h2 className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">
               {project.status === 'illustrative' ? 'Concept highlights' : 'Results'}
             </h2>
             <ul className="mt-6 space-y-4">
               {project.highlights.map((highlight) => (
-                <li key={highlight} className="flex items-start gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-ast-accent/30 bg-ast-accent/10 text-ast-accent"
-                  >
-                    <Sparkles className="h-3 w-3" />
-                  </span>
-                  <span className="text-sm leading-relaxed text-ast-ink">{highlight}</span>
+                <li key={highlight} className="border-l-2 border-ast-accent/40 pl-4 text-base font-medium leading-relaxed text-ast-ink">
+                  {highlight}
                 </li>
               ))}
             </ul>
@@ -201,7 +179,7 @@ export function ProjectDetailPage() {
         <Section space="tight">
           <Reveal className="flex flex-col gap-4 border-t border-ast-line pt-10 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-eyebrow font-semibold uppercase text-ast-ink-muted">
+              <p className="text-xs font-semibold tracking-wide text-ast-ink-muted">
                 Next project
               </p>
               <p className="mt-2 text-xl font-semibold tracking-tighter2">{next.title}</p>

@@ -10,11 +10,15 @@ export function ServicesOverview() {
   return (
     <Section
       id="services"
-      eyebrow="Services"
       title="What we build"
       titleAccent="for you"
       description="Full-cycle engineering, from product thinking to deployed, supported software."
-      action={<ArrowLink href="/services">Explore all services</ArrowLink>}
+      image="/stock/code-editor.jpg"
+      action={
+        <ArrowLink href="/services" className="!text-ast-accent-on-dark hover:!text-white">
+          Explore all services
+        </ArrowLink>
+      }
     >
       <Stagger className="grid gap-5 lg:grid-cols-2">
         {services.slice(0, 4).map((service, index) => (

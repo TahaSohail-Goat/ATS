@@ -2,9 +2,9 @@ import {
   BrainCircuit,
   Boxes,
   Cloud,
-  Code2,
   Gamepad2,
   Globe,
+  Laptop,
   Palette,
   ShoppingCart,
   Smartphone,
@@ -15,7 +15,7 @@ import type { Service } from '../data/services';
 import { SpotlightCard } from './motion/SpotlightCard';
 
 const serviceIcons: Record<string, LucideIcon> = {
-  'custom-software': Code2,
+  'custom-software': Laptop,
   'ai-solutions': BrainCircuit,
   'cloud-infrastructure': Cloud,
   'web-saas': Globe,
@@ -35,17 +35,17 @@ interface ServiceCardProps {
 
 /** Service card, shared between the Home overview and the /services page. */
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const Icon = serviceIcons[service.slug] ?? Code2;
+  const Icon = serviceIcons[service.slug] ?? Laptop;
 
   return (
     <SpotlightCard
       as="article"
-      className="ast-ring-gradient group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
+      className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-7 shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5 sm:p-9"
     >
       {typeof index === 'number' && (
         <span
           aria-hidden
-          className="absolute right-7 top-7 font-mono text-xs tabular-nums text-ast-ink-muted"
+          className="absolute right-7 top-7 text-xs tabular-nums text-ast-ink-muted"
         >
           {String(index + 1).padStart(2, '0')}
         </span>
@@ -66,7 +66,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {service.deliverables.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-ast-line bg-ast-surface-raised/60 px-3 py-1.5 text-xs font-medium text-ast-ink-muted transition-colors duration-300 group-hover:border-ast-brand/20 group-hover:text-ast-ink"
+            className="rounded-full border border-ast-line bg-ast-surface-raised px-3 py-1.5 text-xs font-medium text-ast-ink-muted transition-colors duration-300 group-hover:border-ast-brand/20 group-hover:text-ast-ink"
           >
             {item}
           </li>

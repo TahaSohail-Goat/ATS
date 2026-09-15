@@ -9,6 +9,8 @@ export interface TeamMember {
   photo?: string;
   /** Bias the card's crop toward the top of the photo (e.g. tall portraits where the default center crop clips hair). */
   photoPosition?: 'center' | 'top';
+  linkedinUrl?: string;
+  githubUrl?: string;
 }
 
 export const team: TeamMember[] = [
@@ -18,6 +20,8 @@ export const team: TeamMember[] = [
     bio: 'Leads AST end to end, setting technical direction and client partnerships while building agentic AI systems across the full stack.',
     photo: '/team/taha-sohail.jpeg',
     photoPosition: 'top',
+    linkedinUrl: 'https://www.linkedin.com/in/taha-sohail-7b03b8320/',
+    githubUrl: 'https://github.com/TahaSohail-Goat',
   },
   {
     name: 'Abdullah Adnan',

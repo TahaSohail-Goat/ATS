@@ -16,7 +16,6 @@ export function Testimonials() {
 
   return (
     <Section
-      eyebrow="Testimonials"
       title="What our"
       titleAccent="clients say"
       tone="raised"
@@ -27,7 +26,7 @@ export function Testimonials() {
           <Reveal asChild as="div" className="h-full lg:col-span-2">
             <SpotlightCard
               as="figure"
-              className="ast-ring-gradient flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/70 p-8 sm:p-11"
+              className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/70 p-8 sm:p-11"
             >
               <Quote
                 className="h-9 w-9 shrink-0 text-ast-accent/50"
@@ -72,7 +71,7 @@ export function Testimonials() {
         </Stagger>
       ) : (
         <Reveal>
-          <div className="ast-ring-gradient relative overflow-hidden rounded-4xl border border-dashed border-ast-line bg-ast-surface/50 px-8 py-16 text-center">
+          <div className="relative overflow-hidden rounded-4xl border border-dashed border-ast-line bg-ast-surface/50 px-8 py-16 text-center">
             <Quote className="mx-auto h-8 w-8 text-ast-accent/50" strokeWidth={1.5} aria-hidden />
             <p className="mt-5 text-xl font-semibold tracking-tighter2">
               Client testimonials coming soon.

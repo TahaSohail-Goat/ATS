@@ -77,10 +77,12 @@ const config: Config = {
         'ast-violet': tokenColor('--ast-violet'),
         'ast-success': tokenColor('--ast-success'),
         'ast-error': tokenColor('--ast-error'),
+        'ast-on-dark': tokenColor('--ast-onDark'),
+        'ast-on-dark-muted': tokenColor('--ast-onDarkMuted'),
+        'ast-accent-on-dark': tokenColor('--ast-accentOnDark'),
       },
       fontFamily: {
         sans: ['Inter', 'var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       fontSize: {
         // Fluid display scale — headline sizes track the viewport so the
@@ -121,22 +123,6 @@ const config: Config = {
         'ast-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },
       keyframes: {
-        'ast-drift': {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
-          '50%': { transform: 'translate3d(4%, -6%, 0) scale(1.12)' },
-        },
-        'ast-drift-slow': {
-          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1.08)' },
-          '50%': { transform: 'translate3d(-5%, 5%, 0) scale(1)' },
-        },
-        'ast-marquee': {
-          from: { transform: 'translate3d(0, 0, 0)' },
-          to: { transform: 'translate3d(-50%, 0, 0)' },
-        },
-        'ast-marquee-reverse': {
-          from: { transform: 'translate3d(-50%, 0, 0)' },
-          to: { transform: 'translate3d(0, 0, 0)' },
-        },
         'ast-shimmer': {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
@@ -151,11 +137,6 @@ const config: Config = {
         },
       },
       animation: {
-        'ast-drift': 'ast-drift 22s cubic-bezier(0.45, 0, 0.55, 1) infinite',
-        'ast-drift-slow': 'ast-drift-slow 30s cubic-bezier(0.45, 0, 0.55, 1) infinite',
-        'ast-marquee': 'ast-marquee var(--ast-marquee-duration, 40s) linear infinite',
-        'ast-marquee-reverse':
-          'ast-marquee-reverse var(--ast-marquee-duration, 40s) linear infinite',
         'ast-shimmer': 'ast-shimmer 6s linear infinite',
         'ast-pulse-ring': 'ast-pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite',
         'ast-scroll-hint': 'ast-scroll-hint 2s ease-in-out infinite',

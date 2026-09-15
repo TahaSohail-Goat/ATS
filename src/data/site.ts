@@ -85,15 +85,3 @@ export const techGroups: TechGroup[] = [
 
 /** Flattened `techGroups`, for compact contexts (e.g. the "N+ core technologies" stat). */
 export const techStack: string[] = techGroups.flatMap((group) => group.items);
-
-/** Short capability keywords for the hero marquee. */
-export const capabilities: string[] = [
-  'Product engineering',
-  'AI systems',
-  'Cloud platforms',
-  'Legacy modernization',
-  'Data pipelines',
-  'Architecture reviews',
-  'DevOps & CI/CD',
-  'Technical audits',
-];
