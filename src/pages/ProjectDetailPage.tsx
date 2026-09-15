@@ -2,7 +2,6 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Check, Sparkles } from 'lucide-react';
 import { Badge, Button } from '@ast/ui';
 import { Container } from '../components/Container';
-import { Aurora } from '../components/Aurora';
 import { Section } from '../components/Section';
 import { CtaSection } from '../components/CtaSection';
 import { ArrowLink } from '../components/ArrowLink';
@@ -32,8 +31,7 @@ export function ProjectDetailPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-ast-line pb-16 pt-10 sm:pb-24 sm:pt-14">
-        <Aurora variant="quiet" />
+      <section className="relative isolate overflow-hidden border-b border-ast-line bg-ast-canvas pb-16 pt-10 sm:pb-24 sm:pt-14">
         <Container className="relative">
           <Link
             to="/projects"
@@ -127,7 +125,7 @@ export function ProjectDetailPage() {
             <Reveal key={block.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/60 p-8 sm:p-11"
+                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 shadow-ast-card sm:p-11"
               >
                 <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
                 <p className="mt-4 leading-relaxed text-ast-ink-muted">{block.text}</p>
@@ -166,7 +164,7 @@ export function ProjectDetailPage() {
                 return (
                   <li
                     key={tech}
-                    className="flex items-center gap-2 rounded-full border border-ast-line bg-ast-surface/60 px-3 py-1.5 text-xs font-medium text-ast-ink-muted"
+                    className="flex items-center gap-2 rounded-full border border-ast-line bg-ast-surface px-3 py-1.5 text-xs font-medium text-ast-ink-muted"
                   >
                     <Icon className="h-3.5 w-3.5 shrink-0" style={{ color }} aria-hidden />
                     {tech}
