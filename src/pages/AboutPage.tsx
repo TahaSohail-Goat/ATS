@@ -5,10 +5,7 @@ import { CtaSection } from '../components/CtaSection';
 import { Reveal } from '../components/motion/Reveal';
 import { Stagger } from '../components/motion/Stagger';
 import { SpotlightCard } from '../components/motion/SpotlightCard';
-import { Counter } from '../components/motion/Counter';
 import { TeamCard } from '../components/TeamCard';
-import { processSteps, techStack } from '../data/site';
-import { services } from '../data/services';
 import { team } from '../data/team';
 import { useSeo } from '../lib/seo';
 
@@ -25,12 +22,6 @@ const PURPOSE = [
   },
 ];
 
-const FACTS = [
-  { value: services.length, label: 'Services offered' },
-  { value: processSteps.length, label: 'Delivery stages' },
-  { value: techStack.length, label: 'Core technologies', suffix: '+' },
-];
-
 export function AboutPage() {
   useSeo({
     title: 'About',
@@ -45,6 +36,7 @@ export function AboutPage() {
         title="A software studio"
         titleAccent="built by engineers"
         description="AST (AI Software & Technology Solutions) is a software company that partners with businesses to design, build, and modernize the systems they run on."
+        image="/stock/hero-team.jpg"
       />
 
       <Section space="loose">
@@ -53,7 +45,7 @@ export function AboutPage() {
             <Reveal key={item.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface/60 p-8 sm:p-11"
+                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 shadow-ast-card sm:p-11"
               >
                 <span
                   aria-hidden
@@ -67,30 +59,9 @@ export function AboutPage() {
             </Reveal>
           ))}
         </Stagger>
-
-        <Reveal delay={0.1} className="mt-5">
-          <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-4xl border border-ast-line bg-ast-line sm:grid-cols-3">
-            {FACTS.map((fact) => (
-              <div key={fact.label} className="bg-ast-surface/60 px-8 py-9 text-center">
-                <dt className="sr-only">{fact.label}</dt>
-                <dd>
-                  <Counter
-                    value={fact.value}
-                    suffix={fact.suffix}
-                    className="block bg-ast-brand-gradient bg-clip-text text-4xl font-semibold tracking-display text-transparent"
-                  />
-                  <span className="mt-2 block text-xs font-medium uppercase tracking-[0.16em] text-ast-ink-muted">
-                    {fact.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
       </Section>
 
       <Section
-        eyebrow="Our team"
         title="The people"
         titleAccent="behind AST"
         description="A small team of engineers and builders who ship, review, and stand behind every system we hand over."

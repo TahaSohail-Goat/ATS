@@ -9,6 +9,8 @@ export interface TeamMember {
   photo?: string;
   /** Bias the card's crop toward the top of the photo (e.g. tall portraits where the default center crop clips hair). */
   photoPosition?: 'center' | 'top';
+  linkedinUrl?: string;
+  githubUrl?: string;
 }
 
 export const team: TeamMember[] = [
