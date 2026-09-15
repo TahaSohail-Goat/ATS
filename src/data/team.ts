@@ -20,6 +20,8 @@ export const team: TeamMember[] = [
     bio: 'Leads AST end to end, setting technical direction and client partnerships while building agentic AI systems across the full stack.',
     photo: '/team/taha-sohail.jpeg',
     photoPosition: 'top',
+    linkedinUrl: 'https://www.linkedin.com/in/taha-sohail-7b03b8320/',
+    githubUrl: 'https://github.com/TahaSohail-Goat',
   },
   {
     name: 'Abdullah Adnan',
