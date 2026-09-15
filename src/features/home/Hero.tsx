@@ -5,6 +5,7 @@ import { Container } from '../../components/Container';
 import { Aurora } from '../../components/Aurora';
 import { Reveal } from '../../components/motion/Reveal';
 import { RevealText } from '../../components/motion/RevealText';
+import { CyclingWord } from '../../components/motion/CyclingWord';
 import { Magnetic } from '../../components/motion/Magnetic';
 import { Marquee } from '../../components/motion/Marquee';
 import { Counter } from '../../components/motion/Counter';
@@ -34,15 +35,22 @@ export function Hero() {
             </p>
           </Reveal>
 
-          <RevealText
-            as="h1"
-            immediate
-            className="text-display-xl font-semibold"
-            parts={[
-              { text: 'We build software that' },
-              { text: 'moves businesses forward', gradient: true },
-            ]}
-          />
+          <h1 className="text-display-xl font-semibold">
+            <RevealText
+              as="span"
+              immediate
+              className="block"
+              parts={[{ text: 'We build software that' }]}
+            />
+            <Reveal as="span" immediate delay={0.1} className="mt-2 block">
+              moves{' '}
+              <CyclingWord
+                words={['businesses', 'startups', 'products', 'ideas', 'teams']}
+                className="ast-text-gradient"
+              />{' '}
+              forward
+            </Reveal>
+          </h1>
 
           <Reveal delay={0.35}>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
