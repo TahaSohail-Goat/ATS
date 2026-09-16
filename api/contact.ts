@@ -93,9 +93,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    // formsubmit.co's ajax endpoint rejects requests with no Referer/Origin,
+    // treating them as "browsed as an HTML file" rather than a real page. A
+    // server-to-server fetch sends neither by default, so forward the
+    // browser's own headers for this request (same-origin, since the client
+    // posts to our own /api/contact) with a safe fallback for direct calls.
+    const referer = typeof req.headers.referer === 'string' ? req.headers.referer : 'https://astsolutions.dev/contact';
+    const origin = typeof req.headers.origin === 'string' ? req.headers.origin : 'https://astsolutions.dev';
+
     const response = await fetch(FORMSUBMIT_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Referer: referer,
+        Origin: origin,
+      },
       body: JSON.stringify({
         _subject: `New project inquiry from ${name}`,
         _template: 'table',
