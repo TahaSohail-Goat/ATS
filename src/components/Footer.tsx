@@ -11,7 +11,7 @@ const CONTACT_EMAIL = 'ast.devz@gmail.com';
 const SOCIAL_LINKS = [
   { href: 'https://instagram.com/ast.dev', label: 'Instagram', icon: Instagram },
   { href: 'https://x.com/ASTshcc', label: 'X', icon: X },
-  { href: undefined, label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://www.linkedin.com/company/ai-software-technology-solutions', label: 'LinkedIn', icon: Linkedin },
 ];
 
 /** Site footer: always-dark navy, matching the header/hero/CTA bookends. */
