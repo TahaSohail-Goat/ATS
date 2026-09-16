@@ -10,7 +10,7 @@ const CONTACT_EMAIL = 'ast.devz@gmail.com';
 /** Real profile URLs land here as they're provided; undefined renders as an inert placeholder icon. */
 const SOCIAL_LINKS = [
   { href: 'https://instagram.com/ast.dev', label: 'Instagram', icon: Instagram },
-  { href: undefined, label: 'X', icon: X },
+  { href: 'https://x.com/ASTshcc', label: 'X', icon: X },
   { href: undefined, label: 'LinkedIn', icon: Linkedin },
 ];
 
