@@ -28,17 +28,23 @@ export const team: TeamMember[] = [
     role: 'Co-founder & AI Engineer',
     bio: 'Designs and ships the AI and machine learning systems behind AST products, from model training to production deployment.',
     photo: '/team/abdullah-adnan.jpeg',
+    linkedinUrl: 'https://www.linkedin.com/in/abdullah-adnan-660bb1350',
+    githubUrl: 'https://github.com/Abdullah-SE-bit',
   },
   {
     name: 'Muhammad Shaheer',
     role: 'Co-founder & Frontend Developer & UI/UX Designer',
     bio: 'Designs and builds the interfaces clients use every day, turning complex requirements into clean, intuitive experiences.',
     photo: '/team/muhammad-shaheer.jpeg',
+    linkedinUrl: 'https://www.linkedin.com/in/muhammad-shaheer-28bb1a3ab',
+    githubUrl: 'https://github.com/Artfever',
   },
   {
     name: 'Rayyan Hassan',
     role: 'Co-founder & Backend Developer & Product Engineer',
     bio: 'Builds the backend systems and APIs that power AST products, and drives product engineering from architecture to launch.',
     photo: '/team/rayyan-hassan.jpeg',
+    linkedinUrl: 'https://www.linkedin.com/in/syed-muhammad-rayyan-hasan-8379b2386',
+    githubUrl: 'https://github.com/rayyanhasan899',
   },
 ];
