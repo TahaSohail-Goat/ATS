@@ -6,6 +6,7 @@ import {
   isValidPhoneNumber,
   type CountryCode as PhoneCountryCode,
 } from 'libphonenumber-js';
+import { Turnstile, TURNSTILE_ENABLED } from './Turnstile';
 
 // ── Services ───────────────────────────────────────────────────────────────────
 const SERVICES = [
@@ -56,7 +57,7 @@ function buildCountryList(): CountryEntry[] {
 const COUNTRY_LIST = buildCountryList();
 const DEFAULT_ISO: PhoneCountryCode = 'PK';
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
+const CONTACT_ENDPOINT = '/api/contact';
 
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
@@ -68,7 +69,9 @@ type FormState = {
   message: string;
 };
 
-type FieldErrors = Partial<Record<'name' | 'email' | 'phone' | 'services' | 'message', string>>;
+type FieldErrors = Partial<
+  Record<'name' | 'email' | 'phone' | 'services' | 'message' | 'turnstile', string>
+>;
 
 /**
  * Field length caps. The endpoint is a public third-party inbox with its
@@ -158,6 +161,7 @@ export function ContactForm() {
   const [search, setSearch] = useState('');
   /** Honeypot: hidden from people, commonly auto-filled by bots. */
   const [botField, setBotField] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
 
   const dialRef = useRef<HTMLDivElement>(null);
 
@@ -251,34 +255,49 @@ export function ContactForm() {
       return;
     }
 
+    if (TURNSTILE_ENABLED && !turnstileToken) {
+      setErrors({ turnstile: 'Please complete the verification challenge.' });
+      return;
+    }
+
     setStatus('sending');
     try {
-      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          _subject: `New project inquiry from ${form.name}`,
-          _template: 'table',
-          _captcha: 'false',
-          _replyto: form.email,
-          _honey: '',
-          Name: form.name,
-          Email: form.email,
-          Phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : 'Not provided',
-          Services: form.services.join(', '),
-          Message: form.message,
+          name: form.name,
+          email: form.email,
+          phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : '',
+          services: form.services,
+          message: form.message,
+          turnstileToken: turnstileToken || undefined,
         }),
       });
       const data = await response.json();
-      if (!response.ok || data.success !== 'true') {
+      if (!response.ok || !data.success) {
         throw new Error(data.message || 'Send failed');
       }
       setStatus('sent');
       setForm({ name: '', email: '', iso: DEFAULT_ISO, phone: '', services: [], message: '' });
       setErrors({});
+      setTurnstileToken('');
     } catch {
       setStatus('error');
     }
+  }
+
+  function handleTurnstileVerify(token: string) {
+    setTurnstileToken(token);
+    setErrors((prev) => {
+      if (!prev.turnstile) return prev;
+      const { turnstile: _turnstile, ...rest } = prev;
+      return rest;
+    });
+  }
+
+  function handleTurnstileExpire() {
+    setTurnstileToken('');
   }
 
   // ── Success state ────────────────────────────────────────────────────────────
@@ -564,6 +583,18 @@ export function ContactForm() {
           </p>
         )}
       </div>
+
+      {/* Bot verification (Cloudflare Turnstile), inert until a site key is configured */}
+      {TURNSTILE_ENABLED && (
+        <div>
+          <Turnstile onVerify={handleTurnstileVerify} onExpire={handleTurnstileExpire} />
+          {errors.turnstile && (
+            <p role="alert" className="mt-1.5 text-xs text-ast-error">
+              {errors.turnstile}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Submit */}
       <button
