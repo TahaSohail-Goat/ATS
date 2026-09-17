@@ -20,17 +20,17 @@ export function ContactPage() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(100deg, rgb(var(--ast-canvas) / 0.95) 45%, rgb(var(--ast-canvas) / 0.65) 100%)',
+            'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 45%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)',
         }}
       />
       <Container className="relative max-w-3xl">
         <Reveal delay={0.1}>
-          <h1 className="text-display-md font-semibold text-ast-ink">
+          <h1 className="ast-photo-text text-display-md font-semibold text-ast-ink">
             Start a <span className="text-ast-accent">Project</span>
           </h1>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="mt-4 text-lg leading-relaxed text-ast-ink-muted">
+          <p className="ast-photo-text mt-4 text-lg leading-relaxed text-ast-ink-muted">
             Have a project in mind, need technical advisory, or want to explore working together? Send us a message; we reply to every conversation.
           </p>
         </Reveal>

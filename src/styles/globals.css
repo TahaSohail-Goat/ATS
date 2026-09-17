@@ -121,6 +121,18 @@
     );
   }
 
+  /*
+   * Soft halo behind text on full-bleed photo bands (Hero, Process, CTA,
+   * PageHero/Section image variants). Lets the scrim stay light enough for
+   * the photo's real color to show while keeping text legible over busier
+   * parts of the image, instead of relying on a heavier flat overlay.
+   */
+  .ast-photo-text {
+    text-shadow:
+      0 2px 24px rgb(var(--ast-canvas) / 0.9),
+      0 2px 24px rgb(var(--ast-canvas) / 0.9);
+  }
+
   /* ── Type ─────────────────────────────────────────────────────────── */
 
   .ast-text-gradient {

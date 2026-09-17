@@ -41,7 +41,7 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
           </span>
 
           {/* Step Content */}
-          <div className="rounded-2xl border border-transparent p-4 transition-colors duration-300 group-hover:border-ast-ink/15 group-hover:bg-ast-ink/5">
+          <div className="ast-photo-text rounded-2xl border border-transparent p-4 transition-colors duration-300 group-hover:border-ast-ink/15 group-hover:bg-ast-ink/5">
             <span className="text-xs font-semibold tracking-wide text-ast-accent">
               Step {String(index + 1).padStart(2, '0')}
             </span>

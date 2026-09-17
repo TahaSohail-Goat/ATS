@@ -43,18 +43,18 @@ export function PageHero({
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(100deg, rgb(var(--ast-canvas) / 0.95) 40%, rgb(var(--ast-canvas) / 0.6) 100%)',
+              'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 40%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)',
           }}
         />
         <Container className={`relative ${centered ? 'text-center' : ''}`}>
           <h1
-            className={`text-display-lg font-semibold text-ast-ink ${centered ? 'mx-auto max-w-3xl' : 'max-w-3xl'}`}
+            className={`ast-photo-text text-display-lg font-semibold text-ast-ink ${centered ? 'mx-auto max-w-3xl' : 'max-w-3xl'}`}
           >
             {title} {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
           </h1>
           {description && (
             <p
-              className={`mt-6 text-lg leading-relaxed text-ast-ink-muted ${centered ? 'mx-auto max-w-prose' : 'max-w-prose'}`}
+              className={`ast-photo-text mt-6 text-lg leading-relaxed text-ast-ink-muted ${centered ? 'mx-auto max-w-prose' : 'max-w-prose'}`}
             >
               {description}
             </p>

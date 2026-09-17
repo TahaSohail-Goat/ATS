@@ -18,12 +18,12 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-canvas/50 via-ast-canvas/80 to-ast-canvas"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-canvas/35 via-ast-canvas/60 to-ast-canvas/80 dark:from-ast-canvas/50 dark:via-ast-canvas/80 dark:to-ast-canvas"
       />
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
-          <h1 className="text-display-xl font-semibold text-ast-ink">
+          <h1 className="ast-photo-text text-display-xl font-semibold text-ast-ink">
             <RevealText
               as="span"
               immediate
@@ -41,7 +41,7 @@ export function Hero() {
           </h1>
 
           <Reveal delay={0.35}>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
+            <p className="ast-photo-text mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
               AST designs and ships custom software, AI features, and cloud infrastructure for
               companies that outgrow templates: clean architecture, measurable results, and a team
               you can actually reach.
@@ -76,7 +76,7 @@ export function Hero() {
 
         <Reveal
           delay={0.6}
-          className="mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-ink-muted sm:flex"
+          className="ast-photo-text mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-ink-muted sm:flex"
         >
           <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore

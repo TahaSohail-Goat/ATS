@@ -146,8 +146,22 @@ const config: Config = {
     // pre-paint script never runs; `.dark` on <html> is the manual override.
     plugin(({ addBase, addVariant }) => {
       addBase({
-        ':root': { ...constantVars, ...schemeVars('light'), 'color-scheme': 'light' },
-        '.dark': { ...schemeVars('dark'), 'color-scheme': 'dark' },
+        // Photo-band scrim strength: a light overlay needs far less opacity
+        // than a dark one to give text contrast without washing the photo
+        // out to near-white, so this is tuned per scheme rather than reused.
+        ':root': {
+          ...constantVars,
+          ...schemeVars('light'),
+          'color-scheme': 'light',
+          '--ast-scrim-strong': '0.65',
+          '--ast-scrim-soft': '0.35',
+        },
+        '.dark': {
+          ...schemeVars('dark'),
+          'color-scheme': 'dark',
+          '--ast-scrim-strong': '0.95',
+          '--ast-scrim-soft': '0.65',
+        },
       });
       // `hocus:` — hover and focus-visible in one place for CTA affordances.
       addVariant('hocus', ['&:hover', '&:focus-visible']);
