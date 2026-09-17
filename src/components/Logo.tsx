@@ -33,15 +33,15 @@ export function Logo({
           alt="AST Logo"
           width={size}
           height={size}
-          className="relative rounded-xl border border-white/15 object-cover transition-transform duration-500 ease-ast-out motion-safe:group-hover:scale-[1.05]"
+          className="relative rounded-xl border border-ast-line object-cover transition-transform duration-500 ease-ast-out motion-safe:group-hover:scale-[1.05]"
         />
       </span>
 
       {showWordmark && (
         <span className="flex flex-col leading-none">
-          <span className="text-lg font-bold tracking-tighter2 text-ast-on-dark">AST</span>
+          <span className="text-lg font-bold tracking-tighter2 text-ast-ink">AST</span>
           {showTagline && (
-            <span className="mt-1 hidden text-[0.7rem] font-medium text-ast-on-dark-muted sm:block">
+            <span className="mt-1 hidden text-[0.7rem] font-medium text-ast-ink-muted sm:block">
               AI Software &amp; Technology Solutions
             </span>
           )}

@@ -23,7 +23,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       onClick={() => setTheme(isLight ? 'dark' : 'light')}
       aria-label={isLight ? 'Switch to dark theme' : 'Switch to light theme'}
       aria-pressed={isLight}
-      className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-ast-on-dark-muted transition-colors duration-200 hocus:border-ast-accent-on-dark/50 hocus:text-ast-accent-on-dark ${className}`}
+      className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-ast-ink/20 text-ast-ink-muted transition-colors duration-200 hocus:border-ast-accent/50 hocus:text-ast-accent ${className}`}
     >
       {isLight ? <Moon className="h-4 w-4" aria-hidden /> : <Sun className="h-4 w-4" aria-hidden />}
     </button>

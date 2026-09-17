@@ -26,7 +26,7 @@ interface SectionProps {
   tone?: 'canvas' | 'raised';
   /** Vertical rhythm. `tight` for stacked sub-sections. */
   space?: 'tight' | 'base' | 'loose';
-  /** Full-bleed photo background (always-dark, like the Home hero/CTA) instead of the themed tone. */
+  /** Full-bleed photo background (like the Home hero/CTA) instead of the themed tone. */
   image?: string;
   className?: string;
   children: ReactNode;
@@ -74,7 +74,7 @@ export function Section({
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(100deg, rgb(var(--ast-primary) / 0.95) 45%, rgb(var(--ast-primary) / 0.65) 100%)',
+              'linear-gradient(100deg, rgb(var(--ast-canvas) / 0.95) 45%, rgb(var(--ast-canvas) / 0.65) 100%)',
           }}
         />
       )}
@@ -101,13 +101,13 @@ export function Section({
               <div className={centered ? 'max-w-3xl text-center' : 'max-w-2xl'}>
                 {title && (
                   <Heading
-                    className={`font-semibold text-ast-on-dark ${headingSize === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
+                    className={`font-semibold text-ast-ink ${headingSize === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
                   >
-                    {title} {titleAccent && <span className="text-ast-accent-on-dark">{titleAccent}</span>}
+                    {title} {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
                   </Heading>
                 )}
                 {description && (
-                  <p className="mt-6 text-lg leading-relaxed text-ast-on-dark-muted">{description}</p>
+                  <p className="mt-6 text-lg leading-relaxed text-ast-ink-muted">{description}</p>
                 )}
               </div>
             ) : (

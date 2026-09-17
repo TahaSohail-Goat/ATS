@@ -14,15 +14,15 @@ const SOCIAL_LINKS = [
   { href: 'https://www.linkedin.com/company/ai-software-technology-solutions', label: 'LinkedIn', icon: Linkedin },
 ];
 
-/** Site footer: always-dark navy, matching the header/hero/CTA bookends. */
+/** Site footer, theme-reactive like the rest of the site. */
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-ast-primary">
+    <footer className="relative isolate overflow-hidden border-t border-ast-ink/10 bg-ast-surface">
       <Container className="relative py-14 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div className="max-w-sm">
             <Logo size={44} />
-            <p className="mt-5 text-sm leading-relaxed text-ast-on-dark-muted">
+            <p className="mt-5 text-sm leading-relaxed text-ast-ink-muted">
               AI Software &amp; Technology Solutions. We design, build, and modernize the systems
               companies run on.
             </p>
@@ -30,7 +30,7 @@ export function Footer() {
               asChild
               variant="outline"
               size="sm"
-              className="mt-7 !border-white/20 !bg-white/5 !text-ast-on-dark !backdrop-blur-none hover:!border-ast-brand/50 hover:!bg-white/10"
+              className="mt-7 !border-ast-ink/20 !bg-ast-ink/5 !text-ast-ink !backdrop-blur-none hover:!border-ast-brand/50 hover:!bg-ast-ink/10"
             >
               <Link to="/contact">
                 <Mail className="h-4 w-4" aria-hidden />
@@ -43,7 +43,7 @@ export function Footer() {
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 aria-label="Email AST"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent-on-dark"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-ast-ink/15 text-ast-ink transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent"
               >
                 <Mail className="h-[18px] w-[18px]" aria-hidden />
               </a>
@@ -55,7 +55,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`AST on ${social.label}`}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent-on-dark"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-ast-ink/15 text-ast-ink transition-colors duration-200 hocus:border-ast-brand/50 hocus:text-ast-accent"
                   >
                     <social.icon className="h-[18px] w-[18px]" aria-hidden />
                   </a>
@@ -63,7 +63,7 @@ export function Footer() {
                   <span
                     key={social.label}
                     aria-hidden
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-ast-on-dark-muted/30"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-ast-ink/15 text-ast-ink-muted/30"
                   >
                     <social.icon className="h-[18px] w-[18px]" />
                   </span>
@@ -73,13 +73,13 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-1">
-            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">Site</h2>
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">Site</h2>
             <ul className="mt-5 space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="group inline-flex items-center gap-1.5 text-sm font-medium text-ast-on-dark transition-colors hover:text-ast-accent-on-dark"
+                    className="group inline-flex items-center gap-1.5 text-sm font-medium text-ast-ink transition-colors hover:text-ast-accent"
                   >
                     {link.label}
                     <ArrowUpRight
@@ -93,18 +93,18 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-xs font-semibold tracking-wide text-ast-on-dark-muted">
+            <h2 className="text-xs font-semibold tracking-wide text-ast-ink-muted">
               Engagement
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-ast-on-dark-muted">
+            <p className="mt-5 text-sm leading-relaxed text-ast-ink-muted">
               Tell us what you are building. We reply with honest technical feedback and a clear
               first step.
             </p>
-            <p className="mt-4 text-sm font-medium text-ast-on-dark">We reply to every message.</p>
+            <p className="mt-4 text-sm font-medium text-ast-ink">We reply to every message.</p>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-xs text-ast-on-dark-muted">
+        <div className="mt-10 border-t border-ast-ink/10 pt-6 text-xs text-ast-ink-muted">
           <p>
             © {new Date().getFullYear()} AST, AI Software &amp; Technology Solutions. All rights
             reserved.

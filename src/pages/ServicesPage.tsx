@@ -72,7 +72,7 @@ export function ServicesPage() {
         image="/stock/process-planning.jpg"
       >
         <div className="max-w-3xl">
-          <ProcessTimeline steps={processSteps} onDark />
+          <ProcessTimeline steps={processSteps} />
         </div>
       </Section>
 

@@ -26,7 +26,7 @@ export function CtaSection({
   children,
 }: CtaSectionProps) {
   return (
-    <section className="relative isolate overflow-hidden border-t border-white/10 bg-ast-primary py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden border-t border-ast-ink/10 bg-ast-canvas py-24 sm:py-32">
       <img
         src="/stock/cta-office.jpg"
         alt=""
@@ -40,18 +40,18 @@ export function CtaSection({
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 65% 85% at 50% 50%, rgb(var(--ast-primary) / 0.95), rgb(var(--ast-primary) / 0.6) 100%)',
+            'radial-gradient(ellipse 65% 85% at 50% 50%, rgb(var(--ast-canvas) / 0.95), rgb(var(--ast-canvas) / 0.6) 100%)',
         }}
       />
 
       <Container className="relative text-center">
-        <Reveal as="h2" className="mx-auto max-w-3xl text-display-md font-semibold text-ast-on-dark">
+        <Reveal as="h2" className="mx-auto max-w-3xl text-display-md font-semibold text-ast-ink">
           {title}{' '}
-          {titleAccent && <span className="text-ast-accent-on-dark">{titleAccent}</span>}
+          {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
         </Reveal>
         {description && (
           <Reveal delay={0.08}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-on-dark-muted">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink-muted">
               {description}
             </p>
           </Reveal>

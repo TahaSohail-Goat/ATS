@@ -77,9 +77,6 @@ const config: Config = {
         'ast-violet': tokenColor('--ast-violet'),
         'ast-success': tokenColor('--ast-success'),
         'ast-error': tokenColor('--ast-error'),
-        'ast-on-dark': tokenColor('--ast-onDark'),
-        'ast-on-dark-muted': tokenColor('--ast-onDarkMuted'),
-        'ast-accent-on-dark': tokenColor('--ast-accentOnDark'),
       },
       fontFamily: {
         sans: ['Inter', 'var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],

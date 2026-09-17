@@ -18,12 +18,12 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-primary/50 via-ast-primary/80 to-ast-primary"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-canvas/50 via-ast-canvas/80 to-ast-canvas"
       />
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-5xl text-center">
-          <h1 className="text-display-xl font-semibold text-ast-on-dark">
+          <h1 className="text-display-xl font-semibold text-ast-ink">
             <RevealText
               as="span"
               immediate
@@ -34,14 +34,14 @@ export function Hero() {
               moves{' '}
               <CyclingWord
                 words={['businesses', 'startups', 'products', 'ideas', 'teams']}
-                className="text-ast-accent-on-dark"
+                className="text-ast-accent"
               />{' '}
               forward
             </Reveal>
           </h1>
 
           <Reveal delay={0.35}>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-on-dark-muted sm:text-xl">
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink-muted sm:text-xl">
               AST designs and ships custom software, AI features, and cloud infrastructure for
               companies that outgrow templates: clean architecture, measurable results, and a team
               you can actually reach.
@@ -66,7 +66,7 @@ export function Hero() {
                 size="xl"
                 variant="outline"
                 fullWidth
-                className="!border-white/25 !bg-white/5 !text-ast-on-dark !backdrop-blur-none hover:!border-white/45 hover:!bg-white/10 sm:w-auto"
+                className="!border-ast-ink/25 !bg-ast-ink/5 !text-ast-ink !backdrop-blur-none hover:!border-ast-ink/45 hover:!bg-ast-ink/10 sm:w-auto"
               >
                 <Link to="/projects">View Our Work</Link>
               </Button>
@@ -76,7 +76,7 @@ export function Hero() {
 
         <Reveal
           delay={0.6}
-          className="mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-on-dark-muted sm:flex"
+          className="mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-ink-muted sm:flex"
         >
           <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore

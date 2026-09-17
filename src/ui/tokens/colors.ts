@@ -82,12 +82,6 @@ export const themeConstant = {
   violet: colors.violet,
   success: colors.success,
   error: colors.error,
-  // The header/hero/footer/CTA bands are always-dark by design (real photo
-  // backgrounds with a navy scrim), independent of the light/dark toggle,
-  // so their text needs its own non-flipping roles rather than `ast-ink`.
-  onDark: colors.textOnDark,
-  onDarkMuted: colors.textOnDarkMuted,
-  accentOnDark: colors.accentBright,
 } as const;
 
 export type ColorScheme = keyof typeof theme;
