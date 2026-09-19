@@ -23,7 +23,11 @@ export function Testimonials() {
     >
       {featured ? (
         <Stagger className="grid gap-5 lg:grid-cols-3">
-          <Reveal asChild as="div" className="h-full lg:col-span-2">
+          <Reveal
+            asChild
+            as="div"
+            className={`h-full ${rest.length > 0 ? 'lg:col-span-2' : 'lg:col-span-3'}`}
+          >
             <SpotlightCard
               as="figure"
               className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/70 p-8 sm:p-11"
@@ -43,31 +47,33 @@ export function Testimonials() {
             </SpotlightCard>
           </Reveal>
 
-          <div className="grid gap-5 lg:col-span-1">
-            {rest.map((testimonial, index) => (
-              <Reveal key={`${testimonial.name}-${index}`} asChild as="div" className="h-full">
-                <SpotlightCard
-                  as="figure"
-                  className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/50 p-7"
-                >
-                  <Quote
-                    className="h-6 w-6 shrink-0 text-ast-accent/40"
-                    strokeWidth={1.5}
-                    aria-hidden
-                  />
-                  <blockquote className="mt-5 text-sm leading-relaxed text-ast-ink">
-                    {testimonial.quote}
-                  </blockquote>
-                  <figcaption className="mt-6 text-sm">
-                    <span className="block font-semibold">{testimonial.name}</span>
-                    <span className="mt-0.5 block text-xs text-ast-ink-muted">
-                      {testimonial.role}
-                    </span>
-                  </figcaption>
-                </SpotlightCard>
-              </Reveal>
-            ))}
-          </div>
+          {rest.length > 0 && (
+            <div className="grid gap-5 lg:col-span-1">
+              {rest.map((testimonial, index) => (
+                <Reveal key={`${testimonial.name}-${index}`} asChild as="div" className="h-full">
+                  <SpotlightCard
+                    as="figure"
+                    className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/50 p-7"
+                  >
+                    <Quote
+                      className="h-6 w-6 shrink-0 text-ast-accent/40"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    />
+                    <blockquote className="mt-5 text-sm leading-relaxed text-ast-ink">
+                      {testimonial.quote}
+                    </blockquote>
+                    <figcaption className="mt-6 text-sm">
+                      <span className="block font-semibold">{testimonial.name}</span>
+                      <span className="mt-0.5 block text-xs text-ast-ink-muted">
+                        {testimonial.role}
+                      </span>
+                    </figcaption>
+                  </SpotlightCard>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </Stagger>
       ) : (
         <Reveal>
