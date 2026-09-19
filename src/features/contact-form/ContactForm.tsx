@@ -57,7 +57,12 @@ function buildCountryList(): CountryEntry[] {
 const COUNTRY_LIST = buildCountryList();
 const DEFAULT_ISO: PhoneCountryCode = 'PK';
 
-const CONTACT_ENDPOINT = '/api/contact';
+const VERIFY_ENDPOINT = '/api/contact';
+// formsubmit.co sits behind Cloudflare's own bot protection, which blocks
+// server-to-server relays (even the site's own serverless function) but
+// allows a genuine browser request through, so the send itself stays
+// client-side; /api/contact only verifies the Turnstile challenge first.
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
 
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
@@ -264,20 +269,36 @@ export function ContactForm() {
     setStatus('sending');
     setErrorMessage('');
     try {
-      const response = await fetch(CONTACT_ENDPOINT, {
+      if (TURNSTILE_ENABLED) {
+        const verifyResponse = await fetch(VERIFY_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ turnstileToken }),
+        });
+        const verifyData = await verifyResponse.json();
+        if (!verifyResponse.ok || !verifyData.success) {
+          throw new Error(verifyData.message || 'Verification failed');
+        }
+      }
+
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : '',
-          services: form.services,
-          message: form.message,
-          turnstileToken: turnstileToken || undefined,
+          _subject: `New project inquiry from ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: form.email,
+          _honey: '',
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone.trim() ? `${selectedCountry.dialCode} ${form.phone}` : 'Not provided',
+          Services: form.services.join(', '),
+          Message: form.message,
         }),
       });
       const data = await response.json();
-      if (!response.ok || !data.success) {
+      if (!response.ok || data.success !== 'true') {
         throw new Error(data.message || 'Send failed');
       }
       setStatus('sent');
