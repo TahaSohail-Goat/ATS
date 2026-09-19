@@ -157,6 +157,7 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [dialOpen, setDialOpen] = useState(false);
   const [search, setSearch] = useState('');
   /** Honeypot: hidden from people, commonly auto-filled by bots. */
@@ -261,6 +262,7 @@ export function ContactForm() {
     }
 
     setStatus('sending');
+    setErrorMessage('');
     try {
       const response = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
@@ -282,7 +284,8 @@ export function ContactForm() {
       setForm({ name: '', email: '', iso: DEFAULT_ISO, phone: '', services: [], message: '' });
       setErrors({});
       setTurnstileToken('');
-    } catch {
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : '');
       setStatus('error');
     }
   }
@@ -338,7 +341,7 @@ export function ContactForm() {
       {status === 'error' && (
         <div role="alert" className="flex flex-col gap-2 rounded-2xl border border-ast-error/30 bg-ast-error/10 p-5">
           <p className="text-sm font-semibold text-ast-error">
-            Your message could not be sent. Please try again.
+            {errorMessage || 'Your message could not be sent. Please try again.'}
           </p>
           <p className="text-sm leading-relaxed text-ast-ink-muted">
             If the problem persists,{' '}
