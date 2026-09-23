@@ -19,7 +19,11 @@ export function Testimonials() {
       title="What our"
       titleAccent="clients say"
       tone="raised"
-      description="Quotes are published only once a client has approved them, so this space stays honest while our first case studies clear review."
+      description={
+        featured
+          ? 'Real feedback from the people we’ve built for, published only with their approval.'
+          : 'Quotes are published only once a client has approved them, so this space stays honest while our first case studies clear review.'
+      }
     >
       {featured && rest.length === 0 && (
         <Reveal asChild as="div" className="mx-auto max-w-2xl">

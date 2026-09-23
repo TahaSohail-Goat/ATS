@@ -86,20 +86,6 @@ export const projects: Project[] = [
     videoUrl: 'https://drive.google.com/file/d/1DOXkn57jIr1e7NH8YxkYOpVUYGSf8xFq/view?usp=drive_link',
   },
   {
-    // Placeholder entry: full write-up, demo link, and video are pending.
-    slug: 'aarhti-management-system',
-    title: 'Aarhti Management System',
-    category: 'Desktop Application',
-    status: 'published',
-    year: '2026',
-    summary: 'A desktop management system for aarhtis. Full details, demo, and a walkthrough video are coming soon.',
-    problem: 'Full write-up coming soon.',
-    solution: 'Full write-up coming soon.',
-    features: ['Full feature list coming soon.'],
-    tech: [],
-    highlights: ['More on this soon.'],
-  },
-  {
     slug: 'smart-disaster-response-mis',
     title: 'Smart Disaster Response MIS',
     category: 'Web Application',

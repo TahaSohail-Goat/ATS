@@ -129,8 +129,8 @@
    */
   .ast-photo-text {
     text-shadow:
-      0 2px 24px rgb(var(--ast-canvas) / 0.9),
-      0 2px 24px rgb(var(--ast-canvas) / 0.9);
+      0 1px 3px rgb(var(--ast-canvas) / 0.75),
+      0 1px 12px rgb(var(--ast-canvas) / 0.55);
   }
 
   /* ── Type ─────────────────────────────────────────────────────────── */
