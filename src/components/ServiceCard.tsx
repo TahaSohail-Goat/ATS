@@ -45,23 +45,21 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       as="article"
       className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-3 shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5"
     >
-      {/* Header: a dark, always-navy "hero" zone (like the other photo
-          treatments across the site) standing in for per-service photography,
-          with the service's icon as the visual instead of a stock image. */}
+      {/* Header: an always-dark photo zone (like the other photo treatments
+          across the site), a generated abstract visual standing in for
+          per-service photography. */}
       <div className="relative isolate aspect-[4/3] overflow-hidden rounded-3xl bg-ast-primary">
+        <img
+          src={service.image}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-ast-out motion-safe:group-hover:scale-105"
+        />
         <div
           aria-hidden
-          className="absolute inset-0 bg-ast-brand-gradient opacity-30 transition-opacity duration-500 group-hover:opacity-45"
-        />
-        <div aria-hidden className="ast-grid absolute inset-0 opacity-70" />
-        <div
-          aria-hidden
-          className="absolute left-1/2 top-[38%] h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ast-accent/30 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
-        />
-        <Icon
-          aria-hidden
-          strokeWidth={1}
-          className="absolute left-1/2 top-[38%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 text-white/40 transition-transform duration-500 ease-ast-out motion-safe:group-hover:scale-110"
+          className="absolute inset-0 bg-ast-brand-gradient opacity-15 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-25"
         />
 
         {typeof index === 'number' && (
