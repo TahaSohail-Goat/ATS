@@ -12,7 +12,7 @@ import { processSteps } from '../../data/site';
 export function Process() {
   return (
     <section
-      className="relative overflow-hidden bg-cover bg-center py-20 sm:py-28"
+      className="relative overflow-hidden border-t border-ast-ink/10 bg-cover bg-center py-20 sm:py-28"
       style={{ backgroundImage: "url('/stock/process-planning.jpg')" }}
     >
       <div aria-hidden className="absolute inset-0 bg-ast-canvas/60 dark:bg-ast-canvas/90" />
