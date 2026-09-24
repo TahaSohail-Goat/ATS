@@ -13,7 +13,7 @@ export function ArrowLink({ href, children, className = '' }: ArrowLinkProps) {
   return (
     <Link
       to={href}
-      className={`group inline-flex items-center gap-2 text-sm font-semibold text-ast-brand transition-colors hover:text-ast-brand-strong ${className}`}
+      className={`group inline-flex items-center gap-2 text-sm font-semibold text-ast-brand-strong transition-colors hover:text-ast-brand dark:text-ast-brand dark:hover:text-ast-brand-strong ${className}`}
     >
       {children}
       <span

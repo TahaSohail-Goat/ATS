@@ -624,7 +624,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ast-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-ast-brand-strong hover:shadow-ast-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ast-brand disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-ast-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md dark:text-ast-canvas transition-all duration-300 hover:bg-ast-brand-strong hover:shadow-ast-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ast-brand disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'sending' ? (
           <>

@@ -52,7 +52,7 @@ export function Hero() {
           </h1>
 
           <Reveal delay={0.35}>
-            <p className="ast-photo-text mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink/80 dark:text-ast-ink-muted sm:text-xl">
+            <p className="ast-photo-text mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted sm:text-xl">
               AST designs and ships custom software, AI features, and cloud infrastructure for
               companies that outgrow templates: clean architecture, measurable results, and a team
               you can actually reach.
@@ -87,7 +87,7 @@ export function Hero() {
 
         <Reveal
           delay={0.6}
-          className="ast-photo-text mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-ink-muted sm:flex"
+          className="ast-photo-text mt-16 hidden items-center justify-center gap-2 text-xs font-medium text-ast-ink dark:text-ast-ink-muted sm:flex"
         >
           <MoveDown className="h-3.5 w-3.5 motion-safe:animate-ast-scroll-hint" aria-hidden />
           Scroll to explore

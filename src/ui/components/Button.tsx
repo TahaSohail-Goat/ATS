@@ -30,7 +30,7 @@ const base = cn(
 
 const variants: Record<ButtonVariant, string> = {
   primary: cn(
-    'bg-ast-brand text-white shadow-[0_1px_0_0_rgb(255_255_255/0.18)_inset,0_10px_30px_-12px_rgb(var(--ast-brand)/0.75)]',
+    'bg-ast-brand text-white dark:text-ast-canvas shadow-[0_1px_0_0_rgb(255_255_255/0.18)_inset,0_10px_30px_-12px_rgb(var(--ast-brand)/0.75)]',
     'hover:bg-ast-brand-strong motion-safe:hover:-translate-y-0.5',
   ),
   secondary: cn(

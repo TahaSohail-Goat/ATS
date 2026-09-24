@@ -25,13 +25,13 @@ export function Process() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <p className="ast-photo-text mt-6 max-w-prose text-lg leading-relaxed text-ast-ink-muted">
+              <p className="ast-photo-text mt-6 max-w-prose text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
                 Short cycles, visible progress, and decisions you can make with confidence.
               </p>
             </Reveal>
 
             <div className="mt-8">
-              <ArrowLink href="/contact" className="!text-ast-accent hover:!text-ast-ink">
+              <ArrowLink href="/contact" className="!text-ast-ink hover:!text-ast-accent dark:!text-ast-accent dark:hover:!text-ast-ink">
                 Talk through your project
               </ArrowLink>
             </div>

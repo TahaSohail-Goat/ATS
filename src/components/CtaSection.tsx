@@ -51,7 +51,7 @@ export function CtaSection({
         </Reveal>
         {description && (
           <Reveal delay={0.08}>
-            <p className="ast-photo-text mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink-muted">
+            <p className="ast-photo-text mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
               {description}
             </p>
           </Reveal>

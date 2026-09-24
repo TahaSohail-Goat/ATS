@@ -90,7 +90,7 @@ export function Section({
             </Heading>
           )}
           {description && (
-            <p className="ast-photo-text mt-6 text-lg leading-relaxed text-ast-ink-muted">{description}</p>
+            <p className="ast-photo-text mt-6 text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">{description}</p>
           )}
         </div>
       ) : (

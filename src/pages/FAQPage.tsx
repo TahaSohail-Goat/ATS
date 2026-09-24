@@ -57,7 +57,7 @@ export function FAQPage() {
               onClick={() => setSelectedCategory(null)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 selectedCategory === null
-                  ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
+                  ? 'border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
                   : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
               }`}
             >
@@ -69,7 +69,7 @@ export function FAQPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'border-ast-brand bg-ast-brand/10 text-ast-brand'
+                    ? 'border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
                     : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
                 }`}
               >

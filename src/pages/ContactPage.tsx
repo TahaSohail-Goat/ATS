@@ -34,7 +34,7 @@ export function ContactPage() {
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="ast-photo-text mt-4 text-lg leading-relaxed text-ast-ink-muted">
+            <p className="ast-photo-text mt-4 text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
               Have a project in mind, need technical advisory, or want to explore working together? Send us a message; we reply to every conversation.
             </p>
           </Reveal>

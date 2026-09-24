@@ -54,7 +54,7 @@ export function PageHero({
           </h1>
           {description && (
             <p
-              className={`ast-photo-text mt-6 text-lg leading-relaxed text-ast-ink-muted ${centered ? 'mx-auto max-w-prose' : 'max-w-prose'}`}
+              className={`ast-photo-text mt-6 text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted ${centered ? 'mx-auto max-w-prose' : 'max-w-prose'}`}
             >
               {description}
             </p>
