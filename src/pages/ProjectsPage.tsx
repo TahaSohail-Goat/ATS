@@ -15,7 +15,7 @@ export function ProjectsPage() {
   useSeo({
     title: 'Projects',
     description:
-      'Selected work from AST, including AI study tools, shelter management platforms, and disaster response systems.',
+      'Selected work from AST, including AI study tools and shelter management platforms.',
   });
 
   const [showAll, setShowAll] = useState(false);
