@@ -12,6 +12,8 @@ export interface Service {
   title: string;
   description: string;
   deliverables: string[];
+  /** Card hero image, an abstract visual standing in for per-service photography. */
+  image: string;
 }
 
 export const services: Service[] = [
@@ -21,6 +23,7 @@ export const services: Service[] = [
     description:
       'Web and mobile products designed, built, and shipped end-to-end, from first commit to deployed, monitored production systems.',
     deliverables: ['Product Engineering', 'API Development', 'Legacy Modernization'],
+    image: '/services/custom-software.jpg',
   },
   {
     slug: 'ai-solutions',
@@ -28,6 +31,7 @@ export const services: Service[] = [
     description:
       'AI that earns its keep: forecasting, classification, document extraction, and automation, trained on your data, deployed in your workflow.',
     deliverables: ['AI Solutions & Integration', 'ML Model Deployment', 'Data Pipelines'],
+    image: '/services/ai-solutions.jpg',
   },
   {
     slug: 'mobile-app',
@@ -35,6 +39,7 @@ export const services: Service[] = [
     description:
       'Native and cross-platform apps built for iOS and Android, shipped to the app stores and supported after launch.',
     deliverables: ['iOS & Android', 'Cross-Platform Builds', 'App Store Delivery'],
+    image: '/services/mobile-app.jpg',
   },
   {
     slug: 'web-saas',
@@ -42,6 +47,7 @@ export const services: Service[] = [
     description:
       'Multi-tenant SaaS platforms and marketing sites built for scale and speed, from first line of code to production deploy.',
     deliverables: ['SaaS Platforms', 'Marketing Sites', 'API Integrations'],
+    image: '/services/web-saas.jpg',
   },
   {
     slug: 'cloud-infrastructure',
@@ -49,6 +55,7 @@ export const services: Service[] = [
     description:
       'AWS, containers, and CI/CD configured so your systems stay fast, available, and predictable to operate.',
     deliverables: ['Cloud Architecture', 'DevOps & CI/CD', 'Observability'],
+    image: '/services/cloud-infrastructure.jpg',
   },
   {
     slug: 'ui-ux-design',
@@ -56,12 +63,14 @@ export const services: Service[] = [
     description:
       'Interfaces designed around how people actually work, validated with prototypes before a single line of production code ships.',
     deliverables: ['Product Design', 'Design Systems', 'Prototyping'],
+    image: '/services/ui-ux-design.jpg',
   },
   {
     slug: 'ecommerce',
     title: 'E-Commerce Solutions',
     description: 'Storefronts, checkout flows, and inventory systems built to convert and scale with demand.',
     deliverables: ['Storefront Builds', 'Payment Integration', 'Inventory Systems'],
+    image: '/services/ecommerce.jpg',
   },
   {
     slug: 'automation',
@@ -69,12 +78,14 @@ export const services: Service[] = [
     description:
       'Manual workflows replaced with reliable automation, so your team spends time on the work that actually needs a person.',
     deliverables: ['Workflow Automation', 'Process Audits', 'Tooling Integration'],
+    image: '/services/automation.jpg',
   },
   {
     slug: 'game-development',
     title: 'Game Development',
     description: 'Playable, performant games built for the platforms your players are on: Android, desktop, and VR.',
     deliverables: ['Android & Desktop', 'VR Experiences', 'Performance Tuning'],
+    image: '/services/game-development.jpg',
   },
   {
     slug: 'game-asset-creation',
@@ -82,5 +93,6 @@ export const services: Service[] = [
     description:
       "3D models, textures, animations, and environment art built to match your game's style and performance budget.",
     deliverables: ['3D Modeling', 'Texturing & Animation', 'Environment Art'],
+    image: '/services/game-asset-creation.jpg',
   },
 ];

@@ -14,8 +14,9 @@ export function ServicesOverview() {
       titleAccent="for you"
       description="Full-cycle engineering, from product thinking to deployed, supported software."
       image="/stock/code-editor.jpg"
+      className="border-t border-ast-ink/10"
       action={
-        <ArrowLink href="/services" className="!text-ast-accent hover:!text-ast-ink">
+        <ArrowLink href="/services" className="!text-ast-ink hover:!text-ast-accent dark:!text-ast-accent dark:hover:!text-ast-ink">
           Explore all services
         </ArrowLink>
       }

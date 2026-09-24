@@ -41,6 +41,7 @@ const SEMANTIC_VARS = {
   brand: '--ast-brand',
   brandStrong: '--ast-brand-strong',
   accent: '--ast-accent',
+  error: '--ast-error',
 } as const;
 
 function schemeVars(scheme: 'dark' | 'light'): Record<string, string> {
@@ -153,8 +154,8 @@ const config: Config = {
           ...constantVars,
           ...schemeVars('light'),
           'color-scheme': 'light',
-          '--ast-scrim-strong': '0.65',
-          '--ast-scrim-soft': '0.35',
+          '--ast-scrim-strong': '0.72',
+          '--ast-scrim-soft': '0.42',
         },
         '.dark': {
           ...schemeVars('dark'),

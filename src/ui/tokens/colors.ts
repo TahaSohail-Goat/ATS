@@ -21,7 +21,7 @@ export const colors = {
   brandDeep: '#1D4ED8', // Electric Blue, pressed / light-surface hover
   accent: '#06B6D4', // Cyan, decorative fills and dark-surface gradients
   accentBright: '#22D3EE', // Cyan, accent role on dark surfaces
-  accentDeep: '#0E7490', // Cyan, accent role on light surfaces (AA text contrast)
+  accentDeep: '#155E75', // Deep teal, accent role on light surfaces; still AA on photo bands, not just flat surfaces
   violet: '#7C3AED', // Violet, third gradient stop only
   backgroundLight: '#DCE3EB', // Muted slate canvas, dimmer than cards so they visibly lift off the page
   backgroundDark: '#020617', // Near Black
@@ -37,7 +37,8 @@ export const colors = {
   textOnDark: '#E6EDF8', // Body text on dark surfaces
   textOnDarkMuted: '#93A3BC', // Muted text on dark surfaces
   success: '#22C55E', // Green
-  error: '#EF4444', // Red
+  error: '#EF4444', // Red, error role on dark surfaces
+  errorDeep: '#B91C1C', // Deep red, error role on light surfaces (AA against the light card tints)
 } as const;
 
 export type ColorToken = keyof typeof colors;
@@ -57,6 +58,7 @@ export const theme = {
     brand: colors.brandBright,
     brandStrong: colors.brandSoft,
     accent: colors.accentBright,
+    error: colors.error,
   },
   light: {
     canvas: colors.backgroundLight,
@@ -72,6 +74,7 @@ export const theme = {
     // Plain cyan only reaches 2.3:1 on the off-white canvas, so the light
     // scheme uses the deep variant for anything text-sized.
     accent: colors.accentDeep,
+    error: colors.errorDeep,
   },
 } as const;
 
@@ -81,7 +84,6 @@ export const themeConstant = {
   secondary: colors.secondary,
   violet: colors.violet,
   success: colors.success,
-  error: colors.error,
 } as const;
 
 export type ColorScheme = keyof typeof theme;

@@ -14,6 +14,7 @@ export function SelectedProjects() {
       description="A few recent engagements, each one a partnership, not a hand-off."
       action={<ArrowLink href="/projects">View all projects</ArrowLink>}
       tone="raised"
+      className="border-t border-ast-ink/10"
     >
       <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 3).map((project) => (

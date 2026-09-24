@@ -19,6 +19,7 @@ export function Testimonials() {
       title="What our"
       titleAccent="clients say"
       tone="raised"
+      className="border-t border-ast-ink/10"
       description={
         featured
           ? 'Real feedback from the people we’ve built for, published only with their approval.'

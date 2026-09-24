@@ -12,7 +12,7 @@ import { processSteps } from '../../data/site';
 export function Process() {
   return (
     <section
-      className="relative overflow-hidden bg-cover bg-center py-20 sm:py-28"
+      className="relative overflow-hidden border-t border-ast-ink/10 bg-cover bg-center py-20 sm:py-28"
       style={{ backgroundImage: "url('/stock/process-planning.jpg')" }}
     >
       <div aria-hidden className="absolute inset-0 bg-ast-canvas/60 dark:bg-ast-canvas/90" />
@@ -25,13 +25,13 @@ export function Process() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <p className="ast-photo-text mt-6 max-w-prose text-lg leading-relaxed text-ast-ink-muted">
+              <p className="ast-photo-text mt-6 max-w-prose text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
                 Short cycles, visible progress, and decisions you can make with confidence.
               </p>
             </Reveal>
 
             <div className="mt-8">
-              <ArrowLink href="/contact" className="!text-ast-accent hover:!text-ast-ink">
+              <ArrowLink href="/contact" className="!text-ast-ink hover:!text-ast-accent dark:!text-ast-accent dark:hover:!text-ast-ink">
                 Talk through your project
               </ArrowLink>
             </div>

@@ -33,7 +33,7 @@ export function CtaSection({
         aria-hidden
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 h-full w-full object-cover opacity-40"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div
         aria-hidden
@@ -51,7 +51,7 @@ export function CtaSection({
         </Reveal>
         {description && (
           <Reveal delay={0.08}>
-            <p className="ast-photo-text mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink-muted">
+            <p className="ast-photo-text mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
               {description}
             </p>
           </Reveal>

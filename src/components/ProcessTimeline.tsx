@@ -42,13 +42,13 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
 
           {/* Step Content */}
           <div className="ast-photo-text rounded-2xl border border-transparent p-4 transition-colors duration-300 group-hover:border-ast-ink/15 group-hover:bg-ast-ink/5">
-            <span className="text-xs font-semibold tracking-wide text-ast-accent">
+            <span className="inline-block rounded-full bg-ast-canvas/85 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-ast-accent">
               Step {String(index + 1).padStart(2, '0')}
             </span>
             <h3 className="mt-1 text-xl font-semibold tracking-tighter2 text-ast-ink transition-colors group-hover:text-ast-accent sm:text-2xl">
               {step.title}
             </h3>
-            <p className="mt-2 max-w-xl text-base leading-relaxed text-ast-ink-muted">{step.description}</p>
+            <p className="mt-2 max-w-xl text-base leading-relaxed text-ast-ink dark:text-ast-ink-muted">{step.description}</p>
           </div>
         </Reveal>
       ))}
