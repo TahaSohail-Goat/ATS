@@ -109,36 +109,46 @@ export function Section({
     </div>
   );
 
-  // A photo background needs its own bounded band: `bg-cover` stretches to
-  // cover whatever height the element ends up, so if the heading and
-  // `children` shared one section, a tall stack of children (e.g. cards on
-  // mobile) would force the photo to stretch across that whole height too,
-  // scaling and cropping it far past what the source image can support.
+  // The photo has to behave differently by screen size. `bg-cover` stretches
+  // to whatever height its element ends up, so on a phone, where the content
+  // below the heading is a very tall stack, covering the whole section would
+  // scale and crop the photo far past what the source supports. So below `lg`
+  // it is bounded to the heading band; from `lg` up, where the section is
+  // roughly as wide as it is tall, it covers the whole section.
   if (image) {
+    const scrim =
+      'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 45%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)';
+
     return (
-      <>
-        <section
-          id={id}
-          className={`relative ${spacingTop[space]} pb-10 sm:pb-14 bg-cover bg-center ${className}`}
+      <section id={id} className={`relative isolate ${className}`}>
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 hidden bg-cover bg-center lg:block"
           style={{ backgroundImage: `url('${image}')` }}
-        >
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 hidden lg:block"
+          style={{ background: scrim }}
+        />
+
+        <div className={`relative ${spacingTop[space]} pb-10 sm:pb-14 lg:pb-0`}>
           <div
             aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 45%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)',
-            }}
+            className="absolute inset-0 bg-cover bg-center lg:hidden"
+            style={{ backgroundImage: `url('${image}')` }}
           />
+          <div aria-hidden className="absolute inset-0 lg:hidden" style={{ background: scrim }} />
           <Container className="relative">
             {srTitle && !hasHeading && <h2 className="sr-only">{srTitle}</h2>}
             {headingBlock}
           </Container>
-        </section>
-        <section className={`relative pt-10 sm:pt-14 ${spacingBottom[space]}`}>
+        </div>
+
+        <div className={`relative pt-10 sm:pt-14 lg:pt-16 ${spacingBottom[space]}`}>
           <Container className="relative">{children}</Container>
-        </section>
-      </>
+        </div>
+      </section>
     );
   }
 
