@@ -46,8 +46,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-3 shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5"
     >
       {/* Header: an always-dark photo zone (like the other photo treatments
-          across the site), a generated abstract visual standing in for
-          per-service photography. */}
+          across the site) holding the service's photo. */}
       <div className="relative isolate aspect-[4/3] overflow-hidden rounded-3xl bg-ast-primary">
         <img
           src={service.image}

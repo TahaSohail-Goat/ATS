@@ -12,7 +12,7 @@ export interface Service {
   title: string;
   description: string;
   deliverables: string[];
-  /** Card hero image, an abstract visual standing in for per-service photography. */
+  /** Card hero image, one photo per service in public/services/. */
   image: string;
 }
 
