@@ -9,7 +9,12 @@ and shared variants in `apps/web/src/lib/motion.ts`.
 - `Reveal`, `Stagger`, and `RevealText` provide brief entrance choreography.
 - The header keeps Framer Motion only for the active-nav indicator and mobile
   menu.
-- Hero capability marquee is CSS-only.
+- The home hero plays a pre-rendered brand film (`src/features/home/HeroVideo.tsx`,
+  assets in `public/video/hero/`). It is a muted, seamless 16s loop with one cut
+  per theme and orientation (`{dark,light}-{landscape,portrait}`), each an H.264
+  MP4 plus a poster that is the film's first frame. It pauses while the hero is
+  off screen, has a visible pause/play control (WCAG 2.2.2), and shows only the
+  poster under reduced motion or Data Saver.
 - Aurora fields are limited to two small layers and drift only on the hero;
   interior-page fields are static.
 - Project cards do not use scroll-linked parallax.

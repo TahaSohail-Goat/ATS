@@ -6,30 +6,25 @@ import { Reveal } from '../../components/motion/Reveal';
 import { RevealText } from '../../components/motion/RevealText';
 import { CyclingWord } from '../../components/motion/CyclingWord';
 import { Magnetic } from '../../components/motion/Magnetic';
+import { HeroVideo } from './HeroVideo';
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Full-bleed photo hero: real engineers, not a gradient blob. */}
+      {/* The film (HeroVideo) keeps its own centre calm, so the scrims only
+          need a soft pool of canvas behind the copy, not a veil over the
+          whole frame, plus a fade into the next section. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-cover bg-[center_30%]"
-        style={{ backgroundImage: "url('/stock/hero-team.jpg')" }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-ast-canvas/10 via-ast-canvas/20 to-ast-canvas/45 dark:from-ast-canvas/50 dark:via-ast-canvas/80 dark:to-ast-canvas"
-      />
-      {/* Light theme only: a soft pool of canvas behind the copy keeps the text
-          readable while the photo stays vivid toward the edges, instead of
-          a uniform veil that dulls the whole image. */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 dark:hidden"
+        className="absolute inset-0 -z-10"
         style={{
           background:
-            'radial-gradient(ellipse 62% 68% at 50% 46%, rgb(var(--ast-canvas) / 0.86) 0%, rgb(var(--ast-canvas) / 0.62) 52%, rgb(var(--ast-canvas) / 0) 100%)',
+            'radial-gradient(ellipse 58% 52% at 50% 46%, rgb(var(--ast-canvas) / 0.55) 0%, rgb(var(--ast-canvas) / 0.3) 55%, rgb(var(--ast-canvas) / 0) 100%)',
         }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-b from-ast-canvas/0 to-ast-canvas/80"
       />
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
@@ -93,6 +88,8 @@ export function Hero() {
           Scroll to explore
         </Reveal>
       </Container>
+
+      <HeroVideo />
     </section>
   );
 }
