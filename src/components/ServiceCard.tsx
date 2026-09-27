@@ -36,9 +36,9 @@ interface ServiceCardProps {
 
 /**
  * Service card, shared between the Home overview and the /services page.
- * Always a dark card, for contrast on a light section. The title and tags sit
- * below the photo, not over it: the photos carry their own lettering and bright
- * areas, which an overlay collides with and can push below AA contrast.
+ * Follows the active theme. The title and tags sit below the photo, not over
+ * it: the photos carry their own lettering and bright areas, which an overlay
+ * collides with and can push below AA contrast.
  */
 export function ServiceCard({ service }: ServiceCardProps) {
   const Icon = serviceIcons[service.slug] ?? Laptop;
@@ -46,10 +46,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <SpotlightCard
       as="article"
-      className="dark group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-3 text-ast-ink shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5"
+      className="group flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-3 text-ast-ink shadow-ast-card transition-[transform,border-color] duration-500 ease-ast-out hover:border-ast-brand/30 motion-safe:hover:-translate-y-1.5"
     >
-      {/* Header: an always-dark photo zone (like the other photo treatments
-          across the site) holding the service's photo. */}
+      {/* Header: a photo zone (like the other photo treatments across the
+          site) holding the service's photo. `bg-ast-primary` is a theme
+          constant, so no `dark` scoping is needed here. */}
       <div className="relative isolate aspect-[16/10] overflow-hidden rounded-3xl bg-ast-primary">
         <img
           src={service.image}

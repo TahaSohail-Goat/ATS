@@ -10,11 +10,11 @@ interface ProjectCardProps {
   project: Project;
 }
 
-/** Project card, shared between Home, /projects, and detail-page navigation. Always a dark card, for contrast on a light section. */
+/** Project card, shared between Home, /projects, and detail-page navigation. Follows the active theme. */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article
-      className="dark group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5"
+      className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5"
     >
       {/* Whole card is one link: a single tab stop, one accessible name. */}
       <Link

@@ -126,7 +126,7 @@ function ProjectDetail({ slug }: { slug: string | undefined }) {
             <Reveal key={block.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="dark flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 text-ast-ink shadow-ast-card sm:p-11"
+                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 text-ast-ink shadow-ast-card sm:p-11"
               >
                 <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
                 <p className="mt-4 leading-relaxed text-ast-ink-muted">{block.text}</p>

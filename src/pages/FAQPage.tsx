@@ -57,7 +57,7 @@ export function FAQPage() {
               onClick={() => setSelectedCategory(null)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 selectedCategory === null
-                  ? 'dark border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
+                  ? 'border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
                   : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
               }`}
             >
@@ -69,7 +69,7 @@ export function FAQPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'dark border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
+                    ? 'border-ast-brand bg-ast-surface text-ast-brand-strong shadow-ast-card'
                     : 'border-ast-line bg-ast-surface text-ast-ink-muted hover:border-ast-brand/30 hover:text-ast-ink'
                 }`}
               >
@@ -84,7 +84,7 @@ export function FAQPage() {
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <Reveal key={faq.id} immediate delay={Math.min(index * 0.04, 0.3)}>
-                <div className="dark rounded-xl border border-ast-line bg-ast-surface text-ast-ink transition-all duration-200 hover:border-ast-brand/30">
+                <div className="rounded-xl border border-ast-line bg-ast-surface text-ast-ink transition-all duration-200 hover:border-ast-brand/30">
                   <button
                     onClick={() => toggleExpanded(faq.id)}
                     className="flex w-full items-start gap-4 px-6 py-4 text-left"
