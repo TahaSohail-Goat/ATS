@@ -55,7 +55,7 @@ export function ContactPage() {
           <Container className="relative max-w-3xl">
             <Reveal delay={0.1}>
               <h1 className="ast-photo-text text-display-md font-bold text-ast-ink">
-                Start a Project
+                Start a <span className="text-ast-accent">Project</span>
               </h1>
             </Reveal>
             <Reveal delay={0.15}>
