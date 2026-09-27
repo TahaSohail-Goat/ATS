@@ -13,7 +13,7 @@ function initialsFor(name: string): string {
 /** Team member card: photo (or monogram fallback) on top, bio and social links below. */
 export function TeamCard({ member }: TeamCardProps) {
   return (
-    <article className="dark group flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
+    <article className="group flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
       <div className="relative aspect-[4/5] overflow-hidden">
         {member.photo ? (
           <img
