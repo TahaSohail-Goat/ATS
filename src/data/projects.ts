@@ -69,34 +69,33 @@ export const projects: Project[] = [
     imageAlt: "Sabaq AI's Explore screen: a 3D orbit of subject textbooks circling a globe",
   },
   {
-    slug: 'shelter-os',
-    title: 'Shelter OS',
-    category: 'Web Application',
+    slug: 'mazebound',
+    title: 'MazeBound',
+    category: 'Game Development',
     status: 'published',
     year: '2026',
     summary:
-      'A role-aware shelter-management console for four distinct roles, Super Admin, Shelter Admin, Employee, and Customer, covering shelter onboarding, animal intake, adoption, fostering, donations, and day-to-day operations in one interface.',
+      'A top-down maze exploration game built solo in Godot, where a breathing labyrinth, a single makeshift lamp, and an unexplained presence build dread without a single jump scare.',
     problem:
-      'Shelter software usually shows every user the same screen with features hidden behind permission checks, so a volunteer wades through admin tools they will never touch, and nobody overseeing several shelters at once gets a view built for that job.',
+      'Horror games lean hard on jump scares and loud interruptions for tension, which is cheap to build but wears thin fast and rarely rewards a slower, more exploratory pace.',
     solution:
-      "Shelter OS builds its navigation and dashboards around each of its four roles from the ground up: a Super Admin gets a platform-wide console for onboarding shelters and admins, a Shelter Admin runs one shelter's operations, and Employees and Customers each get an interface scoped to what their role actually does.",
+      'MazeBound builds its dread entirely from atmosphere and pacing instead: dim lighting from one makeshift lamp, walls that seem to breathe, and a constant, unexplained sense of being watched, across a maze meant to be finished in one sitting.',
     features: [
-      'Animal intake, registry, and medical history, with adoption and foster placements tracked end to end',
-      'Rescue reports and a public lost & found board',
-      'Donations, a finance ledger, and shelter-level reporting',
-      'Inventory, analytics dashboards, and audit logs for daily operations',
-      'Threaded messaging, notifications, and an interactive shelter map',
-      'A Super Admin console for onboarding shelters, granting admin access, and tracking platform-wide usage',
+      'Top-down maze exploration with no jump scares or loud interruptions, just building tension',
+      'A single makeshift lamp as the only light source, keeping most of the maze in the dark',
+      'A short, one-sitting experience with 2D pixel-art visuals',
+      'Cross-platform: playable in-browser, plus downloadable builds for Windows, Linux, and Android',
+      'Touch-friendly controls on the Android build',
     ],
-    tech: ['Next.js', 'React', 'Tailwind CSS', 'Radix UI', 'GSAP', 'TanStack Table', 'Recharts', 'Leaflet'],
+    tech: ['Godot', 'HTML5', 'Windows', 'Linux', 'Android'],
     highlights: [
-      'Four roles, one codebase: navigation and dashboards are built around Super Admin, Shelter Admin, Employee, and Customer from the ground up, not one view with features toggled on and off',
-      'The adoption marketplace and lost & found board are usable without an account',
-      'A fully explorable demo: runs on mock data with no backend or real authentication required, so every screen is one click away',
+      "The developer's (Game++MTH) first fully completed game",
+      'Built entirely in Godot with a top-down, 2D pixel-art style',
+      'Ships to four platforms, browser, Windows, Linux, and Android, from one Godot project',
     ],
-    demoUrl: 'https://shelter-os-seven.vercel.app',
-    image: '/projects/shelter-os-cover.jpg',
-    imageAlt: 'The Shelter OS adoption marketplace: a hero banner over cards for adoptable cats and dogs',
+    demoUrl: 'https://gamemth.itch.io/mazebound',
+    image: '/projects/mazebound-cover.jpg',
+    imageAlt: 'MazeBound: a character lit by a makeshift lamp inside a dark, breathing maze, with health and item icons onscreen',
   },
   {
     slug: 'studify',
@@ -222,109 +221,6 @@ export const projects: Project[] = [
     videoUrl: 'https://drive.google.com/file/d/1Q_6Cb0O5qczD3mN0tDgVl_AkV8RCuVpl/view',
   },
   {
-    slug: 'healthcare-patient-app',
-    title: 'Patient Engagement Application',
-    category: 'Web Application',
-    status: 'illustrative',
-    year: '2024',
-    summary: 'An illustrative concept for a patient-facing booking and communications experience.',
-    problem:
-      'Care teams can lose valuable time when scheduling and patient communication rely on phone-based processes.',
-    solution:
-      'The concept brings self-service booking, appointment reminders, and secure messaging into a single patient experience.',
-    features: ['Self-service booking', 'Automated reminders', 'Secure messaging'],
-    tech: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Docker'],
-    highlights: [
-      'A clearer self-service journey for patients',
-      'Scheduling and reminders designed as one workflow',
-      'A modular base that can integrate with existing systems',
-    ],
-  },
-  {
-    slug: 'fintech-reporting-dashboard',
-    title: 'Real-Time Reporting Dashboard',
-    category: 'Data & Infrastructure',
-    status: 'illustrative',
-    year: '2024',
-    summary:
-      'An illustrative concept for a reporting workspace built around timely, self-service data.',
-    problem:
-      'Teams can be slowed when reporting is delayed and every new question needs engineering support.',
-    solution:
-      'The concept combines a streaming data pipeline with reusable reporting templates for self-service analysis.',
-    features: ['Streaming data pipeline', 'Self-serve report builder', 'Role-based access'],
-    tech: ['TypeScript', 'React', 'Node.js', 'ClickHouse', 'Kubernetes'],
-    highlights: [
-      'Timely information designed for operational decisions',
-      'Reusable templates for common reporting needs',
-      'An extensible architecture for future data sources',
-    ],
-  },
-  {
-    slug: 'ecommerce-storefront-platform',
-    title: 'Unified Commerce Storefront',
-    category: 'E-Commerce',
-    status: 'illustrative',
-    year: '2025',
-    summary:
-      'An illustrative concept for a storefront and checkout experience built to handle demand spikes without losing conversions.',
-    problem:
-      'Fast-growing retailers can lose sales when checkout flows and inventory systems are not built to handle traffic spikes.',
-    solution:
-      'The concept pairs a fast storefront with a resilient checkout flow and real-time inventory sync across channels.',
-    features: ['Fast, responsive storefront', 'Resilient checkout flow', 'Real-time inventory sync'],
-    tech: ['TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
-    highlights: [
-      'A storefront built to stay fast under load',
-      'Checkout designed to reduce drop-off',
-      'Inventory kept in sync across every sales channel',
-    ],
-  },
-  {
-    slug: 'cloud-observability-platform',
-    title: 'Cloud Observability Platform',
-    category: 'Cloud & Infrastructure',
-    status: 'illustrative',
-    year: '2025',
-    summary:
-      'An illustrative concept for a monitoring workspace that gives engineering teams one view across services and environments.',
-    problem:
-      'Teams running many services can lose hours tracing incidents when logs, metrics, and alerts live in separate tools.',
-    solution:
-      'The concept centralizes logs, metrics, and alerts into one dashboard with automated incident timelines.',
-    features: ['Unified logs and metrics', 'Automated incident timelines', 'Configurable alerting rules'],
-    tech: ['TypeScript', 'React', 'Go', 'Kubernetes', 'Grafana'],
-    highlights: [
-      'Faster incident response with one shared view',
-      'Alerting tuned to reduce noise',
-      'An architecture built to scale across environments',
-    ],
-  },
-  {
-    slug: 'hypercasual-mobile-game',
-    title: 'Hyper-Casual Mobile Game',
-    category: 'Game Development',
-    status: 'illustrative',
-    year: '2025',
-    summary:
-      'An illustrative concept for a lightweight, replayable mobile game built for fast sessions and quick iteration.',
-    problem:
-      'Hyper-casual games can lose players quickly when core loops are not tuned and tested before wide release.',
-    solution:
-      'The concept combines a tight core gameplay loop with lightweight analytics to guide balancing decisions.',
-    features: [
-      'Fast-loading core gameplay loop',
-      'Built-in analytics for tuning',
-      'Cross-platform builds for Android and iOS',
-    ],
-    tech: ['Unity', 'C#', 'Android', 'iOS'],
-    highlights: [
-      'A core loop designed for short, replayable sessions',
-      'Analytics built in from day one',
-      'A build pipeline ready for rapid iteration',
-    ],
-  },
-  {
     slug: 'multi-mahjong',
     title: 'MultiMahjong',
     category: 'Game Development',
@@ -415,5 +311,35 @@ export const projects: Project[] = [
     image: '/projects/crash-tycoon-cover.jpg',
     imageAlt: "Crash Tycoon's start screen: a character on the road beside the score and play button",
     videoUrl: 'https://drive.google.com/file/d/1d84QeoFo4CB0Q3OTJFi_SCQ8T9rheE1X/view?usp=drive_link',
+  },
+  {
+    slug: 'shelter-os',
+    title: 'Shelter OS',
+    category: 'Web Application',
+    status: 'published',
+    year: '2026',
+    summary:
+      'A role-aware shelter-management console for four distinct roles, Super Admin, Shelter Admin, Employee, and Customer, covering shelter onboarding, animal intake, adoption, fostering, donations, and day-to-day operations in one interface.',
+    problem:
+      'Shelter software usually shows every user the same screen with features hidden behind permission checks, so a volunteer wades through admin tools they will never touch, and nobody overseeing several shelters at once gets a view built for that job.',
+    solution:
+      "Shelter OS builds its navigation and dashboards around each of its four roles from the ground up: a Super Admin gets a platform-wide console for onboarding shelters and admins, a Shelter Admin runs one shelter's operations, and Employees and Customers each get an interface scoped to what their role actually does.",
+    features: [
+      'Animal intake, registry, and medical history, with adoption and foster placements tracked end to end',
+      'Rescue reports and a public lost & found board',
+      'Donations, a finance ledger, and shelter-level reporting',
+      'Inventory, analytics dashboards, and audit logs for daily operations',
+      'Threaded messaging, notifications, and an interactive shelter map',
+      'A Super Admin console for onboarding shelters, granting admin access, and tracking platform-wide usage',
+    ],
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Radix UI', 'GSAP', 'TanStack Table', 'Recharts', 'Leaflet'],
+    highlights: [
+      'Four roles, one codebase: navigation and dashboards are built around Super Admin, Shelter Admin, Employee, and Customer from the ground up, not one view with features toggled on and off',
+      'The adoption marketplace and lost & found board are usable without an account',
+      'A fully explorable demo: runs on mock data with no backend or real authentication required, so every screen is one click away',
+    ],
+    demoUrl: 'https://shelter-os-seven.vercel.app',
+    image: '/projects/shelter-os-cover.jpg',
+    imageAlt: 'The Shelter OS adoption marketplace: a hero banner over cards for adoptable cats and dogs',
   },
 ];

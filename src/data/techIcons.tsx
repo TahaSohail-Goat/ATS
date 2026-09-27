@@ -8,11 +8,14 @@ import {
   SiDocker,
   SiExpress,
   SiGo,
+  SiGodotengine,
   SiGooglegemini,
   SiGrafana,
+  SiHtml5,
   SiHuggingface,
   SiJsonwebtokens,
   SiKubernetes,
+  SiLinux,
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
@@ -76,6 +79,9 @@ const TECH_ICONS: Record<string, TechIcon> = {
   // OpenJDK's mark stands in for the Java language generally.
   Java: { Icon: SiOpenjdk, color: '#437291' },
   Maven: { Icon: SiApachemaven, color: '#C71A36' },
+  Godot: { Icon: SiGodotengine, color: '#478CBF' },
+  HTML5: { Icon: SiHtml5, color: '#E34F26' },
+  Linux: { Icon: SiLinux, color: 'currentColor' },
 };
 
 const FALLBACK: TechIcon = { Icon: Code2, color: 'currentColor' };
