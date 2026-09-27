@@ -20,37 +20,52 @@ export function ContactPage() {
   // the photo to that whole height and zoom it far past its resolution, so
   // there it is bounded to the heading band and the form sits below it.
   return (
-    <section className="dark relative isolate text-ast-ink">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 hidden bg-cover bg-center lg:block"
-        style={{ backgroundImage: PHOTO }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 hidden lg:block"
-        style={{ background: SCRIM }}
-      />
-
-      <div className="relative py-16 sm:py-24 lg:pb-0">
+    <section className="relative isolate">
+      {/*
+       * `dark` is scoped to just this wrapper, not the whole section. Unlike a
+       * plain photo band (see `Section`'s own `image` mode), the form card
+       * below is a deliberately LIGHT card ("shadow-ast-lifted", pulled up
+       * into the photo with a negative margin) meant to stand out against
+       * the dark photo, in both themes. Scoping `dark` to the whole section
+       * would also re-scope the card's `bg-ast-surface` and the plain
+       * `bg-ast-canvas` backdrop below it to their dark values, crushing both
+       * into the same near-black as the photo and losing the card's contrast
+       * entirely. `contents` keeps this div out of layout; CSS custom
+       * properties still cascade to its children regardless of `display`.
+       */}
+      <div className="dark contents">
         <div
           aria-hidden
-          className="absolute inset-0 bg-cover bg-center lg:hidden"
+          className="absolute inset-0 -z-10 hidden bg-cover bg-center lg:block"
           style={{ backgroundImage: PHOTO }}
         />
-        <div aria-hidden className="absolute inset-0 lg:hidden" style={{ background: SCRIM }} />
-        <Container className="relative max-w-3xl">
-          <Reveal delay={0.1}>
-            <h1 className="ast-photo-text text-display-md font-bold text-ast-ink">
-              Start a <span className="text-ast-accent">Project</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="ast-photo-text mt-4 text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted">
-              Have a project in mind, need technical advisory, or want to explore working together? Send us a message; we reply to every conversation.
-            </p>
-          </Reveal>
-        </Container>
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 hidden lg:block"
+          style={{ background: SCRIM }}
+        />
+
+        <div className="relative py-16 text-ast-ink sm:py-24 lg:pb-0">
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-cover bg-center lg:hidden"
+            style={{ backgroundImage: PHOTO }}
+          />
+          <div aria-hidden className="absolute inset-0 lg:hidden" style={{ background: SCRIM }} />
+          <Container className="relative max-w-3xl">
+            <Reveal delay={0.1}>
+              <h1 className="ast-photo-text text-display-md font-bold text-ast-ink">
+                Start a Project
+              </h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="ast-photo-text mt-4 text-lg leading-relaxed text-ast-ink">
+                Have a project in mind, need technical advisory, or want to explore working
+                together? Send us a message; we reply to every conversation.
+              </p>
+            </Reveal>
+          </Container>
+        </div>
       </div>
 
       {/* z-10 keeps the card above the photo band it overlaps on small screens;
