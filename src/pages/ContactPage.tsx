@@ -20,7 +20,7 @@ export function ContactPage() {
   // the photo to that whole height and zoom it far past its resolution, so
   // there it is bounded to the heading band and the form sits below it.
   return (
-    <section className="relative isolate">
+    <section className="dark relative isolate text-ast-ink">
       <div
         aria-hidden
         className="absolute inset-0 -z-10 hidden bg-cover bg-center lg:block"
@@ -41,7 +41,7 @@ export function ContactPage() {
         <div aria-hidden className="absolute inset-0 lg:hidden" style={{ background: SCRIM }} />
         <Container className="relative max-w-3xl">
           <Reveal delay={0.1}>
-            <h1 className="ast-photo-text text-display-md font-semibold text-ast-ink">
+            <h1 className="ast-photo-text text-display-md font-bold text-ast-ink">
               Start a <span className="text-ast-accent">Project</span>
             </h1>
           </Reveal>

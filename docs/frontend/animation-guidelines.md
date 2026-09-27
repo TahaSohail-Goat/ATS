@@ -10,11 +10,20 @@ and shared variants in `apps/web/src/lib/motion.ts`.
 - The header keeps Framer Motion only for the active-nav indicator and mobile
   menu.
 - The home hero plays a pre-rendered brand film (`src/features/home/HeroVideo.tsx`,
-  assets in `public/video/hero/`). It is a muted, seamless 16s loop with one cut
-  per theme and orientation (`{dark,light}-{landscape,portrait}`), each an H.264
-  MP4 plus a poster that is the film's first frame. It pauses while the hero is
-  off screen, has a visible pause/play control (WCAG 2.2.2), and shows only the
-  poster under reduced motion or Data Saver.
+  assets in `public/video/hero/`). It is a muted, seamless 16s loop. The hero is
+  a dark band in both themes, so there is one cut per orientation
+  (`dark-{landscape,portrait}`), each an H.264 MP4 plus a poster that is the
+  film's first frame. It pauses while the hero is off screen, has a visible
+  pause/play control (WCAG 2.2.2), and shows only the poster under reduced
+  motion or Data Saver.
+- The home services row (`src/features/home/ServicesOverview.tsx`) is a
+  continuous ticker: two copies of the cards slide left by one copy's width and
+  loop (`.ast-marquee` in `globals.css`). It is a CSS transform animation, so it
+  runs on the compositor at a constant ~40px/s with no per-frame script. It holds
+  still on hover and while focus is inside (a focused card is scrolled fully into
+  view), and a visible Pause/Play button covers WCAG 2.2.2. The second copy is
+  `aria-hidden` and `inert`. Under reduced motion there is no animation and no
+  button; the row is a plain swipe-able strip of one copy.
 - Aurora fields are limited to two small layers and drift only on the hero;
   interior-page fields are static.
 - Project cards do not use scroll-linked parallax.

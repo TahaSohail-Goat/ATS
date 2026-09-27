@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { Pause, Play } from 'lucide-react';
-import { getServerThemeSnapshot, getThemeSnapshot, subscribeTheme } from '../../lib/theme';
 
 /** Viewports taller than wide get the portrait cut, composed for phones. */
 const PORTRAIT_QUERY = '(max-aspect-ratio: 1/1)';
@@ -23,20 +22,19 @@ function prefersReducedData(): boolean {
 
 /**
  * Looping brand film behind the home hero: the logo's orbit circling the
- * headline over a grid that travels forward. There is one cut per theme and
- * orientation, and each cut's first frame doubles as its poster, so the swap
- * from poster to video is seamless.
+ * headline over a grid that travels forward. The hero is a dark band in both
+ * themes, so there is one dark cut per orientation. Each cut's first frame
+ * doubles as its poster, so the swap from poster to video is seamless.
  *
  * Reduced motion and Data Saver get the poster only. Playback pauses while the
  * hero is off screen, and a visible control lets anyone stop it (WCAG 2.2.2).
  */
 export function HeroVideo() {
-  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
   const portrait = useSyncExternalStore(subscribePortrait, getPortraitSnapshot, getServerPortraitSnapshot);
   const reduceMotion = useReducedMotion();
   const [saveData] = useState(prefersReducedData);
   const animate = !reduceMotion && !saveData;
-  const cut = `/video/hero/${theme}-${portrait ? 'portrait' : 'landscape'}`;
+  const cut = `/video/hero/dark-${portrait ? 'portrait' : 'landscape'}`;
 
   const layerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);

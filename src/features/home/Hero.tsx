@@ -10,7 +10,9 @@ import { HeroVideo } from './HeroVideo';
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden">
+    // `dark` re-scopes the colour tokens, so the hero is a dark band in the
+    // light theme too, and the copy and buttons below take their dark styles.
+    <section className="dark relative isolate overflow-hidden text-ast-ink">
       {/* The film (HeroVideo) keeps its own centre calm, so the scrims only
           need a soft pool of canvas behind the copy, not a veil over the
           whole frame, plus a fade into the next section. */}
@@ -29,7 +31,7 @@ export function Hero() {
 
       <Container className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-16 sm:pb-20 sm:pt-20">
         <div className="mx-auto max-w-6xl text-center">
-          <h1 className="ast-photo-text text-display-lg font-semibold text-ast-ink">
+          <h1 className="ast-photo-text text-display-lg font-bold text-ast-ink">
             <RevealText
               as="span"
               immediate

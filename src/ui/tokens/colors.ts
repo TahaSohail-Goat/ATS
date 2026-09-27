@@ -35,7 +35,7 @@ export const colors = {
   textMuted: '#64748B', // Gray, decorative/icon use on light surfaces
   textMutedDeep: '#475569', // Gray, muted text on light surfaces (AA on raised)
   textOnDark: '#E6EDF8', // Body text on dark surfaces
-  textOnDarkMuted: '#93A3BC', // Muted text on dark surfaces
+  textOnDarkMuted: '#BFCADC', // Muted text on dark surfaces (~11.7:1 on the dark surface, softer than textOnDark so hierarchy holds)
   success: '#22C55E', // Green
   error: '#EF4444', // Red, error role on dark surfaces
   errorDeep: '#B91C1C', // Deep red, error role on light surfaces (AA against the light card tints)

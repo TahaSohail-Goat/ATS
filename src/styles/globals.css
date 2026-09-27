@@ -14,6 +14,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Chromium's scroll anchoring re-adjusts scroll position to keep the same
+       content in view when layout shifts above the viewport. Each route here
+       is a full content swap, not an incremental layout shift, so without
+       this a route change can re-anchor to roughly the old scroll position a
+       frame or two after ScrollToTop resets it to 0 (worst on phones, and
+       worse still coming from a page just scrolled and a differently-tall
+       one, e.g. any page -> the services ticker row). See ScrollToTop.tsx. */
+    overflow-anchor: none;
     /* Sticky header height, anchored sections stop below it. */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
@@ -185,6 +193,82 @@
   .ast-spotlight:hover::after,
   .ast-spotlight:focus-within::after {
     opacity: 1;
+  }
+
+  /* Services ticker (features/home/ServicesOverview.tsx). Two identical
+     copies of the card row slide left by exactly one copy's width and loop,
+     so the seam is invisible. It is a transform animation, so it runs on the
+     compositor and stays smooth even when the main thread is busy. The space
+     between cards is each card's right margin, not `gap`, so a copy's width
+     includes the space after its last card and -50% is an exact loop. It
+     holds still on hover, while focus is inside, and when the button sets
+     data-paused. The block padding leaves room for card shadows and the hover
+     lift, which the overflow clip would otherwise cut off. Under reduced
+     motion it becomes a plain swipe-able row of a single copy, its first card
+     lined up with the page container's left edge (84rem shell + its
+     1.25/2/3rem gutters). */
+  .ast-marquee {
+    --ast-marquee-duration: 90s;
+    --ast-marquee-px: 1.25rem;
+    --ast-marquee-inset: calc(max(0px, (100% - 84rem) / 2) + var(--ast-marquee-px));
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+
+  .ast-marquee-track {
+    display: flex;
+    width: max-content;
+    padding-block: 0.5rem 1rem;
+    animation: ast-marquee var(--ast-marquee-duration) linear infinite;
+  }
+
+  .ast-marquee-track > li {
+    margin-right: 1.25rem;
+  }
+
+  .ast-marquee:hover .ast-marquee-track,
+  .ast-marquee:focus-within .ast-marquee-track,
+  .ast-marquee[data-paused='true'] .ast-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ast-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .ast-marquee {
+      --ast-marquee-px: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ast-marquee {
+      --ast-marquee-px: 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ast-marquee {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: var(--ast-marquee-inset);
+      scrollbar-width: none;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .ast-marquee::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ast-marquee-track {
+      animation: none;
+      padding-inline: var(--ast-marquee-inset);
+    }
   }
 }
 

@@ -16,7 +16,8 @@ interface PageHeroProps {
 }
 
 /**
- * Opening band for interior pages. Without `image`, a quiet aurora, eyebrow,
+ * Opening band for interior pages. Always a dark band, in both themes: `dark`
+ * re-scopes the colour tokens (see docs/frontend/design-system.md). Without `image`, a quiet aurora, eyebrow,
  * and the page's single `h1` — keeps every route's entrance consistent with
  * the homepage without repeating the hero's full choreography. With `image`,
  * a full-bleed photo band matching the Home redesign instead, theme-reactive
@@ -35,7 +36,7 @@ export function PageHero({
     const centered = align === 'center';
     return (
       <section
-        className="relative isolate overflow-hidden bg-cover bg-center py-20 sm:py-28"
+        className="dark relative isolate overflow-hidden bg-cover bg-center py-20 text-ast-ink sm:py-28"
         style={{ backgroundImage: `url('${image}')` }}
       >
         <div
@@ -48,7 +49,7 @@ export function PageHero({
         />
         <Container className={`relative ${centered ? 'text-center' : ''}`}>
           <h1
-            className={`ast-photo-text text-display-lg font-semibold text-ast-ink ${centered ? 'mx-auto max-w-3xl' : 'max-w-3xl'}`}
+            className={`ast-photo-text text-display-lg font-bold text-ast-ink ${centered ? 'mx-auto max-w-4xl' : 'max-w-4xl'}`}
           >
             {title} {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
           </h1>
@@ -66,7 +67,7 @@ export function PageHero({
   }
 
   return (
-    <section className="relative isolate overflow-hidden border-b border-ast-line pb-16 pt-16 sm:pb-24 sm:pt-24">
+    <section className="dark relative isolate overflow-hidden border-b border-ast-line bg-ast-canvas pb-16 pt-16 text-ast-ink sm:pb-24 sm:pt-24">
       <Aurora variant="quiet" />
       <Container className="relative">
         <SectionHeading
@@ -77,7 +78,7 @@ export function PageHero({
           headingLevel={1}
           size="lg"
           align={align}
-          className={align === 'center' ? 'mx-auto max-w-3xl' : 'max-w-3xl'}
+          className={align === 'center' ? 'mx-auto max-w-4xl' : 'max-w-4xl'}
         >
           {children}
         </SectionHeading>

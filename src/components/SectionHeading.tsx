@@ -52,7 +52,7 @@ export function SectionHeading({
       {title && (
         <RevealText
           as={heading}
-          className={`font-semibold ${size === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
+          className={`font-bold ${size === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
           parts={
             titleAccent
               ? [{ text: title }, { text: titleAccent, gradient: true }]

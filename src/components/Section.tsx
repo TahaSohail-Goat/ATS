@@ -84,7 +84,7 @@ export function Section({
         <div className={centered ? 'max-w-3xl text-center' : 'max-w-2xl'}>
           {title && (
             <Heading
-              className={`ast-photo-text font-semibold text-ast-ink ${headingSize === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
+              className={`ast-photo-text font-bold text-ast-ink ${headingSize === 'lg' ? 'text-display-lg' : 'text-display-md'}`}
             >
               {title} {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
             </Heading>
@@ -120,7 +120,7 @@ export function Section({
       'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 45%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)';
 
     return (
-      <section id={id} className={`relative isolate ${className}`}>
+      <section id={id} className={`dark relative isolate bg-ast-canvas text-ast-ink ${className}`}>
         <div
           aria-hidden
           className="absolute inset-0 -z-10 hidden bg-cover bg-center lg:block"

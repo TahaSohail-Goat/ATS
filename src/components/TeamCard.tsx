@@ -13,7 +13,7 @@ function initialsFor(name: string): string {
 /** Team member card: photo (or monogram fallback) on top, bio and social links below. */
 export function TeamCard({ member }: TeamCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
+    <article className="dark group flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
       <div className="relative aspect-[4/5] overflow-hidden">
         {member.photo ? (
           <img
@@ -39,7 +39,7 @@ export function TeamCard({ member }: TeamCardProps) {
       <div className="flex flex-1 flex-col p-6">
         <h3 className="font-semibold tracking-tighter2">{member.name}</h3>
         <p className="mt-1 text-sm font-medium text-ast-accent">{member.role}</p>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-ast-ink-muted">{member.bio}</p>
+        <p className="mt-3 flex-1 text-base leading-relaxed text-ast-ink-muted">{member.bio}</p>
 
         <div className="mt-5 flex items-center gap-2 border-t border-ast-line pt-5">
           {member.linkedinUrl ? (

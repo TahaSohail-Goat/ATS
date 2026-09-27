@@ -11,8 +11,9 @@ import { processSteps } from '../../data/site';
  */
 export function Process() {
   return (
+    // `dark`: a dark band in the light theme too, so the photo reads dark.
     <section
-      className="relative overflow-hidden border-t border-ast-ink/10 bg-cover bg-center py-20 sm:py-28"
+      className="dark relative overflow-hidden text-ast-ink border-t border-ast-ink/10 bg-cover bg-center py-20 sm:py-28"
       style={{ backgroundImage: "url('/stock/process-planning.jpg')" }}
     >
       <div aria-hidden className="absolute inset-0 bg-ast-canvas/60 dark:bg-ast-canvas/90" />
@@ -20,7 +21,7 @@ export function Process() {
       <Container className="relative">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <Reveal as="h2" direction="none" className="ast-photo-text text-display-md font-semibold text-ast-ink">
+            <Reveal as="h2" direction="none" className="ast-photo-text text-display-md font-bold text-ast-ink">
               A process that keeps <span className="text-ast-accent">you in control</span>
             </Reveal>
 

@@ -84,10 +84,11 @@ const config: Config = {
       },
       fontSize: {
         // Fluid display scale — headline sizes track the viewport so the
-        // layout reads intentionally at 375px and at 1920px.
+        // layout reads intentionally at 375px and at 1920px. Headings are set
+        // bold (`font-bold`) at these sizes; the weight lives on the element.
         'display-sm': ['clamp(1.875rem, 1.55rem + 1.6vw, 2.5rem)', { lineHeight: '1.12' }],
-        'display-md': ['clamp(2.25rem, 1.7rem + 2.6vw, 3.5rem)', { lineHeight: '1.08' }],
-        'display-lg': ['clamp(2.75rem, 1.9rem + 4vw, 5rem)', { lineHeight: '1.04' }],
+        'display-md': ['clamp(2.5rem, 1.6rem + 3.2vw, 4rem)', { lineHeight: '1.06' }],
+        'display-lg': ['clamp(3rem, 1.8rem + 4.6vw, 5.25rem)', { lineHeight: '1.02' }],
         'display-xl': ['clamp(3.25rem, 1.9rem + 6.2vw, 7rem)', { lineHeight: '0.98' }],
         eyebrow: ['0.6875rem', { lineHeight: '1', letterSpacing: '0.2em' }],
       },

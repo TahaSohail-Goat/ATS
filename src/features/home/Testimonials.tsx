@@ -18,8 +18,7 @@ export function Testimonials() {
     <Section
       title="What our"
       titleAccent="clients say"
-      tone="raised"
-      className="border-t border-ast-ink/10"
+      className="border-t border-ast-ink/10 bg-ast-surface"
       description={
         featured
           ? 'Real feedback from the people we’ve built for, published only with their approval.'
@@ -30,7 +29,7 @@ export function Testimonials() {
         <Reveal asChild as="div" className="mx-auto max-w-2xl">
           <SpotlightCard
             as="figure"
-            className="flex flex-col rounded-4xl border border-ast-line bg-ast-surface/70 p-7 sm:p-9"
+            className="dark flex flex-col rounded-4xl border border-ast-line bg-ast-surface p-7 text-ast-ink sm:p-9"
           >
             <Quote className="h-7 w-7 shrink-0 text-ast-accent/50" strokeWidth={1.5} aria-hidden />
             <blockquote className="mt-5 text-balance text-lg font-medium leading-snug tracking-tighter2">
@@ -49,7 +48,7 @@ export function Testimonials() {
           <Reveal asChild as="div" className="h-full lg:col-span-2">
             <SpotlightCard
               as="figure"
-              className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/70 p-7 sm:p-9"
+              className="dark flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface p-7 text-ast-ink sm:p-9"
             >
               <Quote
                 className="h-7 w-7 shrink-0 text-ast-accent/50"
@@ -71,7 +70,7 @@ export function Testimonials() {
               <Reveal key={`${testimonial.name}-${index}`} asChild as="div" className="h-full">
                 <SpotlightCard
                   as="figure"
-                  className="flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface/50 p-7"
+                  className="dark flex h-full flex-col justify-between rounded-4xl border border-ast-line bg-ast-surface p-7 text-ast-ink"
                 >
                   <Quote
                     className="h-6 w-6 shrink-0 text-ast-accent/40"

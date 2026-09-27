@@ -14,8 +14,17 @@ import { getTechIcon } from '../data/techIcons';
 import { getDriveEmbedUrl } from '../lib/video';
 import { useSeo } from '../lib/seo';
 
+/**
+ * Keyed by slug so moving from one project to another remounts the page, like
+ * any other route change: fresh state, the entrance animations replay, and no
+ * element (e.g. the "next case study" link) carries focus over to the new page.
+ */
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  return <ProjectDetail key={slug} slug={slug} />;
+}
+
+function ProjectDetail({ slug }: { slug: string | undefined }) {
   const project = projects.find((p) => p.slug === slug);
 
   // Hooks must run before any early return, so this tolerates a missing project.
@@ -31,7 +40,7 @@ export function ProjectDetailPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-ast-line bg-ast-canvas pb-16 pt-10 sm:pb-24 sm:pt-14">
+      <section className="dark relative isolate overflow-hidden border-b border-ast-line bg-ast-canvas pb-16 pt-10 text-ast-ink sm:pb-24 sm:pt-14">
         <Container className="relative">
           <Link
             to="/projects"
@@ -48,7 +57,7 @@ export function ProjectDetailPage() {
             <RevealText
               as="h1"
               immediate
-              className="text-display-lg font-semibold"
+              className="text-display-lg font-bold"
               parts={[{ text: project.title }]}
             />
 
@@ -117,7 +126,7 @@ export function ProjectDetailPage() {
             <Reveal key={block.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 shadow-ast-card sm:p-11"
+                className="dark flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 text-ast-ink shadow-ast-card sm:p-11"
               >
                 <h2 className="text-2xl font-semibold tracking-tighter2">{block.title}</h2>
                 <p className="mt-4 leading-relaxed text-ast-ink-muted">{block.text}</p>

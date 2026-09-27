@@ -47,7 +47,7 @@ export function ServicesPage() {
               delay={Math.min((index % PREVIEW_COUNT) * 0.06, 0.24)}
               className="h-full"
             >
-              <ServiceCard service={service} index={index} />
+              <ServiceCard service={service} />
             </Reveal>
           ))}
         </div>

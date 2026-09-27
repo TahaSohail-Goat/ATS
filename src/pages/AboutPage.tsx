@@ -45,7 +45,7 @@ export function AboutPage() {
             <Reveal key={item.title} asChild as="div" className="h-full">
               <SpotlightCard
                 as="article"
-                className="flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 shadow-ast-card sm:p-11"
+                className="dark flex h-full flex-col rounded-4xl border border-ast-line bg-ast-surface p-8 text-ast-ink shadow-ast-card sm:p-11"
               >
                 <span
                   aria-hidden

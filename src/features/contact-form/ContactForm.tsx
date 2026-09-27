@@ -567,12 +567,7 @@ export function ContactForm() {
                   onChange={() => handleServiceToggle(service.label)}
                   className="sr-only"
                 />
-                <span className="leading-tight">
-                  <span className="mr-1.5 text-[10px] font-semibold text-ast-accent">
-                    {service.id.replace('s', '').padStart(2, '0')}
-                  </span>
-                  {service.label}
-                </span>
+                <span className="leading-tight">{service.label}</span>
               </label>
             );
           })}

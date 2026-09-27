@@ -10,10 +10,12 @@ interface ProjectCardProps {
   project: Project;
 }
 
-/** Project card, shared between Home, /projects, and detail-page navigation. */
+/** Project card, shared between Home, /projects, and detail-page navigation. Always a dark card, for contrast on a light section. */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5">
+    <article
+      className="dark group relative flex h-full flex-col overflow-hidden rounded-4xl border border-ast-line bg-ast-surface text-ast-ink shadow-ast-card transition-[transform,border-color,box-shadow] duration-500 ease-ast-out hover:border-ast-brand/30 hover:shadow-ast-lifted motion-safe:hover:-translate-y-1.5"
+    >
       {/* Whole card is one link: a single tab stop, one accessible name. */}
       <Link
         to={`/projects/${project.slug}`}
@@ -71,7 +73,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="mt-3 text-xl font-semibold tracking-tighter2 transition-colors duration-300 group-hover:text-ast-brand sm:text-2xl">
           {project.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-ast-ink-muted">{project.summary}</p>
+        <p className="mt-3 flex-1 text-base leading-relaxed text-ast-ink-muted">{project.summary}</p>
 
         <div className="mt-7 flex flex-wrap items-center gap-2 border-t border-ast-line pt-6">
           {project.tech.slice(0, 3).map((tech) => {

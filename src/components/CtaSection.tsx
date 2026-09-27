@@ -16,7 +16,7 @@ interface CtaSectionProps {
   children?: ReactNode;
 }
 
-/** Shared closing CTA band, used on every content page. */
+/** Shared closing CTA band, used on every content page. Always a dark band, in both themes. */
 export function CtaSection({
   title,
   titleAccent,
@@ -26,7 +26,9 @@ export function CtaSection({
   children,
 }: CtaSectionProps) {
   return (
-    <section className="relative isolate overflow-hidden border-t border-ast-ink/10 bg-ast-canvas py-24 sm:py-32">
+    <section
+      className="dark relative isolate overflow-hidden border-t border-ast-ink/10 bg-ast-canvas py-24 text-ast-ink sm:py-32"
+    >
       <img
         src="/stock/cta-office.jpg"
         alt=""
@@ -45,7 +47,7 @@ export function CtaSection({
       />
 
       <Container className="relative text-center">
-        <Reveal as="h2" className="ast-photo-text mx-auto max-w-3xl text-display-md font-semibold text-ast-ink">
+        <Reveal as="h2" className="ast-photo-text mx-auto max-w-4xl text-display-md font-bold text-ast-ink">
           {title}{' '}
           {titleAccent && <span className="text-ast-accent">{titleAccent}</span>}
         </Reveal>

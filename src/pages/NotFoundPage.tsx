@@ -16,7 +16,7 @@ export function NotFoundPage() {
   });
 
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden">
+    <section className="dark relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-ast-canvas text-ast-ink">
       <Aurora variant="band" />
       <Container className="relative py-20 text-center">
         <Reveal direction="none">
@@ -28,7 +28,7 @@ export function NotFoundPage() {
         <RevealText
           as="h1"
           immediate
-          className="mx-auto mt-6 max-w-3xl text-display-lg font-semibold"
+          className="mx-auto mt-6 max-w-3xl text-display-lg font-bold"
           parts={[{ text: 'This page' }, { text: 'does not exist', gradient: true }]}
         />
 
