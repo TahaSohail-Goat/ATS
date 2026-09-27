@@ -159,6 +159,33 @@ export const projects: Project[] = [
     videoUrl: 'https://drive.google.com/file/d/1DOXkn57jIr1e7NH8YxkYOpVUYGSf8xFq/view?usp=drive_link',
   },
   {
+    slug: 'smart-disaster-response-mis',
+    title: 'Smart Disaster Response MIS',
+    category: 'Web Application',
+    status: 'published',
+    year: '2026',
+    summary:
+      'A full-stack management information system for coordinating disaster response, from emergency reporting and rescue deployment to hospital tracking, inventory, and finance.',
+    problem:
+      'Coordinating a disaster response across field officers, rescue teams, hospitals, warehouses, and finance usually means fragmented spreadsheets and phone calls, with no shared view of what is happening or what is needed where.',
+    solution:
+      'The system gives every role, admins, coordinators, field officers, finance officers, warehouse managers, and hospital staff, its own dashboard over the same live data, with an approval-gated workflow for team deployment, procurement, and resource allocation.',
+    features: [
+      'Role-based dashboards for six user types, from field officers to hospital staff',
+      'Disaster event lifecycle: creation, rescue team deployment, and closure',
+      'Emergency report submission with severity tracking',
+      'Inventory and multi-warehouse resource tracking',
+      'Hospital capacity and patient intake tracking',
+      'Finance module for donations, expenses, and a transaction ledger',
+    ],
+    tech: ['Next.js', 'React', 'Node.js', 'Express', 'SQL Server', 'JWT'],
+    highlights: [
+      '20-table schema with 8 automation and audit triggers, plus 7 analytical SQL views',
+      'Custom-indexed queries with benchmarked performance',
+      'Full audit trail via database triggers for every critical action',
+    ],
+  },
+  {
     slug: 'healthcare-patient-app',
     title: 'Patient Engagement Application',
     category: 'Web Application',

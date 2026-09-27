@@ -10,6 +10,7 @@ import {
   SiGooglegemini,
   SiGrafana,
   SiHuggingface,
+  SiJsonwebtokens,
   SiKubernetes,
   SiMongodb,
   SiNextdotjs,
@@ -26,7 +27,7 @@ import {
   SiUnity,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa6';
-import { Code2, Zap } from 'lucide-react';
+import { Code2, Database, Zap } from 'lucide-react';
 
 export interface TechIcon {
   Icon: IconType;
@@ -66,6 +67,10 @@ const TECH_ICONS: Record<string, TechIcon> = {
   'Tailwind CSS': { Icon: SiTailwindcss, color: '#06B6D4' },
   Supabase: { Icon: SiSupabase, color: '#3FCF8E' },
   Gemini: { Icon: SiGooglegemini, color: '#8E75B2' },
+  // No official brand mark ships in this icon set, so a generic database
+  // glyph stands in, tinted with SQL Server's badge red.
+  'SQL Server': { Icon: Database, color: '#CC2927' },
+  JWT: { Icon: SiJsonwebtokens, color: 'currentColor' },
 };
 
 const FALLBACK: TechIcon = { Icon: Code2, color: 'currentColor' };
