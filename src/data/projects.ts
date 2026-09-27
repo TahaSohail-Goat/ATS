@@ -293,4 +293,32 @@ export const projects: Project[] = [
       'A build pipeline ready for rapid iteration',
     ],
   },
+  {
+    slug: 'cdiem',
+    title: 'CDIEM: Digital Evidence Management',
+    category: 'Desktop Application',
+    status: 'published',
+    year: '2026',
+    summary:
+      'A role-based JavaFX desktop application for managing criminal investigation cases and digital evidence, with SHA-256 integrity verification, tamper detection, and a full chain-of-custody audit trail.',
+    problem:
+      'Digital evidence handled across investigating officers, forensic analysts, and supervisors is easy to mishandle or dispute when there is no single, verifiable record of who touched what evidence, and when.',
+    solution:
+      'CDIEM gives each of its three roles, Investigating Officer, Digital Forensic Analyst, and Supervisory Authority, its own view over the same case data, hashes every piece of evidence on upload, and freezes a case the moment tampering is detected.',
+    features: [
+      'Role-based access for Investigating Officers, Digital Forensic Analysts, and Supervisory Authorities',
+      'Case registration with severity tracking and SLA calculation',
+      'Evidence upload with SHA-256 hashing and integrity verification',
+      'Automatic case freezing the moment tampering is detected',
+      'Supervisory review, escalation, and closure workflows',
+      'Immutable audit logging for full chain-of-custody tracking',
+      'Summary report generation, exportable as CSV or PDF',
+    ],
+    tech: ['Java', 'JavaFX', 'Maven', 'SQL Server', 'ControlsFX'],
+    highlights: [
+      'Evidence integrity is enforced by hashing, not policy: tampering is detected automatically and the case is frozen',
+      'Every action is chain-of-custody logged in an immutable audit trail',
+      'SLA breaches on open cases are tracked and surfaced for escalated review',
+    ],
+  },
 ];
