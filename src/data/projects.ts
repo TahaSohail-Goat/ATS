@@ -69,8 +69,8 @@ export const projects: Project[] = [
     imageAlt: "Sabaq AI's Explore screen: a 3D orbit of subject textbooks circling a globe",
   },
   {
-    slug: 'cat-connect',
-    title: 'Cat Connect',
+    slug: 'shelter-os',
+    title: 'Shelter OS',
     category: 'Web Application',
     status: 'published',
     year: '2026',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     problem:
       'Shelter software usually shows every user the same screen with features hidden behind permission checks, so a volunteer wades through admin tools they will never touch, and nobody overseeing several shelters at once gets a view built for that job.',
     solution:
-      "Cat Connect builds its navigation and dashboards around each of its four roles from the ground up: a Super Admin gets a platform-wide console for onboarding shelters and admins, a Shelter Admin runs one shelter's operations, and Employees and Customers each get an interface scoped to what their role actually does.",
+      "Shelter OS builds its navigation and dashboards around each of its four roles from the ground up: a Super Admin gets a platform-wide console for onboarding shelters and admins, a Shelter Admin runs one shelter's operations, and Employees and Customers each get an interface scoped to what their role actually does.",
     features: [
       'Animal intake, registry, and medical history, with adoption and foster placements tracked end to end',
       'Rescue reports and a public lost & found board',
@@ -88,15 +88,15 @@ export const projects: Project[] = [
       'Threaded messaging, notifications, and an interactive shelter map',
       'A Super Admin console for onboarding shelters, granting admin access, and tracking platform-wide usage',
     ],
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'TanStack Table', 'Recharts', 'Leaflet'],
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Radix UI', 'GSAP', 'TanStack Table', 'Recharts', 'Leaflet'],
     highlights: [
       'Four roles, one codebase: navigation and dashboards are built around Super Admin, Shelter Admin, Employee, and Customer from the ground up, not one view with features toggled on and off',
       'The adoption marketplace and lost & found board are usable without an account',
       'A fully explorable demo: runs on mock data with no backend or real authentication required, so every screen is one click away',
     ],
     demoUrl: 'https://shelter-os-seven.vercel.app',
-    image: '/projects/cat-connect-cover.jpg',
-    imageAlt: 'The Cat Connect adoption marketplace: a hero banner over cards for adoptable cats and dogs',
+    image: '/projects/shelter-os-cover.jpg',
+    imageAlt: 'The Shelter OS adoption marketplace: a hero banner over cards for adoptable cats and dogs',
   },
   {
     slug: 'studify',
@@ -129,8 +129,8 @@ export const projects: Project[] = [
     videoUrl: 'https://drive.google.com/file/d/1n-E1djSJhWoz2xooLSq8vdMTPi1vxmqy/view?usp=drive_link',
   },
   {
-    slug: 'pawtrack',
-    title: 'PawTrack OS: Cat Welfare Platform',
+    slug: 'cat-connect',
+    title: 'Cat Connect',
     category: 'Web Application',
     status: 'published',
     year: '2026',
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     problem:
       'Shelters and rescues track a cat\'s entire lifecycle (intake, medical care, fostering, adoption) across spreadsheets and paper logs, making it hard for shelter staff, vets, and volunteers to coordinate.',
     solution:
-      'PawTrack OS gives every role, from shelter admins to vets to volunteers, one role-based system covering the full lifecycle of a cat\'s care, backed by scheduled background jobs for reminders and matching.',
+      'Cat Connect gives every role, from shelter admins to vets to volunteers, one role-based system covering the full lifecycle of a cat\'s care, backed by scheduled background jobs for reminders and matching.',
     features: [
       'Cat registry with intake and discharge tracking',
       'Medical records and vet appointment scheduling',
@@ -154,8 +154,8 @@ export const projects: Project[] = [
       'Scheduled background jobs via Celery for reminders and the lost & found matching engine',
       'Full OpenAPI/Swagger documentation generated from the API',
     ],
-    image: '/projects/pawtrack-cover.jpg',
-    imageAlt: 'The PawTrack OS cat registry: real cat profiles with owned, in-shelter, and lost statuses',
+    image: '/projects/cat-connect-cover.jpg',
+    imageAlt: 'The Cat Connect cat registry: real cat profiles with owned, in-shelter, and lost statuses',
     videoUrl: 'https://drive.google.com/file/d/1DOXkn57jIr1e7NH8YxkYOpVUYGSf8xFq/view?usp=drive_link',
   },
   {
