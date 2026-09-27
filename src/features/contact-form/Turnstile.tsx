@@ -64,6 +64,9 @@ export function Turnstile({ onVerify, onExpire }: TurnstileProps) {
         if (cancelled || !containerRef.current || !window.turnstile) return;
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
           sitekey: SITE_KEY,
+          // Pinned so the reserved space below always matches what actually
+          // renders; without it Cloudflare is free to pick a different size.
+          size: 'normal',
           callback: (token: string) => onVerifyRef.current(token),
           'expired-callback': () => onExpireRef.current(),
           'error-callback': () => onExpireRef.current(),
@@ -83,5 +86,14 @@ export function Turnstile({ onVerify, onExpire }: TurnstileProps) {
 
   if (!SITE_KEY || failed) return null;
 
-  return <div ref={containerRef} />;
+  // The widget script loads async and inserts itself into this container a
+  // moment after the page first paints (Cloudflare's own round trip, not
+  // something this component controls). Reserving its footprint up front
+  // means that insertion adds no height here. Without it, the container
+  // jumps from 0 to Cloudflare's `size: 'normal'` height (65px, a little
+  // more with its error copy) partway through the page load, which on this
+  // page changes the whole section's height — and the full-bleed background
+  // photo above, sized to cover that section, visibly rescales/recrops a
+  // moment later to match.
+  return <div ref={containerRef} className="min-h-[72px]" />;
 }
