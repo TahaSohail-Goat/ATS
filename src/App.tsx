@@ -10,6 +10,7 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
+import { LegalPage } from './pages/LegalPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
@@ -33,6 +34,9 @@ export function App() {
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<LegalPage document="privacy" />} />
+            <Route path="/terms" element={<LegalPage document="terms" />} />
+            <Route path="/cookies" element={<LegalPage document="cookies" />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

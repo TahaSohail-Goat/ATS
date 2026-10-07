@@ -26,6 +26,16 @@
   keyboard operable.
 - **Priority:** Should
 
+## FR-003 â€” Public Legal Information
+
+- **Actor:** Website visitor
+- **Main flow:** Visitor can open the Privacy Notice, Website Terms, and
+  Cookies & Storage Notice from the site footer and from related policy links.
+- **Acceptance criteria:** Each page explains the site's current data flows or
+  use terms, has route-specific page metadata, and is reachable by keyboard.
+  Contact and question forms link to the Privacy Notice before submission.
+- **Priority:** Must
+
 ## Future requirements
 
 Persistent lead management, email automation, CRM integrations, accounts, and

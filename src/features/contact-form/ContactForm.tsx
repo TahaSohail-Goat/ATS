@@ -7,6 +7,7 @@ import {
   type CountryCode as PhoneCountryCode,
 } from 'libphonenumber-js';
 import { Turnstile, TURNSTILE_ENABLED } from './Turnstile';
+import { Link } from 'react-router-dom';
 
 // ── Services ───────────────────────────────────────────────────────────────────
 const SERVICES = [
@@ -62,7 +63,7 @@ const VERIFY_ENDPOINT = '/api/contact';
 // server-to-server relays (even the site's own serverless function) but
 // allows a genuine browser request through, so the send itself stays
 // client-side; /api/contact only verifies the Turnstile challenge first.
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/team@astsolutions.dev';
 
 // ── Form state ─────────────────────────────────────────────────────────────────
 type FormState = {
@@ -143,7 +144,7 @@ function buildMailtoHref(data: FormState, dialCode: string): string {
   const body = encodeURIComponent(
     `Name: ${data.name}\nEmail: ${data.email}\n${phoneStr}\n${servicesStr}\n\nMessage:\n${data.message}`,
   );
-  return `mailto:ast.devz@gmail.com?subject=${subject}&body=${body}`;
+  return `mailto:team@astsolutions.dev?subject=${subject}&body=${body}`;
 }
 
 // ── Shared input styles ────────────────────────────────────────────────────────
@@ -638,6 +639,10 @@ export function ContactForm() {
       <p className="text-center text-xs text-ast-ink-muted">
         <span className="text-ast-error">*</span> Required fields. We reply to every message
         within one business day.
+      </p>
+      <p className="text-center text-xs leading-relaxed text-ast-ink-muted">
+        By sending this form, you ask AST to use your details to respond to your inquiry. See our{' '}
+        <Link to="/privacy" className="text-ast-brand underline underline-offset-2">Privacy Notice</Link>.
       </p>
     </form>
   );
