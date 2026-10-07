@@ -5,7 +5,7 @@ import { Container } from './Container';
 import { Logo } from './Logo';
 import { NAV_LINKS } from '../data/navigation';
 
-const CONTACT_EMAIL = 'ast.devz@gmail.com';
+const CONTACT_EMAIL = 'team@astsolutions.dev';
 
 /** Real profile URLs land here as they're provided; undefined renders as an inert placeholder icon. */
 const SOCIAL_LINKS = [
@@ -105,10 +105,17 @@ export function Footer() {
         </div>
 
         <div className="mt-10 border-t border-ast-ink/10 pt-6 text-xs text-ast-ink-muted">
-          <p>
-            © {new Date().getFullYear()} AST, AI Software &amp; Technology Solutions. All rights
-            reserved.
-          </p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} AST, AI Software &amp; Technology Solutions. All rights
+              reserved.
+            </p>
+            <nav aria-label="Legal policies" className="flex flex-wrap gap-x-5 gap-y-2">
+              <Link className="transition-colors hover:text-ast-ink" to="/privacy">Privacy</Link>
+              <Link className="transition-colors hover:text-ast-ink" to="/terms">Terms</Link>
+              <Link className="transition-colors hover:text-ast-ink" to="/cookies">Cookies &amp; storage</Link>
+            </nav>
+          </div>
         </div>
       </Container>
     </footer>

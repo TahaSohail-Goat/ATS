@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Check, LoaderCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ast.devz@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/team@astsolutions.dev';
 
 type FormState = {
   name: string;
@@ -295,6 +296,10 @@ export function FAQForm() {
 
       <p className="text-center text-xs text-ast-ink-muted">
         <span className="text-ast-error">*</span> Required fields. We reply to every question within one business day.
+      </p>
+      <p className="text-center text-xs leading-relaxed text-ast-ink-muted">
+        By sending this form, you ask AST to use your details to respond to your question. See our{' '}
+        <Link to="/privacy" className="text-ast-brand underline underline-offset-2">Privacy Notice</Link>.
       </p>
     </form>
   );
