@@ -21,7 +21,7 @@ export function Testimonials() {
       className="border-t border-ast-ink/10 bg-ast-surface"
       description={
         featured
-          ? 'Real feedback from the people we’ve built for, published only with their approval.'
+          ? 'The featured quote is approved client feedback. Supporting examples are fictional placeholders, not client endorsements.'
           : 'Quotes are published only once a client has approved them, so this space stays honest while our first case studies clear review.'
       }
     >
@@ -77,6 +77,11 @@ export function Testimonials() {
                     strokeWidth={1.5}
                     aria-hidden
                   />
+                  {testimonial.isExample && (
+                    <p className="mt-4 text-xs font-medium text-ast-ink-muted">
+                      Fictional example · not a client endorsement
+                    </p>
+                  )}
                   <blockquote className="mt-5 text-sm leading-relaxed text-ast-ink">
                     {testimonial.quote}
                   </blockquote>
