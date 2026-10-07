@@ -70,8 +70,8 @@ how → CTA**:
    read as a composition rather than a row of identical boxes.
 6. **Process** — pinned heading beside a timeline whose rail fills with scroll
    position, so process reads as progress.
-7. **Testimonials** — one approved quote plus clearly labeled illustrative
-   examples when needed; fictional copy must never read as a real endorsement.
+7. **Testimonials** — approved client quotes only; keep the section concise and
+   omit it or show a coming-soon state when no approved quotes are available.
 8. **Technology** — the stack grouped by layer.
 9. **Final CTA** — contrast band closing the conversion path.
 
@@ -79,8 +79,8 @@ how → CTA**:
 
 These constrain design as much as copy:
 
-- Fictional testimonial examples carry a visible plain-text disclosure
-  (`data/testimonials.ts`); do not present them as real endorsements.
+- Testimonials must be genuine client feedback approved for publication
+  (`data/testimonials.ts`); do not publish fictional sample quotes.
 - Project concepts are labelled "Illustrative concept", not "case study"
   (`data/projects.ts` → `status`).
 - Any figure shown on the site must be derivable from repository data or
