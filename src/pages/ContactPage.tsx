@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ContactForm } from '../features/contact-form/ContactForm';
 import { Container } from '../components/Container';
 import { Reveal } from '../components/motion/Reveal';
@@ -8,11 +9,11 @@ const SCRIM =
   'linear-gradient(100deg, rgb(var(--ast-canvas) / var(--ast-scrim-strong)) 45%, rgb(var(--ast-canvas) / var(--ast-scrim-soft)) 100%)';
 
 export function ContactPage() {
-  useSeo({
-    title: 'Contact',
-    description:
-      'Start a project with AST. Tell us what you are building and we reply with honest technical feedback and a clear first step.',
-  });
+  useEffect(() => {
+    void import('flag-icons/css/flag-icons.min.css');
+  }, []);
+
+  useSeo();
 
   // The photo behaves differently by screen size. From `lg` up it sits behind
   // the whole page, heading and form together, as the design intends. Below

@@ -1,15 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { App } from './App';
 import './styles/globals.css';
-import 'flag-icons/css/flag-icons.min.css';
 
 // The theme is applied before first paint by the inline script in index.html,
 // which also swallows the SecurityError that reading localStorage throws in
 // private/locked-down browsers. Nothing to do here.
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!;
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+// Production routes are pre-rendered at build time. Vite dev still serves an
+// empty root, so use client rendering there and hydration for static HTML.
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}

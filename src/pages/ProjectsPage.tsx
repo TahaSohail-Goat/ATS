@@ -12,11 +12,7 @@ import { useSeo } from '../lib/seo';
 const PREVIEW_COUNT = 3;
 
 export function ProjectsPage() {
-  useSeo({
-    title: 'Projects',
-    description:
-      'Selected work from AST, including AI study tools, shelter management platforms, and disaster response systems.',
-  });
+  useSeo();
 
   const [showAll, setShowAll] = useState(false);
   const visibleProjects = showAll ? projects : projects.slice(0, PREVIEW_COUNT);

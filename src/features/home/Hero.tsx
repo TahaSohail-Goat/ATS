@@ -50,9 +50,9 @@ export function Hero() {
 
           <Reveal delay={0.35}>
             <p className="ast-photo-text mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-ast-ink dark:text-ast-ink-muted sm:text-xl">
-              AST designs and ships custom software, AI features, and cloud infrastructure for
-              companies that outgrow templates: clean architecture, measurable results, and a team
-              you can actually reach.
+              AST Solutions (AI Software &amp; Technology Solutions) designs and builds custom
+              software, AI features, mobile apps, and cloud infrastructure for growing businesses,
+              with clean architecture and a team you can reach.
             </p>
           </Reveal>
 

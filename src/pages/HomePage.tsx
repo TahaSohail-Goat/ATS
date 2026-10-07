@@ -7,10 +7,7 @@ import { FinalCta } from '../features/home/FinalCta';
 import { useSeo } from '../lib/seo';
 
 export function HomePage() {
-  useSeo({
-    description:
-      'AST designs and ships custom software, AI features, and cloud infrastructure for companies that outgrow templates.',
-  });
+  useSeo();
 
   return (
     <>

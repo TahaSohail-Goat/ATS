@@ -221,7 +221,7 @@ function CookieNotice() {
 
 export function LegalPage({ document }: { document: LegalDocument }) {
   const meta = pageMeta[document];
-  useSeo({ title: `${meta.title} ${meta.accent}`, description: meta.description });
+  useSeo();
 
   return (
     <>
