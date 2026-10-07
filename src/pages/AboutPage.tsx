@@ -23,11 +23,7 @@ const PURPOSE = [
 ];
 
 export function AboutPage() {
-  useSeo({
-    title: 'About',
-    description:
-      'AST is a software company that partners with businesses to design, build, and modernize the systems they run on.',
-  });
+  useSeo();
 
   return (
     <>

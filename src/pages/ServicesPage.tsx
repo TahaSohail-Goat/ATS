@@ -14,11 +14,7 @@ import { useSeo } from '../lib/seo';
 const PREVIEW_COUNT = 4;
 
 export function ServicesPage() {
-  useSeo({
-    title: 'Services',
-    description:
-      'Full-cycle engineering from AST: custom software, AI and machine learning, mobile apps, cloud infrastructure, and more.',
-  });
+  useSeo();
 
   const [showAll, setShowAll] = useState(false);
   const visibleServices = showAll ? services : services.slice(0, PREVIEW_COUNT);

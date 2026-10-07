@@ -11,11 +11,7 @@ import { useSeo } from '../lib/seo';
 const FAQ_CATEGORIES = ['Services', 'Process', 'Engagement', 'Technology', 'Pricing & Budget', 'Team & Expertise', 'Getting Started'];
 
 export function FAQPage() {
-  useSeo({
-    title: 'FAQ',
-    description:
-      'Answers to common questions about AST services, process, timelines, pricing, and technology.',
-  });
+  useSeo();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);

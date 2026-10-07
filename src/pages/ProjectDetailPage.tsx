@@ -28,7 +28,7 @@ function ProjectDetail({ slug }: { slug: string | undefined }) {
   const project = projects.find((p) => p.slug === slug);
 
   // Hooks must run before any early return, so this tolerates a missing project.
-  useSeo({ title: project?.title, description: project?.summary });
+  useSeo({ title: project?.title, description: project?.summary, image: project?.image });
 
   if (!project) {
     return <Navigate to="/projects" replace />;

@@ -9,11 +9,7 @@ import { NAV_LINKS } from '../data/navigation';
 import { useSeo } from '../lib/seo';
 
 export function NotFoundPage() {
-  useSeo({
-    title: 'Page not found',
-    description:
-      'The page you are looking for does not exist. Browse AST services, projects, and contact details instead.',
-  });
+  useSeo();
 
   return (
     <section className="dark relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-ast-canvas text-ast-ink">

@@ -16,6 +16,7 @@ const getServerPortraitSnapshot = () => false;
 
 /** Honors the browser's Data Saver setting where the browser exposes it. */
 function prefersReducedData(): boolean {
+  if (typeof navigator === 'undefined') return false;
   const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
   return connection?.saveData === true;
 }

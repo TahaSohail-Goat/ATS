@@ -11,7 +11,7 @@ portfolio. The site intentionally has no API server or database in this phase.
 | [`requirements/`](./requirements) | Current website requirements                                 |
 | [`architecture/`](./architecture) | System, frontend, security, and deployment                   |
 | [`use-cases/`](./use-cases)       | Visitor journeys                                             |
-| [`frontend/`](./frontend)         | Design system, brief, accessibility, responsive/motion rules |
+| [`frontend/`](./frontend)         | Design system, brief, accessibility, responsive/motion, SEO |
 | [`security/`](./security)         | Website security and hosted-form guidance                    |
 | [`development/`](./development)   | Setup, standards, testing, troubleshooting                   |
 | [`deployment/`](./deployment)     | Frontend deployment and monitoring                           |
