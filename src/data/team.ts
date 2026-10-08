@@ -16,7 +16,7 @@ export interface TeamMember {
 export const team: TeamMember[] = [
   {
     name: 'Taha Sohail',
-    role: 'Founder & CEO & Agentic AI Full Stack Developer',
+    role: 'CEO',
     bio: 'Leads AST end to end, setting technical direction and client partnerships while building agentic AI systems across the full stack.',
     photo: '/team/taha-sohail.jpeg',
     photoPosition: 'top',
@@ -25,8 +25,8 @@ export const team: TeamMember[] = [
   },
   {
     name: 'Abdullah Adnan',
-    role: 'Co-founder & AI Engineer',
-    bio: 'Designs and ships the AI and machine learning systems behind AST products, from model training to production deployment.',
+    role: 'CTO',
+    bio: 'Leads AST’s technical direction and oversees the engineering of reliable software and AI systems.',
     photo: '/team/abdullah-adnan.png',
     photoPosition: 'top',
     linkedinUrl: 'https://www.linkedin.com/in/abdullah-adnan-660bb1350',
@@ -34,16 +34,16 @@ export const team: TeamMember[] = [
   },
   {
     name: 'Muhammad Shaheer',
-    role: 'Co-founder & Frontend Developer & UI/UX Designer',
-    bio: 'Designs and builds the interfaces clients use every day, turning complex requirements into clean, intuitive experiences.',
+    role: 'COO',
+    bio: 'Leads AST’s day-to-day operations and helps the team deliver projects smoothly from planning through launch.',
     photo: '/team/muhammad-shaheer.jpeg',
     linkedinUrl: 'https://www.linkedin.com/in/muhammad-shaheer-28bb1a3ab',
     githubUrl: 'https://github.com/Artfever',
   },
   {
     name: 'Rayyan Hassan',
-    role: 'Co-founder & Backend Developer & Product Engineer',
-    bio: 'Builds the backend systems and APIs that power AST products, and drives product engineering from architecture to launch.',
+    role: 'Product Manager',
+    bio: 'Guides product planning and priorities, translating user and business needs into clear requirements for the team.',
     photo: '/team/rayyan-hassan.jpeg',
     linkedinUrl: 'https://www.linkedin.com/in/syed-muhammad-rayyan-hasan-8379b2386',
     githubUrl: 'https://github.com/rayyanhasan899',
